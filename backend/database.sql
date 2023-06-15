@@ -98,6 +98,11 @@ CREATE TABLE IF NOT EXISTS `inovin`.`user` (
   PRIMARY KEY (`id_user`))
 ENGINE = InnoDB;
 
+INSERT INTO user (firstname, lastname, birth_date, email, hashed_password, admin_credentials, wine_color, preference_description) VALUES
+('Cyrille', 'AQUILINA', '20-07-1990', 'cyrille.aquilina@gmail.com', 'carlitto1995$', 1, 'blanc', `j'aime les vins blancs sucrés pour l'apéro`);
+
+
+
 
 -- -----------------------------------------------------
 -- Table `inovin`.`workshop`
