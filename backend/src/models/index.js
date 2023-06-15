@@ -35,8 +35,8 @@ const GrapeVarietyManager = require("./GrapeVarietyManager");
 models.item = new ItemManager();
 models.item.setDatabase(pool);
 
-models.grape = new GrapeVarietyManager();
-models.grape.setDatabase(pool);
+models.grapeVaruety = new GrapeVarietyManager();
+models.grapeVariety.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
