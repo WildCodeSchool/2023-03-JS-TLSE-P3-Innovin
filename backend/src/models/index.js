@@ -35,7 +35,7 @@ const GrapeVarietyManager = require("./GrapeVarietyManager");
 models.item = new ItemManager();
 models.item.setDatabase(pool);
 
-models.grapeVaruety = new GrapeVarietyManager();
+models.grapeVariety = new GrapeVarietyManager();
 models.grapeVariety.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
