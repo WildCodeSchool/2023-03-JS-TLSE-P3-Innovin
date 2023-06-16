@@ -19,12 +19,13 @@ router.put("/grapevariety/:id", GrapeVarietyControllers.edit);
 router.delete("/grapevariety/:id", GrapeVarietyControllers.destroy);
 
 const UserControllers = require("./controllers/UserControllers");
-const { hashPassword, verifyToken } = require("./auth");
+const { hashPassword, verifyToken, verifyPassword } = require("./auth");
 const { validateUser } = require("./validators");
 
 router.get("/users", UserControllers.browse);
 router.get("/users/:id", UserControllers.read);
 router.post("/users", hashPassword, validateUser, UserControllers.add);
+router.post("/login", UserControllers.login, verifyPassword);
 router.put(
   "/users/:id",
   verifyToken,

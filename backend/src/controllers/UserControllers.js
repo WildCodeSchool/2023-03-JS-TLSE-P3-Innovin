@@ -1,7 +1,8 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.User.findAll()
+  models.user
+    .findAll()
     .then(([rows]) => {
       res.send(rows);
     })
@@ -12,7 +13,8 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.User.find(req.params.id)
+  models.user
+    .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404);
@@ -80,10 +82,28 @@ const destroy = (req, res) => {
     });
 };
 
+const login = (req, res, next) => {
+  models.user
+    .findByEmail(req.body.email)
+    .then(([users]) => {
+      if (users.length) {
+        req.user = users;
+        next();
+      } else {
+        res.status(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  login,
 };
