@@ -103,6 +103,8 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
     });
 };
 
+// middleware to verify if user is admin
+
 const verifyAdminCredentials = (req, res, next) => {
   const { email } = req.body;
 
@@ -123,6 +125,24 @@ const verifyAdminCredentials = (req, res, next) => {
     });
 };
 
+const getUserRegisteredToAWorkshop = (req, res) => {
+  const idWorkshop = parseInt(req.params.id, 10);
+
+  models.user
+    .findUsersInWorkshop(idWorkshop)
+    .then(([rows]) => {
+      if (rows.length === 0) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -131,4 +151,5 @@ module.exports = {
   destroy,
   getUserByEmailWithPasswordAndPassToNext,
   verifyAdminCredentials,
+  getUserRegisteredToAWorkshop,
 };

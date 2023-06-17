@@ -45,5 +45,10 @@ router.delete(
   verifyToken,
   UserControllers.destroy
 );
+router.get(
+  "/Admin/workshop/:id",
+  UserControllers.verifyAdminCredentials,
+  UserControllers.getUserRegisteredToAWorkshop
+);
 
 module.exports = router;

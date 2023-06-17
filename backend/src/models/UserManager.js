@@ -77,6 +77,15 @@ class UserManager extends AbstractManager {
       [email]
     );
   }
+
+  // Method to Execute the SQL query to find users which are registered to a workshop
+
+  findUsersInWorkshop(id_workshop) {
+    return this.database.query(
+      `SELECT * FROM ${this.table} INNER JOIN user_has_workshop ON ${this.table}.id = id_user WHERE id_Workshop = ?ORDER BY lastname, firstname, birth_date`,
+      [id_workshop]
+    );
+  }
 }
 
 module.exports = UserManager;
