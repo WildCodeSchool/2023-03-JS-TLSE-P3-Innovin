@@ -110,7 +110,6 @@ const verifyAdminCredentials = (req, res, next) => {
     .getCredentials(email)
     .then(([users]) => {
       const adminCredentials = users[0].admin_credentials;
-      console.log(adminCredentials);
 
       if (adminCredentials) {
         next();
