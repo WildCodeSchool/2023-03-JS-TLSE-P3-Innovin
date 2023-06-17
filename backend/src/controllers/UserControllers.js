@@ -82,11 +82,13 @@ const destroy = (req, res) => {
     });
 };
 
-const login = (req, res, next) => {
+const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
+  const { email } = req.body;
+
   models.user
-    .findByEmail(req.body.email)
+    .findByEmail(email)
     .then(([users]) => {
-      if (users.length) {
+      if (users[0] != null) {
         req.user = users;
         next();
       } else {
@@ -105,5 +107,5 @@ module.exports = {
   edit,
   add,
   destroy,
-  login,
+  getUserByEmailWithPasswordAndPassToNext,
 };

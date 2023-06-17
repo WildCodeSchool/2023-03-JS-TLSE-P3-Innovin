@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 const AbstractManager = require("./AbstractManager");
 
 class UserManager extends AbstractManager {
@@ -9,48 +11,49 @@ class UserManager extends AbstractManager {
     const {
       firstname,
       lastname,
-      birthDate,
+      birth_date,
       email,
-      hashedPassword,
+      hashed_password,
       wineColor,
       preferenceDescription,
     } = user;
 
     // Execute the SQL query to insert the user into the database
     return this.database.query(
-      `INSERT INTO ${this.table} (firstname, lastname, birth_date, email, hashed_password, wine_color, preference_description) VALUES (?,?,?,?,?,?,?)`,
+      `INSERT INTO ${this.table} (firstname, lastname, birth_date, email, hashed_password, wine_color, preference_description) VALUES (?, ?, ?, ?, ?, ?, ?)`,
       [
         firstname,
         lastname,
-        birthDate,
+        birth_date,
         email,
-        hashedPassword,
+        hashed_password,
         wineColor,
         preferenceDescription,
       ]
     );
   }
 
-  update(user) {
+  update(user, id) {
     const {
       firstname,
       lastname,
-      birthDate,
+      birth_date,
       email,
-      hashedPassword,
+      hashed_password,
       wineColor,
       preferenceDescription,
     } = user;
     return this.database.query(
-      `update ${this.table} set title = ?, birth_date = ?, email = ?, hashed_password = ?, wine_color = ?, preference_description = ? where id = ?`,
+      `update ${this.table} set firstname = ?, lastname = ?, birth_date = ?, email = ?, hashed_password = ?, wine_color = ?, preference_description = ? where id = ?`,
       [
         firstname,
         lastname,
-        birthDate,
+        birth_date,
         email,
-        hashedPassword,
+        hashed_password,
         wineColor,
         preferenceDescription,
+        id,
       ]
     );
   }
