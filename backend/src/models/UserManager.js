@@ -7,7 +7,7 @@ class UserManager extends AbstractManager {
     super({ table: "user" });
   }
 
-  //Method to Execute the SQL query to insert the user into the database
+  // Method to Execute the SQL query to insert the user into the database
 
   insert(user) {
     const {
