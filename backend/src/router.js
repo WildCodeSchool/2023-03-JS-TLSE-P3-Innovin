@@ -10,6 +10,7 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
+// routes for grape_variety table
 const GrapeVarietyControllers = require("./controllers/GrapeVarietyControllers");
 
 router.get("/grapevariety", GrapeVarietyControllers.browse);
@@ -18,6 +19,7 @@ router.post("/grapevariety", GrapeVarietyControllers.add);
 router.put("/grapevariety/:id", GrapeVarietyControllers.edit);
 router.delete("/grapevariety/:id", GrapeVarietyControllers.destroy);
 
+// routes for user table with authentication
 const UserControllers = require("./controllers/UserControllers");
 const { hashPassword, verifyToken, verifyPassword } = require("./auth");
 const { validateUser } = require("./validators");

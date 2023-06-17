@@ -7,6 +7,8 @@ class UserManager extends AbstractManager {
     super({ table: "user" });
   }
 
+  //Method to Execute the SQL query to insert the user into the database
+
   insert(user) {
     const {
       firstname,
@@ -18,7 +20,6 @@ class UserManager extends AbstractManager {
       preference_description,
     } = user;
 
-    // Execute the SQL query to insert the user into the database
     return this.database.query(
       `INSERT INTO ${this.table} (firstname, lastname, birth_date, email, hashed_password, wine_color, preference_description) VALUES (?, ?, ?, ?, ?, ?, ?)`,
       [
@@ -32,6 +33,8 @@ class UserManager extends AbstractManager {
       ]
     );
   }
+
+  // Method to Execute the SQL query to update the user from the database
 
   update(user, id) {
     const {
@@ -57,6 +60,8 @@ class UserManager extends AbstractManager {
       ]
     );
   }
+
+  // Method to Execute the SQL query to find a user by it's email used in the middleware for the login
 
   findByEmail(email) {
     return this.database.query(`select * from  ${this.table} where email=?`, [

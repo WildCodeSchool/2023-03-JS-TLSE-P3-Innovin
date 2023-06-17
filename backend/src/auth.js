@@ -2,6 +2,8 @@
 
 const argon2 = require("argon2");
 
+// middleware to hash the user's password
+
 const hashingOptions = {
   type: argon2.argon2id,
   memoryCost: 2 ** 16,
@@ -23,6 +25,8 @@ const hashPassword = (req, res, next) => {
       res.sendStatus(500);
     });
 };
+
+// middleware to verify the user's password
 
 const jwt = require("jsonwebtoken");
 
@@ -48,6 +52,8 @@ const verifyPassword = (req, res) => {
       res.sendStatus(500);
     });
 };
+
+// middleware to verify the user's token
 
 const verifyToken = (req, res, next) => {
   try {
