@@ -33,10 +33,10 @@ const edit = (req, res) => {
 
   // TODO validations (length, format...)
 
-  user.id = parseInt(req.params.id, 10);
+  const id = parseInt(req.params.id, 10);
 
   models.user
-    .update(user)
+    .update(user, id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -89,7 +89,7 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
     .findByEmail(email)
     .then(([users]) => {
       if (users[0] != null) {
-        req.user = users;
+        [req.user] = users;
         next();
       } else {
         res.status(401);

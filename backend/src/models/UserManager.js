@@ -14,8 +14,8 @@ class UserManager extends AbstractManager {
       birth_date,
       email,
       hashed_password,
-      wineColor,
-      preferenceDescription,
+      wine_color,
+      preference_description,
     } = user;
 
     // Execute the SQL query to insert the user into the database
@@ -27,8 +27,8 @@ class UserManager extends AbstractManager {
         birth_date,
         email,
         hashed_password,
-        wineColor,
-        preferenceDescription,
+        wine_color,
+        preference_description,
       ]
     );
   }
@@ -40,8 +40,8 @@ class UserManager extends AbstractManager {
       birth_date,
       email,
       hashed_password,
-      wineColor,
-      preferenceDescription,
+      wine_color,
+      preference_description,
     } = user;
     return this.database.query(
       `update ${this.table} set firstname = ?, lastname = ?, birth_date = ?, email = ?, hashed_password = ?, wine_color = ?, preference_description = ? where id = ?`,
@@ -51,15 +51,15 @@ class UserManager extends AbstractManager {
         birth_date,
         email,
         hashed_password,
-        wineColor,
-        preferenceDescription,
+        wine_color,
+        preference_description,
         id,
       ]
     );
   }
 
   findByEmail(email) {
-    return this.database.query(`select * from  ${this.table} where email = ?`, [
+    return this.database.query(`select * from  ${this.table} where email=?`, [
       email,
     ]);
   }

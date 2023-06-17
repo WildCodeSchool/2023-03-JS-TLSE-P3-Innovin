@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 const argon2 = require("argon2");
 
 const hashingOptions = {
@@ -10,8 +12,8 @@ const hashingOptions = {
 const hashPassword = (req, res, next) => {
   argon2
     .hash(req.body.password, hashingOptions)
-    .then((hashedPassword) => {
-      req.body.hashed_password = hashedPassword;
+    .then((hashed_password) => {
+      req.body.hashed_password = hashed_password;
       delete req.body.password;
 
       next();
@@ -26,7 +28,7 @@ const jwt = require("jsonwebtoken");
 
 const verifyPassword = (req, res) => {
   argon2
-    .verify(req.user.hashedPassword, req.body.password)
+    .verify(req.user.hashed_password, req.body.password)
     .then((isVerified) => {
       if (isVerified) {
         const payload = { sub: req.user.id };
@@ -34,7 +36,7 @@ const verifyPassword = (req, res) => {
           expiresIn: "1h",
         });
 
-        delete req.user.hashedPassword;
+        delete req.user.hashed_password;
 
         res.send({ token, user: req.user });
       } else {
