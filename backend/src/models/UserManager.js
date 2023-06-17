@@ -68,6 +68,15 @@ class UserManager extends AbstractManager {
       email,
     ]);
   }
+
+  // Method to Execute the SQL query to get the credentials of a user used in the middleware for the login
+
+  getCredentials(email) {
+    return this.database.query(
+      `select admin_credentials from  ${this.table} where email=?`,
+      [email]
+    );
+  }
 }
 
 module.exports = UserManager;

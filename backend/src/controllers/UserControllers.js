@@ -103,6 +103,27 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
     });
 };
 
+const verifyAdminCredentials = (req, res, next) => {
+  const { email } = req.body;
+
+  models.user
+    .getCredentials(email)
+    .then(([users]) => {
+      const adminCredentials = users[0].admin_credentials;
+      console.log(adminCredentials);
+
+      if (adminCredentials) {
+        next();
+      } else {
+        res.status(403).send("Access denied");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -110,4 +131,5 @@ module.exports = {
   add,
   destroy,
   getUserByEmailWithPasswordAndPassToNext,
+  verifyAdminCredentials,
 };
