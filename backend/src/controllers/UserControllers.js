@@ -33,7 +33,6 @@ const read = (req, res) => {
 // edit one user
 const edit = (req, res) => {
   const user = req.body;
-
   const id = parseInt(req.params.id, 10);
 
   models.user
