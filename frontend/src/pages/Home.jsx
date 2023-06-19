@@ -1,5 +1,11 @@
+import Login from "./Login";
+
 function Home() {
-  return <div />;
+  return (
+    <div>
+      <Login />
+    </div>
+  );
 }
 
 export default Home;
