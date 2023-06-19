@@ -4,11 +4,15 @@ const browse = (req, res) => {
   models.grapeVariety
     .findAll()
     .then(([rows]) => {
-      res.send(rows);
+      if (rows.length) {
+        res.status(200).send(rows);
+      } else {
+        res.status(400).send("Bad Request");
+      }
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -17,14 +21,14 @@ const read = (req, res) => {
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
-        res.sendStatus(404);
+        res.status(404).send("Not found");
       } else {
         res.send(rows[0]);
       }
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -33,20 +37,20 @@ const edit = (req, res) => {
 
   // TODO validations (length, format...)
 
-  grapeVariety.id = parseInt(req.params.id, 10);
+  const id = parseInt(req.params.id, 10);
 
   models.grapeVariety
-    .update(grapeVariety)
+    .update(grapeVariety, id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
-        res.sendStatus(404);
+        res.status(400).send("Bad request");
       } else {
-        res.sendStatus(204);
+        res.status(204).send("Updated");
       }
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -58,11 +62,14 @@ const add = (req, res) => {
   models.grapeVariety
     .insert(grapeVariety)
     .then(([result]) => {
-      res.location(`/grapevariety/${result.insertId}`).sendStatus(201);
+      res
+        .location(`/grapevariety/${result.insertId}`)
+        .status(201)
+        .send("Created");
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -71,14 +78,14 @@ const destroy = (req, res) => {
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
-        res.sendStatus(404);
+        res.status(404).send("Not found");
       } else {
-        res.sendStatus(204);
+        res.status(204).send("Deleted");
       }
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 

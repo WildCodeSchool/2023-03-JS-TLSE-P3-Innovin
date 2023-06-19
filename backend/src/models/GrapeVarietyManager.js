@@ -6,15 +6,18 @@ class GrapeVarietyManager extends AbstractManager {
   }
 
   insert(grapeVariety) {
-    return this.database.query(`insert into ${this.table} (title) values (?)`, [
-      grapeVariety.title,
-    ]);
+    const { name, description } = grapeVariety;
+    return this.database.query(
+      `insert into ${this.table} (name, description) values (?, ?)`,
+      [name, description]
+    );
   }
 
-  update(grapeVariety) {
+  update(grapeVariety, id) {
+    const { name, description } = grapeVariety;
     return this.database.query(
-      `update ${this.table} set title = ? where id = ?`,
-      [grapeVariety.title, grapeVariety.id]
+      `update ${this.table} set name = ?, description = ? where id = ?`,
+      [name, description, id]
     );
   }
 }
