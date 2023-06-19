@@ -2,53 +2,41 @@ const express = require("express");
 
 const router = express.Router();
 
-const itemControllers = require("./controllers/itemControllers");
-
-router.get("/items", itemControllers.browse);
-router.get("/items/:id", itemControllers.read);
-router.put("/items/:id", itemControllers.edit);
-router.post("/items", itemControllers.add);
-router.delete("/items/:id", itemControllers.destroy);
-
-// routes for grape_variety table
+// --------------------------------------- Import Controllers ---------------------------------------
 const GrapeVarietyControllers = require("./controllers/GrapeVarietyControllers");
-
-router.get("/grapevariety", GrapeVarietyControllers.browse);
-router.get("/grapevariety/:id", GrapeVarietyControllers.read);
-router.post("/grapevariety", GrapeVarietyControllers.add);
-router.put("/grapevariety/:id", GrapeVarietyControllers.edit);
-router.delete("/grapevariety/:id", GrapeVarietyControllers.destroy);
-
-// routes for user table with authentication
 const UserControllers = require("./controllers/UserControllers");
 const { hashPassword, verifyToken, verifyPassword } = require("./auth");
 const { validateUser } = require("./validators");
 
-router.get("/users", UserControllers.browse);
-router.get("/users/:id", UserControllers.read);
-router.post("/users", hashPassword, validateUser, UserControllers.add);
+const { verifyAdminCredentials } = UserControllers;
+
+// ----------------------------------------- Public routes -------------------------------------------
+
 router.post(
-  "/login",
+  "/users/login",
   UserControllers.getUserByEmailWithPasswordAndPassToNext,
   verifyPassword
 );
-router.put(
-  "/users/:id",
-  verifyToken,
-  hashPassword,
-  validateUser,
-  UserControllers.edit
-);
-router.delete(
-  "/users/:id",
-  UserControllers.verifyAdminCredentials,
-  verifyToken,
-  UserControllers.destroy
-);
-router.get(
-  "/Admin/workshop/:id",
-  UserControllers.verifyAdminCredentials,
-  UserControllers.getUserRegisteredToAWorkshop
-);
+router.get("/grapevariety", GrapeVarietyControllers.browse);
+router.get("/grapevariety/:id", GrapeVarietyControllers.read);
+
+// ---------------------------------------- Private Routes ----------------------------------------------
+
+router.use(verifyToken);
+
+router.get("/users/:id", UserControllers.read);
+router.post("/users", hashPassword, validateUser, UserControllers.add);
+router.put("/users/:id", hashPassword, validateUser, UserControllers.edit);
+
+// ----------------------------------------- Admin routes ------------------------------------------------
+
+router.use(verifyAdminCredentials);
+
+router.get("/users", UserControllers.browse);
+router.delete("/users/:id", UserControllers.destroy);
+router.get("/admin/workshop/:id", UserControllers.getUserRegisteredToAWorkshop);
+router.post("/grapevariety", GrapeVarietyControllers.add);
+router.put("/grapevariety/:id", GrapeVarietyControllers.edit);
+router.delete("/grapevariety/:id", GrapeVarietyControllers.destroy);
 
 module.exports = router;

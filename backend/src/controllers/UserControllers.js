@@ -5,11 +5,15 @@ const browse = (req, res) => {
   models.user
     .findAll()
     .then(([rows]) => {
-      res.send(rows);
+      if (rows.length) {
+        res.status(200).send(rows);
+      } else {
+        res.status(400).send("Bad Request");
+      }
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -19,14 +23,14 @@ const read = (req, res) => {
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
-        res.sendStatus(404);
+        res.status(404).send("User not found");
       } else {
-        res.send(rows[0]);
+        res.status(200).send(rows[0]);
       }
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -39,14 +43,14 @@ const edit = (req, res) => {
     .update(user, id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
-        res.sendStatus(404);
+        res.status(400).send("Bad request");
       } else {
-        res.sendStatus(204);
+        res.status(204).send("User updated");
       }
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -61,7 +65,7 @@ const add = (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -71,14 +75,14 @@ const destroy = (req, res) => {
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
-        res.sendStatus(404);
+        res.status(404).send("User not found");
       } else {
-        res.sendStatus(204);
+        res.status(204).send("User deleted");
       }
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -93,7 +97,7 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
         [req.user] = users;
         next();
       } else {
-        res.status(401);
+        res.status(401).send("Unauthorized");
       }
     })
     .catch((err) => {
@@ -133,12 +137,12 @@ const getUserRegisteredToAWorkshop = (req, res) => {
       if (rows.length === 0) {
         res.sendStatus(404);
       } else {
-        res.send(rows);
+        res.status(200).send(rows);
       }
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
