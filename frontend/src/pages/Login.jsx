@@ -1,21 +1,21 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import axios from "axios";
+import eye from "../assets/Icons/Eye_Icon.svg";
+import logo from "../assets/Logo_Innovin.svg";
 
-function Login() {
-  //   const [name, setName] = useState("");
-  //   const [email, setEmail] = useState("");
-  //   const handleNameChange = (event) => {
-  //     setName(event.target.value);
-  //   };
+// messages d'erreurs et inputs rouge en cas d'échec de l'authentification
+// controller les entrées via regex ou autres méthodes
 
-  //   const handleEmailChange = (event) => {
-  //     setEmail(event.target.value);
-  //   };
-
+function Login({ setUser }) {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
   const [isHidden, setIsHidden] = useState(true);
+
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setForm({
@@ -38,10 +38,22 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setForm({
-      name: "",
-      email: "",
-    });
+    const userData = {
+      email: form.email,
+      password: form.password,
+    };
+
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/users/login`, userData)
+      .then((res) => {
+        if (res.data.token) {
+          setUser(res.data.token);
+          navigate("/Tasting_Presentation");
+        }
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
   };
 
   return (
@@ -49,17 +61,14 @@ function Login() {
       <div className="loginContentDiv">
         <div>
           {" "}
-          <img
-            src="./assets/Logo_Innovin.svg"
-            alt="Inovin logo"
-            className="logo"
-          />
+          <img src={logo} alt="Inovin logo" className="logo" />
           <p className="logoText" />
         </div>
 
         <form action="" className="loginForm" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="email" className="loginEmailLabel">
+              Email
               <input
                 type="email"
                 name="email"
@@ -72,9 +81,10 @@ function Login() {
           </div>
           <div>
             <label htmlFor="password" className="loginPasswordLabel">
+              Password
               <div className="passwordInput">
                 <input
-                  type="password"
+                  type={isHidden ? "password" : "text"}
                   name="password"
                   id="password"
                   value={form.password}
@@ -86,7 +96,7 @@ function Login() {
                   onClick={handlehidePassword}
                   className="hidePasswordButton"
                 >
-                  <img src="./assets/eye.svg" alt="eye icon to show password" />
+                  <img src={eye} alt="eye icon to show password" />
                 </button>
               </div>
             </label>
@@ -99,5 +109,9 @@ function Login() {
     </div>
   );
 }
+
+Login.propTypes = {
+  setUser: PropTypes.func.isRequired,
+};
 
 export default Login;
