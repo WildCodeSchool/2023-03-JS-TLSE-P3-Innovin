@@ -33,6 +33,10 @@ CREATE TABLE
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
+INSERT INTO
+    `inovin`.`wine_region` (`name`)
+VALUES ('Alsace'), ('Lorraine'), ('Bordeaux'), ('Beaujolais'), ('Lyonnais'), ('Bourgogne'), ('Champagne'), ('Corse'), ('Provence'), ('Jura'), ('Savoie'), ('Bugey'), ('Languedoc-Roussillon'), ('Sud-Ouest'), ('Vallée de la Loire'), ('Vallée du Rhône');
+
 -- -----------------------------------------------------
 
 -- Table `inovin`.`grape_variety`
@@ -50,20 +54,242 @@ CREATE TABLE
 INSERT INTO
     inovin.grape_variety (name, description)
 VALUES (
+        'Abouriou',
+        'Cépage rouge originaire du Sud-Ouest de la France, produit des vins corsés et fruités'
+    ), (
+        'Aligoté',
+        'Cépage blanc de Bourgogne, donne des vins frais et vifs, souvent utilisé pour produire le célèbre Kir'
+    ), (
+        'Alicante Bouschet',
+        'Cépage rouge à pulpe rouge foncé, apporte de la couleur et de la structure aux assemblages'
+    ), (
+        'Aramon',
+        'Ancien cépage rouge du Languedoc, produit des vins légers et fruités, principalement utilisé pour la production de vin de table'
+    ), (
+        'Arbois',
+        'Cépage blanc du Jura, donne des vins aromatiques avec une acidité rafraîchissante'
+    ), (
+        'Auxerrois',
+        'Cépage blanc de la région d\'Alsace, souvent utilisé pour produire des vins d\'assemblage avec le Pinot Blanc'
+    ), (
+        'Baco Blanc',
+        'Cépage blanc utilisé principalement pour produire le célèbre Armagnac'
+    ), (
+        'Baco Noir',
+        'Cépage rouge hybride, utilisé notamment dans la production d\'Armagnac et de vins de table'
+    ), (
+        'Barbera',
+        'Cépage rouge italien largement cultivé en Piémont, produit des vins fruités et acides'
+    ), (
+        'Biancone',
+        'Cépage blanc de Corse, utilisé pour produire des vins corsés et aromatiques'
+    ), (
+        'Blanquette',
+        'Cépage blanc principalement utilisé dans la production de vins effervescents de Limoux, notamment la Blanquette de Limoux'
+    ), (
+        'Bobal',
+        'Cépage rouge espagnol cultivé dans la région de Valence, donne des vins riches en couleur et en tanins'
+    ), (
+        'Bonarda',
+        'Cépage rouge d\'origine italienne, également cultivé en Argentine, produit des vins fruités et juteux'
+    ), (
+        'Braquet',
+        'Cépage rouge du Sud de la France, utilisé pour produire des vins rosés aromatiques et fruités'
+    ), (
+        'Cabernet Franc',
+        'Cépage rouge répandu en France, apporte des arômes de fruits rouges et des tanins souples'
+    ), (
         'Cabernet Sauvignon',
-        'Le Cabernet Sauvignon est un cépage de vin rouge populaire, connu pour ses arômes de cassis et ses tanins robustes.'
+        'Cépage rouge emblématique, cultivé dans le monde entier, donne des vins puissants et structurés, avec des arômes de cassis et de cèdre'
     ), (
-        'Merlot',
-        'Le Merlot est un cépage de vin rouge polyvalent, offrant des saveurs de fruits rouges mûrs et une texture douce.'
+        'Caladoc',
+        'Cépage rouge hybride, résultat du croisement entre le Grenache et le Malbec, utilisé notamment dans la région du Languedoc'
     ), (
-        'Pinot Noir',
-        'Le Pinot Noir est un cépage de vin rouge délicat, avec des arômes de cerise et une acidité vive.'
+        'Calitor',
+        'Cépage rouge hybride, croisement entre le Grenache et le Carignan, utilisé principalement dans le Sud-Ouest de la France'
     ), (
-        'Syrah',
-        'La Syrah, également connue sous le nom de Shiraz, est un cépage de vin rouge audacieux, offrant des saveurs de baies sombres et des notes poivrées.'
+        'Camarese',
+        'Cépage rouge ancien du Sud de la France, utilisé pour produire des vins rustiques et tanniques'
+    ), (
+        'Camaraou Noir',
+        'Cépage rouge de la région du Béarn, produit des vins charnus et épicés'
+    ), (
+        'Carignan',
+        'Cépage rouge méditerranéen, donne des vins riches en couleur, tanniques et souvent utilisés en assemblage'
+    ), (
+        'Carménère',
+        'Cépage rouge originaire de Bordeaux, désormais principalement cultivé au Chili, produit des vins complexes avec des arômes de poivron et de fruits noirs'
+    ), (
+        'Cinsault',
+        'Cépage rouge de la région du Languedoc, souvent utilisé pour produire des vins rosés légers et fruités'
+    ), (
+        'Clairette',
+        'Cépage blanc utilisé principalement dans la production de vins blancs secs et effervescents'
+    ), (
+        'Colombard',
+        'Cépage blanc principalement utilisé pour produire des vins blancs secs et des vins effervescents'
+    ), (
+        'Côt',
+        'Autre nom du cépage Malbec, utilisé notamment dans la région de Cahors en France'
+    ), (
+        'Counoise',
+        'Cépage rouge de la Vallée du Rhône, souvent utilisé en assemblage pour ajouter de la couleur et de la fraîcheur'
+    ), (
+        'Courbu',
+        'Cépage blanc de la région du Jurançon, utilisé pour produire des vins doux et moelleux'
+    ), (
+        'Durif',
+        'Cépage rouge également connu sous le nom de Petite Sirah, originaire de France mais largement cultivé en Californie, donne des vins riches en couleur et en tanins'
+    ), (
+        'Fer Servadou',
+        'Cépage rouge du Sud-Ouest de la France, utilisé pour produire des vins rouges corsés et épicés'
+    ), (
+        'Folle Blanche',
+        'Cépage blanc principalement utilisé dans la production d\'Armagnac et de Cognac'
+    ), (
+        'Gamay',
+        'Cépage rouge emblématique du Beaujolais, produit des vins fruités et légers'
+    ), (
+        'Gewurztraminer',
+        'Cépage blanc aromatique originaire d\'Alsace, donne des vins riches en arômes de litchi, de rose et d\'épices'
     ), (
         'Grenache',
-        'La Grenache est un cépage de vin rouge utilisé principalement en assemblage, apportant des arômes de fruits rouges et une douceur en bouche.'
+        'Cépage rouge méditerranéen, utilisé dans de nombreuses régions viticoles pour produire des vins puissants et fruités'
+    ), (
+        'Grenache Blanc',
+        'Cépage blanc méditerranéen, utilisé notamment dans la production de vins blancs de la région du Rhône'
+    ), (
+        'Gros Manseng',
+        'Cépage blanc du Sud-Ouest de la France, donne des vins aromatiques avec une acidité rafraîchissante'
+    ), (
+        'Jacquère',
+        'Cépage blanc de Savoie, utilisé pour produire des vins frais et légers'
+    ), (
+        'Len de l\'El',
+        'Cépage blanc du Sud-Ouest de la France, utilisé pour produire des vins blancs secs et doux'
+    ), (
+        'Malbec',
+        'Cépage rouge originaire de France, utilisé notamment dans la région de Cahors et en Argentine, produit des vins riches et structurés'
+    ), (
+        'Marsanne',
+        'Cépage blanc de la Vallée du Rhône, utilisé pour produire des vins blancs riches et gras'
+    ), (
+        'Mauzac',
+        'Cépage blanc principalement utilisé dans la production de vins effervescents, notamment la Blanquette de Limoux'
+    ), (
+        'Melon de Bourgogne',
+        'Cépage blanc utilisé dans la production du Muscadet, donne des vins secs et minéraux'
+    ), (
+        'Merlot',
+        'Cépage rouge largement cultivé dans le monde entier, donne des vins souples et fruités, souvent utilisés en assemblage'
+    ), (
+        'Molette',
+        'Cépage blanc originaire de Savoie, utilisé pour produire des vins frais et légers'
+    ), (
+        'Mollard',
+        'Cépage rouge du Sud de la France, utilisé pour produire des vins souples et fruités'
+    ), (
+        'Mondeuse',
+        'Cépage rouge de Savoie, produit des vins rouges corsés et épicés'
+    ), (
+        'Mourvèdre',
+        'Cépage rouge méditerranéen, apporte de la structure et des arômes épicés aux assemblages'
+    ), (
+        'Muscadelle',
+        'Cépage blanc principalement utilisé dans la production de vins liquoreux, notamment dans la région de Sauternes'
+    ), (
+        'Muscardin',
+        'Cépage rouge de la Vallée du Rhône, souvent utilisé en assemblage pour ajouter de la couleur et de la complexité'
+    ), (
+        'Muscat Blanc à Petits Grains',
+        'Cépage blanc aromatique, utilisé pour produire des vins doux, moelleux et des vins effervescents'
+    ), (
+        'Muscat d\'Alexandrie',
+        'Cépage blanc utilisé pour produire des vins doux et moelleux, notamment dans le sud de la France et en Espagne'
+    ), (
+        'Nebbiolo',
+        'Cépage rouge emblématique du Piémont en Italie, utilisé pour produire des vins tanniques et élégants, notamment le Barolo et le Barbaresco'
+    ), (
+        'Négrette',
+        'Cépage rouge du Sud-Ouest de la France, utilisé pour produire des vins fruités et épicés'
+    ), (
+        'Nielluccio',
+        'Cépage rouge de Corse, utilisé pour produire des vins corsés et tanniques'
+    ), (
+        'Petit Courbu',
+        'Cépage blanc du Sud-Ouest de la France, utilisé pour produire des vins blancs secs et doux'
+    ), (
+        'Petit Manseng',
+        'Cépage blanc du Sud-Ouest de la France, utilisé pour produire des vins doux et moelleux'
+    ), (
+        'Petit Verdot',
+        'Cépage rouge utilisé principalement dans les assemblages bordelais, donne des vins riches en couleur et en tanins'
+    ), (
+        'Pineau d\'Aunis',
+        'Cépage rouge de la Vallée de la Loire, produit des vins légers et épicés'
+    ), (
+        'Pinot Blanc',
+        'Cépage blanc de la famille des Pinots, utilisé pour produire des vins blancs frais et aromatiques'
+    ), (
+        'Pinot Gris',
+        'Cépage blanc de la famille des Pinots, utilisé pour produire des vins blancs riches et aromatiques'
+    ), (
+        'Pinot Meunier',
+        'Cépage noir de la famille des Pinots, utilisé principalement dans la production de Champagne'
+    ), (
+        'Pinot Noir',
+        'Cépage noir de la famille des Pinots, utilisé dans de nombreuses régions viticoles pour produire des vins rouges fins et des vins effervescents'
+    ), (
+        'Poulsard',
+        'Cépage rouge du Jura, produit des vins légers et fruités, souvent utilisés pour produire le Vin Jaune'
+    ), (
+        'Rolle',
+        'Cépage blanc méditerranéen, également connu sous le nom de Vermentino, utilisé pour produire des vins blancs frais et aromatiques'
+    ), (
+        'Romorantin',
+        'Cépage blanc ancien de la Loire, utilisé pour produire des vins blancs secs et aromatiques'
+    ), (
+        'Roussanne',
+        'Cépage blanc de la Vallée du Rhône, utilisé pour produire des vins blancs riches et complexes'
+    ), (
+        'Sauvignon Blanc',
+        'Cépage blanc aromatique, utilisé dans de nombreuses régions viticoles pour produire des vins frais et vifs, notamment le Sauvignon Blanc de la Loire et le Sauvignon Blanc de Marlborough'
+    ), (
+        'Sémillon',
+        'Cépage blanc principalement utilisé dans la production de vins liquoreux, notamment dans la région de Sauternes'
+    ), (
+        'Syrah',
+        'Cépage rouge emblématique du Rhône, utilisé dans de nombreuses régions viticoles pour produire des vins puissants et épicés'
+    ), (
+        'Tannat',
+        'Cépage rouge originaire du Sud-Ouest de la France, produit des vins corsés et tanniques'
+    ), (
+        'Tempranillo',
+        'Cépage rouge espagnol, utilisé notamment dans la production de vins de la Rioja et de la Ribera del Duero'
+    ), (
+        'Terret',
+        'Cépage blanc du Languedoc, utilisé pour produire des vins frais et légers'
+    ), (
+        'Tibouren',
+        'Cépage rouge de Provence, utilisé pour produire des vins rosés légers et aromatiques'
+    ), (
+        'Trousseau',
+        'Cépage rouge du Jura, donne des vins rouges légers et aromatiques'
+    ), (
+        'Ugni Blanc',
+        'Cépage blanc principalement utilisé pour produire des vins blancs secs et des eaux-de-vie, notamment le Cognac et l\'Armagnac'
+    ), (
+        'Verdejo',
+        'Cépage blanc espagnol, utilisé notamment dans la production de vins de la région de Rueda'
+    ), (
+        'Verdelho',
+        'Cépage blanc principalement utilisé dans la production de vins de Madère'
+    ), (
+        'Vermentino',
+        'Cépage blanc méditerranéen, également connu sous le nom de Rolle, utilisé pour produire des vins blancs frais et aromatiques'
+    ), (
+        'Viognier',
+        'Cépage blanc aromatique de la Vallée du Rhône, utilisé pour produire des vins blancs riches et parfumés'
     );
 
 -- -----------------------------------------------------
@@ -75,20 +301,113 @@ VALUES (
 CREATE TABLE
     IF NOT EXISTS `inovin`.`existing_wine` (
         `id` INT NOT NULL AUTO_INCREMENT,
-        `vintage` INT NOT NULL,
+        `vintage` VARCHAR(45) NOT NULL,
         `blend` VARCHAR(45) NULL,
         `color` VARCHAR(45) NOT NULL,
-        `alcohol_pourcentage` INT NOT NULL,
+        `alcohol_percentage` INT NOT NULL,
         `picture` LONGTEXT NULL,
         `description` LONGTEXT NULL,
         `name` VARCHAR(45) NULL,
         `id_wine_region` INT NOT NULL,
-        `winery` VARCHAR(255) NOT NULL,
         `id_grape_variety` INT NOT NULL,
+        `id_winery` INT NOT NULL,
         PRIMARY KEY (`id`),
-        CONSTRAINT `fk_existing_wine_wine_Region1` FOREIGN KEY (`id_wine_region`) REFERENCES `inovin`.`wine_region` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_existing_wine_grape_variety1` FOREIGN KEY (`id_grape_variety`) REFERENCES `inovin`.`grape_variety` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_existing_wine_wine_region1` FOREIGN KEY (`id_wine_region`) REFERENCES `inovin`.`wine_region` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_existing_wine_grape_variety1` FOREIGN KEY (`id_grape_variety`) REFERENCES `inovin`.`grape_variety` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_existing_wine_winery1` FOREIGN KEY (`id_winery`) REFERENCES `inovin`.`winery` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`existing_wine` (
+        `vintage`,
+        `blend`,
+        `color`,
+        `alcohol_percentage`,
+        `picture`,
+        `description`,
+        `name`,
+        `id_wine_region`,
+        `id_grape_variety`,
+        `id_winery`
+    )
+VALUES (
+        'Malbec',
+        '',
+        'Rouge',
+        0,
+        '',
+        '',
+        '',
+        14,
+        39,
+        1
+    ), (
+        'Cabernet Sauvignon',
+        '',
+        'Rouge',
+        0,
+        '',
+        '',
+        '',
+        3,
+        16,
+        2
+    ), (
+        'Syrah',
+        '',
+        'Rouge',
+        0,
+        '',
+        '',
+        '',
+        5,
+        69,
+        3
+    ), (
+        'Merlot',
+        '',
+        'Rouge',
+        0,
+        '',
+        '',
+        '',
+        3,
+        43,
+        5
+    ), (
+        'Pinot Noir',
+        '',
+        'Rouge',
+        0,
+        '',
+        '',
+        '',
+        6,
+        62,
+        6
+    ), (
+        'Sauvignon Blanc',
+        '',
+        'Blanc',
+        0,
+        '',
+        '',
+        '',
+        15,
+        67,
+        7
+    ), (
+        'Gewurztraminer',
+        '',
+        'Blanc',
+        0,
+        '',
+        '',
+        '',
+        17,
+        33,
+        8
+    );
 
 -- -----------------------------------------------------
 
@@ -103,6 +422,38 @@ CREATE TABLE
         `label` VARCHAR(45) NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`appellation` (`nom`)
+VALUES ('Arbois'), ('Bandol'), ('Banyuls'), ('Beaujolais'), ('Bugey'), ('Cassis'), ('Clairette de Bellegarde'), ('Clairette de Die'), ('Clairette du Languedoc'), ('Condrieu'), ('Corbières'), ('Cornas'), ('Costières de Nîmes'), ('Côteaux d''Aix-en-Provence'), ('Côteaux d''Ancenis'), ('Côteaux du Giennois'), ('Côteaux du Languedoc'), ('Coteaux du Layon'), ('Côteaux du Loir'), ('Coteaux du Lyonnais'), ('Côteaux du Quercy'), ('Coteaux du Vendômois'), ('Côteaux du Verdon'), ('Coteaux Varois'), ('Coteaux-du-Layon'), ('Côtes de Beaune'), ('Côtes de Bergerac'), ('Côtes de Blaye'), ('Côtes de Bordeaux'), ('Côtes de Bourg'), ('Côtes de Castillon'), ('Côtes de Duras'), ('Côtes de Francs'), ('Côtes de Gascogne'), ('Côtes de Millau'), ('Côtes de Montravel'), ('Côtes de Nuits'), ('Côtes de Provence'), ('Côtes de Toul'), ('Côtes du Forez'), ('Côtes du Frontonnais'), ('Côtes du Jura'), ('Côtes du Marmandais'), ('Côtes du Rhône'), ('Côtes du Rhône-Villages'), ('Côtes du Roussillon'), (
+        'Côtes du Roussillon-Villages'
+    ), ('Côtes du Tarn'), ('Côtes du Ventoux'), ('Côtes du Vivarais'), ('Crémant d''Alsace'), ('Crémant de Bourgogne'), ('Crémant de Die'), ('Crémant de Limoux'), ('Crémant de Loire'), ('Crozes-Hermitage'), ('Entre-Deux-Mers'), ('Faugères'), ('Fitou'), ('Fleurie'), ('Floc de Gascogne'), ('Fronton'), ('Gaillac'), ('Haut-Médoc'), ('IGP Vin de Pays d''Oc'), (
+        'IGP Vin de Pays de la Loire'
+    ), (
+        'IGP Vin de Pays des Côtes Catalanes'
+    ), (
+        'IGP Vin de Pays des Côtes de Gascogne'
+    ), (
+        'IGP Vin de Pays du Comté Tolosan'
+    ), ('IGP Vin de Pays du Gard'), (
+        'IGP Vin de Pays du Val de Loire'
+    ), ('IGP Vin de Pays du Var'), (
+        'IGP Vin de Pays du Vaucluse'
+    ), ('Irouléguy'), ('Jurançon'), ('Lalande-de-Pomerol'), ('Lirac'), ('Madiran'), ('Malepère'), ('Marcillac'), ('Maury'), ('Menetou-Salon'), ('Mercurey'), ('Minervois'), ('Minervois-La Livinière'), ('Montagne-Saint-Émilion'), ('Montlouis-sur-Loire'), ('Morey-Saint-Denis'), ('Morgon'), ('Moulis-en-Médoc'), ('Muscadet'), (
+        'Muscadet-Côtes de Grandlieu'
+    ), (
+        'Muscat de Beaumes-de-Venise'
+    ), ('Muscat de Frontignan'), ('Muscat de Lunel'), ('Muscat de Mireval'), ('Muscat de Rivesaltes'), ('Pacherenc du Vic-Bilh'), ('Patrimonio'), ('Pauillac'), ('Pernand-Vergelesses'), ('Pessac-Léognan'), ('Pic Saint-Loup'), ('Picpoul de Pinet'), ('Pinot Noir d''Alsace'), ('Pomerol'), ('Pouilly-Vinzelles'), ('Quincy'), ('Rasteau'), ('Rivesaltes'), ('Roussette de Savoie'), ('Saint-Amour'), ('Saint-Chinian'), ('Saint-Émilion'), ('Saint-Estèphe'), ('Saint-Joseph'), ('Saint-Julien'), ('Saint-Julien'), ('Saint-Nicolas-de-Bourgueil'), ('Saint-Péray'), ('Saint-Pourçain'), ('Sancerre'), ('Saumur'), ('Saumur-Champigny'), ('Sauternes'), ('Savennières'), ('Tain-l''Hermitage'), ('Tavel'), ('Terrasses du Larzac'), ('Vacqueyras'), ('Ventoux'), ('Vin de Corse'), (
+        'Vin de Pays de l''Atlantique'
+    ), (
+        'Vin de Pays de Méditerranée'
+    ), ('Vin de Pays des Alpilles'), (
+        'Vin de Pays des Coteaux de l''Ardèche'
+    ), (
+        'Vin de Pays des Côtes de Gascogne'
+    ), (
+        'Vin de Pays des Côtes de Thongue'
+    ), ('Vin de Pays du Lot'), ('Vin de Pays du Tarn'), ('Vin de Pays du Vaucluse'), ('Vin de Savoie'), ('Vinsobres'), ('Vouvray');
 
 -- -----------------------------------------------------
 
@@ -152,6 +503,10 @@ CREATE TABLE
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
+INSERT INTO
+    `inovin`.`olfactive_intensityAromas` (`intensity_aromas`)
+VALUES ('Discret'), ('Ouvert'), ('Aromatique'), ('Intense'), ('France');
+
 -- -----------------------------------------------------
 
 -- Table `inovin`.`olfactive_complexity`
@@ -160,10 +515,14 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS `inovin`.`olfactive_complexity` (
-        `id` INT NOT NULL,
+        `id` INT NOT NULL AUTO_INCREMENT,
         `complexity` VARCHAR(45) NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    inovin.olfactive_complexity (complexity)
+VALUES ('Simple'), ('Riche'), ('Très complexe');
 
 -- -----------------------------------------------------
 
@@ -175,8 +534,13 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`visual_color` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `color` VARCHAR(45) NOT NULL,
+        `img_color` LONGTEXT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    inovin.visual_color (color, img_color)
+VALUES ('Cerise', ''), ('Framboise', ''), ('Grenat', ''), ('Pourpre', ''), ('Rouge-noir', ''), ('Rubis', ''), ('Tuilé', ''), ('Violet', '');
 
 -- -----------------------------------------------------
 
@@ -191,6 +555,10 @@ CREATE TABLE
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
+INSERT INTO
+    `inovin`.`visual_limpidity` (`limpidity`)
+VALUES ('Transparente'), ('Limpide'), ('Cristalline'), ('Opaque'), ('Voilée'), ('Floue');
+
 -- -----------------------------------------------------
 
 -- Table `inovin`.`visual_brightness`
@@ -203,6 +571,10 @@ CREATE TABLE
         `brightness` VARCHAR(45) NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`visual_brightness` (`brightness`)
+VALUES ('nette'), ('étincelante'), ('éclatante'), ('brillante'), ('lumineuse'), ('terne');
 
 -- -----------------------------------------------------
 
@@ -217,6 +589,10 @@ CREATE TABLE
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
+INSERT INTO
+    inovin.visual_tears (tears)
+VALUES ('Visqueuses'), ('Grasses'), ('Epaisses'), ('Coulantes'), ('Fluides');
+
 -- -----------------------------------------------------
 
 -- Table `inovin`.`taste_intensity`
@@ -229,6 +605,10 @@ CREATE TABLE
         `intensity` VARCHAR(45) NOT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    inovin.taste_intensity (intensity)
+VALUES ('Discret'), ('Aromatique'), ('Expressif'), ('Explosif');
 
 -- -----------------------------------------------------
 
@@ -243,6 +623,10 @@ CREATE TABLE
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
+INSERT INTO
+    inovin.taste_mouth_feel (mouth_feel)
+VALUES ('Longue'), ('Courte'), ('Persistante'), ('Développée'), ('Rémanente');
+
 -- -----------------------------------------------------
 
 -- Table `inovin`.`taste_alcohol`
@@ -255,6 +639,10 @@ CREATE TABLE
         `alcohol` VARCHAR(45) NOT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    inovin.taste_alcohol (alcohol)
+VALUES ('Alcooleux'), ('Capiteux'), ('Gras'), ('Généreux'), ('Faible ');
 
 -- -----------------------------------------------------
 
@@ -269,6 +657,10 @@ CREATE TABLE
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
+INSERT INTO
+    inovin.acidity (acidity)
+VALUES ('Nerveuse'), ('Pointue'), ('Vive'), ('Fraîche'), ('Molle');
+
 -- -----------------------------------------------------
 
 -- Table `inovin`.`taste_sweetness`
@@ -282,6 +674,10 @@ CREATE TABLE
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
+INSERT INTO
+    `inovin`.`taste_sweetness` (`sweetness`)
+VALUES ('Sirupeux'), ('Liquoreux'), ('Moelleux'), ('Doux'), ('Sec');
+
 -- -----------------------------------------------------
 
 -- Table `inovin`.`taste_tannin`
@@ -294,6 +690,10 @@ CREATE TABLE
         `taste_tannin` VARCHAR(45) NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`taste_tannin` (`taste_tannin`)
+VALUES ('Apre'), ('Chargé'), ('Charpenté'), ('Fondu'), ('Lisse');
 
 -- -----------------------------------------------------
 
@@ -309,6 +709,7 @@ CREATE TABLE
         `id_user` INT NOT NULL,
         `selected_wine` TINYINT(1) NOT NULL,
         `rating` DECIMAL(10) NULL,
+        `tasting_commentary` LONGTEXT NULL,
         `olfactive_complexity_id` INT NOT NULL,
         `visual_color_id` INT NOT NULL,
         `visual_limpidity_id` INT NOT NULL,
@@ -359,6 +760,7 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`new_wine` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `color` VARCHAR(45) NOT NULL,
+        `selected_for_competition` TINYINT(1) NOT NULL,
         `commentary` LONGTEXT NULL,
         `id_competition_selection` INT NOT NULL,
         `id_tasting_note` INT NOT NULL,
@@ -380,6 +782,10 @@ CREATE TABLE
         `img_url` LONGTEXT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`olfactive_aromas` (`aromas`)
+VALUES ('Epices'), ('Boisé'), ('Floral'), ('Végétal'), ('Fruits'), ('Torréfié'), ('Minéral'), ('Animal');
 
 -- -----------------------------------------------------
 
@@ -507,6 +913,95 @@ CREATE TABLE
         `intensity` VARCHAR(45) NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    inovin.visual_intensity (intensity)
+VALUES ('Claire'), ('Soutenue'), ('Intense'), ('Pâle'), ('Foncée'), ('Profonde');
+
+-- -----------------------------------------------------
+
+-- Table `inovin`.`winery`
+
+-- -----------------------------------------------------
+
+CREATE TABLE
+    IF NOT EXISTS `inovin`.`winery` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `name` VARCHAR(45) NOT NULL,
+        `productor_name` VARCHAR(45) NULL,
+        `address` VARCHAR(100) NULL,
+        `zip_code` VARCHAR(45) NULL,
+        `city` VARCHAR(45) NULL,
+        `website` LONGTEXT NULL,
+        PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`winery` (
+        name,
+        productor_name,
+        address,
+        zip_code,
+        city,
+        website
+    )
+VALUES (
+        'Château de Chambert',
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        'https://www.chateaudechambert.com'
+    ), (
+        'Château Latour',
+        NULL,
+        NULL,
+        NULL,
+        'Pauillac',
+        'https://www.chateau-latour.com'
+    ), (
+        'Domaine Jean-Louis Chave',
+        NULL,
+        NULL,
+        NULL,
+        'Hermitage',
+        NULL
+    ), (
+        'Domaine Leflaive',
+        NULL,
+        NULL,
+        NULL,
+        'Puligny-Montrachet',
+        NULL
+    ), (
+        'Château Pétrus',
+        NULL,
+        NULL,
+        NULL,
+        'Pomerol',
+        NULL
+    ), (
+        'Domaine de la Romanée-Conti',
+        NULL,
+        NULL,
+        NULL,
+        'Vosne-Romanée',
+        NULL
+    ), (
+        'Domaine Pascal Jolivet',
+        NULL,
+        NULL,
+        NULL,
+        'Sancerre',
+        'http://www.pascaljolivet.com'
+    ), (
+        'Domaine Zind-Humbrecht',
+        NULL,
+        NULL,
+        NULL,
+        'Alsace',
+        'https://www.zindhumbrecht.fr'
+    );
 
 SET SQL_MODE=Traditional;
 
