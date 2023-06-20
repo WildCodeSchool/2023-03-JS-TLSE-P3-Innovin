@@ -10,6 +10,9 @@ export default function Counter() {
         onClick={() => setCount((oldCount) => oldCount + 1)}
       >
         count is: {count}
+        {count}
+        {count}
+        {count}
       </button>
     </p>
   );
