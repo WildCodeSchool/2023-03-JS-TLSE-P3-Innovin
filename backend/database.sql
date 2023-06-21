@@ -878,6 +878,10 @@ CREATE TABLE
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
+INSERT INTO
+    `inovin`.`taste_flavor` (`flavor`)
+VALUES ('Epices'), ('Boisé'), ('Floral'), ('Végétal'), ('Fruits'), ('Torréfié'), ('Minéral'), ('Animal');
+
 -- -----------------------------------------------------
 
 -- Table `inovin`.`tasting_note_has_taste_flavor`
