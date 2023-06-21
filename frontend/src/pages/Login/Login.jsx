@@ -41,13 +41,8 @@ function Login({ setUser }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const userData = {
-      email: form.email,
-      password: form.password,
-    };
-
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/users/login`, userData)
+      .post(`${import.meta.env.VITE_BACKEND_URL}/users/login`, form)
       .then((res) => {
         if (res.data.token) {
           setUser(res.data.token);
