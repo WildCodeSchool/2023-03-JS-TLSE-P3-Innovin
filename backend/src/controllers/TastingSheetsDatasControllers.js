@@ -326,7 +326,11 @@ FROM
     inovin.visual_intensity vi;`
     )
     .then(([results]) => {
-      res.status(200).json(results);
+      if (results.length) {
+        res.status(200).json(results);
+      } else {
+        res.status(400).send("Bad Request");
+      }
     })
     .catch((err) => {
       console.error(err);
