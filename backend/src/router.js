@@ -16,6 +16,7 @@ const { verifyAdminCredentials } = UserControllers;
 
 // ----------------------------------------- Public routes -------------------------------------------
 
+router.post("/users", hashPassword, validateUser, UserControllers.add);
 router.post(
   "/users/login",
   UserControllers.getUserByEmailWithPasswordAndPassToNext,
@@ -35,7 +36,6 @@ router.get("/wineregion/:id", WineRegionControllers.read);
 router.use(verifyToken);
 
 router.get("/users/:id", UserControllers.read);
-router.post("/users", hashPassword, validateUser, UserControllers.add);
 router.put("/users/:id", hashPassword, validateUser, UserControllers.edit);
 
 // ----------------------------------------- Admin routes ------------------------------------------------
