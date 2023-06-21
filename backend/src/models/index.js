@@ -32,6 +32,7 @@ const models = {};
 const ItemManager = require("./ItemManager");
 const GrapeVarietyManager = require("./GrapeVarietyManager");
 const UserManager = require("./UserManager");
+const ExistingWineManager = require("./ExistingWineManager");
 
 models.item = new ItemManager();
 models.item.setDatabase(pool);
@@ -41,6 +42,9 @@ models.grapeVariety.setDatabase(pool);
 
 models.user = new UserManager();
 models.user.setDatabase(pool);
+
+models.existingWine = new ExistingWineManager();
+models.existingWine.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
