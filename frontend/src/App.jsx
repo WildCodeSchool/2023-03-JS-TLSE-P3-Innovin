@@ -3,7 +3,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import "./App.css";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Login from "./pages/Login/Login";
 import TastingPresentation from "./pages/TastingPresentation";
 
 function App() {

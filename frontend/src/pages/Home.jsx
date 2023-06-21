@@ -1,8 +1,9 @@
-import Login from "./Login";
+import Login from "./Login/Login";
+import "./Home.css";
 
 function Home() {
   return (
-    <div>
+    <div className="home">
       <Login />
     </div>
   );

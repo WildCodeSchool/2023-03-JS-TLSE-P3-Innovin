@@ -475,6 +475,28 @@ CREATE TABLE
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
+INSERT INTO
+    user (
+        firstname,
+        lastname,
+        birth_date,
+        email,
+        hashed_password,
+        admin_credentials,
+        wine_color,
+        preference_description
+    )
+VALUES (
+        "Cyrille",
+        "AQUILINA",
+        "1990-07-20",
+        "cyrille.aquilina@gmail.com",
+        "$argon2id$v=19$m=65536,t=3,p=1$EED3J3qL48xtdO+6Onzl8w$v29dbf4",
+        1,
+        "Blanc",
+        "Je les préfère bien sucrés!!!"
+    );
+
 -- -----------------------------------------------------
 
 -- Table `inovin`.`workshop`

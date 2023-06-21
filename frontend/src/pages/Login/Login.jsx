@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
-import eye from "../assets/Icons/Eye_Icon.svg";
-import logo from "../assets/Logo_Innovin.svg";
-
-// messages d'erreurs et inputs rouge en cas d'échec de l'authentification
-// controller les entrées via regex ou autres méthodes
+import "./Login.css";
+import eye from "../../assets/Icons/Eye_Icon.svg";
+import logo from "../../assets/Logo_W_Circles.svg";
+import ButtonPrimary from "../../components/ButtonPrimary";
+import Input from "../../components/Input";
 
 function Login({ setUser }) {
   const [form, setForm] = useState({
@@ -17,6 +17,7 @@ function Login({ setUser }) {
 
   const navigate = useNavigate();
 
+  // ----------------------------------------handlers to control the input fields----------------------------------------------------
   const handleEmailChange = (event) => {
     setForm({
       ...form,
@@ -31,10 +32,12 @@ function Login({ setUser }) {
     });
   };
 
+  // ------------------------------------------Function to hide or show password----------------------------------------------------
   const handlehidePassword = () => {
     setIsHidden(!isHidden);
   };
 
+  // --------------------------------Handler to submit the form and authenticate the user-------------------------------------------
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -56,20 +59,22 @@ function Login({ setUser }) {
       });
   };
 
+  // ------------------------------------------------return the component----------------------------------------------------
   return (
     <div className="login">
       <div className="loginContentDiv">
-        <div>
+        <div className="logoDiv">
           {" "}
           <img src={logo} alt="Inovin logo" className="logo" />
-          <p className="logoText" />
+          <p className="logoText">Inovin</p>
         </div>
 
         <form action="" className="loginForm" onSubmit={handleSubmit}>
           <div>
+            <p>Email</p>
             <label htmlFor="email" className="loginEmailLabel">
-              Email
-              <input
+              <Input
+                placeholder="Enter your email"
                 type="email"
                 name="email"
                 id="email"
@@ -80,10 +85,11 @@ function Login({ setUser }) {
             </label>
           </div>
           <div>
+            <p>Password</p>
             <label htmlFor="password" className="loginPasswordLabel">
-              Password
               <div className="passwordInput">
-                <input
+                <Input
+                  placeholder="Enter your password"
                   type={isHidden ? "password" : "text"}
                   name="password"
                   id="password"
@@ -101,9 +107,9 @@ function Login({ setUser }) {
               </div>
             </label>
           </div>
-          <button className="loginButton" type="submit">
+          <ButtonPrimary className="loginButton" type="submit">
             Se connecter
-          </button>
+          </ButtonPrimary>
         </form>
       </div>
     </div>
