@@ -23,7 +23,7 @@ const read = (req, res) => {
       if (rows[0] == null) {
         res.status(404).send("Not found");
       } else {
-        res.send(rows[0]);
+        res.status(200).send(rows[0]);
       }
     })
     .catch((err) => {
