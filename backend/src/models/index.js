@@ -36,7 +36,6 @@ const ExistingWineManager = require("./ExistingWineManager");
 const AppellationManager = require("./AppellationManager");
 const WineRegionManager = require("./WineRegionManager");
 
-
 models.item = new ItemManager();
 models.item.setDatabase(pool);
 
@@ -53,7 +52,6 @@ models.appellation = new AppellationManager();
 models.appellation.setDatabase(pool);
 models.wineRegion = new WineRegionManager();
 models.wineRegion.setDatabase(pool);
-
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
