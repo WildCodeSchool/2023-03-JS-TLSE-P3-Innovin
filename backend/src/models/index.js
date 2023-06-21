@@ -32,6 +32,7 @@ const models = {};
 const ItemManager = require("./ItemManager");
 const GrapeVarietyManager = require("./GrapeVarietyManager");
 const UserManager = require("./UserManager");
+const AppellationManager = require("./AppellationManager");
 const WineRegionManager = require("./WineRegionManager");
 
 models.item = new ItemManager();
@@ -43,6 +44,8 @@ models.grapeVariety.setDatabase(pool);
 models.user = new UserManager();
 models.user.setDatabase(pool);
 
+models.appellation = new AppellationManager();
+models.appellation.setDatabase(pool);
 models.wineRegion = new WineRegionManager();
 models.wineRegion.setDatabase(pool);
 
