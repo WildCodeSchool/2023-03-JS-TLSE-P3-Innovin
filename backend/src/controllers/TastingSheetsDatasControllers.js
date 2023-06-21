@@ -326,7 +326,7 @@ FROM
     inovin.visual_intensity vi;`
     )
     .then(([results]) => {
-      res.json(results);
+      res.status(200).json(results);
     })
     .catch((err) => {
       console.error(err);
