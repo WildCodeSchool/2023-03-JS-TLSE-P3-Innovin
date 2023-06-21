@@ -33,6 +33,7 @@ const ItemManager = require("./ItemManager");
 const GrapeVarietyManager = require("./GrapeVarietyManager");
 const UserManager = require("./UserManager");
 const AppellationManager = require("./AppellationManager");
+const WineRegionManager = require("./WineRegionManager");
 
 models.item = new ItemManager();
 models.item.setDatabase(pool);
@@ -45,6 +46,8 @@ models.user.setDatabase(pool);
 
 models.appellation = new AppellationManager();
 models.appellation.setDatabase(pool);
+models.wineRegion = new WineRegionManager();
+models.wineRegion.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
