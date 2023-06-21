@@ -32,9 +32,8 @@ const models = {};
 const ItemManager = require("./ItemManager");
 const GrapeVarietyManager = require("./GrapeVarietyManager");
 const UserManager = require("./UserManager");
-
 const ExistingWineManager = require("./ExistingWineManager");
-
+const AppellationManager = require("./AppellationManager");
 const WineRegionManager = require("./WineRegionManager");
 
 
@@ -50,6 +49,8 @@ models.user.setDatabase(pool);
 models.existingWine = new ExistingWineManager();
 models.existingWine.setDatabase(pool);
 
+models.appellation = new AppellationManager();
+models.appellation.setDatabase(pool);
 models.wineRegion = new WineRegionManager();
 models.wineRegion.setDatabase(pool);
 
