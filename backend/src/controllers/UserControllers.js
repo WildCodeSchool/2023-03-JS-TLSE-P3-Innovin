@@ -1,4 +1,4 @@
-const models = require("../models");
+const { models } = require("../models");
 
 // get all users
 const browse = (req, res) => {
