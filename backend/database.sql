@@ -495,7 +495,15 @@ VALUES (
         1,
         "Blanc",
         "Je les préfère bien sucrés!!!"
-    );
+    ),
+    ( "Antoine  ",
+    "CASSAGNE",
+    "1989-06-05",
+    "cassagnea@gmail.com",
+   "$argon2id$v=19$m=65536,t=3,p=1$51rIUybdHJE50SQQ2PBGwQ$5jCn8Gw",
+    1,
+     "Rouge",
+      "J'aime tout ");
 
 -- -----------------------------------------------------
 

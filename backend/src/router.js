@@ -42,7 +42,6 @@ router.put("/users/:id", hashPassword, validateUser, UserControllers.edit);
 
 router.use(verifyAdminCredentials);
 
-router.get("/users", UserControllers.browse);
 router.delete("/users/:id", UserControllers.destroy);
 router.get("/admin/workshop/:id", UserControllers.getUserRegisteredToAWorkshop);
 router.post("/grapevariety", GrapeVarietyControllers.add);
@@ -54,7 +53,7 @@ router.delete("/existingwine/:id", ExistingWineControllers.destroy);
 router.post("/appellation", AppellationControllers.add);
 router.put("/appellation/:id", AppellationControllers.edit);
 router.delete("/appellation/:id", AppellationControllers.destroy);
-
+router.get("/users", UserControllers.browse);
 router.post("/wineregion", WineRegionControllers.add);
 router.put("/wineregion/:id", WineRegionControllers.edit);
 router.delete("/wineregion/:id", WineRegionControllers.destroy);

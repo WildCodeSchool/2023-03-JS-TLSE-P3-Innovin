@@ -1,9 +1,11 @@
 import React from "react";
 import "./TastingPresentation.css";
+import logo from "../../assets/Logo_W_Circles.svg";
 
 export default function TastingPresentation() {
   return (
     <div className="start-degust">
+      <img className="logo" src={logo} alt="" />
       <div className="page-content">
         <div className="box">
           <h1 className="title">Dégustation</h1>

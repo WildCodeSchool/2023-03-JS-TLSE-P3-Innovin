@@ -20,7 +20,7 @@
   overflow: hidden;
   padding: 17px 24px;
   margin: 25px;
-  height: auto;
+  margin-top: 4rem;
   width: auto;
 }
 
@@ -48,7 +48,6 @@ button {
   color: #ffff;
   font-weight: 400;
   line-height: 25px;
-  position: relative;
   font-family: var(--fontFamilyText);
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -72,4 +71,56 @@ button {
   flex: 1;
   flex-direction: column;
   gap: 32px;
+  width: auto;
+}
+
+.logo {
+  display: none;
+}
+
+@media (min-width: 768px) {
+
+  .start-degust {
+    display: flex;
+    align-items: center;
+  }
+
+  .page-content {
+    display: flex;
+    margin-top: 59px;
+    overflow: hidden;
+    padding: 40px 89px;
+    height: auto;
+    height: auto;
+    width: 60vw;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text {
+    align-self: auto;
+    color: #ffff;
+    font-weight: 400;
+    line-height: 42px;
+    position: relative;
+    font-size: auto;
+  }
+
+  .logo {
+    display: block;
+    height: 105px;
+    margin-right: 0.76px;
+    margin-top: 62px;
+    width: 105px;
+  }
+
+
+  .box {
+    flex-direction: column;
+    gap: 54px;
+    margin-left: 1px;
+    width: 695px;
+    width: auto;
+  }
 }
