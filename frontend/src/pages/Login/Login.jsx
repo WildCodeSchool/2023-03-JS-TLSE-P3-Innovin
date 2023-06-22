@@ -46,7 +46,7 @@ function Login({ setUser }) {
       .then((res) => {
         if (res.data.token) {
           setUser(res.data.token);
-          navigate("/Tasting_Presentation");
+          navigate("/eye/stage1");
         }
       })
       .catch((error) => {

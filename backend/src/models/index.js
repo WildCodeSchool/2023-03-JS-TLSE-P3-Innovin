@@ -50,6 +50,7 @@ models.existingWine.setDatabase(pool);
 
 models.appellation = new AppellationManager();
 models.appellation.setDatabase(pool);
+
 models.wineRegion = new WineRegionManager();
 models.wineRegion.setDatabase(pool);
 
