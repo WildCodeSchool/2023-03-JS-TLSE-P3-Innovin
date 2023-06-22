@@ -1,4 +1,4 @@
-const models = require("../models");
+const { models } = require("../models");
 
 const browse = (req, res) => {
   models.grapeVariety

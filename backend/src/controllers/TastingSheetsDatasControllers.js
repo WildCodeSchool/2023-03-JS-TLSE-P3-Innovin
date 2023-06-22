@@ -1,4 +1,4 @@
-const pool = require("../models");
+const { pool } = require("../models");
 
 const findTastingSheetsDatas = (req, res) => {
   pool
