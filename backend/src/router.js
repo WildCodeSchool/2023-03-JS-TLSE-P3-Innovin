@@ -9,7 +9,7 @@ const { hashPassword, verifyToken, verifyPassword } = require("./auth");
 const { validateUser } = require("./validators");
 const ExistingWineControllers = require("./controllers/ExistingWineControllers");
 const WineRegionControllers = require("./controllers/WineRegionControllers");
-
+const TastingSheetsDatasControllers = require("./controllers/TastingSheetsDatasControllers");
 const AppellationControllers = require("./controllers/AppellationControllers");
 
 const { verifyAdminCredentials } = UserControllers;
@@ -21,6 +21,10 @@ router.post(
   "/users/login",
   UserControllers.getUserByEmailWithPasswordAndPassToNext,
   verifyPassword
+);
+router.get(
+  "/tastingsheetsdatas",
+  TastingSheetsDatasControllers.findTastingSheetsDatas
 );
 router.get("/grapevariety", GrapeVarietyControllers.browse);
 router.get("/grapevariety/:id", GrapeVarietyControllers.read);
