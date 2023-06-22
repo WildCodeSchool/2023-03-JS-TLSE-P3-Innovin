@@ -2,7 +2,7 @@ const { models } = require("../models");
 
 const browse = (req, res) => {
   models.existingWine
-    .findAll()
+    .findAllExistingWines()
     .then(([rows]) => {
       if (rows.length) {
         res.status(200).send(rows);
@@ -18,7 +18,7 @@ const browse = (req, res) => {
 
 const read = (req, res) => {
   models.existingWine
-    .find(req.params.id)
+    .findOneExistingWine(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.status(404).send("Not found");
@@ -63,7 +63,7 @@ const add = (req, res) => {
     .insert(existingWine)
     .then(([result]) => {
       res
-        .location(`/grapevariety/${result.insertId}`)
+        .location(`/existingwine/${result.insertId}`)
         .status(201)
         .send("Created");
     })

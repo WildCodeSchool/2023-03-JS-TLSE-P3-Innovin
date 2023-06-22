@@ -8,8 +8,6 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=1;
 
-SET FOREIGN_KEY_CHECKS = 0;
-
 -- -----------------------------------------------------
 
 -- Schema inovin
@@ -334,7 +332,7 @@ VALUES (
         'Malbec',
         '',
         'Rouge',
-        0,
+        13,
         '',
         '',
         '',
@@ -345,7 +343,7 @@ VALUES (
         'Cabernet Sauvignon',
         '',
         'Rouge',
-        0,
+        13,
         '',
         '',
         '',
@@ -356,7 +354,7 @@ VALUES (
         'Syrah',
         '',
         'Rouge',
-        0,
+        13,
         '',
         '',
         '',
@@ -378,7 +376,7 @@ VALUES (
         'Pinot Noir',
         '',
         'Rouge',
-        0,
+        12,
         '',
         '',
         '',
@@ -389,7 +387,7 @@ VALUES (
         'Sauvignon Blanc',
         '',
         'Blanc',
-        0,
+        13,
         '',
         '',
         '',
@@ -400,7 +398,7 @@ VALUES (
         'Gewurztraminer',
         '',
         'Blanc',
-        0,
+        12,
         '',
         '',
         '',
@@ -418,7 +416,7 @@ VALUES (
 CREATE TABLE
     IF NOT EXISTS `inovin`.`appellation` (
         `id` INT NOT NULL AUTO_INCREMENT,
-        `nom` VARCHAR(45) NULL,
+        `name` VARCHAR(45) NULL,
         `label` VARCHAR(45) NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
@@ -1047,7 +1045,5 @@ VALUES (
     );
 
 SET SQL_MODE=Traditional;
-
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
