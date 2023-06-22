@@ -629,7 +629,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.visual_tears (tears)
+    `inovin`.`visual_tears` (tears)
 VALUES ('Visqueuses'), ('Grasses'), ('Epaisses'), ('Coulantes'), ('Fluides');
 
 -- -----------------------------------------------------
@@ -646,7 +646,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.taste_intensity (intensity)
+    `inovin`.`taste_intensity` (intensity)
 VALUES ('Discret'), ('Aromatique'), ('Expressif'), ('Explosif');
 
 -- -----------------------------------------------------
@@ -663,7 +663,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.taste_mouth_feel (mouth_feel)
+    `inovin`.`taste_mouth_feel` (mouth_feel)
 VALUES ('Longue'), ('Courte'), ('Persistante'), ('Développée'), ('Rémanente');
 
 -- -----------------------------------------------------
@@ -680,7 +680,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.taste_alcohol (alcohol)
+    `inovin`.`taste_alcohol` (alcohol)
 VALUES ('Alcooleux'), ('Capiteux'), ('Gras'), ('Généreux'), ('Faible ');
 
 -- -----------------------------------------------------
@@ -697,7 +697,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.acidity (acidity)
+    `inovin`.`acidity`(acidity)
 VALUES ('Nerveuse'), ('Pointue'), ('Vive'), ('Fraîche'), ('Molle');
 
 -- -----------------------------------------------------
