@@ -30,9 +30,33 @@ pool.getConnection().catch(() => {
 const models = {};
 
 const ItemManager = require("./ItemManager");
+const GrapeVarietyManager = require("./GrapeVarietyManager");
+const UserManager = require("./UserManager");
+const ExistingWineManager = require("./ExistingWineManager");
+const AppellationManager = require("./AppellationManager");
+const WineRegionManager = require("./WineRegionManager");
+const WorkshopManager = require("./WorkshopManager");
 
 models.item = new ItemManager();
 models.item.setDatabase(pool);
+
+models.grapeVariety = new GrapeVarietyManager();
+models.grapeVariety.setDatabase(pool);
+
+models.user = new UserManager();
+models.user.setDatabase(pool);
+
+models.existingWine = new ExistingWineManager();
+models.existingWine.setDatabase(pool);
+
+models.appellation = new AppellationManager();
+models.appellation.setDatabase(pool);
+
+models.wineRegion = new WineRegionManager();
+models.wineRegion.setDatabase(pool);
+
+models.workshop = new WorkshopManager();
+models.workshop.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
@@ -54,4 +78,4 @@ const handler = {
   },
 };
 
-module.exports = new Proxy(models, handler);
+module.exports = { models: new Proxy(models, handler), pool };
