@@ -35,6 +35,7 @@ const UserManager = require("./UserManager");
 const ExistingWineManager = require("./ExistingWineManager");
 const AppellationManager = require("./AppellationManager");
 const WineRegionManager = require("./WineRegionManager");
+const WorkshopManager = require("./WorkshopManager");
 
 models.item = new ItemManager();
 models.item.setDatabase(pool);
@@ -53,6 +54,9 @@ models.appellation.setDatabase(pool);
 
 models.wineRegion = new WineRegionManager();
 models.wineRegion.setDatabase(pool);
+
+models.workshop = new WorkshopManager();
+models.workshop.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
@@ -74,4 +78,4 @@ const handler = {
   },
 };
 
-module.exports = new Proxy(models, handler);
+module.exports = { models: new Proxy(models, handler), pool };

@@ -9,8 +9,9 @@ const { hashPassword, verifyToken, verifyPassword } = require("./auth");
 const { validateUser } = require("./validators");
 const ExistingWineControllers = require("./controllers/ExistingWineControllers");
 const WineRegionControllers = require("./controllers/WineRegionControllers");
-
+const TastingSheetsDatasControllers = require("./controllers/TastingSheetsDatasControllers");
 const AppellationControllers = require("./controllers/AppellationControllers");
+const WorkshopControllers = require("./controllers/WorkshopControllers");
 
 const { verifyAdminCredentials } = UserControllers;
 
@@ -22,6 +23,10 @@ router.post(
   UserControllers.getUserByEmailWithPasswordAndPassToNext,
   verifyPassword
 );
+router.get(
+  "/tastingsheetsdatas",
+  TastingSheetsDatasControllers.findTastingSheetsDatas
+);
 router.get("/grapevariety", GrapeVarietyControllers.browse);
 router.get("/grapevariety/:id", GrapeVarietyControllers.read);
 router.get("/existingwine", ExistingWineControllers.browse);
@@ -30,6 +35,8 @@ router.get("/appellation", AppellationControllers.browse);
 router.get("/appellation/:id", AppellationControllers.read);
 router.get("/wineregion", WineRegionControllers.browse);
 router.get("/wineregion/:id", WineRegionControllers.read);
+router.get("/workshop", WorkshopControllers.browse);
+router.get("/workshop/:id", WorkshopControllers.read);
 
 // ---------------------------------------- Private Routes ----------------------------------------------
 
@@ -54,8 +61,11 @@ router.delete("/existingwine/:id", ExistingWineControllers.destroy);
 router.post("/appellation", AppellationControllers.add);
 router.put("/appellation/:id", AppellationControllers.edit);
 router.delete("/appellation/:id", AppellationControllers.destroy);
-
 router.post("/wineregion", WineRegionControllers.add);
 router.put("/wineregion/:id", WineRegionControllers.edit);
 router.delete("/wineregion/:id", WineRegionControllers.destroy);
+router.put("/workshop/:id", WorkshopControllers.edit);
+router.post("/workshop", WorkshopControllers.add);
+router.delete("/workshop/:id", WorkshopControllers.destroy);
+
 module.exports = router;
