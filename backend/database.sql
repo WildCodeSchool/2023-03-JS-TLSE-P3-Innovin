@@ -52,7 +52,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.grape_variety (name, description)
+    `inovin`.`grape_variety` (name, description)
 VALUES (
         'Abouriou',
         'Cépage rouge originaire du Sud-Ouest de la France, produit des vins corsés et fruités'
