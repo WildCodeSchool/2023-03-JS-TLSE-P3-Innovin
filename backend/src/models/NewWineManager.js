@@ -35,7 +35,7 @@ class NewWineManager extends AbstractManager {
       id_tasting_note,
     } = newWine;
     return this.database.query(
-      `update ${this.table} set color= ?,selected_for_competition ?,commentary= ?,id_competition_selection ?,id_tasting_note? where id = ?`,
+      `UPDATE ${this.table} SET color = ?, selected_for_competition = ?, commentary = ?, id_competition_selection = ?, id_tasting_note = ? WHERE id = ?`,
       [
         color,
         selected_for_competition,

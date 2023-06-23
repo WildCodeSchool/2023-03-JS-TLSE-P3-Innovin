@@ -37,10 +37,10 @@ const edit = (req, res) => {
 
   // TODO validations (length, format...)
 
-  newWine.id = parseInt(req.params.id, 10);
+  const id = parseInt(req.params.id, 10);
 
   models.newWine
-    .update(newWine)
+    .update(newWine, id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.status(400).send("Bad request");
