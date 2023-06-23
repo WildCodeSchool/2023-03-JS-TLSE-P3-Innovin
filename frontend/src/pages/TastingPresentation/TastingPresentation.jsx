@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./TastingPresentation.css";
 import axios from "axios";
 import logo from "../../assets/Logo_W_Circles.svg";
 import Navbar from "../../components/Navbar/Navbar";
-
 import { TastingProvider } from "./TastingContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
@@ -60,8 +60,11 @@ export default function TastingPresentation() {
               <br />
               Soyez attentifs et laissez vous porter par vos sens.
             </p>
+
             <div className="button-container">
-              <ButtonPrimary> Démarrer </ButtonPrimary>
+              <Link to="/eye/stage1">
+                <ButtonPrimary> Démarrer </ButtonPrimary>
+              </Link>
             </div>
           </div>
         </div>

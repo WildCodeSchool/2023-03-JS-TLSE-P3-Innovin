@@ -1,21 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
+import logo from "../../assets/Logo_W_Circles.svg";
 
 export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className="navBar">
-      <div>
-        <h1>INNOVIN</h1>
+    <nav className="navBar">
+      <div className="logo-h1">
+        <img className="logo-nav" src={logo} alt="" />
+        <h1>INOVIN</h1>
       </div>
 
-      <div className="navbarpoppins">
-        <div className="navbar-link">Accueil</div>
-        <div className="navbar-link">Carte</div>
-        <div className="navbar-link">Glossaire</div>
-        <div className="navbar-link">A Propos</div>
-        <div className="navbar-link">Contact</div>
-        <div className="navbar-link">Inscription</div>
-      </div>
-    </div>
+      <ul className={`navbarpoppins ${isMenuOpen ? "open" : ""}`}>
+        <div className="link">
+          <li className="navbar-link">
+            <Link to="/">Acceuil</Link>
+          </li>
+          <li className="navbar-link">
+            <Link to="/carte">Carte</Link>
+          </li>
+          <li className="navbar-link">
+            <Link to="/glossaire">Glossaire</Link>
+          </li>
+          <li className="navbar-link">
+            <Link to="/a-propos">A Propos</Link>
+          </li>
+          <li className="navbar-link">
+            <Link to="/contact">Contact</Link>
+          </li>
+          <li className="navbar-link">
+            <Link to="/inscription">Inscription</Link>
+          </li>
+        </div>
+      </ul>
+
+      <button type="button" className="burger-menu" onClick={toggleMenu}>
+        <span className={`bar ${isMenuOpen ? "open" : ""}`} />
+        <span className={`bar ${isMenuOpen ? "open" : ""}`} />
+        <span className={`bar ${isMenuOpen ? "open" : ""}`} />
+      </button>
+    </nav>
   );
 }
