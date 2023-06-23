@@ -12,6 +12,7 @@ const WineRegionControllers = require("./controllers/WineRegionControllers");
 const TastingSheetsDatasControllers = require("./controllers/TastingSheetsDatasControllers");
 const AppellationControllers = require("./controllers/AppellationControllers");
 const WorkshopControllers = require("./controllers/WorkshopControllers");
+const NewWineControllers = require("./controllers/NewWineControllers");
 
 const { verifyAdminCredentials } = UserControllers;
 
@@ -35,6 +36,8 @@ router.get("/appellation", AppellationControllers.browse);
 router.get("/appellation/:id", AppellationControllers.read);
 router.get("/wineregion", WineRegionControllers.browse);
 router.get("/wineregion/:id", WineRegionControllers.read);
+router.get("/newwine", NewWineControllers.browse);
+router.get("/newwine/:id", NewWineControllers.read);
 
 // ---------------------------------------- Private Routes ----------------------------------------------
 
@@ -67,5 +70,8 @@ router.get("/workshop/:id", WorkshopControllers.read);
 router.put("/workshop/:id", WorkshopControllers.edit);
 router.post("/workshop", WorkshopControllers.add);
 router.delete("/workshop/:id", WorkshopControllers.destroy);
+router.put("/newwine/:id", NewWineControllers.edit);
+router.post("/newwine", NewWineControllers.add);
+router.delete("/newwine/:id", NewWineControllers.destroy);
 
 module.exports = router;
