@@ -25,11 +25,15 @@ class ExistingWineManager extends AbstractManager {
     w.address,
     w.zip_code,
     w.city,
-    w.website
+    w.website,
+    ap.name AS appellation_name,
+    ap.label
 FROM  ${this.table} ew
     JOIN wine_region wr ON wr.id = ew.id_wine_region
     JOIN grape_variety gv ON gv.id = ew.id_grape_variety
-    JOIN winery w ON w.id = ew.id_winery WHERE ew.id = ?`,
+    JOIN winery w ON w.id = ew.id_winery 
+    JOIN existing_wine_has_appellation ewha ON ew.id = ewha.id_existing_wine
+    JOIN appellation ap ON ap.id = ewha.id_appellation WHERE ew.id = ?`,
       [id]
     );
   }
@@ -52,11 +56,15 @@ FROM  ${this.table} ew
     w.address,
     w.zip_code,
     w.city,
-    w.website
+    w.website,
+    ap.name AS appellation_name,
+    ap.label
 FROM  ${this.table} ew
     JOIN wine_region wr ON wr.id = ew.id_wine_region
     JOIN grape_variety gv ON gv.id = ew.id_grape_variety
-    JOIN winery w ON w.id = ew.id_winery;`);
+    JOIN winery w ON w.id = ew.id_winery
+    JOIN existing_wine_has_appellation ewha ON ew.id = ewha.id_existing_wine
+    JOIN appellation ap ON ap.id = ewha.id_appellation;`);
   }
 
   insert(existingWine) {

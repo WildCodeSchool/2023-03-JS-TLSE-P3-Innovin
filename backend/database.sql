@@ -422,8 +422,8 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    `inovin`.`appellation` (`nom`)
-VALUES ('Arbois'), ('Bandol'), ('Banyuls'), ('Beaujolais'), ('Bugey'), ('Cassis'), ('Clairette de Bellegarde'), ('Clairette de Die'), ('Clairette du Languedoc'), ('Condrieu'), ('Corbières'), ('Cornas'), ('Costières de Nîmes'), ('Côteaux d''Aix-en-Provence'), ('Côteaux d''Ancenis'), ('Côteaux du Giennois'), ('Côteaux du Languedoc'), ('Coteaux du Layon'), ('Côteaux du Loir'), ('Coteaux du Lyonnais'), ('Côteaux du Quercy'), ('Coteaux du Vendômois'), ('Côteaux du Verdon'), ('Coteaux Varois'), ('Coteaux-du-Layon'), ('Côtes de Beaune'), ('Côtes de Bergerac'), ('Côtes de Blaye'), ('Côtes de Bordeaux'), ('Côtes de Bourg'), ('Côtes de Castillon'), ('Côtes de Duras'), ('Côtes de Francs'), ('Côtes de Gascogne'), ('Côtes de Millau'), ('Côtes de Montravel'), ('Côtes de Nuits'), ('Côtes de Provence'), ('Côtes de Toul'), ('Côtes du Forez'), ('Côtes du Frontonnais'), ('Côtes du Jura'), ('Côtes du Marmandais'), ('Côtes du Rhône'), ('Côtes du Rhône-Villages'), ('Côtes du Roussillon'), (
+    `inovin`.`appellation` (name)
+VALUES ('Arbois'), ('Bandol'), ('Cahors'), ('Banyuls'), ('Beaujolais'), ('Bugey'), ('Cassis'), ('Clairette de Bellegarde'), ('Clairette de Die'), ('Clairette du Languedoc'), ('Condrieu'), ('Corbières'), ('Cornas'), ('Costières de Nîmes'), ('Côteaux d''Aix-en-Provence'), ('Côteaux d''Ancenis'), ('Côteaux du Giennois'), ('Côteaux du Languedoc'), ('Coteaux du Layon'), ('Côteaux du Loir'), ('Coteaux du Lyonnais'), ('Côteaux du Quercy'), ('Coteaux du Vendômois'), ('Côteaux du Verdon'), ('Coteaux Varois'), ('Coteaux-du-Layon'), ('Côtes de Beaune'), ('Côtes de Bergerac'), ('Côtes de Blaye'), ('Côtes de Bordeaux'), ('Côtes de Bourg'), ('Côtes de Castillon'), ('Côtes de Duras'), ('Côtes de Francs'), ('Côtes de Gascogne'), ('Côtes de Millau'), ('Côtes de Montravel'), ('Côtes de Nuits'), ('Côtes de Provence'), ('Côtes de Toul'), ('Côtes du Forez'), ('Côtes du Frontonnais'), ('Côtes du Jura'), ('Côtes du Marmandais'), ('Côtes du Rhône'), ('Côtes du Rhône-Villages'), ('Côtes du Roussillon'), (
         'Côtes du Roussillon-Villages'
     ), ('Côtes du Tarn'), ('Côtes du Ventoux'), ('Côtes du Vivarais'), ('Crémant d''Alsace'), ('Crémant de Bourgogne'), ('Crémant de Die'), ('Crémant de Limoux'), ('Crémant de Loire'), ('Crozes-Hermitage'), ('Entre-Deux-Mers'), ('Faugères'), ('Fitou'), ('Fleurie'), ('Floc de Gascogne'), ('Fronton'), ('Gaillac'), ('Haut-Médoc'), ('IGP Vin de Pays d''Oc'), (
         'IGP Vin de Pays de la Loire'
@@ -924,6 +924,13 @@ CREATE TABLE
         CONSTRAINT `fk_existing_wine_has_appellation_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_existing_wine_has_appellation_appellation1` FOREIGN KEY (`id_appellation`) REFERENCES `inovin`.`appellation` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    inovin.existing_wine_has_appellation (
+        id_existing_wine,
+        id_appellation
+    )
+VALUES ('1', '3'), ('2', '30'), ('3', '45'), ('3', '46'), ('3', '57'), ('4', '77'), ('4', '87'), ('5', '53'), ('6', '72'), ('7', '52');
 
 -- -----------------------------------------------------
 
