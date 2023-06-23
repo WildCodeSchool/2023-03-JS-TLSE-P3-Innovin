@@ -35,8 +35,6 @@ router.get("/appellation", AppellationControllers.browse);
 router.get("/appellation/:id", AppellationControllers.read);
 router.get("/wineregion", WineRegionControllers.browse);
 router.get("/wineregion/:id", WineRegionControllers.read);
-router.get("/workshop", WorkshopControllers.browse);
-router.get("/workshop/:id", WorkshopControllers.read);
 
 // ---------------------------------------- Private Routes ----------------------------------------------
 
@@ -64,6 +62,8 @@ router.delete("/appellation/:id", AppellationControllers.destroy);
 router.post("/wineregion", WineRegionControllers.add);
 router.put("/wineregion/:id", WineRegionControllers.edit);
 router.delete("/wineregion/:id", WineRegionControllers.destroy);
+router.get("/workshop", WorkshopControllers.browse);
+router.get("/workshop/:id", WorkshopControllers.read);
 router.put("/workshop/:id", WorkshopControllers.edit);
 router.post("/workshop", WorkshopControllers.add);
 router.delete("/workshop/:id", WorkshopControllers.destroy);
