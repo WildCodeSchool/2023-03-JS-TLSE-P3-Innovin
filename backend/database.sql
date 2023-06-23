@@ -52,7 +52,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.grape_variety (name, description)
+    `inovin`.`grape_variety` (name, description)
 VALUES (
         'Abouriou',
         'Cépage rouge originaire du Sud-Ouest de la France, produit des vins corsés et fruités'
@@ -476,7 +476,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    user (
+    `inovin`.`user` (
         firstname,
         lastname,
         birth_date,
@@ -503,7 +503,17 @@ VALUES (
    "$argon2id$v=19$m=65536,t=3,p=1$51rIUybdHJE50SQQ2PBGwQ$5jCn8Gw",
     1,
      "Rouge",
-      "J'aime tout ");
+      "J'aime tout ")
+    , (
+        "Jérôme",
+        "VILANOVA",
+        "1983-05-11",
+        "jerome.vilanova@gmail.com",
+        "$argon2id$v=19$m=65536,t=3,p=1$2IzUb/JMAlnxRNSHg3g1NQ$zL5OI3I",
+        1,
+        "Rouge",
+        "En toute modestie, je dirai que les vins de Gaillac sont les meilleurs du monde."
+    );
 
 -- -----------------------------------------------------
 
@@ -519,6 +529,14 @@ CREATE TABLE
         `commentary` LONGTEXT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`workshop` (date, place, commentary)
+VALUES (
+        "2023-06-22",
+        "Toulouse",
+        "First degustation"
+    );
 
 -- -----------------------------------------------------
 
@@ -620,7 +638,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.visual_tears (tears)
+    `inovin`.`visual_tears` (tears)
 VALUES ('Visqueuses'), ('Grasses'), ('Epaisses'), ('Coulantes'), ('Fluides');
 
 -- -----------------------------------------------------
@@ -637,7 +655,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.taste_intensity (intensity)
+    `inovin`.`taste_intensity` (intensity)
 VALUES ('Discret'), ('Aromatique'), ('Expressif'), ('Explosif');
 
 -- -----------------------------------------------------
@@ -654,7 +672,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.taste_mouth_feel (mouth_feel)
+    `inovin`.`taste_mouth_feel` (mouth_feel)
 VALUES ('Longue'), ('Courte'), ('Persistante'), ('Développée'), ('Rémanente');
 
 -- -----------------------------------------------------
@@ -671,7 +689,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.taste_alcohol (alcohol)
+    `inovin`.`taste_alcohol` (alcohol)
 VALUES ('Alcooleux'), ('Capiteux'), ('Gras'), ('Généreux'), ('Faible ');
 
 -- -----------------------------------------------------
@@ -688,7 +706,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.acidity (acidity)
+    `inovin`.`acidity`(acidity)
 VALUES ('Nerveuse'), ('Pointue'), ('Vive'), ('Fraîche'), ('Molle');
 
 -- -----------------------------------------------------

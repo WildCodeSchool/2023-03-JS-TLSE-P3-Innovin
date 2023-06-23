@@ -5,6 +5,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
 import TastingPresentation from "./pages/TastingPresentation/TastingPresentation";
+import VisualStage1 from "./pages/VisualStage/VisualStage1";
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
@@ -28,8 +29,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route
-            path="/Tasting"
+            path="/tasting"
             element={<TastingPresentation userToken={userToken} />}
+          />
+          <Route
+            path="/eye/stage1"
+            element={<VisualStage1 userToken={userToken} />}
           />
         </Routes>
       </div>

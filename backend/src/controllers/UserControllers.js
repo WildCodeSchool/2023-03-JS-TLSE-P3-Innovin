@@ -1,4 +1,4 @@
-const models = require("../models");
+const { models } = require("../models");
 
 // get all users
 const browse = (req, res) => {
@@ -109,10 +109,10 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
 // middleware to verify if user is admin
 
 const verifyAdminCredentials = (req, res, next) => {
-  const { email } = req.body;
+  const { sub } = req.payload;
 
   models.user
-    .getCredentials(email)
+    .getCredentials(sub)
     .then(([users]) => {
       const adminCredentials = users[0].admin_credentials;
 
