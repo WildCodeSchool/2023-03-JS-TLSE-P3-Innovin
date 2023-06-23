@@ -1,16 +1,10 @@
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import "./StepsHeader.css";
 import eye from "../../assets/Icons/Eye_Icon.svg";
 import nose from "../../assets/Icons/Nose_Icon.svg";
 import mouth from "../../assets/Icons/Mouth_Icon.svg";
 import heart from "../../assets/Icons/Hearth_Icon.svg";
-import StepButton from "./StepButton";
-
-const Steps = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-`;
+import StepButtonOpen from "./StepButton";
 
 function StepsHeader() {
   const steps = [
@@ -44,20 +38,32 @@ function StepsHeader() {
     return step.pathName.includes(window.location.pathname);
   };
 
+  const navigate = useNavigate();
+  const handleNavigate = (step) => {
+    navigate(step.pathName[0]);
+  };
+
   return (
-    <Steps>
-      {steps.map((step) => (
-        <StepButton
-          key={step.id}
-          step={step}
-          findPathName={findPathName}
-          className="stepButton"
-          type="button"
-        >
-          <img className="stepIcon" src={step.iconUrl} alt="icon" />
-        </StepButton>
-      ))}
-    </Steps>
+    <div className="stepsHeader">
+      {steps.map((step) =>
+        findPathName(step) ? (
+          <StepButtonOpen
+            key={step.id}
+            step={step}
+            className="openStepButton"
+            type="button"
+          />
+        ) : (
+          <button
+            key={step.id}
+            type="button"
+            aria-label={step.name}
+            onClick={handleNavigate}
+            className="closedStepButton"
+          />
+        )
+      )}
+    </div>
   );
 }
 

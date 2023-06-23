@@ -1,16 +1,14 @@
 import styled from "styled-components";
 
-const StepButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  border: none;
+const StepButtonOpen = styled.button`
+  background: ${({ step }) => `url(${step.iconUrl})`};
+  background-size: 2.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 3rem;
-  border: ${({ findPathName, step }) =>
-    findPathName(step) ? "1px solid var(--secondaryColor)" : "1px solid red"};
-  width: 6rem;
-  height: 6rem;
+  border: 1px solid var(--secondaryColor);
+  width: 4.5rem;
+  height: 4.5rem;
   position: relative;
   &::after,
   ::before {
@@ -26,4 +24,4 @@ const StepButton = styled.button`
   }
 `;
 
-export default StepButton;
+export default StepButtonOpen;

@@ -1,0 +1,27 @@
+.stepsHeader,
+.openStepButton,
+.closedStepButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.closedStepButton {
+  border-radius: 3rem;
+  border: 1px solid var(--secondaryColor);
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  background-color: transparent;
+}
+.closedStepButton::after,
+.closedStepButton::before {
+  content: "";
+  z-index: -1;
+  border: 2px solid var(--secondaryColor);
+  background-color: var(--smoothWhiteColor);
+  position: absolute;
+  inset: 0.15rem;
+  border-radius: 5rem;
+}
