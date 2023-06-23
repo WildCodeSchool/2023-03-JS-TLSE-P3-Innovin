@@ -16,17 +16,16 @@ export default function TastingPresentation() {
         );
         const { data } = response;
         // Reforming objects to create a single object without IDs and duplicates
-        const mergedObject = data.reduce((results, obj) => {
+        const mergedObject = data.reduce((acc, obj) => {
           for (const key in obj) {
             if (key !== "id" && obj[key] !== null) {
-              if (!results[key]) {
-                // eslint-disable-next-line no-param-reassign
-                results[key] = [];
+              if (!acc[key]) {
+                acc[key] = [];
               }
-              results[key].push(obj[key]);
+              acc[key].push(obj[key]);
             }
           }
-          return results;
+          return acc;
         }, {});
 
         console.info(mergedObject);

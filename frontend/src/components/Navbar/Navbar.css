@@ -115,9 +115,13 @@ img.logo-nav {
   .navBar {
     align-items: flex-start;
     display: flex;
-    gap: 48px;
+
     position: relative;
     width: 100vw;
+  }
+
+  .navbarpoppins ul {
+    width: 100%;
   }
 
   .navbarpoppins {

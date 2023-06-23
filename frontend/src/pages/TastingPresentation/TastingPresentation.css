@@ -8,7 +8,6 @@
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  border: solid 2px blue;
 }
 
 .page-content {
@@ -24,7 +23,6 @@
 
   width: auto;
   height: auto;
-  border: solid 2px red;
 }
 
 .text {
@@ -56,7 +54,7 @@
   flex: 1;
   flex-direction: column;
   gap: 32px;
-  border: solid 2px pink;
+
   height: auto;
 }
 
@@ -70,7 +68,8 @@
   align-items: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  border: solid 2px green;
+
+  height: auto;
 }
 
 @media (min-width: 768px) {
@@ -78,17 +77,16 @@
     display: flex;
     align-items: center;
     width: 100%;
-    border: 2px solid pink;
+
     background-position: center;
   }
 
   .page-content {
     display: flex;
-    margin-top: 59px;
+
     overflow: hidden;
     padding: 40px 89px;
     height: auto;
-    border: 2px solid red;
 
     width: 70vw;
     align-items: center;
@@ -120,7 +118,6 @@
     gap: 54px;
     margin-left: 1px;
     width: auto;
-    height: auto;
-    border: 2px solid blue;
+    height: 100%;
   }
 }
