@@ -39,7 +39,6 @@ router.get("/wineregion/:id", WineRegionControllers.read);
 router.get("/newwine", NewWineControllers.browse);
 router.get("/newwine/:id", NewWineControllers.read);
 
-
 // ---------------------------------------- Private Routes ----------------------------------------------
 
 router.use(verifyToken);
