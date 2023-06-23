@@ -747,7 +747,7 @@ CREATE TABLE
         `id_olfactive_intensity` INT NOT NULL,
         `id_user` INT NOT NULL,
         `selected_wine` TINYINT(1) NOT NULL,
-        `rating` DECIMAL(10) NULL,
+        `rating` DECIMAL(10) NOT NULL,
         `tasting_commentary` LONGTEXT NULL,
         `olfactive_complexity_id` INT NOT NULL,
         `visual_color_id` INT NOT NULL,
@@ -788,6 +788,10 @@ CREATE TABLE
         `commentary` LONGTEXT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`competition_selection` (commentary)
+VALUES ('Excellent vin');
 
 -- -----------------------------------------------------
 
