@@ -30,10 +30,10 @@
   --fontFamilyTitle: "Kaisei Tokumin", serif;
 
   --fontSizeH1: clamp(3rem, 7vw + 1rem, 5rem);
-  --fontSizeH2: clamp(2.5rem, 5vw + 1rem, 4rem);
+  --fontSizeH2: clamp(2rem, 5vw + 1rem, 4rem);
   --fontSizeText: clamp(18px, 3vw + 1rem, 1.5rem);
 
-  --paddingPageContent: clamp(1rem, 10vw + 2rem, 12rem);
+  --marginPageContent: clamp(1rem, 10vw + 2rem, 12rem);
 }
 
 body {

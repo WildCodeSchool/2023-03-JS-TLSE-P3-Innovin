@@ -2,10 +2,11 @@ import "./TastingHeaderTitle.css";
 
 function TastingHeaderTitle() {
   // create a useState count to increment the wineNumber once a TastingNote is completed
-  //   const [wineNumber, setWineNumber] = useState(1);
+  // date must be dynamic with a fetch of workshop table
+  // const [wineNumber, setWineNumber] = useState(1);
 
   return (
-    <div className="header">
+    <div className="titleContainer">
       <h2>
         Vin N° <span>1</span>
       </h2>

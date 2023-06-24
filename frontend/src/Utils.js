@@ -11,6 +11,7 @@ import nose from "./assets/Icons/Nose_Icon.svg";
 import mouth from "./assets/Icons/Mouth_Icon.svg";
 import heart from "./assets/Icons/Hearth_Icon.svg";
 
+// array used to display the colors in the visual stage 1
 const redWineColors = [
   {
     id: 1,
@@ -62,6 +63,7 @@ const redWineColors = [
   },
 ];
 
+// array used for the steps header in most of the tasting pages
 const steps = [
   {
     id: 1,

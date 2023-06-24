@@ -9,6 +9,7 @@ import TastingHeaderTitle from "../../components/TastingHeaderTitle";
 function VisualStage1() {
   const [selectedButton, setSelectedButton] = useState(null);
 
+  // ------------------------------------handle functions forbuttons--------------------------------------------------
   const handleClick = (index) => {
     setSelectedButton(index);
   };
@@ -19,12 +20,15 @@ function VisualStage1() {
     navigate("/eye/stage2");
   };
 
+  // -------------------------------------------return the component----------------------------------------------------
   return (
     <div className="visualStage1">
       <div className="contentStage1">
         {" "}
-        <TastingHeaderTitle />
-        <StepsHeader />
+        <div className="header">
+          <TastingHeaderTitle />
+          <StepsHeader />
+        </div>
         <div className="intro">
           <h3 className="subtitle">J'observe sa teinte</h3>
           <p>

@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4rem;
+  gap: 3rem;
 }
 
 .closedStepButton {
@@ -23,4 +23,12 @@
   position: absolute;
   inset: 0.15rem;
   border-radius: 5rem;
+}
+
+/* ----------------------media queries for tablet and desktop-------------------------------------------- */
+
+@media screen and (min-width: 768px) {
+  .stepsHeader {
+    gap: 4rem;
+  }
 }

@@ -1,6 +1,8 @@
+/* global style of the page visualStage1 */
 .visualStage1,
 .contentStage1,
-.intro {
+.intro,
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,13 +18,21 @@
 }
 
 .contentStage1 {
-  gap: 5rem;
-  padding: 2rem var(--paddingPageContent);
+  gap: 4rem;
+  margin: 2rem min(2rem, var(--marginPageContent));
+  margin-bottom: 5rem;
 }
 
+/* style for the header */
+.header {
+  gap: 2rem;
+}
+
+/* style for the text intro */
 .intro {
+  align-items: start;
   gap: 2.5rem;
-  text-align: center;
+  text-align: left;
 }
 
 .intro .subtitle {
@@ -36,21 +46,19 @@
   font-style: italic;
 }
 
+/* style for the colors section */
 .colors {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
 .blotch {
-  width: clamp(200px, 8vw + 8rem, 23rem);
+  width: clamp(150px, 8vw + 8rem, 23rem);
   background-color: transparent;
   border: none;
   position: relative;
 }
 
-.blotch img {
-  clip-path: circle(47.7% at 50% 52%);
-}
 .blotch p {
   font-family: var(--fontFamilyText);
   font-size: var(--fontSizeText);
@@ -76,4 +84,37 @@
 .blotch p:hover {
   rotate: 10deg;
   transition: 300ms ease-in-out;
+}
+
+/* -------------------------------- Tablet media queries--------------------------------- */
+
+@media screen and (min-width: 768px) and (orientation: portrait) {
+  .intro {
+    align-items: center;
+    text-align: center;
+    padding-inline: var(--marginPageContent);
+  }
+  .colors {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+
+/* -------------------------------- Desktop media queries--------------------------------- */
+
+@media screen and (min-width: 1024px) {
+  .contentStage1 {
+    gap: 5rem;
+  }
+  .intro {
+    align-items: center;
+    text-align: center;
+    padding-inline: var(--marginPageContent);
+  }
+  .colors {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
 }
