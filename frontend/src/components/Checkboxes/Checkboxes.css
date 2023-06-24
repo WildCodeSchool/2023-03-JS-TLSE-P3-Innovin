@@ -25,10 +25,51 @@
   justify-content: baseline;
   gap: 0.5rem;
   border-bottom: 1px solid var(--secondaryColor);
+  font-family: var(--fontFamilyTitle);
+  color: var(--secondaryColor);
 }
 
 .checkboxesInputs {
   gap: 1.5rem;
   align-items: baseline;
+}
+
+.checkboxLabel {
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 1em;
   font-size: 1rem;
+  align-items: center;
+}
+
+input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: var(--blackBgGradient);
+  /* Not removed via appearance */
+  margin: 0;
+  font: inherit;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.1em solid var(--secondaryColor);
+  border-radius: 2px;
+  /* align the ::before to the horizontal and vertical center of our custom control. */
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 0.1em;
+  scale: 0;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--smoothWhiteColor);
+}
+
+input[type="radio"]:checked::before {
+  scale: 1;
 }

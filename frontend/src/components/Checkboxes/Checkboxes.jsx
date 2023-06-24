@@ -12,10 +12,16 @@ function Checkboxes({ card }) {
       </div>
       <div className="checkboxesInputs">
         {checks.map((check) => (
-          <div>
-            <input type="checkbox" id={check} key={check} value={check} />
-            <label htmlFor={check}>{check}</label>
-          </div>
+          <label className="checkboxLabel" htmlFor={check}>
+            <input
+              type="radio"
+              id={check}
+              name={name}
+              key={check}
+              value={check}
+            />
+            {check}
+          </label>
         ))}
       </div>
     </div>
