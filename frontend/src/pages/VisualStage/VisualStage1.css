@@ -1,0 +1,90 @@
+.visualStage1,
+.contentStage1,
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.visualStage1 {
+  height: 100%;
+  background: var(--blackBgGradient);
+  color: var(--whiteGoldColor);
+  font-family: var(--fontFamilyText);
+  font-size: var(--fontSizeText);
+}
+
+.contentStage1 {
+  gap: 5rem;
+  padding: 2rem var(--paddingPageContent);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1rem;
+}
+.header h2 {
+  font-family: var(--fontFamilyTitle);
+  font-size: var(--fontSizeH2);
+}
+
+.header p {
+  font-family: var(--fontFamilyText);
+  font-size: clamp(24px, 3vw + 1rem, 2.5rem);
+  font-weight: 200;
+  font-style: italic;
+}
+
+.intro {
+  gap: 2.5rem;
+  text-align: center;
+}
+
+.intro .subtitle {
+  font-family: var(--fontFamilyTitle);
+  font-size: 2rem;
+  color: var(--primaryColor);
+}
+
+.tip {
+  font-weight: 200;
+  font-style: italic;
+}
+
+.colors {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.blotch {
+  width: clamp(200px, 8vw + 8rem, 23rem);
+  background-color: transparent;
+  border: none;
+  position: relative;
+}
+
+.blotch img {
+  clip-path: circle(47.7% at 50% 52%);
+}
+.blotch p {
+  font-family: var(--fontFamilyText);
+  font-size: 0;
+  font-weight: 200;
+  font-style: italic;
+  color: var(--whiteGoldColor);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.blotch p:hover {
+  font-size: var(--fontSizeText);
+}
+
+.blotch .colorName {
+  font-size: var(--fontSizeText);
+}

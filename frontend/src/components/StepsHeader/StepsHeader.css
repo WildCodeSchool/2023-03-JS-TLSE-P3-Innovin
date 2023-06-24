@@ -18,9 +18,8 @@
 .closedStepButton::after,
 .closedStepButton::before {
   content: "";
-  z-index: -1;
   border: 2px solid var(--secondaryColor);
-  background-color: var(--smoothWhiteColor);
+  background-color: var(--smoothGoldColor);
   position: absolute;
   inset: 0.15rem;
   border-radius: 5rem;

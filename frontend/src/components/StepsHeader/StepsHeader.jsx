@@ -34,14 +34,20 @@ function StepsHeader() {
     },
   ];
 
+  // ----------------------------------------functions to control the steps----------------------------------------------------
+
+  // Function which verifys if the step is corresponding to the path
   const findPathName = (step) => {
     return step.pathName.includes(window.location.pathname);
   };
 
+  // Function to navigate to the step we want
   const navigate = useNavigate();
   const handleNavigate = (step) => {
     navigate(step.pathName[0]);
   };
+
+  // -------------------------------------------return the component----------------------------------------------------
 
   return (
     <div className="stepsHeader">
@@ -58,7 +64,7 @@ function StepsHeader() {
             key={step.id}
             type="button"
             aria-label={step.name}
-            onClick={handleNavigate}
+            onClick={() => handleNavigate(step)}
             className="closedStepButton"
           />
         )

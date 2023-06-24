@@ -13,7 +13,6 @@ const StepButtonOpen = styled.button`
   &::after,
   ::before {
     content: "";
-    z-index: -1;
     border: 2px solid var(--secondaryColor);
     position: absolute;
     inset: 0.2rem;
