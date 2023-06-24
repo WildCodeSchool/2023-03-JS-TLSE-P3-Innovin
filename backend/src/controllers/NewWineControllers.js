@@ -1,8 +1,8 @@
 const { models } = require("../models");
 
 const browse = (req, res) => {
-  models.existingWine
-    .findAllExistingWines()
+  models.newWine
+    .findAll()
     .then(([rows]) => {
       if (rows.length) {
         res.status(200).send(rows);
@@ -12,13 +12,13 @@ const browse = (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send("Error retrieving data from database");
+      res.sendStatus(500);
     });
 };
 
 const read = (req, res) => {
-  models.existingWine
-    .findOneExistingWine(req.params.id)
+  models.newWine
+    .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.status(404).send("Not found");
@@ -28,19 +28,19 @@ const read = (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send("Error retrieving data from database");
+      res.sendStatus(500);
     });
 };
 
 const edit = (req, res) => {
-  const existingWine = req.body;
+  const newWine = req.body;
 
   // TODO validations (length, format...)
 
   const id = parseInt(req.params.id, 10);
 
-  models.existingWine
-    .update(existingWine, id)
+  models.newWine
+    .update(newWine, id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.status(400).send("Bad request");
@@ -50,31 +50,28 @@ const edit = (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send("Error retrieving data from database");
+      res.sendStatus(500);
     });
 };
 
 const add = (req, res) => {
-  const existingWine = req.body;
+  const newWine = req.body;
 
   // TODO validations (length, format...)
 
-  models.existingWine
-    .insert(existingWine)
+  models.newWine
+    .insert(newWine)
     .then(([result]) => {
-      res
-        .location(`/existingwine/${result.insertId}`)
-        .status(201)
-        .send("Created");
+      res.location(`/newwine/${result.insertId}`).status(201).send("Created");
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send("Error retrieving data from database");
+      res.sendStatus(500);
     });
 };
 
 const destroy = (req, res) => {
-  models.existingWine
+  models.newWine
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -85,7 +82,7 @@ const destroy = (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send("Error retrieving data from database");
+      res.sendStatus(500);
     });
 };
 
