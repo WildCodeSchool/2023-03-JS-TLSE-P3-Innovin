@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
 import TastingPresentation from "./pages/TastingPresentation";
 import VisualStage1 from "./pages/VisualStage/VisualStage1";
+import VisualStage2 from "./pages/VisualStage/VisualStage2";
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
@@ -35,6 +36,10 @@ function App() {
           <Route
             path="/eye/stage1"
             element={<VisualStage1 userToken={userToken} />}
+          />
+          <Route
+            path="/eye/stage2"
+            element={<VisualStage2 userToken={userToken} />}
           />
         </Routes>
       </div>

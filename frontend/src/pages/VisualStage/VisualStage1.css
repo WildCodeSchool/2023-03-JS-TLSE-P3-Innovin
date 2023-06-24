@@ -54,22 +54,26 @@
 .blotch p {
   font-family: var(--fontFamilyText);
   font-size: var(--fontSizeText);
-  font-weight: 600;
-  opacity: 0;
+  font-weight: 200;
+  font-style: italic;
   color: var(--whiteGoldColor);
   position: absolute;
+  padding: 0.5rem 1rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.blotch p:hover {
-  font-size: var(--fontSizeText);
-  opacity: 1;
-  font-weight: 200;
-  font-style: italic;
+.blotch .colorName {
+  font-style: normal;
+  font-weight: 600;
+  rotate: 10deg;
+  scale: 1.2;
+  translate: 10% 10%;
+  transition: 300ms ease-in-out;
 }
 
-.blotch .colorName {
-  opacity: 1;
+.blotch p:hover {
+  rotate: 10deg;
+  transition: 300ms ease-in-out;
 }

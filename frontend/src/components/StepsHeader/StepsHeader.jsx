@@ -1,39 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "./StepsHeader.css";
-import eye from "../../assets/Icons/Eye_Icon.svg";
-import nose from "../../assets/Icons/Nose_Icon.svg";
-import mouth from "../../assets/Icons/Mouth_Icon.svg";
-import heart from "../../assets/Icons/Hearth_Icon.svg";
 import StepButtonOpen from "./StepButton";
+import { steps } from "../../Utils";
 
 function StepsHeader() {
-  const steps = [
-    {
-      id: 1,
-      name: "Eye",
-      iconUrl: `${eye}`,
-      pathName: ["/eye/stage1", "/eye/stage2"],
-    },
-    {
-      id: 2,
-      name: "Nose",
-      iconUrl: `${nose}`,
-      pathName: ["/nose/stage1"],
-    },
-    {
-      id: 3,
-      name: "Mouth",
-      iconUrl: `${mouth}`,
-      pathName: ["/mouth/stage1", "/mouth/stage2"],
-    },
-    {
-      id: 4,
-      name: "Advice",
-      iconUrl: `${heart}`,
-      pathName: ["/advice"],
-    },
-  ];
-
   // ----------------------------------------functions to control the steps----------------------------------------------------
 
   // Function which verifys if the step is corresponding to the path
