@@ -1,0 +1,34 @@
+.checkboxCard,
+.checkboxesInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkboxCard {
+  width: clamp(240px, 4vw + 8rem, 20rem);
+  background-color: var(--blackBgGradientSmooth);
+  box-shadow: var(--shadow);
+  backdrop-filter: var(--bgBlur);
+}
+
+.cardTitle,
+.checkboxesInputs {
+  width: 100%;
+  padding: 1rem;
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--secondaryColor);
+}
+
+.checkboxesInputs {
+  gap: 1.5rem;
+  align-items: baseline;
+  font-size: 1rem;
+}

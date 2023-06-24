@@ -10,6 +10,10 @@ import eye from "./assets/Icons/Eye_Icon.svg";
 import nose from "./assets/Icons/Nose_Icon.svg";
 import mouth from "./assets/Icons/Mouth_Icon.svg";
 import heart from "./assets/Icons/Hearth_Icon.svg";
+import intensity from "./assets/Icons/Intensity_Icon.svg";
+import shiny from "./assets/Icons/Shiny_Icon_2.svg";
+import transparency from "./assets/Icons/Transparency_Icon.svg";
+import drop from "./assets/Icons/Drop_Icon.svg";
 
 // array used to display the colors in the visual stage 1
 const redWineColors = [
@@ -91,4 +95,45 @@ const steps = [
   },
 ];
 
-export { redWineColors, steps };
+const checkboxes = [
+  {
+    id: 1,
+    name: "Limpidité",
+    iconUrl: transparency,
+    checks: [
+      "Transparente",
+      "Limpide",
+      "Cristalline",
+      "Opaque",
+      "Voilée",
+      "Floue",
+    ],
+  },
+  {
+    id: 2,
+    name: "Brillance",
+    iconUrl: shiny,
+    checks: [
+      "Nette",
+      "Etincelante",
+      "Eclatante",
+      "Brillante",
+      "Lumineuse",
+      "Terne",
+    ],
+  },
+  {
+    id: 3,
+    name: "Intensité",
+    iconUrl: intensity,
+    checks: ["Claire", "Soutenue", "Intense", "Pâle", "Foncée", "Profonde"],
+  },
+  {
+    id: 4,
+    name: "Larmes",
+    iconUrl: drop,
+    checks: ["Visqueuses", "Grasses", "Epaisses", "Coulantes", "Fluides"],
+  },
+];
+
+export { redWineColors, steps, checkboxes };

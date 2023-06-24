@@ -1,0 +1,36 @@
+.visualStage2,
+.contentStage2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.visualStage2 {
+  height: 100%;
+  background: var(--blackBgGradient);
+  color: var(--whiteGoldColor);
+  font-family: var(--fontFamilyText);
+  font-size: var(--fontSizeText);
+}
+
+.contentStage2 {
+  gap: 4rem;
+  margin: 2rem min(2rem, var(--marginPageContent));
+  margin-bottom: 5rem;
+}
+
+.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: baseline;
+}
+
+/* -------------------------------- Desktop media queries--------------------------------- */
+
+@media screen and (min-width: 1024px) {
+  .contentStage1 {
+    gap: 5rem;
+  }
+}
