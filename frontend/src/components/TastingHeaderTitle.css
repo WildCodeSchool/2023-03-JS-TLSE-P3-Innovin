@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 3rem;
+  border: 2px solid var(--smoothGoldColor);
+  border-radius: 5px;
+}
+.header h2 {
+  font-family: var(--fontFamilyTitle);
+  font-size: var(--fontSizeH2);
+}
+
+.header p {
+  font-family: var(--fontFamilyText);
+  font-size: clamp(24px, 3vw + 1rem, 2.5rem);
+  font-weight: 200;
+  font-style: italic;
+  color: var(--secondaryColor);
+}

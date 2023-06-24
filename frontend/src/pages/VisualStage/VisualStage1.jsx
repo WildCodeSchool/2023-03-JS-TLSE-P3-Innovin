@@ -10,6 +10,7 @@ import tiled from "../../assets/Red_Wine_Colors/Tuilé.png";
 import violet from "../../assets/Red_Wine_Colors/Violet.png";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
+import TastingHeaderTitle from "../../components/TastingHeaderTitle";
 
 function VisualStage1() {
   const [selectedButton, setSelectedButton] = useState(null);
@@ -73,12 +74,7 @@ function VisualStage1() {
     <div className="visualStage1">
       <div className="contentStage1">
         {" "}
-        <div className="header">
-          <h2>
-            Vin N° <span>1</span>
-          </h2>
-          <p>date</p>
-        </div>
+        <TastingHeaderTitle />
         <StepsHeader />
         <div className="intro">
           <h3 className="subtitle">J'observe sa teinte</h3>
