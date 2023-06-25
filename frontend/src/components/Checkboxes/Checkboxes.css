@@ -8,9 +8,10 @@
 
 .checkboxCard {
   width: clamp(240px, 4vw + 8rem, 20rem);
-  background-color: var(--blackBgGradientSmooth);
+  background: var(--blackBgGradientSmooth);
   box-shadow: var(--shadow);
   backdrop-filter: var(--bgBlur);
+  border-radius: 5px;
 }
 
 .cardTitle,
@@ -24,7 +25,7 @@
   align-items: center;
   justify-content: baseline;
   gap: 0.5rem;
-  border-bottom: 1px solid var(--secondaryColor);
+  border-bottom: 1px solid var(--smoothWhiteColor);
   font-family: var(--fontFamilyTitle);
   color: var(--secondaryColor);
 }

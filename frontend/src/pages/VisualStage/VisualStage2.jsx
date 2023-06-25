@@ -27,7 +27,12 @@ function VisualStage2() {
             suspension et les coulures de ses larmes. Selon vous, quelles
             caractéristiques visuelles s’appliquent à ce vin ?{" "}
           </p>
-          <p className="tip" />
+          <p className="tip">
+            Astuce : la clarté du vin donne des indications sur sa qualité et
+            son âge. Ensuite, portez une attention particulière aux reflets et à
+            la viscosité pour percevoir des indications sur sa concentration et
+            sa texture.
+          </p>
         </div>
         <div className="checkboxes">
           {checkboxes.map((card) => (

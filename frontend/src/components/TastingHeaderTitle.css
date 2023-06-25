@@ -1,9 +1,12 @@
-.titleContainer {
+.titleContainer,
+.header h2 {
   display: flex;
   align-items: baseline;
   justify-content: center;
+}
+.titleContainer {
   gap: 1rem;
-  padding: 1rem 3rem;
+  padding: 1rem max(3rem, 2rem);
   border: 2px solid var(--smoothGoldColor);
   border-radius: 5px;
 }

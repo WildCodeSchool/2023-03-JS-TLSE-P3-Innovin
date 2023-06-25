@@ -92,7 +92,7 @@
   .intro {
     align-items: center;
     text-align: center;
-    padding-inline: var(--marginPageContent);
+    padding-inline: var(--paddingTablet);
   }
   .colors {
     display: grid;
