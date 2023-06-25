@@ -37,6 +37,7 @@ const AppellationManager = require("./AppellationManager");
 const WineRegionManager = require("./WineRegionManager");
 const WorkshopManager = require("./WorkshopManager");
 const NewWineManager = require("./NewWineManager");
+const CompetitionSelectionManager = require("./CompetitionSelectionManager");
 
 models.item = new ItemManager();
 models.item.setDatabase(pool);
@@ -61,6 +62,9 @@ models.workshop.setDatabase(pool);
 
 models.newWine = new NewWineManager();
 models.newWine.setDatabase(pool);
+
+models.competitionSelection = new CompetitionSelectionManager();
+models.competitionSelection.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
