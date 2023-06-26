@@ -1,0 +1,279 @@
+.page-container {
+  align-items: center;
+  background: linear-gradient(141.47deg, #222222 3.84%, #12110b 93.65%);
+  border: 1px none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100vw;
+}
+
+.wine {
+  align-items: flex-end;
+  background-color: linear-gradient(141.47deg, #222222 3.84%, #12110b 93.65%);
+  border: 2px solid;
+  border-color: var(--primaryColor);
+  border-radius: 5px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-left: 1px;
+  margin-top: 31px;
+  padding: 8px 24px;
+  position: relative;
+  width: fit-content;
+}
+
+.wine h2 {
+  color: white;
+  font-family: var(--font-family-kaisei_tokumin);
+  font-size: var(--font-size-l2);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -2px;
+  position: relative;
+  text-align: center;
+  width: fit-content;
+}
+
+.slider {
+  align-items: center;
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  margin-right: 1px;
+  margin-top: 37px;
+  position: relative;
+  width: fit-content;
+  border: var(--primaryColor) 2px solid;
+  width: 200px;
+  height: 60px;
+}
+
+.nose1,
+.nose2 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 50px;
+  position: relative;
+  width: 320px;
+}
+
+.nose1,
+.nose2,
+h2 {
+  display: flex;
+  justify-content: center;
+  font-family: var(--fontFamilyTitle);
+  color: var(--primaryColor);
+  font-size: 1.5rem;
+}
+
+.nose1,
+.nose2 p {
+  color: white;
+  font-weight: 400;
+  line-height: 31.5px;
+  text-align: center;
+  font-family: var(--fontFamilyText);
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.checkboxIntensity {
+  align-items: center;
+  display: flex;
+  width: 220px;
+  height: 250px;
+  background: purple;
+  margin-top: 2rem;
+}
+
+.checkboxComplexity {
+  align-items: center;
+  display: flex;
+  width: 220px;
+  height: 250px;
+  background: purple;
+  margin-top: 2rem;
+}
+
+.aromas {
+  backdrop-filter: blur (10px);
+  background-color: rgba(34, 34, 34, 1);
+  border-radius: 5px;
+  box-shadow: 0px 5px 6px 2px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.aromas h3 {
+  color: white;
+  font-style: italic;
+  font-weight: 400;
+  margin: 1rem;
+  font-family: var(--fontFamilyTe);
+
+  text-align: center;
+}
+
+.aromas img {
+  height: 104px;
+  width: 104px;
+  border-radius: 60px;
+  margin: 20px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.aromas img.selected {
+  border: 1px solid var(--primaryColor);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.aromas .img-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.aromas img:hover .img-overlay,
+.aromas img.selected .img-overlay {
+  opacity: 1;
+}
+
+.aromas .img-overlay {
+  pointer-events: none;
+}
+
+.aromasSelection {
+  display: flex;
+  position: relative;
+}
+
+.aromasSelection .round {
+  position: relative;
+}
+
+.aromasSelection .round.selected:before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 15px;
+  width: 112px;
+  height: 112px;
+  outline: 1px solid var(--primaryColor);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--primaryColor);
+}
+
+.aromasSelection .round.selected:after {
+  content: attr(data-name);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50%, -50%;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: rgb(228, 39, 39);
+}
+
+.aromasSelection .round.selected .img-overlay {
+  opacity: 1;
+}
+
+.aroma-name {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--fontFamilyTitle);
+  font-weight: 500;
+  text-shadow: #12110b 2px;
+  background: linear-gradient(141.47deg, #222222 3.84%, #12110b 93.65%);
+  backdrop-filter: var(--bgBlur);
+  width: 72%;
+  align-self: center;
+}
+
+.colonne1 {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 32px;
+  width: fit-content;
+}
+
+.button-container {
+  margin: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .page-container {
+    height: 100%;
+  }
+
+  .nose1,
+  .nose2 {
+    display: flex;
+    flex: auto;
+    width: 80%;
+  }
+
+  .nose1,
+  .nose2,
+  p {
+    width: 75%;
+  }
+
+  .checkbox {
+    display: flex;
+    gap: 80px;
+  }
+
+  .aromasSelection {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .colonne1 {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .colonne2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .page-container {
+    height: 100%;
+  }
+
+  .aromasSelection .round.selected:before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 112px;
+    height: 112px;
+    border: 1px solid var(--primaryColor);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--primaryColor);
+  }
+}
