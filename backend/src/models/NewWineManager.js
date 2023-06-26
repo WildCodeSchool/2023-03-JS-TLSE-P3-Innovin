@@ -12,17 +12,10 @@ class NewWineManager extends AbstractManager {
       selected_for_competition,
       commentary,
       id_competition_selection,
-      id_tasting_note,
     } = newWine;
     return this.database.query(
-      `insert into ${this.table} (color,selected_for_competition,commentary,id_competition_selection,id_tasting_note) values (?,?,?,?,?)`,
-      [
-        color,
-        selected_for_competition,
-        commentary,
-        id_competition_selection,
-        id_tasting_note,
-      ]
+      `insert into ${this.table} (color,selected_for_competition,commentary,id_competition_selection) values (?,?,?,?)`,
+      [color, selected_for_competition, commentary, id_competition_selection]
     );
   }
 
@@ -32,16 +25,14 @@ class NewWineManager extends AbstractManager {
       selected_for_competition,
       commentary,
       id_competition_selection,
-      id_tasting_note,
     } = newWine;
     return this.database.query(
-      `UPDATE ${this.table} SET color = ?, selected_for_competition = ?, commentary = ?, id_competition_selection = ?, id_tasting_note = ? WHERE id = ?`,
+      `UPDATE ${this.table} SET color = ?, selected_for_competition = ?, commentary = ?, id_competition_selection = ? WHERE id = ?`,
       [
         color,
         selected_for_competition,
         commentary,
         id_competition_selection,
-        id_tasting_note,
         id,
       ]
     );
