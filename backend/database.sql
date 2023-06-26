@@ -506,7 +506,6 @@ CREATE TABLE
         `admin_credentials` TINYINT NOT NULL DEFAULT 0,
         `wine_color` VARCHAR(45) NULL,
         `preference_description` LONGTEXT NULL,
-        `id_workshop_user` INT NOT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
@@ -519,8 +518,7 @@ INSERT INTO
         hashed_password,
         admin_credentials,
         wine_color,
-        preference_description,
-        id_workshop_user
+        preference_description
     )
 VALUES (
         "Cyrille",
@@ -530,8 +528,7 @@ VALUES (
         "$argon2id$v=19$m=65536,t=3,p=1$EED3J3qL48xtdO+6Onzl8w$v29dbf4",
         1,
         "Blanc",
-        "Je les préfère bien sucrés!!!",
-        2
+        "Je les préfère bien sucrés!!!"
     ), (
         "Jérôme",
         "VILANOVA",
@@ -540,8 +537,7 @@ VALUES (
         "$argon2id$v=19$m=65536,t=3,p=1$2IzUb/JMAlnxRNSHg3g1NQ$zL5OI3I",
         1,
         "Rouge",
-        "En toute modestie, je dirai que les vins de Gaillac sont les meilleurs du monde.",
-        1
+        "En toute modestie, je dirai que les vins de Gaillac sont les meilleurs du monde."
     );
 
 -- -----------------------------------------------------
@@ -553,7 +549,7 @@ VALUES (
 CREATE TABLE
     IF NOT EXISTS `inovin`.`workshop` (
         `id` INT NOT NULL AUTO_INCREMENT,
-        `date` DATE NOT NULL,
+        `datetime` DATETIME NOT NULL,
         `place` VARCHAR(55) NOT NULL,
         `commentary` LONGTEXT NULL,
         `id_new_wine` INT NOT NULL,
@@ -563,43 +559,16 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`workshop` (
-        date,
+        datetime,
         place,
         commentary,
         id_new_wine
     )
 VALUES (
-        "2023-06-22",
+        "2023-06-22 16:00:00",
         "Toulouse",
         "Inauguration du premier atelier",
         1
-    );
-
--- -----------------------------------------------------
-
--- Table `inovin`.`workshop_user`
-
--- -----------------------------------------------------
-
-CREATE TABLE
-    IF NOT EXISTS `inovin`.`workshop_user` (
-        `id` INT NOT NULL AUTO_INCREMENT,
-        `date` DATE NOT NULL,
-        `place` VARCHAR(55) NOT NULL,
-        `commentary` LONGTEXT NULL,
-        PRIMARY KEY (`id`)
-    ) ENGINE = InnoDB;
-
-INSERT INTO
-    `inovin`.`workshop_user` (date, place, commentary)
-VALUES (
-        "2023-06-22",
-        "Toulouse",
-        "Le premier atelier de Jérôme"
-    ), (
-        "2023-06-22",
-        "Toulouse",
-        "Le premier atelier de Cyrille"
     );
 
 -- -----------------------------------------------------
@@ -1143,18 +1112,15 @@ VALUES ('Epices'), ('Boisé'), ('Floral'), ('Végétal'), ('Fruits'), ('Torréfi
 -- -----------------------------------------------------
 
 CREATE TABLE
-    IF NOT EXISTS `inovin`.`workshop_user_has_existingWine` (
-        `id_workshop_user` INT NOT NULL,
+    IF NOT EXISTS `inovin`.`workshop_has_existingWine` (
+        `id_workshop` INT NOT NULL,
         `id_existing_wine` INT NOT NULL,
-        CONSTRAINT `fk_workshop_user_has_existingWine_workshop_user1` FOREIGN KEY (`id_workshop_user`) REFERENCES `inovin`.`workshop_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_workshop_user_has_existingWine_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_workshop_has_existingWine_workshop1` FOREIGN KEY (`id_workshop`) REFERENCES `inovin`.`workshop` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_workshop_has_existingWine_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.workshop_user_has_existingWine(
-        id_workshop_user,
-        id_existing_wine
-    )
+    inovin.workshop_has_existingWine(id_workshop, id_existing_wine)
 VALUES (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 6), (2, 7), (2, 8), (2, 9), (2, 10);
 
 -- -----------------------------------------------------

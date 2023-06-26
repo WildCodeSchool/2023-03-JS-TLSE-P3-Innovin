@@ -6,18 +6,18 @@ class WorkshopManager extends AbstractManager {
   }
 
   insert(workshop) {
-    const { date, place, commentary } = workshop;
+    const { datetime, place, commentary } = workshop;
     return this.database.query(
-      `insert into ${this.table} (date, place, commentary) values (?,?,?)`,
-      [date, place, commentary]
+      `insert into ${this.table} (datetime, place, commentary) values (?,?,?)`,
+      [datetime, place, commentary]
     );
   }
 
   update(workshop, id) {
-    const { date, place, commentary } = workshop;
+    const { datetime, place, commentary } = workshop;
     return this.database.query(
-      `update ${this.table} set date = ?, place = ?, commentary = ? where id = ?`,
-      [date, place, commentary, id]
+      `update ${this.table} set datetime = ?, place = ?, commentary = ? where id = ?`,
+      [datetime, place, commentary, id]
     );
   }
 }
