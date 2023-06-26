@@ -51,6 +51,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`grape_variety` (name, description)
+    `inovin`.`grape_variety` (name, description)
 VALUES (
         'Abouriou',
         'Cépage rouge originaire du Sud-Ouest de la France, produit des vins corsés et fruités'
@@ -475,6 +476,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`user` (
+    `inovin`.`user` (
         firstname,
         lastname,
         birth_date,
@@ -493,15 +495,6 @@ VALUES (
         1,
         "Blanc",
         "Je les préfère bien sucrés!!!"
-    ), (
-        "Jérôme",
-        "VILANOVA",
-        "1983-05-11",
-        "jerome.vilanova@gmail.com",
-        "$argon2id$v=19$m=65536,t=3,p=1$2IzUb/JMAlnxRNSHg3g1NQ$zL5OI3I",
-        1,
-        "Rouge",
-        "En toute modestie, je dirai que les vins de Gaillac sont les meilleurs du monde."
     );
 
 -- -----------------------------------------------------
@@ -745,7 +738,7 @@ CREATE TABLE
         `id_olfactive_intensity` INT NOT NULL,
         `id_user` INT NOT NULL,
         `selected_wine` TINYINT(1) NOT NULL,
-        `rating` DECIMAL(10) NULL,
+        `rating` DECIMAL(10) NOT NULL,
         `tasting_commentary` LONGTEXT NULL,
         `olfactive_complexity_id` INT NOT NULL,
         `visual_color_id` INT NOT NULL,
@@ -774,6 +767,64 @@ CREATE TABLE
         CONSTRAINT `fk_tasting_note_taste_tannin1` FOREIGN KEY (`taste_tannin_id`) REFERENCES `inovin`.`taste_tannin` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
+INSERT INTO
+    `inovin`.`tasting_note`(
+        wine_quality,
+        id_olfactive_intensity,
+        id_user,
+        selected_wine,
+        rating,
+        tasting_commentary,
+        olfactive_complexity_id,
+        visual_color_id,
+        visual_limpidity_id,
+        visual_brightness_id,
+        visual_tears_id,
+        taste_intensity_id,
+        taste_mouth_feel_id,
+        taste_alcohol_id,
+        acidity_id,
+        taste_sweetness_id,
+        taste_tannin_id
+    )
+VALUES (
+        'Bon',
+        1,
+        1,
+        1,
+        5,
+        'Trop tannique',
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ), (
+        'Bof',
+        1,
+        1,
+        1,
+        3,
+        'Ce vin manque de corps.',
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    );
+
 -- -----------------------------------------------------
 
 -- Table `inovin`.`competition_selection`
@@ -786,6 +837,10 @@ CREATE TABLE
         `commentary` LONGTEXT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`competition_selection` (commentary)
+VALUES ('Excellent vin');
 
 -- -----------------------------------------------------
 
@@ -802,9 +857,19 @@ CREATE TABLE
         `id_competition_selection` INT NOT NULL,
         `id_tasting_note` INT NOT NULL,
         PRIMARY KEY (`id`),
-        CONSTRAINT `fk_nouveau_vin_selection_concours1` FOREIGN KEY (`id_competition_selection`) REFERENCES `inovin`.`competition_selection` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_new_wine_competition_selection1` FOREIGN KEY (`id_competition_selection`) REFERENCES `inovin`.`competition_selection` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_new_wine_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`new_wine`(
+        color,
+        selected_for_competition,
+        commentary,
+        id_competition_selection,
+        id_tasting_note
+    )
+VALUES ('Rouge', 1, 'Excellent', 1, 1);
 
 -- -----------------------------------------------------
 
