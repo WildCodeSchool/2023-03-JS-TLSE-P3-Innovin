@@ -50,7 +50,6 @@ router.put("/users/:id", hashPassword, validateUser, UserControllers.edit);
 
 router.use(verifyAdminCredentials);
 
-router.get("/users", UserControllers.browse);
 router.delete("/users/:id", UserControllers.destroy);
 router.get("/admin/workshop/:id", UserControllers.getUserRegisteredToAWorkshop);
 router.post("/grapevariety", GrapeVarietyControllers.add);

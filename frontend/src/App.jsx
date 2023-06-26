@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
-import TastingPresentation from "./pages/TastingPresentation";
+import TastingPresentation from "./pages/TastingPresentation/TastingPresentation";
 import VisualStage1 from "./pages/VisualStage/VisualStage1";
 
 function App() {
