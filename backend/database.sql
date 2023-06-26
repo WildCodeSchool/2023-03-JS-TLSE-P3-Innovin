@@ -51,7 +51,6 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`grape_variety` (name, description)
-    `inovin`.`grape_variety` (name, description)
 VALUES (
         'Abouriou',
         'Cépage rouge originaire du Sud-Ouest de la France, produit des vins corsés et fruités'
@@ -512,7 +511,6 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`user` (
-    `inovin`.`user` (
         firstname,
         lastname,
         birth_date,
@@ -562,6 +560,11 @@ VALUES (
         "Toulouse",
         "Inauguration du premier atelier",
         1
+    ), (
+        "2023-07-22 16:00:00",
+        "Toulouse",
+        "Inauguration du deuxième atelier",
+        2
     );
 
 -- -----------------------------------------------------
@@ -1112,7 +1115,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.workshop_has_existingWine(id_workshop, id_existing_wine)
+    `inovin`.`workshop_has_existingWine`(id_workshop, id_existing_wine)
 VALUES (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 6), (2, 7), (2, 8), (2, 9), (2, 10);
 
 -- -----------------------------------------------------
