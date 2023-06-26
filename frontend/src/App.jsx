@@ -6,6 +6,9 @@ import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
 import TastingPresentation from "./pages/TastingPresentation/TastingPresentation";
 import VisualStage1 from "./pages/VisualStage/VisualStage1";
+import VisualStage2 from "./pages/VisualStage/VisualStage2";
+import { TastingNoteProvider } from "./contexts/TastingNoteContext";
+import { TastingProvider } from "./pages/TastingPresentation/TastingContext";
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
@@ -24,20 +27,29 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route
-            path="/tasting"
-            element={<TastingPresentation userToken={userToken} />}
-          />
-          <Route
-            path="/eye/stage1"
-            element={<VisualStage1 userToken={userToken} />}
-          />
-        </Routes>
-      </div>
+      <TastingProvider>
+        <TastingNoteProvider>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login setUser={setUser} />} />
+
+              <Route
+                path="/tasting"
+                element={<TastingPresentation userToken={userToken} />}
+              />
+              <Route
+                path="/eye/stage1"
+                element={<VisualStage1 userToken={userToken} />}
+              />
+              <Route
+                path="/eye/stage2"
+                element={<VisualStage2 userToken={userToken} />}
+              />
+            </Routes>
+          </div>
+        </TastingNoteProvider>
+      </TastingProvider>
     </Router>
   );
 }
