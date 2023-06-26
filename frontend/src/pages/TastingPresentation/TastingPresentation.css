@@ -1,0 +1,123 @@
+.start-degust {
+  align-items: flex-end;
+  background-image: url(../../assets/Wine_Img/unsplash_VuZ9U7cWqc8.jpg);
+  background-position: 50% 50%;
+  background-size: cover;
+  border: 1px none;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.page-content {
+  align-items: flex-start;
+  background: var(--blackBgGradientSmooth);
+  border-radius: 5px;
+  backdrop-filter: var(--bgBlur);
+  display: flex;
+  gap: 10px;
+  overflow: hidden;
+  padding: 17px 24px;
+  margin: 25px;
+
+  width: auto;
+  height: auto;
+}
+
+.text {
+  align-self: stretch;
+  color: #ffff;
+  font-weight: 400;
+  line-height: 25px;
+  font-family: var(--fontFamilyText);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 14px;
+  position: relative;
+}
+
+.title {
+  align-self: stretch;
+  color: var(--primaryColor);
+  font-family: var(--fontFamilyTitly);
+  font-size: 2.4rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+}
+
+.box {
+  flex: 1;
+  flex-direction: column;
+  gap: 32px;
+
+  height: auto;
+}
+
+.logo {
+  display: none;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .start-degust {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    background-position: center;
+  }
+
+  .page-content {
+    display: flex;
+
+    overflow: hidden;
+    padding: 40px 89px;
+    height: auto;
+
+    width: 70vw;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text {
+    color: #ffff;
+    font-weight: 400;
+    position: relative;
+    font-size: 20px;
+  }
+
+  .logo {
+    display: block;
+    height: 120px;
+    margin-top: 3rem;
+
+    width: 120px;
+  }
+
+  H1 {
+    font-size: 30px;
+  }
+
+  .box {
+    flex-direction: column;
+    gap: 54px;
+    margin-left: 1px;
+    width: auto;
+    height: 100%;
+  }
+}

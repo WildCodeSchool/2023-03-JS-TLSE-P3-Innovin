@@ -51,6 +51,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`grape_variety` (name, description)
+    `inovin`.`grape_variety` (name, description)
 VALUES (
         'Abouriou',
         'Cépage rouge originaire du Sud-Ouest de la France, produit des vins corsés et fruités'
@@ -117,6 +118,9 @@ VALUES (
     ), (
         'Carménère',
         'Cépage rouge originaire de Bordeaux, désormais principalement cultivé au Chili, produit des vins complexes avec des arômes de poivron et de fruits noirs'
+    ), (
+        'Chardonnay',
+        'Cépage blanc originaire du vignoble de Bourgogne utilisé pour de nombreux types de vin blanc, des grands crus de Bourgogne aux vins effervescents de champagne. '
     ), (
         'Cinsault',
         'Cépage rouge de la région du Languedoc, souvent utilisé pour produire des vins rosés légers et fruités'
@@ -337,7 +341,7 @@ VALUES (
         '',
         '',
         14,
-        39,
+        40,
         1
     ), (
         'Cabernet Sauvignon',
@@ -359,7 +363,7 @@ VALUES (
         '',
         '',
         5,
-        69,
+        70,
         3
     ), (
         'Merlot',
@@ -370,7 +374,7 @@ VALUES (
         '',
         '',
         3,
-        43,
+        44,
         5
     ), (
         'Pinot Noir',
@@ -381,7 +385,7 @@ VALUES (
         '',
         '',
         6,
-        62,
+        63,
         6
     ), (
         'Sauvignon Blanc',
@@ -392,7 +396,7 @@ VALUES (
         '',
         '',
         15,
-        67,
+        68,
         7
     ), (
         'Gewurztraminer',
@@ -403,8 +407,41 @@ VALUES (
         '',
         '',
         17,
-        33,
+        34,
         8
+    ), (
+        'Chardonnay',
+        '',
+        'Blanc',
+        12,
+        '',
+        '',
+        '',
+        6,
+        23,
+        6
+    ), (
+        'Pinot Gris',
+        '',
+        'Blanc',
+        12,
+        '',
+        '',
+        '',
+        17,
+        61,
+        8
+    ), (
+        'Cabernet Franc',
+        '',
+        'Blanc',
+        12,
+        '',
+        '',
+        '',
+        15,
+        15,
+        9
     );
 
 -- -----------------------------------------------------
@@ -423,7 +460,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`appellation` (name)
-VALUES ('Arbois'), ('Bandol'), ('Cahors'), ('Banyuls'), ('Beaujolais'), ('Bugey'), ('Cassis'), ('Clairette de Bellegarde'), ('Clairette de Die'), ('Clairette du Languedoc'), ('Condrieu'), ('Corbières'), ('Cornas'), ('Costières de Nîmes'), ('Côteaux d''Aix-en-Provence'), ('Côteaux d''Ancenis'), ('Côteaux du Giennois'), ('Côteaux du Languedoc'), ('Coteaux du Layon'), ('Côteaux du Loir'), ('Coteaux du Lyonnais'), ('Côteaux du Quercy'), ('Coteaux du Vendômois'), ('Côteaux du Verdon'), ('Coteaux Varois'), ('Coteaux-du-Layon'), ('Côtes de Beaune'), ('Côtes de Bergerac'), ('Côtes de Blaye'), ('Côtes de Bordeaux'), ('Côtes de Bourg'), ('Côtes de Castillon'), ('Côtes de Duras'), ('Côtes de Francs'), ('Côtes de Gascogne'), ('Côtes de Millau'), ('Côtes de Montravel'), ('Côtes de Nuits'), ('Côtes de Provence'), ('Côtes de Toul'), ('Côtes du Forez'), ('Côtes du Frontonnais'), ('Côtes du Jura'), ('Côtes du Marmandais'), ('Côtes du Rhône'), ('Côtes du Rhône-Villages'), ('Côtes du Roussillon'), (
+VALUES ('Arbois'), ('Bandol'), ('Cahors'), ('Chablis'), ('Banyuls'), ('Beaujolais'), ('Bugey'), ('Cassis'), ('Clairette de Bellegarde'), ('Clairette de Die'), ('Clairette du Languedoc'), ('Condrieu'), ('Corbières'), ('Cornas'), ('Costières de Nîmes'), ('Côteaux d''Aix-en-Provence'), ('Côteaux d''Ancenis'), ('Côteaux du Giennois'), ('Côteaux du Languedoc'), ('Coteaux du Layon'), ('Côteaux du Loir'), ('Coteaux du Lyonnais'), ('Côteaux du Quercy'), ('Coteaux du Vendômois'), ('Côteaux du Verdon'), ('Coteaux Varois'), ('Coteaux-du-Layon'), ('Côtes de Beaune'), ('Côtes de Bergerac'), ('Côtes de Blaye'), ('Côtes de Bordeaux'), ('Côtes de Bourg'), ('Côtes de Castillon'), ('Côtes de Duras'), ('Côtes de Francs'), ('Côtes de Gascogne'), ('Côtes de Millau'), ('Côtes de Montravel'), ('Côtes de Nuits'), ('Côtes de Provence'), ('Côtes de Toul'), ('Côtes du Forez'), ('Côtes du Frontonnais'), ('Côtes du Jura'), ('Côtes du Marmandais'), ('Côtes du Rhône'), ('Côtes du Rhône-Villages'), ('Côtes du Roussillon'), (
         'Côtes du Roussillon-Villages'
     ), ('Côtes du Tarn'), ('Côtes du Ventoux'), ('Côtes du Vivarais'), ('Crémant d''Alsace'), ('Crémant de Bourgogne'), ('Crémant de Die'), ('Crémant de Limoux'), ('Crémant de Loire'), ('Crozes-Hermitage'), ('Entre-Deux-Mers'), ('Faugères'), ('Fitou'), ('Fleurie'), ('Floc de Gascogne'), ('Fronton'), ('Gaillac'), ('Haut-Médoc'), ('IGP Vin de Pays d''Oc'), (
         'IGP Vin de Pays de la Loire'
@@ -437,7 +474,7 @@ VALUES ('Arbois'), ('Bandol'), ('Cahors'), ('Banyuls'), ('Beaujolais'), ('Bugey'
         'IGP Vin de Pays du Val de Loire'
     ), ('IGP Vin de Pays du Var'), (
         'IGP Vin de Pays du Vaucluse'
-    ), ('Irouléguy'), ('Jurançon'), ('Lalande-de-Pomerol'), ('Lirac'), ('Madiran'), ('Malepère'), ('Marcillac'), ('Maury'), ('Menetou-Salon'), ('Mercurey'), ('Minervois'), ('Minervois-La Livinière'), ('Montagne-Saint-Émilion'), ('Montlouis-sur-Loire'), ('Morey-Saint-Denis'), ('Morgon'), ('Moulis-en-Médoc'), ('Muscadet'), (
+    ), ('Irouléguy'), ('Jurançon'), ('Lalande-de-Pomerol'), ('Lirac'), ('Madiran'), ('Malepère'), ('Marcillac'), ('Maury'), ('Menetou-Salon'), ('Mercurey'), ('Meursault'), ('Minervois'), ('Minervois-La Livinière'), ('Montagne-Saint-Émilion'), ('Montlouis-sur-Loire'), ('Morey-Saint-Denis'), ('Morgon'), ('Moulis-en-Médoc'), ('Muscadet'), (
         'Muscadet-Côtes de Grandlieu'
     ), (
         'Muscat de Beaumes-de-Venise'
@@ -475,6 +512,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`user` (
+    `inovin`.`user` (
         firstname,
         lastname,
         birth_date,
@@ -493,15 +531,6 @@ VALUES (
         1,
         "Blanc",
         "Je les préfère bien sucrés!!!"
-    ), (
-        "Jérôme",
-        "VILANOVA",
-        "1983-05-11",
-        "jerome.vilanova@gmail.com",
-        "$argon2id$v=19$m=65536,t=3,p=1$2IzUb/JMAlnxRNSHg3g1NQ$zL5OI3I",
-        1,
-        "Rouge",
-        "En toute modestie, je dirai que les vins de Gaillac sont les meilleurs du monde."
     );
 
 -- -----------------------------------------------------
@@ -513,18 +542,26 @@ VALUES (
 CREATE TABLE
     IF NOT EXISTS `inovin`.`workshop` (
         `id` INT NOT NULL AUTO_INCREMENT,
-        `date` DATE NOT NULL,
-        `place` VARCHAR(45) NOT NULL,
+        `datetime` DATETIME NOT NULL,
+        `place` VARCHAR(55) NOT NULL,
         `commentary` LONGTEXT NULL,
-        PRIMARY KEY (`id`)
+        `id_new_wine` INT NOT NULL,
+        PRIMARY KEY (`id`),
+        CONSTRAINT `fk_workshop_new_wine1` FOREIGN KEY (`id_new_wine`) REFERENCES `inovin`.`new_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    `inovin`.`workshop` (date, place, commentary)
+    `inovin`.`workshop` (
+        datetime,
+        place,
+        commentary,
+        id_new_wine
+    )
 VALUES (
-        "2023-06-22",
+        "2023-06-22 16:00:00",
         "Toulouse",
-        "First degustation"
+        "Inauguration du premier atelier",
+        1
     );
 
 -- -----------------------------------------------------
@@ -571,13 +608,12 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`visual_color` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `color` VARCHAR(45) NOT NULL,
-        `img_color` LONGTEXT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.visual_color (color, img_color)
-VALUES ('Cerise', ''), ('Framboise', ''), ('Grenat', ''), ('Pourpre', ''), ('Rouge-noir', ''), ('Rubis', ''), ('Tuilé', ''), ('Violet', '');
+    inovin.visual_color (color)
+VALUES ('Cerise'), ('Framboise'), ('Grenat'), ('Pourpre'), ('Rouge-noir'), ('Rubis'), ('Tuilé'), ('Violet');
 
 -- -----------------------------------------------------
 
@@ -611,7 +647,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`visual_brightness` (`brightness`)
-VALUES ('nette'), ('étincelante'), ('éclatante'), ('brillante'), ('lumineuse'), ('terne');
+VALUES ('Nette'), ('Etincelante'), ('Eclatante'), ('Brillante'), ('Lumineuse'), ('Terne');
 
 -- -----------------------------------------------------
 
@@ -797,10 +833,10 @@ INSERT INTO
 VALUES (
         'Bon',
         1,
+        2,
         1,
-        1,
-        5,
-        'Trop tannique',
+        6,
+        'Vin très tannique et étonnant',
         1,
         1,
         1,
@@ -813,12 +849,156 @@ VALUES (
         1,
         1
     ), (
-        'Bof',
+        'Très bon',
+        1,
+        2,
+        1,
+        8,
+        'Ce vin rouge est très équilibré.',
         1,
         1,
         1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ), (
+        'Pas terrible',
+        1,
+        2,
+        0,
+        4,
+        'Vin fade',
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ), (
+        'Mauvais',
+        1,
+        2,
+        0,
         3,
-        'Ce vin manque de corps.',
+        'Ce vin rouge a une mauvaise odeur.',
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ), (
+        'Parfait',
+        1,
+        2,
+        1,
+        10,
+        'Le meilleur vin de la dégustation.',
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ), (
+        'Excellent',
+        1,
+        1,
+        1,
+        8,
+        'Vin étonnant',
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ), (
+        'Très bon',
+        1,
+        1,
+        0,
+        7,
+        'Ce vin blanc est très équilibré.',
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ), (
+        'Passable',
+        1,
+        1,
+        0,
+        3,
+        'Vin fade',
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ), (
+        'Mauvais',
+        1,
+        1,
+        0,
+        3,
+        'Je n aime pas les parfums dégagés par ce vin blanc',
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ), (
+        'Parfait',
+        1,
+        1,
+        1,
+        9,
+        'Le meilleur vin blanc de la dégustation.',
         1,
         1,
         1,
@@ -841,13 +1021,17 @@ VALUES (
 CREATE TABLE
     IF NOT EXISTS `inovin`.`competition_selection` (
         `id` INT NOT NULL AUTO_INCREMENT,
+        `competition_name` VARCHAR(100) NOT NULL,
         `commentary` LONGTEXT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    `inovin`.`competition_selection` (commentary)
-VALUES ('Excellent vin');
+    `inovin`.`competition_selection` (competition_name, commentary)
+VALUES ('Vinalies France', ''), (
+        'Challenge international du vin',
+        ''
+    );
 
 -- -----------------------------------------------------
 
@@ -862,10 +1046,8 @@ CREATE TABLE
         `selected_for_competition` TINYINT(1) NOT NULL,
         `commentary` LONGTEXT NULL,
         `id_competition_selection` INT NOT NULL,
-        `id_tasting_note` INT NOT NULL,
         PRIMARY KEY (`id`),
-        CONSTRAINT `fk_new_wine_competition_selection1` FOREIGN KEY (`id_competition_selection`) REFERENCES `inovin`.`competition_selection` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_new_wine_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_new_wine_competition_selection1` FOREIGN KEY (`id_competition_selection`) REFERENCES `inovin`.`competition_selection` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 INSERT INTO
@@ -873,10 +1055,29 @@ INSERT INTO
         color,
         selected_for_competition,
         commentary,
-        id_competition_selection,
-        id_tasting_note
+        id_competition_selection
     )
-VALUES ('Rouge', 1, 'Excellent', 1, 1);
+VALUES (
+        'Rouge',
+        1,
+        'Vin réalisé par Monsieur Vilanova - Qualité : Excellente',
+        1
+    ), (
+        'Rouge',
+        0,
+        'Vin réalisé par Monsieur Cassagne - Qualité:  Sublime',
+        2
+    ), ('Rouge', 0, 'Médiocre', 1), (
+        'Blanc',
+        0,
+        'Qualité moyenne',
+        1
+    ), (
+        'Blanc',
+        1,
+        'Vin réalisé par Monsieur Aquilina Parfaitement équilibré',
+        2
+    );
 
 -- -----------------------------------------------------
 
@@ -906,9 +1107,13 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`workshop_has_existingWine` (
         `id_workshop` INT NOT NULL,
         `id_existing_wine` INT NOT NULL,
-        CONSTRAINT `fk_Degustation_has_vin_existant_Degustation1` FOREIGN KEY (`id_workshop`) REFERENCES `inovin`.`workshop` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_Degustation_has_vin_existant_vin_existant1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_workshop_has_existingWine_workshop1` FOREIGN KEY (`id_workshop`) REFERENCES `inovin`.`workshop` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_workshop_has_existingWine_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    inovin.workshop_has_existingWine(id_workshop, id_existing_wine)
+VALUES (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 6), (2, 7), (2, 8), (2, 9), (2, 10);
 
 -- -----------------------------------------------------
 
@@ -920,9 +1125,16 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`tastingnote_has_existingwine` (
         `id_tasting_note` INT NOT NULL,
         `id_existing_wine` INT NOT NULL,
-        CONSTRAINT `fk_fiche_degustation_has_vin_existant_fiche_degustation1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_fiche_degustation_has_vin_existant_vin_existant1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_tasting_note_has_existing_wine_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_tasting_note_has_existing_wine_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    inovin.tastingnote_has_existingwine (
+        id_tasting_note,
+        id_existing_wine
+    )
+VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (10, 10);
 
 -- -----------------------------------------------------
 
@@ -937,6 +1149,8 @@ CREATE TABLE
         CONSTRAINT `fk_CANDIDAT_has_Degustation_CANDIDAT1` FOREIGN KEY (`id_user`) REFERENCES `inovin`.`user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_CANDIDAT_has_Degustation_Degustation1` FOREIGN KEY (`id_workshop`) REFERENCES `inovin`.`workshop` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
+
+INSERT INTO `inovin`.`user_has_workshop` VALUES (1,1),(2,1);
 
 -- -----------------------------------------------------
 
@@ -1002,7 +1216,7 @@ INSERT INTO
         id_existing_wine,
         id_appellation
     )
-VALUES ('1', '3'), ('2', '30'), ('3', '45'), ('3', '46'), ('3', '57'), ('4', '77'), ('4', '87'), ('5', '53'), ('6', '72'), ('7', '52');
+VALUES ('1', '3'), ('2', '31'), ('3', '46'), ('3', '47'), ('3', '58'), ('4', '78'), ('4', '89'), ('5', '54'), ('6', '73'), ('7', '53'), ('8', '4'), ('8', '86'), ('9', '53'), ('10', '68');
 
 -- -----------------------------------------------------
 
@@ -1020,6 +1234,14 @@ CREATE TABLE
         CONSTRAINT `fk_selected_wine_new_wine1` FOREIGN KEY (`id_new_wine`) REFERENCES `inovin`.`new_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_selected_wine_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    inovin.selected_wine (
+        dosage,
+        id_new_wine,
+        id_tasting_note
+    )
+VALUES (75, 1, 1), (87, 1, 2), (88, 1, 5), (70, 5, 6), (87, 5, 7), (93, 5, 10);
 
 -- -----------------------------------------------------
 
@@ -1121,6 +1343,13 @@ VALUES (
         NULL,
         'Alsace',
         'https://www.zindhumbrecht.fr'
+    ), (
+        'Château Soucherie',
+        NULL,
+        NULL,
+        NULL,
+        'Anjou,Loire',
+        'https://www.soucherie.fr/'
     );
 
 SET SQL_MODE=Traditional;
