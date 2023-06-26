@@ -529,6 +529,15 @@ VALUES (
         1,
         "Blanc",
         "Je les préfère bien sucrés!!!"
+    ), (
+        "Jérôme",
+        "VILANOVA",
+        "1983-05-11",
+        "jerome.vilanova@gmail.com",
+        "$argon2id$v=19$m=65536,t=3,p=1$2IzUb/JMAlnxRNSHg3g1NQ$zL5OI3I",
+        1,
+        "Rouge",
+        "En toute modestie, je dirai que les vins de Gaillac sont les meilleurs du monde."
     );
 
 -- -----------------------------------------------------
