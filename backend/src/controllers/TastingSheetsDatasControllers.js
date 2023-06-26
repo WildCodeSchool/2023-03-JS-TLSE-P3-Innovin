@@ -8,7 +8,6 @@ const findTastingSheetsDatas = (req, res) => {
     oa.intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     NULL AS brightness,
     NULL AS tears,
@@ -19,7 +18,6 @@ const findTastingSheetsDatas = (req, res) => {
     NULL AS sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     NULL AS intensity
 FROM
@@ -30,7 +28,6 @@ SELECT
     NULL AS intensity_aromas,
     oc.complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     NULL AS brightness,
     NULL AS tears,
@@ -41,7 +38,6 @@ SELECT
     NULL AS sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     NULL AS intensity
 FROM
@@ -63,7 +59,6 @@ SELECT
     NULL AS sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     NULL AS intensity
 FROM inovin.visual_color vc
@@ -73,7 +68,6 @@ SELECT
     NULL AS intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     vl.limpidity,
     NULL AS brightness,
     NULL AS tears,
@@ -84,7 +78,6 @@ SELECT
     NULL AS sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     NULL AS intensity
 FROM
@@ -95,7 +88,6 @@ SELECT
     NULL AS intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     vb.brightness,
     NULL AS tears,
@@ -106,7 +98,6 @@ SELECT
     NULL AS sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     NULL AS intensity
 FROM
@@ -117,7 +108,6 @@ SELECT
     NULL AS intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     NULL AS brightness,
     vt.tears,
@@ -128,7 +118,6 @@ SELECT
     NULL AS sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     NULL AS intensity
 FROM inovin.visual_tears vt
@@ -138,7 +127,6 @@ SELECT
     NULL AS intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     NULL AS brightness,
     NULL AS tears,
@@ -149,7 +137,6 @@ SELECT
     NULL AS sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     NULL AS intensity
 FROM inovin.taste_intensity ti
@@ -159,7 +146,6 @@ SELECT
     NULL AS intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     NULL AS brightness,
     NULL AS tears,
@@ -170,7 +156,6 @@ SELECT
     NULL AS sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     NULL AS intensity
 FROM
@@ -181,7 +166,6 @@ SELECT
     NULL AS intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     NULL AS brightness,
     NULL AS tears,
@@ -192,7 +176,6 @@ SELECT
     NULL AS sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     NULL AS intensity
 FROM inovin.taste_alcohol ta
@@ -202,7 +185,6 @@ SELECT
     NULL AS intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     NULL AS brightness,
     NULL AS tears,
@@ -213,7 +195,6 @@ SELECT
     NULL AS sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     NULL AS intensity
 FROM inovin.acidity ac
@@ -223,7 +204,6 @@ SELECT
     NULL AS intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     NULL AS brightness,
     NULL AS tears,
@@ -234,7 +214,6 @@ SELECT
     ts.sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     NULL AS intensity
 FROM inovin.taste_sweetness ts
@@ -244,7 +223,6 @@ SELECT
     NULL AS intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     NULL AS brightness,
     NULL AS tears,
@@ -255,7 +233,6 @@ SELECT
     NULL AS sweetness,
     tt.taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     NULL AS intensity
 FROM inovin.taste_tannin tt
@@ -265,7 +242,6 @@ SELECT
     NULL AS intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     NULL AS brightness,
     NULL AS tears,
@@ -287,7 +263,6 @@ SELECT
     NULL AS intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     NULL AS brightness,
     NULL AS tears,
@@ -298,7 +273,6 @@ SELECT
     NULL AS sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     tf.flavor,
     NULL AS intensity
 FROM inovin.taste_flavor tf
@@ -308,7 +282,6 @@ SELECT
     NULL AS intensity_aromas,
     NULL AS complexity,
     NULL AS color,
-    NULL AS img_color,
     NULL AS limpidity,
     NULL AS brightness,
     NULL AS tears,
@@ -319,7 +292,6 @@ SELECT
     NULL AS sweetness,
     NULL AS taste_tannin,
     NULL AS aromas,
-    NULL AS img_url,
     NULL AS flavor,
     vi.intensity
 FROM
