@@ -615,13 +615,12 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`visual_color` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `color` VARCHAR(45) NOT NULL,
-        `img_color` LONGTEXT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.visual_color (color, img_color)
-VALUES ('Cerise', ''), ('Framboise', ''), ('Grenat', ''), ('Pourpre', ''), ('Rouge-noir', ''), ('Rubis', ''), ('Tuilé', ''), ('Violet', '');
+    inovin.visual_color (color)
+VALUES ('Cerise'), ('Framboise'), ('Grenat'), ('Pourpre'), ('Rouge-noir'), ('Rubis'), ('Tuilé'), ('Violet');
 
 -- -----------------------------------------------------
 
@@ -655,7 +654,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`visual_brightness` (`brightness`)
-VALUES ('nette'), ('étincelante'), ('éclatante'), ('brillante'), ('lumineuse'), ('terne');
+VALUES ('Nette'), ('Etincelante'), ('Eclatante'), ('Brillante'), ('Lumineuse'), ('Terne');
 
 -- -----------------------------------------------------
 
