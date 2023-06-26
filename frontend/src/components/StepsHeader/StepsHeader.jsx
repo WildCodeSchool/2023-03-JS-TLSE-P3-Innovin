@@ -6,7 +6,7 @@ import { steps } from "../../Utils";
 function StepsHeader() {
   // ----------------------------------------functions to control the steps----------------------------------------------------
 
-  // Function which verifys if the step is corresponding to the path
+  // Function which verifies if the step is corresponding to the path
   const findPathName = (step) => {
     return step.pathName.includes(window.location.pathname);
   };
