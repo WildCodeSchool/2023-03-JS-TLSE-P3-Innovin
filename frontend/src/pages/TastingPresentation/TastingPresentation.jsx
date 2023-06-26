@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import TastingContext from "./TastingContext";
 import "./TastingPresentation.css";
@@ -8,6 +8,11 @@ import Navbar from "../../components/Navbar/Navbar";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
 export default function TastingPresentation() {
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate("/eye/stage1");
+  };
+
   const { setTastingData } = useContext(TastingContext);
 
   useEffect(() => {
@@ -62,9 +67,9 @@ export default function TastingPresentation() {
           </p>
 
           <div className="button-container">
-            <Link to="/eye/stage1">
-              <ButtonPrimary> Démarrer </ButtonPrimary>
-            </Link>
+            <ButtonPrimary type="submit" onClick={handleNavigate}>
+              Etape suivante
+            </ButtonPrimary>
           </div>
         </div>
       </div>

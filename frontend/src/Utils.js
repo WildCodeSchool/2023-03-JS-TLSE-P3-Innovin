@@ -14,6 +14,7 @@ import intensity from "./assets/Icons/Intensity_Icon.svg";
 import shiny from "./assets/Icons/Shiny_Icon_2.svg";
 import transparency from "./assets/Icons/Transparency_Icon.svg";
 import drop from "./assets/Icons/Drop_Icon.svg";
+import complexity from "./assets/Icons/Complexity_Icon.svg";
 
 // array used to display the colors in the visual stage 1
 const redWineColors = [
@@ -144,4 +145,21 @@ const checkboxes = [
   },
 ];
 
-export { redWineColors, steps, checkboxes };
+//nose//
+
+const noseCheckboxes = [
+  {
+    id: 1,
+    name: "Intensité",
+    iconUrl: intensity,
+    checks: ["Discret", "Ouvert", "Aromatique", "Intense", "Franc"],
+  },
+  {
+    id: 2,
+    name: "Complexité",
+    iconUrl: complexity,
+    checks: ["Simple", "Riche", "Complexe"],
+  },
+];
+
+export { redWineColors, steps, checkboxes, noseCheckboxes };

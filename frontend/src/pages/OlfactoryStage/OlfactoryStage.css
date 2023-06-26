@@ -1,6 +1,6 @@
 .page-container {
   align-items: center;
-  background: no-repeat left url("../../assets/Red_Wine_Colors/Pourpre.png"),
+  background: no-repeat left url("../../assets/Red_Wine_Colors/Framboise.png"),
     var(--blackBgGradient);
   border: 1px none;
   display: flex;
@@ -9,47 +9,21 @@
   width: 100vw;
 }
 
-.wine {
-  align-items: flex-end;
-  background-color: linear-gradient(141.47deg, #222222 3.84%, #12110b 93.65%);
-  border: 2px solid;
-  border-color: var(--primaryColor);
-  border-radius: 5px;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-left: 1px;
-  margin-top: 31px;
-  padding: 8px 24px;
-  position: relative;
-  width: fit-content;
+.titleContainer {
+  margin: 2rem min(2rem, var(--marginPageContent));
+  margin-bottom: 5rem;
 }
 
-.wine h2 {
+.checkboxes {
   color: white;
-  font-family: var(--font-family-kaisei_tokumin);
-  font-size: var(--font-size-l2);
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-top: -2px;
-  position: relative;
-  text-align: center;
-  width: fit-content;
+  font-family: var(--fontFamilyText);
+  margin-top: 2rem;
 }
 
-.slider {
-  align-items: center;
-  display: flex;
-  gap: 48px;
-  justify-content: center;
-  margin-right: 1px;
-  margin-top: 37px;
-  position: relative;
-  width: fit-content;
-  border: var(--primaryColor) 2px solid;
-  width: 200px;
-  height: 60px;
+.img,
+picture,
+svg {
+  color: var(--primaryColor);
 }
 
 .nose1,
@@ -82,24 +56,6 @@ h2 {
   font-family: var(--fontFamilyText);
   font-size: 1rem;
   margin-top: 10px;
-}
-
-.checkboxIntensity {
-  align-items: center;
-  display: flex;
-  width: 220px;
-  height: 250px;
-  background: purple;
-  margin-top: 2rem;
-}
-
-.checkboxComplexity {
-  align-items: center;
-  display: flex;
-  width: 220px;
-  height: 250px;
-  background: purple;
-  margin-top: 2rem;
 }
 
 .aromas {
@@ -175,7 +131,7 @@ h2 {
   content: "";
   position: absolute;
   top: -4px;
-  left: 16px;
+  left: 12px;
   width: 112px;
   height: 112px;
   outline: 1px solid var(--primaryColor);
@@ -214,7 +170,7 @@ h2 {
   text-align: center;
   padding: 3px;
   background: var(--blackBgGradientSmooth);
-  width: 72%;
+  width: 76%;
   border-radius: 3px;
 }
 
@@ -229,8 +185,11 @@ h2 {
   margin: 2rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and ((min-width: 1024px)) {
   .page-container {
+    background: no-repeat top 20em right 58em
+        url("../../assets/Red_Wine_Colors/Framboise.png"),
+      no-repeat bottom 9em left 26em, var(--blackBgGradient);
   }
 
   .nose1,
@@ -271,7 +230,7 @@ h2 {
   .aromasSelection .round.selected:before {
     content: "";
     position: absolute;
-    top: 16px;
+    top: 12px;
     left: 50%;
 
     transform: translateX(-50%);

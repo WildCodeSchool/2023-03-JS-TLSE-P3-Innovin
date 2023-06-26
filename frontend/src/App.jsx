@@ -49,7 +49,7 @@ function App() {
                 element={<VisualStage2 userToken={userToken} />}
               />
               <Route
-                path="/nose"
+                path="nose/stage1"
                 element={<OlfactoryStage userToken={userToken} />}
               />
             </Routes>

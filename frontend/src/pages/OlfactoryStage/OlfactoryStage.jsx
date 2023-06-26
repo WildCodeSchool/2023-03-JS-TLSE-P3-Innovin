@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import "./OlfactoryStage.css";
+import { noseCheckboxes } from "../../Utils";
+import StepsHeader from "../../components/StepsHeader/StepsHeader";
+import Checkboxes from "../../components/Checkboxes/Checkboxes";
 import vegetal from "../../assets/Flavor_Img/Vegetal.jpg";
 import spice from "../../assets/Flavor_Img/Spices.jpg";
 import coffee from "../../assets/Flavor_Img/Coffee.jpg";
@@ -13,6 +16,19 @@ import redFruits from "../../assets/Flavor_Img/Red_Fruits.jpg";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
 
 export default function OlfactoryStage() {
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate("mouth/stage1");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const formJson = Object.fromEntries(formData.entries());
+    console.info(formJson);
+  };
   const [selectedAromas, setSelectedAromas] = useState([]);
 
   const handleAromaClick = (aroma) => {
@@ -35,10 +51,8 @@ export default function OlfactoryStage() {
 
   return (
     <div className="page-container">
-      <div className="wine">
-        <h2> Vin N1</h2>
-      </div>
       <TastingHeaderTitle />
+      <StepsHeader />
       <div className="nose1">
         <h2>Je devine l’intensité et la complexité de ses arômes</h2>
         <p>
@@ -47,8 +61,13 @@ export default function OlfactoryStage() {
         </p>
       </div>
       <div className="checkbox">
-        <div className="checkboxIntensity">ok</div>
-        <div className="checkboxComplexity">ok</div>
+        <form action="" className="formStage2" onSubmit={handleSubmit}>
+          <div className="checkboxes">
+            {noseCheckboxes.map((card) => (
+              <Checkboxes key={card.id} card={card} />
+            ))}
+          </div>
+        </form>
       </div>
       <div className="nose2">
         <h2>Je libère ses arômes</h2>
@@ -164,9 +183,9 @@ export default function OlfactoryStage() {
         </div>
       </div>
       <div className="button-container">
-        <Link to="/eye/stage1">
-          <ButtonPrimary> Etape suivante </ButtonPrimary>
-        </Link>
+        <ButtonPrimary type="submit" onClick={handleNavigate}>
+          Etape suivante
+        </ButtonPrimary>
       </div>
     </div>
   );
