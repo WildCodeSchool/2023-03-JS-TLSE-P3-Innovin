@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <nav className="navBar">
       <div className="logo-h1">
-        <img className="logo-nav" src={logo} alt="" />
+        <img className="logo-nav" src={logo} alt="innovin logo" />
         <h1>INOVIN</h1>
       </div>
 
