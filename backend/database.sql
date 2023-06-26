@@ -20,6 +20,98 @@ USE `inovin` ;
 
 -- -----------------------------------------------------
 
+-- Table `inovin`.`winery`
+
+-- -----------------------------------------------------
+
+CREATE TABLE
+    IF NOT EXISTS `inovin`.`winery` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `name` VARCHAR(45) NOT NULL,
+        `productor_name` VARCHAR(45) NULL,
+        `address` VARCHAR(100) NULL,
+        `zip_code` VARCHAR(45) NULL,
+        `city` VARCHAR(45) NULL,
+        `website` LONGTEXT NULL,
+        PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`winery` (
+        name,
+        productor_name,
+        address,
+        zip_code,
+        city,
+        website
+    )
+VALUES (
+        'Château de Chambert',
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        'https://www.chateaudechambert.com'
+    ), (
+        'Château Latour',
+        NULL,
+        NULL,
+        NULL,
+        'Pauillac',
+        'https://www.chateau-latour.com'
+    ), (
+        'Domaine Jean-Louis Chave',
+        NULL,
+        NULL,
+        NULL,
+        'Hermitage',
+        NULL
+    ), (
+        'Domaine Leflaive',
+        NULL,
+        NULL,
+        NULL,
+        'Puligny-Montrachet',
+        NULL
+    ), (
+        'Château Pétrus',
+        NULL,
+        NULL,
+        NULL,
+        'Pomerol',
+        NULL
+    ), (
+        'Domaine de la Romanée-Conti',
+        NULL,
+        NULL,
+        NULL,
+        'Vosne-Romanée',
+        NULL
+    ), (
+        'Domaine Pascal Jolivet',
+        NULL,
+        NULL,
+        NULL,
+        'Sancerre',
+        'http://www.pascaljolivet.com'
+    ), (
+        'Domaine Zind-Humbrecht',
+        NULL,
+        NULL,
+        NULL,
+        'Alsace',
+        'https://www.zindhumbrecht.fr'
+    ), (
+        'Château Soucherie',
+        NULL,
+        NULL,
+        NULL,
+        'Anjou,Loire',
+        'https://www.soucherie.fr/'
+    );
+
+-- -----------------------------------------------------
+
 -- Table `inovin`.`wine_region`
 
 -- -----------------------------------------------------
@@ -45,7 +137,7 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`grape_variety` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `name` VARCHAR(45) NOT NULL,
-        `description` VARCHAR(300) NULL,
+        `description` LONGTEXT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
@@ -68,13 +160,13 @@ VALUES (
         'Cépage blanc du Jura, donne des vins aromatiques avec une acidité rafraîchissante'
     ), (
         'Auxerrois',
-        'Cépage blanc de la région d\'Alsace, souvent utilisé pour produire des vins d\'assemblage avec le Pinot Blanc'
+        "Cépage blanc de la région d'Alsace, souvent utilisé pour produire des vins d'assemblage avec le Pinot Blanc"
     ), (
         'Baco Blanc',
         'Cépage blanc utilisé principalement pour produire le célèbre Armagnac'
     ), (
         'Baco Noir',
-        'Cépage rouge hybride, utilisé notamment dans la production d\'Armagnac et de vins de table'
+        "Cépage rouge hybride, utilisé notamment dans la production d'Armagnac et de vins de table"
     ), (
         'Barbera',
         'Cépage rouge italien largement cultivé en Piémont, produit des vins fruités et acides'
@@ -89,7 +181,7 @@ VALUES (
         'Cépage rouge espagnol cultivé dans la région de Valence, donne des vins riches en couleur et en tanins'
     ), (
         'Bonarda',
-        'Cépage rouge d\'origine italienne, également cultivé en Argentine, produit des vins fruités et juteux'
+        "Cépage rouge d'origine italienne, également cultivé en Argentine, produit des vins fruités et juteux"
     ), (
         'Braquet',
         'Cépage rouge du Sud de la France, utilisé pour produire des vins rosés aromatiques et fruités'
@@ -146,13 +238,13 @@ VALUES (
         'Cépage rouge du Sud-Ouest de la France, utilisé pour produire des vins rouges corsés et épicés'
     ), (
         'Folle Blanche',
-        'Cépage blanc principalement utilisé dans la production d\'Armagnac et de Cognac'
+        "Cépage blanc principalement utilisé dans la production d'Armagnac et de Cognac"
     ), (
         'Gamay',
         'Cépage rouge emblématique du Beaujolais, produit des vins fruités et légers'
     ), (
         'Gewurztraminer',
-        'Cépage blanc aromatique originaire d\'Alsace, donne des vins riches en arômes de litchi, de rose et d\'épices'
+        "Cépage blanc aromatique originaire d\'Alsace, donne des vins riches en arômes de litchi, de rose et d'épices"
     ), (
         'Grenache',
         'Cépage rouge méditerranéen, utilisé dans de nombreuses régions viticoles pour produire des vins puissants et fruités'
@@ -166,7 +258,7 @@ VALUES (
         'Jacquère',
         'Cépage blanc de Savoie, utilisé pour produire des vins frais et légers'
     ), (
-        'Len de l\'El',
+        "Len de l'El",
         'Cépage blanc du Sud-Ouest de la France, utilisé pour produire des vins blancs secs et doux'
     ), (
         'Malbec',
@@ -205,7 +297,7 @@ VALUES (
         'Muscat Blanc à Petits Grains',
         'Cépage blanc aromatique, utilisé pour produire des vins doux, moelleux et des vins effervescents'
     ), (
-        'Muscat d\'Alexandrie',
+        "Muscat d'Alexandrie",
         'Cépage blanc utilisé pour produire des vins doux et moelleux, notamment dans le sud de la France et en Espagne'
     ), (
         'Nebbiolo',
@@ -226,7 +318,7 @@ VALUES (
         'Petit Verdot',
         'Cépage rouge utilisé principalement dans les assemblages bordelais, donne des vins riches en couleur et en tanins'
     ), (
-        'Pineau d\'Aunis',
+        "Pineau d'Aunis",
         'Cépage rouge de la Vallée de la Loire, produit des vins légers et épicés'
     ), (
         'Pinot Blanc',
@@ -278,7 +370,7 @@ VALUES (
         'Cépage rouge du Jura, donne des vins rouges légers et aromatiques'
     ), (
         'Ugni Blanc',
-        'Cépage blanc principalement utilisé pour produire des vins blancs secs et des eaux-de-vie, notamment le Cognac et l\'Armagnac'
+        "Cépage blanc principalement utilisé pour produire des vins blancs secs et des eaux-de-vie, notamment le Cognac et l'Armagnac"
     ), (
         'Verdejo',
         'Cépage blanc espagnol, utilisé notamment dans la production de vins de la région de Rueda'
@@ -405,7 +497,7 @@ VALUES (
         '',
         '',
         '',
-        17,
+        1,
         34,
         8
     ), (
@@ -427,7 +519,7 @@ VALUES (
         '',
         '',
         '',
-        17,
+        1,
         61,
         8
     ), (
@@ -538,6 +630,73 @@ VALUES (
         1,
         "Rouge",
         "En toute modestie, je dirai que les vins de Gaillac sont les meilleurs du monde."
+    );
+
+-- -----------------------------------------------------
+
+-- Table `inovin`.`competition_selection`
+
+-- -----------------------------------------------------
+
+CREATE TABLE
+    IF NOT EXISTS `inovin`.`competition_selection` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `competition_name` VARCHAR(100) NOT NULL,
+        `commentary` LONGTEXT NULL,
+        PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`competition_selection` (competition_name, commentary)
+VALUES ('Vinalies France', ''), (
+        'Challenge international du vin',
+        ''
+    );
+
+-- -----------------------------------------------------
+
+-- Table `inovin`.`new_wine`
+
+-- -----------------------------------------------------
+
+CREATE TABLE
+    IF NOT EXISTS `inovin`.`new_wine` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `color` VARCHAR(45) NOT NULL,
+        `selected_for_competition` TINYINT(1) NOT NULL,
+        `commentary` LONGTEXT NULL,
+        `id_competition_selection` INT NOT NULL,
+        PRIMARY KEY (`id`),
+        CONSTRAINT `fk_new_wine_competition_selection1` FOREIGN KEY (`id_competition_selection`) REFERENCES `inovin`.`competition_selection` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+    ) ENGINE = InnoDB;
+
+INSERT INTO
+    `inovin`.`new_wine`(
+        color,
+        selected_for_competition,
+        commentary,
+        id_competition_selection
+    )
+VALUES (
+        'Rouge',
+        1,
+        'Vin réalisé par Monsieur Vilanova - Qualité : Excellente',
+        1
+    ), (
+        'Rouge',
+        0,
+        'Vin réalisé par Monsieur Cassagne - Qualité:  Sublime',
+        2
+    ), ('Rouge', 0, 'Médiocre', 1), (
+        'Blanc',
+        0,
+        'Qualité moyenne',
+        1
+    ), (
+        'Blanc',
+        1,
+        'Vin réalisé par Monsieur Aquilina Parfaitement équilibré',
+        2
     );
 
 -- -----------------------------------------------------
@@ -1026,73 +1185,6 @@ VALUES (
 
 -- -----------------------------------------------------
 
--- Table `inovin`.`competition_selection`
-
--- -----------------------------------------------------
-
-CREATE TABLE
-    IF NOT EXISTS `inovin`.`competition_selection` (
-        `id` INT NOT NULL AUTO_INCREMENT,
-        `competition_name` VARCHAR(100) NOT NULL,
-        `commentary` LONGTEXT NULL,
-        PRIMARY KEY (`id`)
-    ) ENGINE = InnoDB;
-
-INSERT INTO
-    `inovin`.`competition_selection` (competition_name, commentary)
-VALUES ('Vinalies France', ''), (
-        'Challenge international du vin',
-        ''
-    );
-
--- -----------------------------------------------------
-
--- Table `inovin`.`new_wine`
-
--- -----------------------------------------------------
-
-CREATE TABLE
-    IF NOT EXISTS `inovin`.`new_wine` (
-        `id` INT NOT NULL AUTO_INCREMENT,
-        `color` VARCHAR(45) NOT NULL,
-        `selected_for_competition` TINYINT(1) NOT NULL,
-        `commentary` LONGTEXT NULL,
-        `id_competition_selection` INT NOT NULL,
-        PRIMARY KEY (`id`),
-        CONSTRAINT `fk_new_wine_competition_selection1` FOREIGN KEY (`id_competition_selection`) REFERENCES `inovin`.`competition_selection` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-    ) ENGINE = InnoDB;
-
-INSERT INTO
-    `inovin`.`new_wine`(
-        color,
-        selected_for_competition,
-        commentary,
-        id_competition_selection
-    )
-VALUES (
-        'Rouge',
-        1,
-        'Vin réalisé par Monsieur Vilanova - Qualité : Excellente',
-        1
-    ), (
-        'Rouge',
-        0,
-        'Vin réalisé par Monsieur Cassagne - Qualité:  Sublime',
-        2
-    ), ('Rouge', 0, 'Médiocre', 1), (
-        'Blanc',
-        0,
-        'Qualité moyenne',
-        1
-    ), (
-        'Blanc',
-        1,
-        'Vin réalisé par Monsieur Aquilina Parfaitement équilibré',
-        2
-    );
-
--- -----------------------------------------------------
-
 -- Table `inovin`.`olfactive_aromas`
 
 -- -----------------------------------------------------
@@ -1271,98 +1363,6 @@ CREATE TABLE
 INSERT INTO
     inovin.visual_intensity (intensity)
 VALUES ('Claire'), ('Soutenue'), ('Intense'), ('Pâle'), ('Foncée'), ('Profonde');
-
--- -----------------------------------------------------
-
--- Table `inovin`.`winery`
-
--- -----------------------------------------------------
-
-CREATE TABLE
-    IF NOT EXISTS `inovin`.`winery` (
-        `id` INT NOT NULL AUTO_INCREMENT,
-        `name` VARCHAR(45) NOT NULL,
-        `productor_name` VARCHAR(45) NULL,
-        `address` VARCHAR(100) NULL,
-        `zip_code` VARCHAR(45) NULL,
-        `city` VARCHAR(45) NULL,
-        `website` LONGTEXT NULL,
-        PRIMARY KEY (`id`)
-    ) ENGINE = InnoDB;
-
-INSERT INTO
-    `inovin`.`winery` (
-        name,
-        productor_name,
-        address,
-        zip_code,
-        city,
-        website
-    )
-VALUES (
-        'Château de Chambert',
-        NULL,
-        NULL,
-        NULL,
-        NULL,
-        'https://www.chateaudechambert.com'
-    ), (
-        'Château Latour',
-        NULL,
-        NULL,
-        NULL,
-        'Pauillac',
-        'https://www.chateau-latour.com'
-    ), (
-        'Domaine Jean-Louis Chave',
-        NULL,
-        NULL,
-        NULL,
-        'Hermitage',
-        NULL
-    ), (
-        'Domaine Leflaive',
-        NULL,
-        NULL,
-        NULL,
-        'Puligny-Montrachet',
-        NULL
-    ), (
-        'Château Pétrus',
-        NULL,
-        NULL,
-        NULL,
-        'Pomerol',
-        NULL
-    ), (
-        'Domaine de la Romanée-Conti',
-        NULL,
-        NULL,
-        NULL,
-        'Vosne-Romanée',
-        NULL
-    ), (
-        'Domaine Pascal Jolivet',
-        NULL,
-        NULL,
-        NULL,
-        'Sancerre',
-        'http://www.pascaljolivet.com'
-    ), (
-        'Domaine Zind-Humbrecht',
-        NULL,
-        NULL,
-        NULL,
-        'Alsace',
-        'https://www.zindhumbrecht.fr'
-    ), (
-        'Château Soucherie',
-        NULL,
-        NULL,
-        NULL,
-        'Anjou,Loire',
-        'https://www.soucherie.fr/'
-    );
 
 SET SQL_MODE=Traditional;
 
