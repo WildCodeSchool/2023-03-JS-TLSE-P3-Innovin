@@ -38,6 +38,7 @@ const WineRegionManager = require("./WineRegionManager");
 const WorkshopManager = require("./WorkshopManager");
 const NewWineManager = require("./NewWineManager");
 const CompetitionSelectionManager = require("./CompetitionSelectionManager");
+const WorkshopHasExistingWineManager = require("./WorkshopHasExistingWineManager");
 
 models.item = new ItemManager();
 models.item.setDatabase(pool);
@@ -59,6 +60,9 @@ models.wineRegion.setDatabase(pool);
 
 models.workshop = new WorkshopManager();
 models.workshop.setDatabase(pool);
+
+models.workshopHasExistingWine = new WorkshopHasExistingWineManager();
+models.workshopHasExistingWine.setDatabase(pool);
 
 models.newWine = new NewWineManager();
 models.newWine.setDatabase(pool);
