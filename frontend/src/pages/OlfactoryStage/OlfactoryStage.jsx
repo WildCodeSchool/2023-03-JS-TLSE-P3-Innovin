@@ -133,7 +133,7 @@ export default function OlfactoryStage() {
               onKeyDown={handleKeyDown("coffee")}
             >
               <img src={coffee} alt="coffee" />
-              <span className="aroma-name">Café</span>
+              <span className="aroma-name">Torréfié</span>
             </div>
             <div
               className={`round aroma-item ${

@@ -1,6 +1,7 @@
 .page-container {
   align-items: center;
-  background: linear-gradient(141.47deg, #222222 3.84%, #12110b 93.65%);
+  background: no-repeat left url("../../assets/Red_Wine_Colors/Pourpre.png"),
+    var(--blackBgGradient);
   border: 1px none;
   display: flex;
   flex-direction: column;
@@ -103,11 +104,14 @@ h2 {
 
 .aromas {
   backdrop-filter: blur (10px);
-  background-color: rgba(34, 34, 34, 1);
+  background: var(--blackBgGradientSmooth);
+  box-shadow: var(--shadow);
+
   border-radius: 5px;
-  box-shadow: 0px 5px 6px 2px;
+  backdrop-filter: var(--bgBlur);
   margin-top: 2rem;
   margin-bottom: 2rem;
+  animation: none;
 }
 
 .aromas h3 {
@@ -126,6 +130,8 @@ h2 {
   border-radius: 60px;
   margin: 20px;
   transition: border-color 0.3s, box-shadow 0.3s;
+  position: relative;
+  object-fit: cover;
 }
 
 .aromas img.selected {
@@ -168,7 +174,7 @@ h2 {
   content: "";
   position: absolute;
   top: -4px;
-  left: 15px;
+  left: 16px;
   width: 112px;
   height: 112px;
   outline: 1px solid var(--primaryColor);
@@ -201,16 +207,14 @@ h2 {
   transform: translate(-50%, -50%);
   font-family: var(--fontFamilyTitle);
   font-weight: 500;
-  text-shadow: #12110b 2px;
-  background: linear-gradient(
-    141.47deg,
-    #222222 3.84%,
-    #12110b 93.65%,
-    blur (10px)
-  );
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3px;
+  background: var(--blackBgGradientSmooth);
   width: 72%;
-  padding-left: 27px;
+  border-radius: 3px;
 }
 
 .colonne1 {
@@ -226,7 +230,6 @@ h2 {
 
 @media screen and (min-width: 768px) {
   .page-container {
-    height: 100%;
   }
 
   .nose1,
@@ -240,6 +243,7 @@ h2 {
   .nose2,
   p {
     width: 75%;
+    font-size: 1rem;
   }
 
   .checkbox {
@@ -261,10 +265,6 @@ h2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
-
-  .page-container {
-    height: 100%;
   }
 
   .aromasSelection .round.selected:before {

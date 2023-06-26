@@ -1,13 +1,14 @@
 .start-degust {
   align-items: flex-end;
   background-image: url(../../assets/Wine_Img/unsplash_VuZ9U7cWqc8.jpg);
+  object-fit: cover;
   background-position: 50% 50%;
   background-size: cover;
   border: 1px none;
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 .page-content {
@@ -17,7 +18,7 @@
   backdrop-filter: var(--bgBlur);
   display: flex;
   gap: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding: 17px 24px;
   margin: 25px;
 
@@ -76,15 +77,15 @@
   .start-degust {
     display: flex;
     align-items: center;
-    width: 100%;
 
+    height: 100%;
     background-position: center;
   }
 
   .page-content {
     display: flex;
 
-    overflow: hidden;
+    /* overflow: hidden; */
     padding: 40px 89px;
     height: auto;
 
