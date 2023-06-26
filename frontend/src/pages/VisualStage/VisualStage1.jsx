@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { redWineColors } from "../../Utils";
 import TastingNoteContext from "../../contexts/TastingNoteContext";
+import TastingContext from "../TastingPresentation/TastingContext";
 import "./VisualStage1.css";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
@@ -11,6 +12,10 @@ function VisualStage1() {
   const [selectedButton, setSelectedButton] = useState(null);
   const tastingNoteValue = useContext(TastingNoteContext);
   const { tastingNote, setTastingNote } = tastingNoteValue;
+
+  const { tastingData } = useContext(TastingContext);
+
+  console.info(tastingData);
 
   // ------------------------------------handle functions for buttons--------------------------------------------------
   const handleClick = (index) => {
