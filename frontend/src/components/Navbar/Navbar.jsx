@@ -20,7 +20,7 @@ export default function Navbar() {
       <ul className={`navbarpoppins ${isMenuOpen ? "open" : ""}`}>
         <div className="link">
           <li className="navbar-link">
-            <Link to="/">Acceuil</Link>
+            <Link to="/">Accueil</Link>
           </li>
           <li className="navbar-link">
             <Link to="/carte">Carte</Link>
