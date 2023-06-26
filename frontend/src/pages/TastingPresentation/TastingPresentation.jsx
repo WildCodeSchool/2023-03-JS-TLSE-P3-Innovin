@@ -41,7 +41,7 @@ export default function TastingPresentation() {
     <TastingProvider>
       <div className="start-degust">
         <Navbar />
-        <img className="logo" src={logo} alt="" />
+        <img className="logo" src={logo} alt="innovin logo" />
         <div className="page-content">
           <div className="box">
             <h1 className="title">Dégustation</h1>
