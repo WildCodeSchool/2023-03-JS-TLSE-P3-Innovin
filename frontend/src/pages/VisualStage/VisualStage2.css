@@ -1,5 +1,6 @@
 .visualStage2,
-.contentStage2 {
+.contentStage2,
+.formStage2 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,9 +17,13 @@
 }
 
 .contentStage2 {
-  gap: 4rem;
   margin: 2rem min(2rem, var(--marginPageContent));
   margin-bottom: 5rem;
+}
+
+.formStage2,
+.contentStage2 {
+  gap: 4rem;
 }
 
 .checkboxes {
@@ -39,7 +44,7 @@
         url("../../assets/Gold_Blotches/Watercolor_Blotch_4.png"),
       var(--blackBgGradient);
   }
-  .contentStage1 {
+  .contentStage2 {
     gap: 5rem;
   }
 }

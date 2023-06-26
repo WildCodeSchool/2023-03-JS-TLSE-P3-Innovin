@@ -13,6 +13,19 @@ function VisualStage2() {
     navigate("/nose/stage1");
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // You can pass formData as a fetch body directly:
+    // fetch('/some-api', { method: form.method, body: formData });
+
+    // Or you can work with it as a plain object:
+    const formJson = Object.fromEntries(formData.entries());
+    console.info(formJson);
+  };
+
   return (
     <div className="visualStage2">
       <div className="contentStage2">
@@ -34,14 +47,16 @@ function VisualStage2() {
             sa texture.
           </p>
         </div>
-        <div className="checkboxes">
-          {checkboxes.map((card) => (
-            <Checkboxes key={card.id} card={card} />
-          ))}
-        </div>
-        <ButtonPrimary type="button" onClick={handleNavigate}>
-          Etape suivante
-        </ButtonPrimary>
+        <form action="" className="formStage2" onSubmit={handleSubmit}>
+          <div className="checkboxes">
+            {checkboxes.map((card) => (
+              <Checkboxes key={card.id} card={card} />
+            ))}
+          </div>
+          <ButtonPrimary type="submit" onClick={handleNavigate}>
+            Etape suivante
+          </ButtonPrimary>
+        </form>
       </div>
     </div>
   );

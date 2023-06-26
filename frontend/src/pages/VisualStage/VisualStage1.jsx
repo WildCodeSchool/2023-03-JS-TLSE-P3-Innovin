@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { redWineColors } from "../../Utils";
+import TastingNoteContext from "../../contexts/TastingNoteContext";
 import "./VisualStage1.css";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
@@ -8,10 +9,20 @@ import TastingHeaderTitle from "../../components/TastingHeaderTitle";
 
 function VisualStage1() {
   const [selectedButton, setSelectedButton] = useState(null);
+  const tastingNoteValue = useContext(TastingNoteContext);
+  const { tastingNote, setTastingNote } = tastingNoteValue;
 
-  // ------------------------------------handle functions forbuttons--------------------------------------------------
+  // ------------------------------------handle functions for buttons--------------------------------------------------
   const handleClick = (index) => {
     setSelectedButton(index);
+  };
+
+  const handleFillNote = (e, value) => {
+    e.preventDefault();
+    setTastingNote({
+      ...tastingNote,
+      idVisualColor: value,
+    });
   };
 
   const navigate = useNavigate();
@@ -47,8 +58,12 @@ function VisualStage1() {
             <button
               key={el.id}
               type="button"
-              onClick={() => handleClick(index)}
+              onClick={(e) => {
+                handleClick(index);
+                handleFillNote(e, el.value);
+              }}
               className="blotch"
+              value={el.colorName}
             >
               {" "}
               <img src={el.blotch} alt="wine color" />

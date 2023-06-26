@@ -4,6 +4,10 @@ import PropTypes from "prop-types";
 function Checkboxes({ card }) {
   const { name, iconUrl, checks } = card;
 
+  const handleChange = (e) => {
+    console.warn(e.target.value);
+  };
+
   return (
     <div className="checkboxCard">
       <div className="cardTitle">
@@ -14,6 +18,7 @@ function Checkboxes({ card }) {
         {checks.map((check) => (
           <label className="checkboxLabel" htmlFor={check}>
             <input
+              onChange={handleChange}
               type="radio"
               id={check}
               name={name}
