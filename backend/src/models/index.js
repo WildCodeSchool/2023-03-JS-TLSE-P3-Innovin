@@ -39,6 +39,7 @@ const WorkshopManager = require("./WorkshopManager");
 const NewWineManager = require("./NewWineManager");
 const CompetitionSelectionManager = require("./CompetitionSelectionManager");
 
+
 models.item = new ItemManager();
 models.item.setDatabase(pool);
 
