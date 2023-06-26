@@ -10,7 +10,7 @@ import TastingHeaderTitle from "../../components/TastingHeaderTitle";
 
 function VisualStage1() {
   const [selectedButton, setSelectedButton] = useState(null);
-  const [colors, setColors] = useState(redWineColors);
+  // const [colors, setColors] = useState(redWineColors);
   const tastingNoteValue = useContext(TastingNoteContext);
   const { tastingNote, setTastingNote } = tastingNoteValue;
 
@@ -18,17 +18,17 @@ function VisualStage1() {
 
   console.info(tastingData.color);
 
-  const WineColors = () => {
-    const colors = tastingData.color;
+  // const WineColors = () => {
+  //   const colors = tastingData.color;
 
-    colors.map((color) => {
-      let id = 0;
-      return {
-        id: id++,
-        name: color,
-      };
-    });
-  };
+  //   colors.map((color) => {
+  //     let id = 0;
+  //     return {
+  //       id: id++,
+  //       name: color,
+  //     };
+  //   });
+  // };
 
   // ------------------------------------handle functions for buttons--------------------------------------------------
   const handleClick = (index) => {
