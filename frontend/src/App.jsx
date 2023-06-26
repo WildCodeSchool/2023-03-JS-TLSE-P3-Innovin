@@ -30,10 +30,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
-          {/* <Route
+          <Route
             path="/tasting"
             element={<TastingPresentation userToken={userToken} />}
-          /> */}
+          />
           <Route
             path="/eye/stage1"
             element={<VisualStage1 userToken={userToken} />}

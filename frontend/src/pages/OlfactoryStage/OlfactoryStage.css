@@ -202,10 +202,15 @@ h2 {
   font-family: var(--fontFamilyTitle);
   font-weight: 500;
   text-shadow: #12110b 2px;
-  background: linear-gradient(141.47deg, #222222 3.84%, #12110b 93.65%);
-  backdrop-filter: var(--bgBlur);
+  background: linear-gradient(
+    141.47deg,
+    #222222 3.84%,
+    #12110b 93.65%,
+    blur (10px)
+  );
+
   width: 72%;
-  align-self: center;
+  padding-left: 27px;
 }
 
 .colonne1 {
