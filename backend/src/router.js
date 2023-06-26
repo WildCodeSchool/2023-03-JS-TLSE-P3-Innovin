@@ -13,6 +13,7 @@ const TastingSheetsDatasControllers = require("./controllers/TastingSheetsDatasC
 const AppellationControllers = require("./controllers/AppellationControllers");
 const WorkshopControllers = require("./controllers/WorkshopControllers");
 const NewWineControllers = require("./controllers/NewWineControllers");
+const CompetitionSelectionControllers = require("./controllers/CompetitionSelectionControllers");
 
 const { verifyAdminCredentials } = UserControllers;
 
@@ -72,5 +73,13 @@ router.delete("/workshop/:id", WorkshopControllers.destroy);
 router.put("/newwine/:id", NewWineControllers.edit);
 router.post("/newwine", NewWineControllers.add);
 router.delete("/newwine/:id", NewWineControllers.destroy);
+router.get("/competitionselection", CompetitionSelectionControllers.browse);
+router.get("/competitionselection/:id", CompetitionSelectionControllers.read);
+router.put("/competitionselection/:id", CompetitionSelectionControllers.edit);
+router.post("/competitionselection", CompetitionSelectionControllers.add);
+router.delete(
+  "/competitionselection/:id",
+  CompetitionSelectionControllers.destroy
+);
 
 module.exports = router;
