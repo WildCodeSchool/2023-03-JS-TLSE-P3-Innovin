@@ -132,6 +132,7 @@ h2 {
   transition: border-color 0.3s, box-shadow 0.3s;
   position: relative;
   object-fit: cover;
+  margin: 1rem;
 }
 
 .aromas img.selected {

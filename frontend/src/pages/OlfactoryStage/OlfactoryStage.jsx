@@ -10,6 +10,7 @@ import flower from "../../assets/Flavor_Img/Flower.jpg";
 import mineral from "../../assets/Flavor_Img/Mineral.jpg";
 import wood from "../../assets/Flavor_Img/Wood.jpg";
 import redFruits from "../../assets/Flavor_Img/Red_Fruits.jpg";
+import TastingHeaderTitle from "../../components/TastingHeaderTitle";
 
 export default function OlfactoryStage() {
   const [selectedAromas, setSelectedAromas] = useState([]);
@@ -37,7 +38,7 @@ export default function OlfactoryStage() {
       <div className="wine">
         <h2> Vin N1</h2>
       </div>
-      <div className="slider">o o o o</div>
+      <TastingHeaderTitle />
       <div className="nose1">
         <h2>Je devine l’intensité et la complexité de ses arômes</h2>
         <p>
