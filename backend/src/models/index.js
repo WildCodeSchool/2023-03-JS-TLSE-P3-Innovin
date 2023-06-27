@@ -39,6 +39,10 @@ const WorkshopManager = require("./WorkshopManager");
 const NewWineManager = require("./NewWineManager");
 const CompetitionSelectionManager = require("./CompetitionSelectionManager");
 const WorkshopHasExistingWineManager = require("./WorkshopHasExistingWineManager");
+const VisualManager = require("./VisualManager");
+const OlfactiveManager = require("./OlfactiveManager");
+const TasteManager = require("./TasteManager");
+const TastingAromasManager = require("./TastingAromasManager");
 
 models.item = new ItemManager();
 models.item.setDatabase(pool);
@@ -69,6 +73,18 @@ models.newWine.setDatabase(pool);
 
 models.competitionSelection = new CompetitionSelectionManager();
 models.competitionSelection.setDatabase(pool);
+
+models.visualData = new VisualManager();
+models.visualData.setDatabase(pool);
+
+models.olfactiveData = new OlfactiveManager();
+models.olfactiveData.setDatabase(pool);
+
+models.tasteSlidersData = new TasteManager();
+models.tasteSlidersData.setDatabase(pool);
+
+models.tasteAromasData = new TastingAromasManager();
+models.tasteAromasData.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model

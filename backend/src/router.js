@@ -26,10 +26,14 @@ router.post(
   UserControllers.getUserByEmailWithPasswordAndPassToNext,
   verifyPassword
 );
+router.get("/visualdatas", TastingSheetsDatasControllers.findVisualDatas);
+router.get("/olfactivedatas", TastingSheetsDatasControllers.findOlfactiveDatas);
 router.get(
-  "/tastingsheetsdatas",
-  TastingSheetsDatasControllers.findTastingSheetsDatas
+  "/mouthslidersdatas",
+  TastingSheetsDatasControllers.findMouthSlidersDatas
 );
+router.get("/tastedatas", TastingSheetsDatasControllers.findTasteDatas);
+
 router.get("/grapevariety", GrapeVarietyControllers.browse);
 router.get("/grapevariety/:id", GrapeVarietyControllers.read);
 router.get("/existingwine", ExistingWineControllers.browse);

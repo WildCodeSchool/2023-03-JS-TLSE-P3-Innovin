@@ -9,6 +9,8 @@ import "./VisualStage2.css";
 function VisualStage2() {
   const navigate = useNavigate();
 
+  // -----------------------------------------handle functions for buttons--------------------------------------------------
+
   const handleNavigate = () => {
     navigate("/nose/stage1");
   };
@@ -21,6 +23,8 @@ function VisualStage2() {
     const formJson = Object.fromEntries(formData.entries());
     console.info(formJson);
   };
+
+  // -------------------------------------------return the component----------------------------------------------------
 
   return (
     <div className="visualStage2">

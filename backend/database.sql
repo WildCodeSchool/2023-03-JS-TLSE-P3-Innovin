@@ -729,9 +729,9 @@ VALUES (
         "Inauguration du premier atelier",
         1
     ), (
-        "2023-06-22 16:00:00",
+        "2023-07-22 16:00:00",
         "Toulouse",
-        "Inauguration du premier atelier",
+        "Inauguration du deuxième atelier",
         2
     );
 
@@ -784,7 +784,7 @@ CREATE TABLE
 
 INSERT INTO
     inovin.visual_color (color)
-VALUES ('Cerise'), ('Framboise'), ('Grenat'), ('Pourpre'), ('Rouge-noir'), ('Rubis'), ('Tuilé'), ('Violet');
+VALUES ('Framboise'), ('Cerise'), ('Rubis'), ('Pourpre'), ('Violet'), ('Grenat'), ('Rouge-noir'), ('Tuilé');
 
 -- -----------------------------------------------------
 
@@ -1216,7 +1216,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 INSERT INTO
-    inovin.workshop_has_existingWine(id_workshop, id_existing_wine)
+    `inovin`.`workshop_has_existingWine`(id_workshop, id_existing_wine)
 VALUES (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 6), (2, 7), (2, 8), (2, 9), (2, 10);
 
 -- -----------------------------------------------------
