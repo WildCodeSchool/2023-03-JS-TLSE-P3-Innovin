@@ -77,16 +77,12 @@ router.get(
   WorkshopHasExistingWineControllers.browse
 );
 router.get(
-  "/workshophasexistingwine/:id",
+  "/workshophasexistingwine/:id_workshop",
   WorkshopHasExistingWineControllers.read
-);
-router.put(
-  "/workshophasexistingwine/:id",
-  WorkshopHasExistingWineControllers.edit
 );
 router.post("/workshophasexistingwine", WorkshopHasExistingWineControllers.add);
 router.delete(
-  "/workshophasexistingwine/:id",
+  "/workshophasexistingwine/:id_workshop",
   WorkshopHasExistingWineControllers.destroy
 );
 router.put("/newwine/:id", NewWineControllers.edit);

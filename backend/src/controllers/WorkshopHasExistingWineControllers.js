@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const { models } = require("../models");
 
 const browse = (req, res) => {
@@ -18,34 +19,12 @@ const browse = (req, res) => {
 
 const read = (req, res) => {
   models.workshopHasExistingWine
-    .find(req.params.id)
+    .findOneWorkshopHasExistingWine(req.params.id_workshop)
     .then(([rows]) => {
-      if (rows[0] == null) {
+      if (rows == null) {
         res.status(404).send("Not found");
       } else {
-        res.status(200).send(rows[0]);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
-const edit = (req, res) => {
-  const workshopHasExistingWine = req.body;
-
-  // TODO validations (length, format...)
-
-  workshopHasExistingWine.id = parseInt(req.params.id, 10);
-
-  models.workshopHasExistingWine
-    .update(workshopHasExistingWine)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
+        res.status(200).send(rows);
       }
     })
     .catch((err) => {
@@ -74,7 +53,7 @@ const add = (req, res) => {
 
 const destroy = (req, res) => {
   models.workshopHasExistingWine
-    .delete(req.params.id)
+    .deleteworkshop(req.params.id_workshop)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -91,7 +70,6 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   read,
-  edit,
   add,
   destroy,
 };
