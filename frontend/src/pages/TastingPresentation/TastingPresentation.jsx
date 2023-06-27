@@ -1,44 +1,71 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import TastingContext from "./TastingContext";
+import TastingContext from "../../contexts/TastingContext";
 import "./TastingPresentation.css";
 import logo from "../../assets/Logo_W_Circles.svg";
 import Navbar from "../../components/Navbar/Navbar";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
 export default function TastingPresentation() {
-  const { setTastingData } = useContext(TastingContext);
+  // destructuring the context and each value needed to store data in states
+  const tastingValue = useContext(TastingContext);
+  const { setVisualData, setOlfactiveData, setMouthSlidersData, setMouthData } =
+    tastingValue;
+
+  // ------------------------------------------------------functions--------------------------------------------------------
+
+  // function to merge the data from the API into a single array
+  const mergeData = (data) => {
+    return data.reduce((acc, obj) => {
+      for (const key in obj) {
+        if (key !== "id" && obj[key] !== null) {
+          acc[key] = acc[key] || [];
+          acc[key].push(obj[key]);
+        }
+      }
+      return acc;
+    }, []);
+  };
+
+  // function to get the data with multiple endpoints
+  const getData = () => {
+    const endpoints = [
+      "http://localhost:5000/visualdatas",
+      "http://localhost:5000/olfactivedatas",
+      "http://localhost:5000/mouthslidersdatas",
+      "http://localhost:5000/tastedatas",
+    ];
+
+    Promise.all(endpoints.map((endpoint) => axios.get(endpoint)))
+      .then(
+        ([
+          { data: eye },
+          { data: nose },
+          { data: mouth1 },
+          { data: mouth2 },
+        ]) => {
+          const eyeData = mergeData(eye);
+          const noseData = mergeData(nose);
+          const mouthSlidersData = mergeData(mouth1);
+          const mouthData = mergeData(mouth2);
+
+          setVisualData(eyeData);
+          setOlfactiveData(noseData);
+          setMouthSlidersData(mouthSlidersData);
+          setMouthData(mouthData);
+        }
+      )
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/tastingsheetsdatas"
-        );
-        const { data } = response;
-        // Reforming objects to create a single object without IDs and duplicates
-        const mergedObject = data.reduce((acc, obj) => {
-          for (const key in obj) {
-            if (key !== "id" && obj[key] !== null) {
-              if (!acc[key]) {
-                acc[key] = [];
-              }
-              acc[key].push(obj[key]);
-            }
-          }
-          return acc;
-        }, {});
-
-        setTastingData(mergedObject);
-      } catch (error) {
-        console.warn(error);
-      }
-    };
-
-    fetchData();
+    getData();
   }, []);
 
+  // --------------------------------------------------return the page-----------------------------------------------------------
   return (
     <div className="start-degust">
       <Navbar />

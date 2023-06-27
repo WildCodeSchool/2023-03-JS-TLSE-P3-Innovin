@@ -784,7 +784,7 @@ CREATE TABLE
 
 INSERT INTO
     inovin.visual_color (color)
-VALUES ('Cerise'), ('Framboise'), ('Grenat'), ('Pourpre'), ('Rouge-noir'), ('Rubis'), ('Tuilé'), ('Violet');
+VALUES ('Framboise'), ('Cerise'), ('Rubis'), ('Pourpre'), ('Violet'), ('Grenat'), ('Rouge-noir'), ('Tuilé');
 
 -- -----------------------------------------------------
 
