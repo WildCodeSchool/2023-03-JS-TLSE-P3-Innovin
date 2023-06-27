@@ -25,21 +25,22 @@ class VisualManager extends AbstractManager {
         NULL AS intensity
     FROM
         inovin.visual_brightness vb
-    UNION ALL
+    UNION ALL 
     SELECT
         NULL AS limpidity,
         NULL AS brightness,
-        vt.tears,
-        NULL AS intensity
-    FROM inovin.visual_tears vt
-    UNION ALL
-    SELECT
-        NULL AS limpidity,
-        NULL AS brightness,
-        NULL AS tears,
-        vi.intensity
+        vi.intensity,
+        NULL AS tears
     FROM
-        inovin.visual_intensity vi;`
+        inovin.visual_intensity vi
+    UNION ALL
+    SELECT
+        NULL AS limpidity,
+        NULL AS brightness,
+        NULL AS intensity,
+        vt.tears
+    FROM inovin.visual_tears vt
+   ;`
     );
   }
 }

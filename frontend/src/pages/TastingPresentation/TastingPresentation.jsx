@@ -16,12 +16,17 @@ export default function TastingPresentation() {
   // ------------------------------------------------------functions--------------------------------------------------------
 
   // function to merge the data from the API into a single array
+
   const mergeData = (data) => {
     return data.reduce((acc, obj) => {
       for (const key in obj) {
         if (key !== "id" && obj[key] !== null) {
-          acc[key] = acc[key] || [];
-          acc[key].push(obj[key]);
+          const index = acc.findIndex((item) => item.key === key);
+          if (index === -1) {
+            acc.push({ key, values: [obj[key]] });
+          } else {
+            acc[index].values.push(obj[key]);
+          }
         }
       }
       return acc;

@@ -103,45 +103,31 @@ const steps = [
   },
 ];
 
-const checkboxes = [
+const visualCheckboxes = [
   {
     id: 1,
     name: "Limpidité",
     iconUrl: transparency,
-    checks: [
-      "Transparente",
-      "Limpide",
-      "Cristalline",
-      "Opaque",
-      "Voilée",
-      "Floue",
-    ],
+    checks: [],
   },
   {
     id: 2,
     name: "Brillance",
     iconUrl: shiny,
-    checks: [
-      "Nette",
-      "Etincelante",
-      "Eclatante",
-      "Brillante",
-      "Lumineuse",
-      "Terne",
-    ],
+    checks: [],
   },
   {
     id: 3,
     name: "Intensité",
     iconUrl: intensity,
-    checks: ["Claire", "Soutenue", "Intense", "Pâle", "Foncée", "Profonde"],
+    checks: [],
   },
   {
     id: 4,
     name: "Larmes",
     iconUrl: drop,
-    checks: ["Visqueuses", "Grasses", "Epaisses", "Coulantes", "Fluides"],
+    checks: [],
   },
 ];
 
-export { redWineColors, steps, checkboxes };
+export { redWineColors, steps, visualCheckboxes };

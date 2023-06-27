@@ -1,5 +1,7 @@
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { checkboxes } from "../../Utils";
+import { visualCheckboxes } from "../../Utils";
+import TastingContext from "../../contexts/TastingContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
@@ -7,6 +9,23 @@ import Checkboxes from "../../components/Checkboxes/Checkboxes";
 import "./VisualStage2.css";
 
 function VisualStage2() {
+  const tastingValue = useContext(TastingContext);
+  const { visualData } = tastingValue;
+
+  const [visualCheckbox, setVisualCheckbox] = useState([]);
+
+  // insert visualData into visualCheckbox as value of the key checks
+  useEffect(() => {
+    const updatedData = visualCheckboxes.map((el, index) => {
+      return {
+        ...el,
+        checks: visualData[index].values,
+      };
+    });
+
+    setVisualCheckbox(updatedData);
+  }, []);
+
   const navigate = useNavigate();
 
   // -----------------------------------------handle functions for buttons--------------------------------------------------
@@ -49,7 +68,7 @@ function VisualStage2() {
         </div>
         <form action="" className="formStage2" onSubmit={handleSubmit}>
           <div className="checkboxes">
-            {checkboxes.map((card) => (
+            {visualCheckbox.map((card) => (
               <Checkboxes key={card.id} card={card} />
             ))}
           </div>
