@@ -8,7 +8,7 @@ import TastingPresentation from "./pages/TastingPresentation/TastingPresentation
 import VisualStage1 from "./pages/VisualStage/VisualStage1";
 import VisualStage2 from "./pages/VisualStage/VisualStage2";
 import { TastingNoteProvider } from "./contexts/TastingNoteContext";
-import { TastingProvider } from "./pages/TastingPresentation/TastingContext";
+import { TastingProvider } from "./contexts/TastingContext";
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
