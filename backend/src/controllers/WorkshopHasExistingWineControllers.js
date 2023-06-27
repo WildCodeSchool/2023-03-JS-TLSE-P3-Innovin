@@ -39,7 +39,7 @@ const add = (req, res) => {
   // TODO validations (length, format...)
 
   models.workshopHasExistingWine
-    .insert(workshopHasExistingWine)
+    .insert(req.body)
     .then(([result]) => {
       res
         .location(`/workshophasexistingwine/${result.insertId}`)
