@@ -34,8 +34,6 @@ const read = (req, res) => {
 };
 
 const add = (req, res) => {
-   // TODO validations (length, format...)
-
   models.workshopHasExistingWine
     .insert(req.body)
     .then(([result]) => {
