@@ -34,8 +34,7 @@ const read = (req, res) => {
 };
 
 const add = (req, res) => {
-  const workshopHasExistingWine = req.body;
-
+ 
   // TODO validations (length, format...)
 
   models.workshopHasExistingWine
