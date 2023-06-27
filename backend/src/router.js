@@ -14,6 +14,7 @@ const AppellationControllers = require("./controllers/AppellationControllers");
 const WorkshopControllers = require("./controllers/WorkshopControllers");
 const NewWineControllers = require("./controllers/NewWineControllers");
 const CompetitionSelectionControllers = require("./controllers/CompetitionSelectionControllers");
+const WorkshopHasExistingWineControllers = require("./controllers/WorkshopHasExistingWineControllers");
 
 const { verifyAdminCredentials } = UserControllers;
 
@@ -75,6 +76,19 @@ router.get("/workshop/:id", WorkshopControllers.read);
 router.put("/workshop/:id", WorkshopControllers.edit);
 router.post("/workshop", WorkshopControllers.add);
 router.delete("/workshop/:id", WorkshopControllers.destroy);
+router.get(
+  "/workshophasexistingwine",
+  WorkshopHasExistingWineControllers.browse
+);
+router.get(
+  "/workshophasexistingwine/:id_workshop",
+  WorkshopHasExistingWineControllers.read
+);
+router.post("/workshophasexistingwine", WorkshopHasExistingWineControllers.add);
+router.delete(
+  "/workshophasexistingwine/:id_workshop",
+  WorkshopHasExistingWineControllers.destroy
+);
 router.put("/newwine/:id", NewWineControllers.edit);
 router.post("/newwine", NewWineControllers.add);
 router.delete("/newwine/:id", NewWineControllers.destroy);
