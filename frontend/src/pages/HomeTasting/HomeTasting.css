@@ -19,9 +19,13 @@
   width: 100%;
 }
 
+a {
+  text-decoration: none;
+}
+
 .hero-background {
   background: url("../../assets/Wine_Img/unsplash_AAfCnwiDRnI.jpg");
-  height: 100%;
+  height: 260px;
   width: 100%;
   object-fit: cover;
   background-size: 100%;
@@ -29,22 +33,23 @@
   justify-content: center;
   display: flex;
   opacity: 0.8;
+  backdrop-filter: var(--bgBlur);
 }
 
 .h2-title,
+.h2-hero,
 .degustation-h2 {
   color: var(--whiteGoldColor);
   font-family: var(--fontFamilyTitle);
   font-size: 2.5rem;
-  font-weight: 400;
-
+  font-weight: 700;
+  justify-content: flex-start;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  opacity: 1;
+
   width: 326px;
-  text-shadow: 1px var(--darkGoldColor);
 }
 
 .first-p,
@@ -57,7 +62,7 @@
   padding: 0 20px 0 20px;
   text-align: center;
   width: 100%;
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 2rem;
 }
 
@@ -69,7 +74,7 @@
 .line {
   height: 2px;
   width: 232px;
-  margin-top: 24px;
+  margin: 1rem 0 1rem 0;
 }
 
 .icon {
@@ -85,13 +90,14 @@
   font-family: var(--fontFamilyTitle);
   color: var(--primaryColor);
   margin-bottom: 0.8rem;
-  font-size: 1rem;
+  font-size: 1.8rem;
 }
 
 p {
   color: var(--whiteGoldColor);
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-family: var(--fontFamilyText);
+  margin-top: 1rem;
 }
 
 .button {
@@ -100,10 +106,36 @@ p {
   flex-direction: column;
 }
 
-.hero {
-  background: url("../../assets/Wine_Img/unsplash_AAfCnwiDRnI.jpg");
+.hero1 {
+  background: url("../../assets/Wine_Img/unsplash_PQQPlv6oHAA.jpg");
   align-items: center;
   display: flex;
+  height: 290px;
+  width: 100%;
+  object-fit: cover;
+  background-size: 100%;
+}
+
+.hero2 {
+  background: url("../../assets/Wine_Img/unsplash_aK6WGqxyHFw.jpg");
+  align-items: center;
+  display: flex;
+  height: 260px;
+  width: 100%;
+  object-fit: cover;
+  background-size: 100%;
+  margin-top: 2rem;
+}
+
+.hero3 {
+  align-items: center;
+  display: flex;
+  height: 290px;
+  width: 100%;
+  object-fit: cover;
+  background-size: 100%;
+  margin-top: 2rem;
+  background: url("../../assets/Wine_Img/unsplash_CPMZguYURMw.jpg");
 }
 
 .h2-title {
@@ -111,4 +143,17 @@ p {
   width: 100%;
   position: relative;
   opacity: 0.8;
+}
+
+.scroll-to-top {
+  bottom: 20px;
+  left: 50%;
+
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
 }
