@@ -46,7 +46,7 @@ function Login({ setUser }) {
       .then((res) => {
         if (res.data.token) {
           setUser(res.data.token);
-          navigate("/eye/stage1");
+          navigate("/tasting");
         }
       })
       .catch((error) => {
