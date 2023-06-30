@@ -9,6 +9,7 @@ import VisualStage1 from "./pages/VisualStage/VisualStage1";
 import VisualStage2 from "./pages/VisualStage/VisualStage2";
 import { TastingNoteProvider } from "./contexts/TastingNoteContext";
 import { TastingProvider } from "./contexts/TastingContext";
+import Welcome from "./pages/HomeTasting/HomeTasting";
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
@@ -31,6 +32,7 @@ function App() {
         <TastingNoteProvider>
           <div className="App">
             <Routes>
+              <Route path="/welcome" element={<Welcome />} />
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login setUser={setUser} />} />
 
