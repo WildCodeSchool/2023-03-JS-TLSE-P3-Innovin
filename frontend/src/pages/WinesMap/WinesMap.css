@@ -4,23 +4,27 @@
   justify-content: center;
   width: auto;
   margin: 0;
+  height: 100vh;
+  border-radius: 0;
 }
 
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 5rem;
+  margin-bottom: 1rem;
 }
 
 h1 {
   font-size: 2.5rem;
   text-align: center;
+  color: var(--primaryColor);
+  margin-top: 3rem;
 }
 
 .map {
-  height: 90vh;
-  width: 80vw;
+  height: 70vh;
+  width: 60vw;
   border: solid 4px var(--whiteGoldColor);
   border-radius: 5px;
   overflow: hidden;
@@ -86,9 +90,18 @@ b {
     text-align: center;
   }
 
+  .logo {
+    margin: 0;
+  }
+
+  img.logo {
+    height: 50px;
+    width: 50px;
+  }
+
   .map {
     height: 70vh;
-    width: 80vw;
+    width: 100vw;
     border: solid 10px var(--primaryColor);
   }
 }

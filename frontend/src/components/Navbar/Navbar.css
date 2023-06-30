@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  top: 0;
   width: 100%;
 }
 
@@ -10,6 +10,8 @@ h1 {
   color: var(--primaryColor);
   font-family: var(--fontFamilyTitle);
   font-size: 1.2rem;
+  align-items: center;
+  display: flex;
 }
 
 a {
@@ -109,15 +111,23 @@ img.logo-nav {
   }
 
   img.logo-nav {
-    display: none;
+    margin-left: 1rem;
+  }
+
+  .navBar {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
   }
 
   .navBar {
     align-items: flex-start;
     display: flex;
-
+    align-items: center;
     position: relative;
     width: 100vw;
+    top: 0;
+    position: fixed;
   }
 
   .navbarpoppins ul {

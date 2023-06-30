@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
-import logo from "../../assets/Logo_W_Circles.svg";
+
 import Navbar from "../../components/Navbar/Navbar";
 import "leaflet/dist/leaflet.css";
 import wineMap from "../../assets/wine.geojson";
@@ -43,7 +43,6 @@ export default function WinesMap() {
     <div className="page-content">
       <Navbar />
       <header>
-        <img className="logo" src={logo} alt="innovin logo" />
         <h1>Les principales régions viticoles françaises</h1>
       </header>
       <div className="map">
