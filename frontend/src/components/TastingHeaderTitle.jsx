@@ -3,10 +3,10 @@ import "./TastingHeaderTitle.css";
 function TastingHeaderTitle() {
   return (
     <div className="titleContainer">
-      <h2>
+      <h2 className="wineNumTitle">
         Vin N° <span>1</span>
       </h2>
-      <p>date</p>
+      <p className="headerDate">date</p>
     </div>
   );
 }

@@ -99,31 +99,4 @@ const steps = [
   },
 ];
 
-// const visualCheckboxes = [
-//   {
-//     id: 1,
-//     name: "Limpidité",
-//     iconUrl: transparency,
-//     checks: [],
-//   },
-//   {
-//     id: 2,
-//     name: "Brillance",
-//     iconUrl: shiny,
-//     checks: [],
-//   },
-//   {
-//     id: 3,
-//     name: "Intensité",
-//     iconUrl: intensity,
-//     checks: [],
-//   },
-//   {
-//     id: 4,
-//     name: "Larmes",
-//     iconUrl: drop,
-//     checks: [],
-//   },
-// ];
-
 export { redWineColors, steps };

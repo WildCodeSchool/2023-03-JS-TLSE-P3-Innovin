@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import TastingPresentation from "./pages/TastingPresentation/TastingPresentation";
 import VisualStage1 from "./pages/VisualStage/VisualStage1";
 import VisualStage2 from "./pages/VisualStage/VisualStage2";
+import TasteAdvice from "./pages/TasteAdvice/TasteAdvice";
 import { TastingNoteProvider } from "./contexts/TastingNoteContext";
 import { TastingProvider } from "./contexts/TastingContext";
 
@@ -46,6 +47,7 @@ function App() {
                 path="/eye/stage2"
                 element={<VisualStage2 userToken={userToken} />}
               />
+              <Route path="/advice" element={<TasteAdvice />} />
             </Routes>
           </div>
         </TastingNoteProvider>

@@ -15,18 +15,6 @@ export default function TastingPresentation() {
 
   // ------------------------------------------------------functions--------------------------------------------------------
 
-  // const mergeData = (data) => {
-  //   return data.reduce((acc, obj) => {
-  //     for (const key in obj) {
-  //       if (key !== "id" && obj[key] !== null) {
-  //         acc[key] = acc[key] || [];
-  //         acc[key].push(obj[key]);
-  //       }
-  //     }
-  //     return acc;
-  //   }, []);
-  // };
-
   // function to get the data with multiple endpoints
   const getData = () => {
     const endpoints = [
