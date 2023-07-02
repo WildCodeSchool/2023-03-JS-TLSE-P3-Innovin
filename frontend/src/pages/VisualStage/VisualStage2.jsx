@@ -1,46 +1,35 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { visualCheckboxes } from "../../Utils";
 import TastingContext from "../../contexts/TastingContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
 import Checkboxes from "../../components/Checkboxes/Checkboxes";
 import "./VisualStage2.css";
+import intensity from "../../assets/Icons/Intensity_Icon.svg";
+import shiny from "../../assets/Icons/Shiny_Icon_2.svg";
+import transparency from "../../assets/Icons/Transparency_Icon.svg";
+import drop from "../../assets/Icons/Drop_Icon.svg";
 
 function VisualStage2() {
   const tastingValue = useContext(TastingContext);
   const { visualData } = tastingValue;
 
-  const [visualCheckbox, setVisualCheckbox] = useState([]);
-
-  // insert visualData into visualCheckbox as value of the key checks
-  useEffect(() => {
-    const updatedData = visualCheckboxes.map((el, index) => {
-      return {
-        ...el,
-        checks: visualData[index].values,
-      };
-    });
-
-    setVisualCheckbox(updatedData);
-  }, []);
-
-  const navigate = useNavigate();
+  const limpidityId = visualData[0].map((el) => el.vl_id);
+  const limpidityChecks = visualData[0].map((el) => el.limpidity);
+  const brightnessId = visualData[1].map((el) => el.vb_id);
+  const brightnessChecks = visualData[1].map((el) => el.brightness);
+  const intensityId = visualData[2].map((el) => el.vi_id);
+  const intensityChecks = visualData[2].map((el) => el.intensity);
+  const tearsId = visualData[3].map((el) => el.vt_id);
+  const tearsChecks = visualData[3].map((el) => el.tears);
 
   // -----------------------------------------handle functions for buttons--------------------------------------------------
 
+  const navigate = useNavigate();
+
   const handleNavigate = () => {
     navigate("/nose/stage1");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-
-    const formJson = Object.fromEntries(formData.entries());
-    console.info(formJson);
   };
 
   // -------------------------------------------return the component----------------------------------------------------
@@ -66,16 +55,41 @@ function VisualStage2() {
             sa texture.
           </p>
         </div>
-        <form action="" className="formStage2" onSubmit={handleSubmit}>
-          <div className="checkboxes">
-            {visualCheckbox.map((card) => (
-              <Checkboxes key={card.id} card={card} />
-            ))}
-          </div>
-          <ButtonPrimary type="submit" onClick={handleNavigate}>
-            Etape suivante
-          </ButtonPrimary>
-        </form>
+        {/* <form action="" className="formStage2" onSubmit={handleSubmit}> */}
+        <div className="checkboxes">
+          <Checkboxes
+            name="limpidité"
+            checks={limpidityChecks}
+            ids={limpidityId}
+            iconUrl={transparency}
+            id="idVisualLimpidity"
+          />
+          <Checkboxes
+            name="Brillance"
+            checks={brightnessChecks}
+            ids={brightnessId}
+            iconUrl={shiny}
+            id="idVisualBrightness"
+          />
+          <Checkboxes
+            name="Intensité"
+            checks={intensityChecks}
+            ids={intensityId}
+            iconUrl={intensity}
+            id="idVisualIntensity"
+          />
+          <Checkboxes
+            name="Larmes"
+            checks={tearsChecks}
+            ids={tearsId}
+            iconUrl={drop}
+            id="idVisualTears"
+          />
+        </div>
+        <ButtonPrimary type="submit" onClick={handleNavigate}>
+          Etape suivante
+        </ButtonPrimary>
+        {/* </form> */}
       </div>
     </div>
   );

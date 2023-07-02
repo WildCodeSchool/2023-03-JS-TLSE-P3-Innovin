@@ -15,23 +15,17 @@ export default function TastingPresentation() {
 
   // ------------------------------------------------------functions--------------------------------------------------------
 
-  // function to merge the data from the API into a single array
-
-  const mergeData = (data) => {
-    return data.reduce((acc, obj) => {
-      for (const key in obj) {
-        if (key !== "id" && obj[key] !== null) {
-          const index = acc.findIndex((item) => item.key === key);
-          if (index === -1) {
-            acc.push({ key, values: [obj[key]] });
-          } else {
-            acc[index].values.push(obj[key]);
-          }
-        }
-      }
-      return acc;
-    }, []);
-  };
+  // const mergeData = (data) => {
+  //   return data.reduce((acc, obj) => {
+  //     for (const key in obj) {
+  //       if (key !== "id" && obj[key] !== null) {
+  //         acc[key] = acc[key] || [];
+  //         acc[key].push(obj[key]);
+  //       }
+  //     }
+  //     return acc;
+  //   }, []);
+  // };
 
   // function to get the data with multiple endpoints
   const getData = () => {
@@ -50,15 +44,10 @@ export default function TastingPresentation() {
           { data: mouth1 },
           { data: mouth2 },
         ]) => {
-          const eyeData = mergeData(eye);
-          const noseData = mergeData(nose);
-          const mouthSlidersData = mergeData(mouth1);
-          const mouthData = mergeData(mouth2);
-
-          setVisualData(eyeData);
-          setOlfactiveData(noseData);
-          setMouthSlidersData(mouthSlidersData);
-          setMouthData(mouthData);
+          setVisualData(eye);
+          setOlfactiveData(nose);
+          setMouthSlidersData(mouth1);
+          setMouthData(mouth2);
         }
       )
       .catch((err) => {
