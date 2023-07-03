@@ -6,6 +6,7 @@ import wineMap from "../../assets/wine.geojson";
 import "./WinesMap.css";
 
 export default function WinesMap() {
+  // popup properties
   const onEachRegion = (feature, layer) => {
     const bassin = feature.properties.Bassin;
     const cepageRouge = feature.properties.CepageRouge;
@@ -14,7 +15,7 @@ export default function WinesMap() {
     const terroir = feature.properties.Terroirs;
     const production = feature.properties.Production;
 
-    // affichage couleurs
+    // popup color change
     layer.setStyle({
       color: feature.properties.stroke,
       weight: feature.properties["stroke-width"],
@@ -23,7 +24,7 @@ export default function WinesMap() {
       fillOpacity: feature.properties["fill-opacity"],
     });
 
-    // contenu POPUP
+    // popup content
     const popupContent = `
     <div>
      <div style="text-align: center; font-weight: bold; font-size: 18px;">
@@ -43,7 +44,9 @@ export default function WinesMap() {
     <div className="page-content">
       <Navbar />
       <header>
-        <h1>Les principales régions viticoles françaises</h1>
+        <h1 className="title-map">
+          Les principales régions viticoles françaises
+        </h1>
       </header>
       <div className="map">
         <MapContainer

@@ -19,15 +19,20 @@ h1 {
   font-size: 2.5rem;
   text-align: center;
   color: var(--primaryColor);
-  margin-top: 3rem;
+}
+
+.title-map {
+  margin: 2rem;
+  font-size: 1.5rem;
 }
 
 .map {
   height: 70vh;
   width: 60vw;
-  border: solid 4px var(--whiteGoldColor);
+  border: solid 2px var(--whiteGoldColor);
   border-radius: 5px;
   overflow: hidden;
+  z-index: 0;
 }
 
 .leaflet-popup-content-wrapper {
@@ -102,6 +107,6 @@ b {
   .map {
     height: 70vh;
     width: 100vw;
-    border: solid 10px var(--primaryColor);
+    border: solid 4px var(--whiteGoldColo);
   }
 }
