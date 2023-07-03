@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import TastingContext from "../../contexts/TastingContext";
 import "./TastingPresentation.css";
-import logo from "../../assets/Logo_W_Circles.svg";
+
 import Navbar from "../../components/Navbar/Navbar";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
@@ -69,7 +69,7 @@ export default function TastingPresentation() {
   return (
     <div className="start-degust">
       <Navbar />
-      <img className="logo" src={logo} alt="innovin logo" />
+
       <div className="page-content">
         <div className="box">
           <h1 className="title">Dégustation</h1>

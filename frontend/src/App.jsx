@@ -10,6 +10,7 @@ import VisualStage2 from "./pages/VisualStage/VisualStage2";
 import { TastingNoteProvider } from "./contexts/TastingNoteContext";
 import { TastingProvider } from "./contexts/TastingContext";
 import Welcome from "./pages/HomeTasting/HomeTasting";
+import WinesMap from "./pages/WinesMap/WinesMap";
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
@@ -48,6 +49,7 @@ function App() {
                 path="/eye/stage2"
                 element={<VisualStage2 userToken={userToken} />}
               />
+              <Route path="/carte" element={<WinesMap />} />
             </Routes>
           </div>
         </TastingNoteProvider>

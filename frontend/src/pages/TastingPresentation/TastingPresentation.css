@@ -58,10 +58,6 @@
   height: auto;
 }
 
-.logo {
-  display: none;
-}
-
 .button-container {
   display: flex;
   justify-content: center;
