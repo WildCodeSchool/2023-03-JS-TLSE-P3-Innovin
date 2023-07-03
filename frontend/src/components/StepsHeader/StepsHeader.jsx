@@ -6,12 +6,12 @@ import { steps } from "../../Utils";
 function StepsHeader() {
   // ----------------------------------------functions to control the steps----------------------------------------------------
 
-  // Function which verifies if the step is corresponding to the path
+  // Function that verifies if the step matches the path
   const findPathName = (step) => {
     return step.pathName.includes(window.location.pathname);
   };
 
-  // Function to navigate to the step we want
+  // Function to navigate to the next step
   const navigate = useNavigate();
   const handleNavigate = (step) => {
     navigate(step.pathName[0]);
