@@ -157,3 +157,11 @@ p {
   font-size: 16px;
   cursor: pointer;
 }
+
+.degustation {
+  background: var(--blackBgGradient);
+}
+
+.creation {
+  background: var(--blackBgGradient);
+}
