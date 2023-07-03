@@ -99,4 +99,14 @@ const steps = [
   },
 ];
 
-export { redWineColors, steps };
+const wineQuality = [
+  "Parfait",
+  "Excellent",
+  "Trés bon",
+  "Bon",
+  "Passable",
+  "Pas terrible",
+  "Mauvais",
+];
+
+export { redWineColors, steps, wineQuality };

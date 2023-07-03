@@ -1,0 +1,56 @@
+.visualStage1,
+.contentStage1,
+.intro,
+.header,
+.adviceText,
+.inputs .commentArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tasteAdvice {
+  background: var(--blackBgGradient);
+  min-height: 100dvh;
+
+  .tasteAdviceContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-family: var(--fontFamilyText);
+    font-size: var(--fontSizeText);
+    color: var(--whiteGoldColor);
+    margin: 1.5rem min(2rem, var(--marginPageContent));
+
+    .intro .adviceText {
+      gap: 1rem;
+      align-items: baseline;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-family: var(--fontFamilyTitle);
+      font-size: 2rem;
+      color: var(--primaryColor);
+    }
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      .commentArea {
+        align-items: baseline;
+        gap: 0.5rem;
+        #commentary {
+          width: 100%;
+          background: transparent;
+          border: 2px solid var(--smoothWhiteColor);
+          border-radius: 5px;
+          height: 7em;
+          color: var(--whiteGoldColor);
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

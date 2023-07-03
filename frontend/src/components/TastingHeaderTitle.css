@@ -13,6 +13,7 @@
 .wineNumTitle {
   font-family: var(--fontFamilyTitle);
   font-size: var(--fontSizeH2);
+  color: var(--whiteGoldColor);
 }
 
 .headerDate {

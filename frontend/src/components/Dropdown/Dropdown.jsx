@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import PropTypes from "prop-types";
+import "./Dropdown.scss";
+import TastingNoteContext from "../../contexts/TastingNoteContext";
 
-function Dropdown({ id, options, tastingNote, setTastingNote }) {
-  const [isActive, setIsActive] = useState(true);
+function Dropdown({ id, options }) {
+  const tastingNoteValue = useContext(TastingNoteContext);
+  const { setTastingNote, tastingNote } = tastingNoteValue;
+  const [isActive, setIsActive] = useState(false);
   const [selectedOption, setSelectedOption] = useState(
     "sélectionner une option"
   );
+  const [selected, setSelected] = useState(false);
 
   const handleFillObject = (e, option) => {
     e.preventDefault();
@@ -18,32 +23,34 @@ function Dropdown({ id, options, tastingNote, setTastingNote }) {
   return (
     <div className="dropdown">
       <button
-        className="dropdownBtn"
+        className={`dropdownBtn ${selected ? "selected" : "grey"} `}
         type="button"
         onClick={() => setIsActive(!isActive)}
       >
         {selectedOption}
         <i className="fi fi-br-angle-down" />
       </button>
-      {isActive &&
-        options.map((option) => (
-          <div className="dropdownContent">
-            <input
-              className="radioBtn"
-              type="radio"
+      <div className="dropdownContent">
+        {isActive &&
+          options.map((option) => (
+            <button
+              className="dropdownInputs"
+              type="button"
               id={id}
-              name={id}
+              name="wineQuality"
               key={option}
               value={option}
               onClick={(e) => {
                 setSelectedOption(option);
                 setIsActive(false);
                 handleFillObject(e, option);
+                setSelected(true);
               }}
-            />
-            <label htmlFor={id}>{option}</label>
-          </div>
-        ))}
+            >
+              {option}
+            </button>
+          ))}
+      </div>
     </div>
   );
 }
@@ -52,26 +59,5 @@ export default Dropdown;
 
 Dropdown.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  tastingNote: PropTypes.shape({
-    wineQuality: PropTypes.string.isRequired,
-    idOlfactiveIntensity: PropTypes.string.isRequired,
-    idUser: PropTypes.string.isRequired,
-    selectedWine: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    tastingCommentary: PropTypes.string.isRequired,
-    idOlfactiveComplexity: PropTypes.string.isRequired,
-    idVisualColor: PropTypes.string.isRequired,
-    idVisualLimpidity: PropTypes.string.isRequired,
-    idVisualBrightness: PropTypes.string.isRequired,
-    idVisualTears: PropTypes.string.isRequired,
-    idTasteIntensity: PropTypes.string.isRequired,
-    idTasteMouthFeel: PropTypes.string.isRequired,
-    idTasteAlcohol: PropTypes.string.isRequired,
-    idAcidity: PropTypes.string.isRequired,
-    idTasteSweetness: PropTypes.string.isRequired,
-    idTasteTannin: PropTypes.string.isRequired,
-    idVisualIntensity: PropTypes.string.isRequired,
-  }).isRequired,
-  setTastingNote: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
 };
