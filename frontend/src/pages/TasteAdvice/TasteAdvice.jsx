@@ -16,6 +16,8 @@ function TasteAdvice() {
   const { userToken } = useContext(AuthContext);
 
   const [rateValue, setRateValue] = useState(null);
+
+  // -------------------------------------------------Functions------------------------------------------------------------
   const handleChange = (e) => {
     setTastingNote({
       ...tastingNote,
@@ -29,6 +31,7 @@ function TasteAdvice() {
     navigate("/selection");
   };
 
+  // submit the tastingNote object in db
   const handleSubmit = () => {
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/tastingnote`, tastingNote, {
@@ -44,6 +47,7 @@ function TasteAdvice() {
       });
   };
 
+  // -------------------------------------------------Render------------------------------------------------------------
   return (
     <div className="tasteAdvice">
       <Navbar />{" "}
@@ -64,7 +68,7 @@ function TasteAdvice() {
             </p>
           </div>
         </div>
-        <div className="inputs">
+        <div className="adviceInputs">
           <Dropdown id="wineQuality" options={wineQuality} />
           <div className="commentArea">
             <label htmlFor="commentary">Commentary</label>
@@ -74,30 +78,30 @@ function TasteAdvice() {
               onChange={(e) => handleChange(e)}
             />
           </div>
-        </div>
-        <div className="ratingContent">
-          <p>Notez votre expérience</p>
-          <div className="stars">
-            {rating.map((star) => {
-              const isClicked = star.value <= rateValue;
+          <div className="ratingContent">
+            <p>Notez votre expérience</p>
+            <div className="stars">
+              {rating.map((star) => {
+                const isClicked = star.value <= rateValue;
 
-              return (
-                <button
-                  key={star.id}
-                  className={`${isClicked && "clicked"}`}
-                  type="button"
-                  onClick={() => {
-                    setRateValue(star.value);
-                    setTastingNote({
-                      ...tastingNote,
-                      rating: star.value,
-                    });
-                  }}
-                >
-                  <i className="fi fi-sr-star" />
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={star.id}
+                    className={`${isClicked && "clicked"}`}
+                    type="button"
+                    onClick={() => {
+                      setRateValue(star.value);
+                      setTastingNote({
+                        ...tastingNote,
+                        rating: star.value,
+                      });
+                    }}
+                  >
+                    <i className="fi fi-sr-star" />
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
         <ButtonPrimary
