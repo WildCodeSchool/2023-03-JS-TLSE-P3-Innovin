@@ -13,7 +13,7 @@ export default function Welcome() {
   };
 
   return (
-    <div className="page-content">
+    <div className="page-content-nose">
       <Navbar />
       <div className="fisrt-part">
         <div className="Hero">
@@ -70,46 +70,67 @@ export default function Welcome() {
           <img className="line" src={line} alt="ligne or" />
         </div>
       </div>
-      <div className="degustation" id="degustation">
-        <div className="hero1">
-          <h2 className="h2-title">Dégustation</h2>
+      <div className="degust-desktop">
+        <div className="degustation" id="degustation">
+          <div className="desktop-degust">
+            <div className="hero1">
+              <h2 className="h2-title">Dégustation</h2>
+            </div>
+            <p className="degustation-text">
+              Plongez dans un voyage sensoriel unique en réservant une session
+              de dégustation avec notre caviste passionné. Découvrez des vins
+              monocépages soigneusement sélectionnés et laissez vos papilles
+              explorer les subtilités et les caractéristiques distinctes de
+              chaque cépage. Éveillez vos sens et appréciez les nuances uniques
+              de chaque vin lors de cette expérience.
+            </p>
+          </div>
         </div>
-        <p className="degustation-text">
-          Lorem ipsum dolor sit amet consectetur. Purus viverra nunc in massa
-          porttitor dignissim dui etiam id. Sagittis suscipit sit elit neque
-          dictum a elit. Fermentum semper magna id cum turpis. Ultrices tortor
-          enim eget egestas enim proin. Sit pellentesque et eleifend eget. Nisi
-          sociis feugiat est ultricies egestas velit
-        </p>
+        <div className="degust-img">
+          <div className="degust-imgage" />
+        </div>
+      </div>
+      <div className="selection-desktop">
+        <div className="selection" id="selection">
+          <div className="hero2">
+            <h2 className="h2-title">Séléction</h2>
+          </div>
+          <p className="degustation-text">
+            Une fois la dégustation terminée, laissez votre palais guider votre
+            choix en sélectionnant les vins qui ont captivé votre attention.
+            Notre équipe d'experts sera là pour vous conseiller et répondre à
+            toutes vos questions. Faites confiance à votre instinct et
+            choisissez les vins qui vous ont le plus impressionné, ceux qui
+            reflètent parfaitement vos préférences et vos découvertes lors de
+            cette expérience gustative.
+          </p>
+        </div>
+
+        <div className="selection-img">
+          <div className="selection-image" />
+        </div>
       </div>
 
-      <div className="selection" id="selection">
-        <div className="hero2">
-          <h2 className="h2-title">Séléction</h2>
-        </div>
-        <p className="degustation-text">
-          Lorem ipsum dolor sit amet consectetur. Purus viverra nunc in massa
-          porttitor dignissim dui etiam id. Sagittis suscipit sit elit neque
-          dictum a elit. Fermentum semper magna id cum turpis. Ultrices tortor
-          enim eget egestas enim proin. Sit pellentesque et eleifend eget. Nisi
-          sociis feugiat est ultricies egestas velit
-        </p>
-      </div>
       <div className="creation" id="creation">
         <div className="hero3">
-          <h2 className="h2-title">Création</h2>
+          <h2 className="h2-title-creation">Création</h2>
         </div>
         <p className="degustation-text">
-          Lorem ipsum dolor sit amet consecteturbr. Purus viverra nunc in massa
-          porttitor dignissim dui etiam id. Sagittis suscipit sit elit neque
-          dictum a elit. Fermentum semper magna id cum turpis. Ultrices tortor
-          enim eget egestas enim proin. <br />
+          Laissez libre cours à votre créativité en participant à une aventure
+          œnologique unique. Les vins que vous avez sélectionnés seront
+          habilement mélangés pour créer un vin unique et personnalisé, qui
+          incarnera vos choix et votre goût. Notre expert mettra tout son
+          savoir-faire pour vous guider dans cette création sur mesure. Soyez
+          témoin de la naissance d'une œuvre d'art vinicole, un vin qui raconte
+          votre histoire. <br />
           <br />
         </p>
       </div>
-      <button type="button" className="scroll-to-top" onClick={scrollToTop}>
-        {" "}
-      </button>
+      <div className="up">
+        <button type="button" className="scroll-to-top" onClick={scrollToTop}>
+          {" "}
+        </button>
+      </div>
     </div>
   );
 }

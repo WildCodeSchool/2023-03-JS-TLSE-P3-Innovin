@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import "./App.css";
-import Home from "./pages/Home";
+
 import Login from "./pages/Login/Login";
 import TastingPresentation from "./pages/TastingPresentation/TastingPresentation";
 import VisualStage1 from "./pages/VisualStage/VisualStage1";
@@ -33,8 +33,8 @@ function App() {
         <TastingNoteProvider>
           <div className="App">
             <Routes>
-              <Route path="/welcome" element={<Welcome />} />
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Welcome />} />
+
               <Route path="/login" element={<Login setUser={setUser} />} />
 
               <Route
