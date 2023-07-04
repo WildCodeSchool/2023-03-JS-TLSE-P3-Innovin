@@ -81,9 +81,6 @@ export default function Welcome() {
           enim eget egestas enim proin. Sit pellentesque et eleifend eget. Nisi
           sociis feugiat est ultricies egestas velit
         </p>
-        <div className="button">
-          <ButtonPrimary>En savoir plus </ButtonPrimary>
-        </div>
       </div>
 
       <div className="selection" id="selection">
@@ -111,7 +108,7 @@ export default function Welcome() {
         </p>
       </div>
       <button type="button" className="scroll-to-top" onClick={scrollToTop}>
-        UP
+        {" "}
       </button>
     </div>
   );

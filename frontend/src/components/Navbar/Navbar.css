@@ -40,7 +40,7 @@ img.logo-nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3rem;
+
   gap: 20px;
   position: absolute;
   top: 90px;
@@ -89,6 +89,7 @@ img.logo-nav {
   border: none;
   cursor: pointer;
   padding: 0;
+  margin-right: 1rem;
 }
 
 .bar {

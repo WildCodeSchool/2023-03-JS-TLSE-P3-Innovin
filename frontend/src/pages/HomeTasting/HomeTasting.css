@@ -11,7 +11,7 @@
 
 .Hero,
 .hero {
-  height: 270px;
+  height: 260px;
   max-width: 100%;
 
   object-fit: cover;
@@ -24,12 +24,12 @@ a {
 }
 
 .hero-background {
-  background: url("../../assets/Wine_Img/unsplash_AAfCnwiDRnI.jpg");
+  background: url("../../assets/Wine_Img/Winery.jpg");
   height: 260px;
-  width: 100%;
-  object-fit: cover;
-  background-size: 100%;
-  align-items: center;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  align-items: flex-end;
   justify-content: center;
   display: flex;
   opacity: 0.8;
@@ -48,7 +48,7 @@ a {
   line-height: normal;
   position: absolute;
   text-align: center;
-
+  margin-bottom: 1rem;
   width: 326px;
 }
 
@@ -59,7 +59,7 @@ a {
   font-weight: 400;
   line-height: 25px;
   margin-top: 31px;
-  padding: 0 20px 0 20px;
+  padding: 0 40px 0 40px;
   text-align: center;
   width: 100%;
   font-size: 1.2rem;
@@ -112,30 +112,44 @@ p {
   display: flex;
   height: 290px;
   width: 100%;
-  object-fit: cover;
-  background-size: 100%;
+  background-size: cover;
+  background-position: center;
+  align-items: flex-end;
+  justify-content: center;
+  display: flex;
+  opacity: 0.8;
+  backdrop-filter: var(--bgBlur);
+  margin: 0;
 }
 
 .hero2 {
-  background: url("../../assets/Wine_Img/unsplash_aK6WGqxyHFw.jpg");
+  background: url("../../assets//Wine_Img/unsplash_3uJt73tr4hI.jpg");
   align-items: center;
   display: flex;
-  height: 260px;
+  height: 255px;
   width: 100%;
-  object-fit: cover;
-  background-size: 100%;
+  background-size: cover;
+  background-position: center;
+  align-items: flex-end;
+  justify-content: center;
+  display: flex;
+  opacity: 0.8;
+  backdrop-filter: var(--bgBlur);
   margin-top: 2rem;
+  margin: 0;
 }
 
 .hero3 {
   align-items: center;
   display: flex;
-  height: 290px;
+  justify-content: center;
+  height: 347px;
   width: 100%;
   object-fit: cover;
   background-size: 100%;
   margin-top: 2rem;
-  background: url("../../assets/Wine_Img/unsplash_CPMZguYURMw.jpg");
+  background: url("../../assets/Wine_Img/Creation_Header.png") center no-repeat;
+  margin: 1;
 }
 
 .h2-title {
@@ -148,13 +162,15 @@ p {
 .scroll-to-top {
   bottom: 20px;
   left: 50%;
-
+  height: 50px;
+  width: 50px;
   padding: 10px 20px;
-  background-color: #ffffff;
+  background: url("../../assets/Icons/Up_Arrow.png") no-repeat;
   color: #000000;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  object-fit: cover;
+
+  margin-bottom: 2rem;
   cursor: pointer;
 }
 
@@ -164,4 +180,12 @@ p {
 
 .creation {
   background: var(--blackBgGradient);
+}
+
+@media screen and (min-width: 768px) {
+  .hero-background {
+    background: url("../../assets/Wine_Img/Frame\ 123.png");
+    height: 500px;
+    width: 500px;
+  }
 }
