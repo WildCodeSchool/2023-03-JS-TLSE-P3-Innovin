@@ -52,5 +52,24 @@
         }
       }
     }
+    .ratingContent {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      button {
+        background: none;
+        border: none;
+        color: rgba(172, 146, 77, 0.1);
+        &:hover {
+          color: rgba(172, 146, 77, 0.3);
+        }
+        &.clicked {
+          color: var(--primaryColor);
+          &:hover {
+            color: var(--secondaryColor);
+          }
+        }
+      }
+    }
   }
 }

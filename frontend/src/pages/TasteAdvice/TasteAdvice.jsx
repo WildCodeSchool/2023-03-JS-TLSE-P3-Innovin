@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { rating, wineQuality } from "../../Utils";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import Navbar from "../../components/Navbar/Navbar";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
-import { wineQuality } from "../../Utils";
 import "./TasteAdvice.scss";
 import TastingNoteContext from "../../contexts/TastingNoteContext";
 import AuthContext from "../../contexts/AuthContext";
@@ -15,6 +15,7 @@ function TasteAdvice() {
   const { setTastingNote, tastingNote } = useContext(TastingNoteContext);
   const { userToken } = useContext(AuthContext);
 
+  const [rateValue, setRateValue] = useState(null);
   const handleChange = (e) => {
     setTastingNote({
       ...tastingNote,
@@ -72,6 +73,31 @@ function TasteAdvice() {
               id="commentary"
               onChange={(e) => handleChange(e)}
             />
+          </div>
+        </div>
+        <div className="ratingContent">
+          <p>Notez votre expérience</p>
+          <div className="stars">
+            {rating.map((star) => {
+              const isClicked = star.value <= rateValue;
+
+              return (
+                <button
+                  key={star.id}
+                  className={`${isClicked && "clicked"}`}
+                  type="button"
+                  onClick={() => {
+                    setRateValue(star.value);
+                    setTastingNote({
+                      ...tastingNote,
+                      rating: star.value,
+                    });
+                  }}
+                >
+                  <i className="fi fi-sr-star" />
+                </button>
+              );
+            })}
           </div>
         </div>
         <ButtonPrimary
