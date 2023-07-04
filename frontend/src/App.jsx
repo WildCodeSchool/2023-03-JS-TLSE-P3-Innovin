@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import "primereact/resources/primereact.min.css";
 import Cookies from "js-cookie";
 import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
+import Registration from "./pages/Registration/Registration";
 import TastingPresentation from "./pages/TastingPresentation/TastingPresentation";
 import VisualStage1 from "./pages/VisualStage/VisualStage1";
 import VisualStage2 from "./pages/VisualStage/VisualStage2";
@@ -33,7 +35,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login setUser={setUser} />} />
-
+              <Route path="/registration" element={<Registration />} />
               <Route
                 path="/tasting"
                 element={<TastingPresentation userToken={userToken} />}

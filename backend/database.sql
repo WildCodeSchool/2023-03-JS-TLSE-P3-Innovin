@@ -592,7 +592,7 @@ CREATE TABLE
         `id` INT NOT NULL AUTO_INCREMENT,
         `firstname` VARCHAR(45) NOT NULL,
         `lastname` VARCHAR(45) NOT NULL,
-        `birth_date` DATE NOT NULL,
+        `birth_date` DATE NULL,
         `email` VARCHAR(45) NOT NULL,
         `hashed_password` VARCHAR(255) NOT NULL,
         `admin_credentials` TINYINT NOT NULL DEFAULT 0,

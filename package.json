@@ -31,5 +31,7 @@
     "husky": "^8.0.3"
   },
   "dependencies": {
+    "node-sass": "^9.0.0",
+    "primereact": "^9.6.0"
   }
 }
