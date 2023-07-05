@@ -941,6 +941,23 @@ VALUES ('Apre'), ('Chargé'), ('Charpenté'), ('Fondu'), ('Lisse');
 
 -- -----------------------------------------------------
 
+-- Table `inovin`.`visual_intensity`
+
+-- -----------------------------------------------------
+
+CREATE TABLE
+    IF NOT EXISTS `inovin`.`visual_intensity` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `intensity` VARCHAR(45) NULL,
+        PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB;
+
+INSERT INTO
+    inovin.visual_intensity (intensity)
+VALUES ('Claire'), ('Soutenue'), ('Intense'), ('Pâle'), ('Foncée'), ('Profonde');
+
+-- -----------------------------------------------------
+
 -- Table `inovin`.`tasting_note`
 
 -- -----------------------------------------------------
@@ -956,6 +973,7 @@ CREATE TABLE
         `tasting_commentary` LONGTEXT NULL,
         `olfactive_complexity_id` INT NOT NULL,
         `visual_color_id` INT NOT NULL,
+        `visual_intensity_id` INT NOT NULL,
         `visual_limpidity_id` INT NOT NULL,
         `visual_brightness_id` INT NOT NULL,
         `visual_tears_id` INT NOT NULL,
@@ -970,6 +988,7 @@ CREATE TABLE
         CONSTRAINT `fk_tasting_note_user1` FOREIGN KEY (`id_user`) REFERENCES `inovin`.`user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_olfactive_complexity1` FOREIGN KEY (`olfactive_complexity_id`) REFERENCES `inovin`.`olfactive_complexity` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_visual_color1` FOREIGN KEY (`visual_color_id`) REFERENCES `inovin`.`visual_color` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_tasting_note_visual_intensity` FOREIGN KEY (`visual_intensity_id`) REFERENCES `inovin`.`visual_intensity` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_visual_limpidity1` FOREIGN KEY (`visual_limpidity_id`) REFERENCES `inovin`.`visual_limpidity` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_visual_brightness1` FOREIGN KEY (`visual_brightness_id`) REFERENCES `inovin`.`visual_brightness` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_visual_tears1` FOREIGN KEY (`visual_tears_id`) REFERENCES `inovin`.`visual_tears` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -991,6 +1010,7 @@ INSERT INTO
         tasting_commentary,
         olfactive_complexity_id,
         visual_color_id,
+        visual_intensity_id,
         visual_limpidity_id,
         visual_brightness_id,
         visual_tears_id,
@@ -1008,6 +1028,7 @@ VALUES (
         1,
         6,
         'Vin très tannique et étonnant',
+        1,
         1,
         1,
         1,
@@ -1036,6 +1057,7 @@ VALUES (
         1,
         1,
         1,
+        1,
         1
     ), (
         'Pas terrible',
@@ -1044,6 +1066,7 @@ VALUES (
         0,
         4,
         'Vin fade',
+        1,
         1,
         1,
         1,
@@ -1072,6 +1095,7 @@ VALUES (
         1,
         1,
         1,
+        1,
         1
     ), (
         'Parfait',
@@ -1080,6 +1104,7 @@ VALUES (
         1,
         10,
         'Le meilleur vin de la dégustation.',
+        1,
         1,
         1,
         1,
@@ -1108,6 +1133,7 @@ VALUES (
         1,
         1,
         1,
+        1,
         1
     ), (
         'Très bon',
@@ -1116,6 +1142,7 @@ VALUES (
         0,
         7,
         'Ce vin blanc est très équilibré.',
+        1,
         1,
         1,
         1,
@@ -1144,6 +1171,7 @@ VALUES (
         1,
         1,
         1,
+        1,
         1
     ), (
         'Mauvais',
@@ -1162,6 +1190,7 @@ VALUES (
         1,
         1,
         1,
+        1,
         1
     ), (
         'Parfait',
@@ -1170,6 +1199,7 @@ VALUES (
         1,
         9,
         'Le meilleur vin blanc de la dégustation.',
+        1,
         1,
         1,
         1,
@@ -1346,23 +1376,6 @@ INSERT INTO
         id_tasting_note
     )
 VALUES (75, 1, 1), (87, 1, 2), (88, 1, 5), (70, 5, 6), (87, 5, 7), (93, 5, 10);
-
--- -----------------------------------------------------
-
--- Table `inovin`.`visual_intensity`
-
--- -----------------------------------------------------
-
-CREATE TABLE
-    IF NOT EXISTS `inovin`.`visual_intensity` (
-        `id` INT NOT NULL AUTO_INCREMENT,
-        `intensity` VARCHAR(45) NULL,
-        PRIMARY KEY (`id`)
-    ) ENGINE = InnoDB;
-
-INSERT INTO
-    inovin.visual_intensity (intensity)
-VALUES ('Claire'), ('Soutenue'), ('Intense'), ('Pâle'), ('Foncée'), ('Profonde');
 
 SET SQL_MODE=Traditional;
 

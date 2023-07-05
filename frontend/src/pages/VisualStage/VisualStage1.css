@@ -18,8 +18,8 @@
 }
 
 .contentStage1 {
-  gap: 4rem;
-  margin: 2rem min(2rem, var(--marginPageContent));
+  gap: 3rem;
+  margin: 1.5rem min(1.5rem, var(--marginPageContent));
   margin-bottom: 5rem;
 }
 
@@ -53,7 +53,7 @@
   grid-template-rows: repeat(4, 1fr);
 }
 .blotch {
-  width: clamp(150px, 8vw + 8rem, 23rem);
+  width: clamp(130px, 8vw + 8rem, 23rem);
   background-color: transparent;
   border: none;
   position: relative;
@@ -88,7 +88,7 @@
 
 /* -------------------------------- Tablet media queries--------------------------------- */
 
-@media screen and (min-width: 768px) and (orientation: portrait) {
+@media screen and (min-width: 768px) {
   .intro {
     align-items: center;
     text-align: center;

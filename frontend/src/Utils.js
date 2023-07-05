@@ -10,10 +10,6 @@ import eye from "./assets/Icons/Eye_Icon.svg";
 import nose from "./assets/Icons/Nose_Icon.svg";
 import mouth from "./assets/Icons/Mouth_Icon.svg";
 import heart from "./assets/Icons/Hearth_Icon.svg";
-import intensity from "./assets/Icons/Intensity_Icon.svg";
-import shiny from "./assets/Icons/Shiny_Icon_2.svg";
-import transparency from "./assets/Icons/Transparency_Icon.svg";
-import drop from "./assets/Icons/Drop_Icon.svg";
 import complexity from "./assets/Icons/Complexity_Icon.svg";
 
 // array used to display the colors in the visual stage 1
@@ -104,45 +100,27 @@ const steps = [
   },
 ];
 
-const checkboxes = [
-  {
-    id: 1,
-    name: "Limpidité",
-    iconUrl: transparency,
-    checks: [
-      "Transparente",
-      "Limpide",
-      "Cristalline",
-      "Opaque",
-      "Voilée",
-      "Floue",
-    ],
-  },
-  {
-    id: 2,
-    name: "Brillance",
-    iconUrl: shiny,
-    checks: [
-      "Nette",
-      "Etincelante",
-      "Eclatante",
-      "Brillante",
-      "Lumineuse",
-      "Terne",
-    ],
-  },
-  {
-    id: 3,
-    name: "Intensité",
-    iconUrl: intensity,
-    checks: ["Claire", "Soutenue", "Intense", "Pâle", "Foncée", "Profonde"],
-  },
-  {
-    id: 4,
-    name: "Larmes",
-    iconUrl: drop,
-    checks: ["Visqueuses", "Grasses", "Epaisses", "Coulantes", "Fluides"],
-  },
+const wineQuality = [
+  "Parfait",
+  "Excellent",
+  "Très bon",
+  "Bon",
+  "Passable",
+  "Pas terrible",
+  "Mauvais",
+];
+
+const rating = [
+  { id: 1, value: 1 },
+  { id: 2, value: 2 },
+  { id: 3, value: 3 },
+  { id: 4, value: 4 },
+  { id: 5, value: 5 },
+  { id: 6, value: 6 },
+  { id: 7, value: 7 },
+  { id: 8, value: 8 },
+  { id: 9, value: 9 },
+  { id: 10, value: 10 },
 ];
 
 //nose//

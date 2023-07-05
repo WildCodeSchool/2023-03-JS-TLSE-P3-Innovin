@@ -1,27 +1,26 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { checkboxes } from "../../Utils";
+import TastingContext from "../../contexts/TastingContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
 import Checkboxes from "../../components/Checkboxes/Checkboxes";
 import "./VisualStage2.css";
+import intensity from "../../assets/Icons/Intensity_Icon.svg";
+import shiny from "../../assets/Icons/Shiny_Icon_2.svg";
+import transparency from "../../assets/Icons/Transparency_Icon.svg";
+import drop from "../../assets/Icons/Drop_Icon.svg";
 
 function VisualStage2() {
-  const navigate = useNavigate();
+  const tastingValue = useContext(TastingContext);
+  const { visualData, visualDataKeys } = tastingValue;
 
   // -----------------------------------------handle functions for buttons--------------------------------------------------
 
+  const navigate = useNavigate();
+
   const handleNavigate = () => {
     navigate("/nose/stage1");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-
-    const formJson = Object.fromEntries(formData.entries());
-    console.info(formJson);
   };
 
   // -------------------------------------------return the component----------------------------------------------------
@@ -47,16 +46,40 @@ function VisualStage2() {
             sa texture.
           </p>
         </div>
-        <form action="" className="formStage2" onSubmit={handleSubmit}>
-          <div className="checkboxes">
-            {checkboxes.map((card) => (
-              <Checkboxes key={card.id} card={card} />
-            ))}
-          </div>
-          <ButtonPrimary type="submit" onClick={handleNavigate}>
-            Etape suivante
-          </ButtonPrimary>
-        </form>
+        <div className="checkboxes">
+          <Checkboxes
+            name="limpidité"
+            checks={visualDataKeys(visualData, 0, 1)}
+            ids={visualDataKeys(visualData, 0, 0)}
+            iconUrl={transparency}
+            id="idVisualLimpidity"
+          />
+          <Checkboxes
+            name="Brillance"
+            checks={visualDataKeys(visualData, 1, 1)}
+            ids={visualDataKeys(visualData, 1, 0)}
+            iconUrl={shiny}
+            id="idVisualBrightness"
+          />
+          <Checkboxes
+            name="Intensité"
+            checks={visualDataKeys(visualData, 2, 1)}
+            ids={visualDataKeys(visualData, 2, 0)}
+            iconUrl={intensity}
+            id="idVisualIntensity"
+          />
+          <Checkboxes
+            name="Larmes"
+            checks={visualDataKeys(visualData, 3, 1)}
+            ids={visualDataKeys(visualData, 3, 0)}
+            iconUrl={drop}
+            id="idVisualTears"
+          />
+        </div>
+        <ButtonPrimary type="submit" onClick={handleNavigate}>
+          Etape suivante
+        </ButtonPrimary>
+        {/* </form> */}
       </div>
     </div>
   );
