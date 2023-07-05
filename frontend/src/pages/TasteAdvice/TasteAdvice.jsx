@@ -16,6 +16,7 @@ function TasteAdvice() {
   const { userToken } = useContext(AuthContext);
 
   const [rateValue, setRateValue] = useState(null);
+  const [count, setCount] = useState(1);
 
   // -------------------------------------------------Functions------------------------------------------------------------
   const handleChange = (e) => {
@@ -27,8 +28,8 @@ function TasteAdvice() {
 
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate("/selection");
+  const handleNavigate = (path) => {
+    navigate(path);
   };
 
   // submit the tastingNote object in db
@@ -104,14 +105,26 @@ function TasteAdvice() {
             </div>
           </div>
         </div>
-        <ButtonPrimary
-          onClick={() => {
-            handleNavigate();
-            handleSubmit();
-          }}
-        >
-          Sélection des cépages
-        </ButtonPrimary>
+        {count <= 4 ? (
+          <ButtonPrimary
+            onClick={() => {
+              handleNavigate("/eye/stage1");
+              handleSubmit();
+              setCount(count + 1);
+            }}
+          >
+            Vin suivant
+          </ButtonPrimary>
+        ) : (
+          <ButtonPrimary
+            onClick={() => {
+              handleNavigate("/selection");
+              handleSubmit();
+            }}
+          >
+            Sélection des cépages
+          </ButtonPrimary>
+        )}
       </div>
     </div>
   );
