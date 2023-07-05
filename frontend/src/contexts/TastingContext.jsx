@@ -8,6 +8,22 @@ export function TastingProvider({ children }) {
   const [olfactiveData, setOlfactiveData] = useState(null);
   const [mouthSlidersData, setMouthSlidersData] = useState(null);
   const [mouthData, setMouthData] = useState(null);
+  const [workshopHasExistingWine, setWorkshopHasExistingWine] = useState(null);
+  const [wineNumber, setWineNumber] = useState(1);
+
+  // function which takes 3 values in parameters, arr corresponds to the global array (visualData for example), x allows to select an index of the global array (array of objects) and y corresponds to the values of the objects of the array that one wishes to recover.
+  const visualDataKeys = (arr, x, y) => {
+    const arrValues = [];
+    const array = arr[x];
+
+    array.map((el) => {
+      const values = Object.values(el);
+
+      return arrValues.push(values[y]);
+    });
+
+    return arrValues;
+  };
 
   const tastingValue = useMemo(() => {
     return {
@@ -19,8 +35,20 @@ export function TastingProvider({ children }) {
       setMouthSlidersData,
       mouthData,
       setMouthData,
+      workshopHasExistingWine,
+      setWorkshopHasExistingWine,
+      wineNumber,
+      setWineNumber,
+      visualDataKeys,
     };
-  }, [visualData, olfactiveData, mouthSlidersData, mouthData]);
+  }, [
+    visualData,
+    olfactiveData,
+    mouthSlidersData,
+    mouthData,
+    workshopHasExistingWine,
+    wineNumber,
+  ]);
 
   return (
     <TastingContext.Provider value={tastingValue}>
