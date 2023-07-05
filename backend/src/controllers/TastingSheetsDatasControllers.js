@@ -5,7 +5,29 @@ const findVisualDatas = (req, res) => {
     .getVisualDatas()
     .then(([results]) => {
       if (results.length) {
-        res.status(200).json(results);
+        const filteredArray = results.map((obj) => {
+          const filteredObj = {};
+          Object.keys(obj).forEach((key) => {
+            if (obj[key] !== null) {
+              filteredObj[key] = obj[key];
+            }
+          });
+          return filteredObj;
+        });
+
+        const groupedObj = filteredArray.reduce((acc, obj) => {
+          const keysToGroup = ["limpidity", "brightness", "intensity", "tears"];
+          const groupKey = keysToGroup.find((key) => key in obj);
+          if (groupKey) {
+            if (!acc[groupKey]) {
+              acc[groupKey] = [];
+            }
+            acc[groupKey].push(obj);
+          }
+          return acc;
+        }, {});
+
+        res.status(200).json(Object.values(groupedObj));
       } else {
         res.status(400).send("Bad Request");
       }
@@ -21,7 +43,29 @@ const findOlfactiveDatas = (req, res) => {
     .getOlfactiveDatas()
     .then(([results]) => {
       if (results.length) {
-        res.status(200).json(results);
+        const filteredArray = results.map((obj) => {
+          const filteredObj = {};
+          Object.keys(obj).forEach((key) => {
+            if (obj[key] !== null) {
+              filteredObj[key] = obj[key];
+            }
+          });
+          return filteredObj;
+        });
+
+        const groupedObj = filteredArray.reduce((acc, obj) => {
+          const keysToGroup = ["intensity_aromas", "complexity", "aromas"];
+          const groupKey = keysToGroup.find((key) => key in obj);
+          if (groupKey) {
+            if (!acc[groupKey]) {
+              acc[groupKey] = [];
+            }
+            acc[groupKey].push(obj);
+          }
+          return acc;
+        }, {});
+
+        res.status(200).json(Object.values(groupedObj));
       } else {
         res.status(400).send("Bad Request");
       }
@@ -37,7 +81,34 @@ const findMouthSlidersDatas = (req, res) => {
     .getMouthSlidersDatas()
     .then(([results]) => {
       if (results.length) {
-        res.status(200).json(results);
+        const filteredArray = results.map((obj) => {
+          const filteredObj = {};
+          Object.keys(obj).forEach((key) => {
+            if (obj[key] !== null) {
+              filteredObj[key] = obj[key];
+            }
+          });
+          return filteredObj;
+        });
+
+        const groupedObj = filteredArray.reduce((acc, obj) => {
+          const keysToGroup = [
+            "alcohol",
+            "acidity",
+            "sweetness",
+            "taste_tannin",
+          ];
+          const groupKey = keysToGroup.find((key) => key in obj);
+          if (groupKey) {
+            if (!acc[groupKey]) {
+              acc[groupKey] = [];
+            }
+            acc[groupKey].push(obj);
+          }
+          return acc;
+        }, {});
+
+        res.status(200).json(groupedObj);
       } else {
         res.status(400).send("Bad Request");
       }
@@ -53,7 +124,29 @@ const findTasteDatas = (req, res) => {
     .getTastingDatas()
     .then(([results]) => {
       if (results.length) {
-        res.status(200).json(results);
+        const filteredArray = results.map((obj) => {
+          const filteredObj = {};
+          Object.keys(obj).forEach((key) => {
+            if (obj[key] !== null) {
+              filteredObj[key] = obj[key];
+            }
+          });
+          return filteredObj;
+        });
+
+        const groupedObj = filteredArray.reduce((acc, obj) => {
+          const keysToGroup = ["intensity", "mouth_feel", "flavor"];
+          const groupKey = keysToGroup.find((key) => key in obj);
+          if (groupKey) {
+            if (!acc[groupKey]) {
+              acc[groupKey] = [];
+            }
+            acc[groupKey].push(obj);
+          }
+          return acc;
+        }, {});
+
+        res.status(200).json(groupedObj);
       } else {
         res.status(400).send("Bad Request");
       }

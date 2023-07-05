@@ -33,5 +33,7 @@
   "dependencies": {
     "node-sass": "^9.0.0",
     "primereact": "^9.6.0"
+    "leaflet": "^1.9.4",
+    "react-leaflet": "^4.2.1"
   }
 }

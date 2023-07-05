@@ -1,12 +1,16 @@
+import { useContext } from "react";
+import TastingContext from "../contexts/TastingContext";
 import "./TastingHeaderTitle.css";
 
 function TastingHeaderTitle() {
+  const { wineNumber } = useContext(TastingContext);
+
   return (
     <div className="titleContainer">
-      <h2>
-        Vin N° <span>1</span>
+      <h2 className="wineNumTitle">
+        Vin N° <span>{wineNumber}</span>
       </h2>
-      <p>date</p>
+      <p className="headerDate">date</p>
     </div>
   );
 }
