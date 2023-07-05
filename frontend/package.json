@@ -7,10 +7,12 @@
     "fix": "prettier --write . && eslint --fix --ext .jsx ."
   },
   "dependencies": {
+    "@fseehawer/react-circular-slider": "^2.6.1",
     "@vitejs/plugin-react": "^3.0.1",
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
     "js-cookie": "^3.0.5",
+    "primereact": "^9.6.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

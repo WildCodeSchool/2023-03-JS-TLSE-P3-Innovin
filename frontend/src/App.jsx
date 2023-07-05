@@ -2,11 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import "./App.css";
+import "primereact/resources/primereact.min.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
 import TastingPresentation from "./pages/TastingPresentation/TastingPresentation";
 import VisualStage1 from "./pages/VisualStage/VisualStage1";
 import VisualStage2 from "./pages/VisualStage/VisualStage2";
+import TasteStage1 from "./pages/TasteStage1/TasteStage1";
 import { TastingNoteProvider } from "./contexts/TastingNoteContext";
 import { TastingProvider } from "./contexts/TastingContext";
 
@@ -45,6 +47,10 @@ function App() {
               <Route
                 path="/eye/stage2"
                 element={<VisualStage2 userToken={userToken} />}
+              />
+              <Route
+                path="/mouth/stage1"
+                element={<TasteStage1 userToken={userToken} />}
               />
             </Routes>
           </div>

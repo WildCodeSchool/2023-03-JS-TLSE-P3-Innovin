@@ -31,5 +31,7 @@
     "husky": "^8.0.3"
   },
   "dependencies": {
+    "@fseehawer/react-circular-slider": "^2.6.1",
+    "primereact": "^9.6.0"
   }
 }

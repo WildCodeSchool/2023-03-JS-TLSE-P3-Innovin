@@ -1,0 +1,26 @@
+.SlidersContainer {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.Sliderbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 47%;
+}
+
+.TitleSliders {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2.5rem;
+  font-size: 2.5rem;
+}
+
+.Sliderbox img {
+  height: 2.5rem;
+}
