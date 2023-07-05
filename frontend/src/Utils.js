@@ -11,6 +11,7 @@ import nose from "./assets/Icons/Nose_Icon.svg";
 import mouth from "./assets/Icons/Mouth_Icon.svg";
 import heart from "./assets/Icons/Hearth_Icon.svg";
 import complexity from "./assets/Icons/Complexity_Icon.svg";
+import intensity from "./assets/Icons/Intensity_Icon.svg";
 
 // array used to display the colors in the visual stage 1
 const redWineColors = [
@@ -140,4 +141,4 @@ const noseCheckboxes = [
   },
 ];
 
-export { redWineColors, steps, checkboxes, noseCheckboxes };
+export { redWineColors, steps, noseCheckboxes, wineQuality, rating };
