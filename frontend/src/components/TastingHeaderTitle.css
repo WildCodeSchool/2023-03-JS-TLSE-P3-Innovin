@@ -1,5 +1,5 @@
 .titleContainer,
-.header h2 {
+.wineNumTitle {
   display: flex;
   align-items: baseline;
   justify-content: center;
@@ -10,12 +10,13 @@
   border: 2px solid var(--smoothGoldColor);
   border-radius: 5px;
 }
-.header h2 {
+.wineNumTitle {
   font-family: var(--fontFamilyTitle);
   font-size: var(--fontSizeH2);
+  color: var(--whiteGoldColor);
 }
 
-.header p {
+.headerDate {
   font-family: var(--fontFamilyText);
   font-size: clamp(24px, 3vw + 1rem, 2.5rem);
   font-weight: 200;

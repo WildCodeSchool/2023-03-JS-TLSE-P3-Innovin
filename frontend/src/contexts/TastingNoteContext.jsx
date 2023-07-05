@@ -24,10 +24,19 @@ export function TastingNoteProvider({ children }) {
     idAcidity: null,
     idTasteSweetness: null,
     idTasteTannin: null,
+    idVisualIntensity: null,
   });
 
+  const handleFillVisualColorId = (e, value) => {
+    e.preventDefault();
+    setTastingNote({
+      ...tastingNote,
+      idVisualColor: value,
+    });
+  };
+
   const tastingNoteValue = useMemo(() => {
-    return { tastingNote, setTastingNote };
+    return { tastingNote, setTastingNote, handleFillVisualColorId };
   }, [tastingNote]);
 
   return (
