@@ -10,13 +10,15 @@ import "./TasteAdvice.scss";
 import TastingNoteContext from "../../contexts/TastingNoteContext";
 import AuthContext from "../../contexts/AuthContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
+import TastingContext from "../../contexts/TastingContext";
 
 function TasteAdvice() {
   const { setTastingNote, tastingNote } = useContext(TastingNoteContext);
+  const { workshopHasExistingWine, wineNumber, setWineNumber } =
+    useContext(TastingContext);
   const { userToken } = useContext(AuthContext);
 
   const [rateValue, setRateValue] = useState(null);
-  const [count, setCount] = useState(1);
 
   // -------------------------------------------------Functions------------------------------------------------------------
   const handleChange = (e) => {
@@ -105,12 +107,12 @@ function TasteAdvice() {
             </div>
           </div>
         </div>
-        {count <= 4 ? (
+        {wineNumber < workshopHasExistingWine.length ? (
           <ButtonPrimary
             onClick={() => {
               handleNavigate("/eye/stage1");
               handleSubmit();
-              setCount(count + 1);
+              setWineNumber(wineNumber + 1);
             }}
           >
             Vin suivant

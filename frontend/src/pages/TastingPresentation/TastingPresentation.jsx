@@ -6,12 +6,20 @@ import "./TastingPresentation.css";
 import logo from "../../assets/Logo_W_Circles.svg";
 import Navbar from "../../components/Navbar/Navbar";
 import ButtonPrimary from "../../components/ButtonPrimary";
+import AuthContext from "../../contexts/AuthContext";
 
 export default function TastingPresentation() {
   // destructuring the context and each value needed to store data in states
   const tastingValue = useContext(TastingContext);
-  const { setVisualData, setOlfactiveData, setMouthSlidersData, setMouthData } =
-    tastingValue;
+  const {
+    setVisualData,
+    setOlfactiveData,
+    setMouthSlidersData,
+    setMouthData,
+    setWorkshopHasExistingWine,
+  } = tastingValue;
+
+  const { userToken } = useContext(AuthContext);
 
   // ------------------------------------------------------functions--------------------------------------------------------
 
@@ -22,20 +30,31 @@ export default function TastingPresentation() {
       "http://localhost:5000/olfactivedatas",
       "http://localhost:5000/mouthslidersdatas",
       "http://localhost:5000/tastedatas",
+      "http://localhost:5000/workshophasexistingwine/1",
     ];
 
-    Promise.all(endpoints.map((endpoint) => axios.get(endpoint)))
+    Promise.all(
+      endpoints.map((endpoint) =>
+        axios.get(endpoint, {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        })
+      )
+    )
       .then(
         ([
           { data: eye },
           { data: nose },
           { data: mouth1 },
           { data: mouth2 },
+          { data: winesWorkshop },
         ]) => {
           setVisualData(eye);
           setOlfactiveData(nose);
           setMouthSlidersData(mouth1);
           setMouthData(mouth2);
+          setWorkshopHasExistingWine(winesWorkshop);
         }
       )
       .catch((err) => {
@@ -71,7 +90,7 @@ export default function TastingPresentation() {
           </p>
 
           <div className="button-container">
-            <Link to="/eye/stage1">
+            <Link to="/advice">
               <ButtonPrimary> Démarrer </ButtonPrimary>
             </Link>
           </div>
