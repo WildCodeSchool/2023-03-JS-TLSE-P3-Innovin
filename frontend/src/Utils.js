@@ -102,7 +102,7 @@ const steps = [
 const wineQuality = [
   "Parfait",
   "Excellent",
-  "Trés bon",
+  "Très bon",
   "Bon",
   "Passable",
   "Pas terrible",

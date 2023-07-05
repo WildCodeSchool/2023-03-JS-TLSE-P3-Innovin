@@ -22,7 +22,7 @@ function Checkboxes({ name, checks, iconUrl, ids, id }) {
       </div>
       <div className="checkboxesInputs">
         {checks.map((check, index) => (
-          <label className="checkboxLabel" htmlFor={check}>
+          <label key={check} className="checkboxLabel" htmlFor={check}>
             <input
               onChange={() => {
                 handleFillObject(index);
@@ -30,7 +30,6 @@ function Checkboxes({ name, checks, iconUrl, ids, id }) {
               type="radio"
               id={check}
               name={name}
-              key={check}
               value={check}
             />
             {check}

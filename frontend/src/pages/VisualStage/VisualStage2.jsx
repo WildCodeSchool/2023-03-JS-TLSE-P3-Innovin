@@ -13,16 +13,7 @@ import drop from "../../assets/Icons/Drop_Icon.svg";
 
 function VisualStage2() {
   const tastingValue = useContext(TastingContext);
-  const { visualData } = tastingValue;
-
-  const limpidityId = visualData[0].map((el) => el.vl_id);
-  const limpidityChecks = visualData[0].map((el) => el.limpidity);
-  const brightnessId = visualData[1].map((el) => el.vb_id);
-  const brightnessChecks = visualData[1].map((el) => el.brightness);
-  const intensityId = visualData[2].map((el) => el.vi_id);
-  const intensityChecks = visualData[2].map((el) => el.intensity);
-  const tearsId = visualData[3].map((el) => el.vt_id);
-  const tearsChecks = visualData[3].map((el) => el.tears);
+  const { visualData, visualDataKeys } = tastingValue;
 
   // -----------------------------------------handle functions for buttons--------------------------------------------------
 
@@ -55,33 +46,32 @@ function VisualStage2() {
             sa texture.
           </p>
         </div>
-        {/* <form action="" className="formStage2" onSubmit={handleSubmit}> */}
         <div className="checkboxes">
           <Checkboxes
             name="limpidité"
-            checks={limpidityChecks}
-            ids={limpidityId}
+            checks={visualDataKeys(visualData, 0, 1)}
+            ids={visualDataKeys(visualData, 0, 0)}
             iconUrl={transparency}
             id="idVisualLimpidity"
           />
           <Checkboxes
             name="Brillance"
-            checks={brightnessChecks}
-            ids={brightnessId}
+            checks={visualDataKeys(visualData, 1, 1)}
+            ids={visualDataKeys(visualData, 1, 0)}
             iconUrl={shiny}
             id="idVisualBrightness"
           />
           <Checkboxes
             name="Intensité"
-            checks={intensityChecks}
-            ids={intensityId}
+            checks={visualDataKeys(visualData, 2, 1)}
+            ids={visualDataKeys(visualData, 2, 0)}
             iconUrl={intensity}
             id="idVisualIntensity"
           />
           <Checkboxes
             name="Larmes"
-            checks={tearsChecks}
-            ids={tearsId}
+            checks={visualDataKeys(visualData, 3, 1)}
+            ids={visualDataKeys(visualData, 3, 0)}
             iconUrl={drop}
             id="idVisualTears"
           />
