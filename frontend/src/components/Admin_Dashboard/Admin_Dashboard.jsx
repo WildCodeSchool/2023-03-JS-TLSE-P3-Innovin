@@ -1,13 +1,17 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import "./Admin_Dashboard.scss";
 import Calendar from "react-calendar";
 import logo from "../../assets/Logo_W_Circles.svg";
 import AuthContext from "../../contexts/AuthContext";
+import AdminContext from "../../contexts/AdminContext";
 
 function AdminDashboard() {
+  const { setWorkshops, workshops } = useContext(AdminContext);
   const { userToken } = useContext(AuthContext);
   const [value, onChange] = useState(new Date());
+  const navigate = useNavigate();
 
   const handleClick = (date) => {
     onChange(date);
@@ -21,12 +25,17 @@ function AdminDashboard() {
         },
       })
       .then((response) => {
-        console.info(response);
+        setWorkshops(response.data);
       })
       .catch((err) => {
         console.error(err);
       });
+
+    if (window.location.pathname !== "/admin/workshops") {
+      navigate("/admin/workshops");
+    }
   };
+  console.info(workshops);
 
   return (
     <div className="dashboard">
