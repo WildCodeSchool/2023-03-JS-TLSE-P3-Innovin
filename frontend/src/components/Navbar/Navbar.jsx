@@ -14,7 +14,7 @@ export default function Navbar() {
     <nav className="navBar">
       <div className="logo-h1">
         <img className="logo-nav" src={logo} alt="innovin logo" />
-        <h1>INOVIN</h1>
+        <h1 className="titre-logo">INOVIN</h1>
       </div>
 
       <ul className={`navbarpoppins ${isMenuOpen ? "open" : ""}`}>
