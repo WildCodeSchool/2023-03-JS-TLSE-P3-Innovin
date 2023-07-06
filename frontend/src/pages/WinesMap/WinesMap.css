@@ -1,11 +1,12 @@
 .page-content {
-  background: var(--blackBgGradient);
+  background: var(--grayBgColor);
   display: flex;
   justify-content: center;
   width: auto;
   margin: 0;
   height: 100vh;
   border-radius: 0;
+  padding-top: 0;
 }
 
 header {

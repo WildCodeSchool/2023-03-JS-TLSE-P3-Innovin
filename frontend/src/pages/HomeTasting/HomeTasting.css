@@ -208,7 +208,7 @@ p {
   }
 
   .fisrt-part {
-    height: 600px;
+    height: 650px;
 
     width: 100vw;
     display: flex;
@@ -221,7 +221,7 @@ p {
     background-size: cover;
     background-position: center;
     width: 70%;
-    height: 500px;
+    height: 570px;
     align-items: center;
   }
 
