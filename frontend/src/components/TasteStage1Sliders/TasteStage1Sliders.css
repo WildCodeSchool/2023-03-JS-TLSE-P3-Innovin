@@ -1,8 +1,7 @@
 .SlidersContainer {
-  width: 70%;
+  width: 100%;
   display: flex;
   justify-content: center;
-  gap: 2.5rem;
   flex-wrap: wrap;
 }
 
@@ -10,17 +9,85 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 47%;
+  width: 100%;
+  line-height: 3rem;
+  padding: 2rem;
 }
+
+.Sliderbox:first-child {
+  padding-top: 0;
+}
+.Sliderbox:last-child {
+  padding-bottom: 0;
+}
+
+/* Sliders container elements */
 
 .TitleSliders {
   display: flex;
+  text-align: center;
   justify-content: center;
   gap: 2rem;
-  margin: 2.5rem;
+  margin-bottom: 2rem;
   font-size: 2.5rem;
 }
 
 .Sliderbox img {
   height: 2.5rem;
+}
+
+/* -------------------------------- Tablet media queries--------------------------------- */
+
+@media screen and (min-width: 768px) and (orientation: portrait) {
+  .Sliderbox:nth-child(1) {
+    padding: 0rem 1rem 2rem 0rem;
+  }
+  .Sliderbox:nth-child(2) {
+    padding: 0rem 0rem 2rem 1rem;
+  }
+  .Sliderbox:nth-child(3) {
+    padding: 2rem 1rem 0rem 0rem;
+  }
+  .Sliderbox:nth-child(4) {
+    padding: 2rem 0rem 0rem 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Sliderbox {
+    width: 47%;
+  }
+
+  /* Dotted sliders separation*/
+
+  .Sliderbox:nth-child(1) {
+    border-style: dotted;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+    border-color: white;
+    padding: 0rem 0rem 2rem 0rem;
+  }
+
+  .Sliderbox:nth-child(2) {
+    border-style: dotted;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-color: white;
+    margin: 0;
+    padding: 0rem 0rem 2rem 0rem;
+  }
+
+  .Sliderbox:nth-child(3) {
+    border-style: dotted;
+    border-width: 0;
+    border-right-width: 1px;
+    border-color: white;
+    margin: 0;
+    padding: 2rem 0rem 0rem 0rem;
+  }
+  .Sliderbox:nth-child(4) {
+    margin: 0;
+    padding: 2rem 0rem 0rem 0rem;
+  }
 }

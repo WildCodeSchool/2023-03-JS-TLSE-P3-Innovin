@@ -7,6 +7,7 @@ import "./TasteStage1.css";
 
 function TasteStage1() {
   const navigate = useNavigate();
+
   const tasteTannin = [
     { id: 1, tannin: "Apre" },
     { id: 2, tannin: "Chargé" },
@@ -44,15 +45,6 @@ function TasteStage1() {
     navigate("/mouth/stage2");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-
-    const formJson = Object.fromEntries(formData.entries());
-    console.info(formJson);
-  };
-
   // -------------------------------------------return the component----------------------------------------------------
 
   return (
@@ -71,15 +63,13 @@ function TasteStage1() {
           </p>
           <p>Comment est-il structuré ? </p>
         </div>
-        <form action="" className="FormTasteStage1" onSubmit={handleSubmit}>
-          <div className="sliders">
-            <SlidersTasteStage1
-              tasteTannin={tasteTannin}
-              tasteSweetness={tasteSweetness}
-              tasteAcidity={tasteAcidity}
-              tasteAlcool={tasteAlcool}
-            />
-          </div>
+        <form action="" className="FormTasteStage1">
+          <SlidersTasteStage1
+            tasteTannin={tasteTannin}
+            tasteSweetness={tasteSweetness}
+            tasteAcidity={tasteAcidity}
+            tasteAlcool={tasteAlcool}
+          />
         </form>
         <ButtonPrimary type="submit" onClick={handleNavigate}>
           Etape suivante

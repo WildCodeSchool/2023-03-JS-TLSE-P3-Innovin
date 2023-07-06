@@ -1,7 +1,7 @@
 /* global style of the page TasteStage1 */
 .TasteStage1,
 .contentTasteStage1,
-.sliders,
+.FormTasteStage1,
 .intro,
 .header {
   display: flex;
@@ -12,10 +12,23 @@
 
 .TasteStage1 {
   height: 100%;
-  background: var(--blackBgGradient);
+  background: no-repeat bottom 9em left 40em
+      url("../../assets/Gold_Blotches/Watercolor_Blotch_2 1.png"),
+    no-repeat top 45em right 2em
+      url("../../assets/Gold_Blotches/Watercolor_Splatters 1.png"),
+    var(--blackBgGradient);
   color: var(--whiteGoldColor);
   font-family: var(--fontFamilyText);
   font-size: var(--fontSizeText);
+}
+
+.FormTasteStage1 {
+  width: 100%;
+  background: var(--blackBgGradientSmooth);
+  box-shadow: var(--shadow);
+  backdrop-filter: var(--bgBlur);
+  padding: 2rem 0 2rem 0;
+  border-radius: 5px;
 }
 
 .contentTasteStage1 {
@@ -31,60 +44,16 @@
 
 /* style for the text intro */
 .intro {
-  align-items: start;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem;
   gap: 2.5rem;
-  text-align: left;
 }
 
 .intro .subtitle {
   font-family: var(--fontFamilyTitle);
   font-size: 2rem;
   color: var(--primaryColor);
-}
-
-.tip {
-  font-weight: 200;
-  font-style: italic;
-}
-
-/* style for the colors section */
-.colors {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-}
-.blotch {
-  width: clamp(150px, 8vw + 8rem, 23rem);
-  background-color: transparent;
-  border: none;
-  position: relative;
-}
-
-.blotch p {
-  font-family: var(--fontFamilyText);
-  font-size: var(--fontSizeText);
-  font-weight: 200;
-  font-style: italic;
-  color: var(--whiteGoldColor);
-  position: absolute;
-  padding: 0.5rem 1rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.blotch .colorName {
-  font-style: normal;
-  font-weight: 600;
-  rotate: 10deg;
-  scale: 1.2;
-  translate: 10% 10%;
-  transition: 300ms ease-in-out;
-}
-
-.blotch p:hover {
-  rotate: 10deg;
-  transition: 300ms ease-in-out;
 }
 
 /* -------------------------------- Tablet media queries--------------------------------- */
@@ -95,10 +64,21 @@
     text-align: center;
     padding-inline: var(--paddingTablet);
   }
-  .colors {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+
+  .TasteStage1 {
+    background: no-repeat bottom 9em left 7em
+        url("../../assets/Gold_Blotches/Watercolor_Blotch_2 1.png"),
+      no-repeat top 30em right 5em
+        url("../../assets/Gold_Blotches/Watercolor_Splatters 1.png"),
+      var(--blackBgGradient);
+  }
+
+  .FormTasteStage1 {
+    width: 95%;
+    background: var(--blackBgGradientSmooth);
+    box-shadow: var(--shadow);
+    backdrop-filter: var(--bgBlur);
+    border-radius: 5px;
   }
 }
 
@@ -113,9 +93,7 @@
     text-align: center;
     padding-inline: var(--marginPageContent);
   }
-  .colors {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+  .FormTasteStage1 {
+    width: 70%;
   }
 }

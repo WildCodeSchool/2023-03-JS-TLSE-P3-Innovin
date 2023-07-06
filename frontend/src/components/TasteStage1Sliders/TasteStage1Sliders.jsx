@@ -9,29 +9,31 @@ import WineBarrel_Icon from "../../assets/Icons/Sliders_Icons/WineBarrel_Icon.sv
 import WineGlass_Icon from "../../assets/Icons/Sliders_Icons/WineGlass_Icon.svg";
 
 function Sliders({ tasteTannin, tasteSweetness, tasteAcidity, tasteAlcool }) {
-  // Retrieval of properties to display for each object passed in props
-  const tasteTanninValues = tasteTannin.map((item) => item.tannin);
-  const tasteSweetnessValues = tasteSweetness.map((item) => item.sweetness);
-  const acidityValues = tasteAcidity.map((item) => item.acidity);
-  const alcoolValues = tasteAlcool.map((item) => item.alcool);
+  // ------------------------------------Retrieval of properties to display for each object passed in props--------------------------------------------------
+
+  const tasteTanninItems = tasteTannin.map((item) => item.tannin);
+  const tasteSweetnessItems = tasteSweetness.map((item) => item.sweetness);
+  const acidityItems = tasteAcidity.map((item) => item.acidity);
+  const alcoolItems = tasteAlcool.map((item) => item.alcool);
+
+  // ------------------------------------Slider values management-------------------------------------------------------------------------------------------
 
   const [acidityValue, setAcidityValue] = useState();
   const [alcoolValue, setAlcoolValue] = useState();
   const [sweetnessValue, setSweetnessValue] = useState("");
-
+  const dataSweetness = ["0 g/L", "4 g/L", "12 g/L", "32g/L", "45 g/L"];
+  const dataAcidity = ["2 g/L", "4 g/L", "5 g/L", "6 g/L", "7 g/L"];
+  const dataAlcool = ["8 %", "8.5 %", "10 %", "12 %", "13.5 %"];
   const handleChangeSweetnessValue = (value) => {
-    const dataSweetness = ["0 g/L", "4 g/L", "12 g/L", "32g/L", "45 g/L"];
-    setSweetnessValue(tasteSweetnessValues[dataSweetness.indexOf(value)]);
+    setSweetnessValue(tasteSweetnessItems[dataSweetness.indexOf(value)]);
   };
 
   const handleChangeAcidityValue = (value) => {
-    const dataAcidity = ["2 g/L", "4 g/L", "5 g/L", "6 g/L", "7 g/L"];
-    setAcidityValue(dataAcidity[acidityValues.indexOf(value)]);
+    setAcidityValue(acidityItems[dataAcidity.indexOf(value)]);
   };
 
   const handleChangeAlcoolValue = (value) => {
-    const dataAlcool = ["8 %", "8.5 %", "10 %", "12 %", "13.5 %"];
-    setAlcoolValue(dataAlcool[alcoolValues.indexOf(value)]);
+    setAlcoolValue(alcoolItems[dataAlcool.indexOf(value)]);
   };
 
   return (
@@ -42,17 +44,17 @@ function Sliders({ tasteTannin, tasteSweetness, tasteAcidity, tasteAlcool }) {
           <h2>Sucrosité</h2>
         </div>
         <CircularSlider
-          labelFontSize="2rem"
-          valueFontSize="2.5rem"
-          label={tasteSweetnessValues}
+          labelFontSize="2.5rem"
+          valueFontSize="2rem"
+          label={sweetnessValue}
           labelColor="var(--whiteGoldColor)"
           knobColor="#892221"
           progressColorFrom="#E82321"
           progressColorTo="#E82321"
-          progressSize={31}
+          progressSize={28}
           trackColor="#eeeeee"
-          trackSize={24}
-          data={sweetnessValue}
+          trackSize={23}
+          data={dataSweetness}
           dataIndex={2.5}
           onChange={handleChangeSweetnessValue}
         />
@@ -63,17 +65,17 @@ function Sliders({ tasteTannin, tasteSweetness, tasteAcidity, tasteAlcool }) {
           <h2>Alcool</h2>
         </div>
         <CircularSlider
-          labelFontSize="2rem"
-          valueFontSize="2.5rem"
+          labelFontSize="2.5rem"
+          valueFontSize="2rem"
           label={alcoolValue}
           labelColor="var(--whiteGoldColor)"
           knobColor="#A72438"
           progressColorFrom="#9A1F48"
           progressColorTo="#9A1F48"
-          progressSize={31}
+          progressSize={28}
           trackColor="#eeeeee"
-          trackSize={24}
-          data={alcoolValues}
+          trackSize={23}
+          data={dataAlcool}
           dataIndex={2.5}
           onChange={handleChangeAlcoolValue}
         />
@@ -85,17 +87,17 @@ function Sliders({ tasteTannin, tasteSweetness, tasteAcidity, tasteAlcool }) {
           <h2>Acidité</h2>
         </div>
         <CircularSlider
-          labelFontSize="2rem"
-          valueFontSize="2.5rem"
+          labelFontSize="2.5rem"
+          valueFontSize="2rem"
           label={acidityValue}
           labelColor="var(--whiteGoldColor)"
           knobColor="#730907"
           progressColorFrom="#B91C19"
           progressColorTo="#B91C19"
-          progressSize={31}
+          progressSize={28}
           trackColor="#eeeeee"
-          trackSize={24}
-          data={acidityValues}
+          trackSize={23}
+          data={dataAcidity}
           dataIndex={2.5}
           onChange={handleChangeAcidityValue}
         />
@@ -113,10 +115,10 @@ function Sliders({ tasteTannin, tasteSweetness, tasteAcidity, tasteAlcool }) {
           knobColor="#892221"
           progressColorFrom="#E94E65"
           progressColorTo="#E94E65"
-          progressSize={31}
+          progressSize={28}
           trackColor="#eeeeee"
-          trackSize={24}
-          data={tasteTanninValues}
+          trackSize={23}
+          data={tasteTanninItems}
           dataIndex={2.5}
           onChange={(value) => console.info(value)}
         />
