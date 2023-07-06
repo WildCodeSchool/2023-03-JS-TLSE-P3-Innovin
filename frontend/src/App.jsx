@@ -13,7 +13,6 @@ import WinesTasted from "./pages/WinesTasted/WinesTasted";
 import { TastingNoteProvider } from "./contexts/TastingNoteContext";
 import { TastingProvider } from "./contexts/TastingContext";
 import { AuthProvider } from "./contexts/AuthContext";
-import "primereact/resources/primereact.min.css";
 import WinesMap from "./pages/WinesMap/WinesMap";
 
 function App() {
@@ -30,7 +29,7 @@ function App() {
                 <Route path="/tasting" element={<TastingPresentation />} />
                 <Route path="/eye/stage1" element={<VisualStage1 />} />
                 <Route path="/eye/stage2" element={<VisualStage2 />} />
-                <Route path="/mouth/stage1" element={<VisualStage2 />} />
+                <Route path="/mouth/stage1" element={<TasteStage1 />} />
                 <Route path="/advice" element={<TasteAdvice />} />
                 <Route path="/selection" element={<WinesTasted />} />
                 <Route path="/carte" element={<WinesMap />} />
