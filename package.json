@@ -31,10 +31,8 @@
     "husky": "^8.0.3"
   },
   "dependencies": {
-    "@fseehawer/react-circular-slider": "^2.6.1",
-    "nodemon": "^2.0.22",
-    "primereact": "^9.6.0"
     "leaflet": "^1.9.4",
+    "node-sass": "^9.0.0",
     "react-leaflet": "^4.2.1"
   }
 }
