@@ -55,6 +55,7 @@ export default function TastingPresentation() {
           setMouthSlidersData(mouth1);
           setMouthData(mouth2);
           setWorkshopHasExistingWine(winesWorkshop);
+          console.info(nose);
         }
       )
       .catch((err) => {

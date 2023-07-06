@@ -13,6 +13,7 @@ function Checkboxes({ name, checks, iconUrl, ids, id }) {
       [id]: ids[index],
     });
   };
+  console.info(tastingNote);
 
   return (
     <div className="checkboxCard">

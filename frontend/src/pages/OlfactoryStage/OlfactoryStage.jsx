@@ -1,24 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import "./OlfactoryStage.css";
-import { noseCheckboxes } from "../../Utils";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
 import Checkboxes from "../../components/Checkboxes/Checkboxes";
-import vegetal from "../../assets/Flavor_Img/Vegetal.jpg";
-import spice from "../../assets/Flavor_Img/Spices.jpg";
-import coffee from "../../assets/Flavor_Img/Coffee.jpg";
-import animal from "../../assets/Flavor_Img/Animal.jpg";
-import flower from "../../assets/Flavor_Img/Flower.jpg";
-import mineral from "../../assets/Flavor_Img/Mineral.jpg";
-import wood from "../../assets/Flavor_Img/Wood.jpg";
-import redFruits from "../../assets/Flavor_Img/Red_Fruits.jpg";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
+import TastingContext from "../../contexts/TastingContext";
+import Intensity from "../../assets/Icons/Intensity_Icon.svg";
+import Complexity from "../../assets/Icons/Complexity_Icon.svg";
+import Aromas from "../../components/Aromas/Aromas";
+import TastingNoteContext from "../../contexts/TastingNoteContext";
 
 export default function OlfactoryStage() {
+  const { olfactiveData, visualDataKeys } = useContext(TastingContext);
+  const { TastingNote } = useContext(TastingNoteContext);
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("mouth/stage1");
+  };
+
+  const [selectedAromas, setSelectedAromas] = useState([]);
+
+  const handleAromaClick = (idAromas) => {
+    setSelectedAromas((prevSelectedAromas) => {
+      if (prevSelectedAromas.includes(idAromas)) {
+        return prevSelectedAromas.filter((id) => id !== idAromas);
+      }
+      return [...prevSelectedAromas, idAromas];
+    });
   };
 
   const handleSubmit = (e) => {
@@ -27,27 +36,11 @@ export default function OlfactoryStage() {
     const formData = new FormData(form);
 
     const formJson = Object.fromEntries(formData.entries());
+    formJson.aromas = selectedAromas;
     console.info(formJson);
   };
-  const [selectedAromas, setSelectedAromas] = useState([]);
 
-  const handleAromaClick = (aroma) => {
-    if (selectedAromas.includes(aroma)) {
-      setSelectedAromas(selectedAromas.filter((item) => item !== aroma));
-    } else {
-      setSelectedAromas([...selectedAromas, aroma]);
-    }
-  };
-
-  const isAromaSelected = (aroma) => selectedAromas.includes(aroma);
-
-  const handleKeyDown = (aroma) => (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      handleAromaClick(aroma);
-    }
-  };
-
-  console.info("Selected Aromas:", selectedAromas);
+  console.info(TastingNote);
 
   return (
     <div className="page-container">
@@ -63,9 +56,21 @@ export default function OlfactoryStage() {
       <div className="checkbox">
         <form action="" className="formStage2" onSubmit={handleSubmit}>
           <div className="checkboxes">
-            {noseCheckboxes.map((card) => (
-              <Checkboxes key={card.id} card={card} />
-            ))}
+            <Checkboxes
+              name="Intensité"
+              checks={visualDataKeys(olfactiveData, 0, 1)}
+              ids={visualDataKeys(olfactiveData, 0, 0)}
+              iconUrl={Intensity}
+              id="idOlfactiveIntensity"
+            />
+
+            <Checkboxes
+              name="Complexité"
+              checks={visualDataKeys(olfactiveData, 1, 1)}
+              ids={visualDataKeys(olfactiveData, 1, 0)}
+              iconUrl={Complexity}
+              id="idOlfactiveComplexity"
+            />
           </div>
         </form>
       </div>
@@ -77,111 +82,15 @@ export default function OlfactoryStage() {
           appartient votre vin ?
         </p>
       </div>
-      <div className="aromas">
-        <h3>Sélectionner un ou plusieurs arômes</h3>
-        <div className="aromasSelection">
-          <div className="colonne1">
-            <div
-              className={`round aroma-item ${
-                isAromaSelected("spices") ? "selected" : ""
-              }`}
-              role="button"
-              tabIndex={0}
-              onClick={() => handleAromaClick("spices")}
-              onKeyDown={handleKeyDown("spices")}
-            >
-              <img src={spice} alt="spice" />
-              <span className="aroma-name">Épices</span>
-            </div>
-            <div
-              className={`round aroma-item ${
-                isAromaSelected("wood") ? "selected" : ""
-              }`}
-              role="button"
-              tabIndex={0}
-              onClick={() => handleAromaClick("wood")}
-              onKeyDown={handleKeyDown("wood")}
-            >
-              <img src={wood} alt="wood" />
-              <span className="aroma-name">Bois</span>
-            </div>
-            <div
-              className={`round aroma-item ${
-                isAromaSelected("flower") ? "selected" : ""
-              }`}
-              role="button"
-              tabIndex={0}
-              onClick={() => handleAromaClick("flower")}
-              onKeyDown={handleKeyDown("flower")}
-            >
-              <img src={flower} alt="flower" />
-              <span className="aroma-name">Fleurs</span>
-            </div>
-            <div
-              className={`round aroma-item ${
-                isAromaSelected("vegetal") ? "selected" : ""
-              }`}
-              role="button"
-              tabIndex={0}
-              onClick={() => handleAromaClick("vegetal")}
-              onKeyDown={handleKeyDown("vegetal")}
-            >
-              <img src={vegetal} alt="vegetal" />
-              <span className="aroma-name">Végétal</span>
-            </div>
-          </div>
-          <div className="colonne2">
-            <div
-              className={`round aroma-item ${
-                isAromaSelected("fruity") ? "selected" : ""
-              }`}
-              role="button"
-              tabIndex={0}
-              onClick={() => handleAromaClick("fruity")}
-              onKeyDown={handleKeyDown("fruity")}
-            >
-              <img src={redFruits} alt="fruity" />
-              <span className="aroma-name">Fruits</span>
-            </div>
-            <div
-              className={`round aroma-item ${
-                isAromaSelected("coffee") ? "selected" : ""
-              }`}
-              role="button"
-              tabIndex={0}
-              onClick={() => handleAromaClick("coffee")}
-              onKeyDown={handleKeyDown("coffee")}
-            >
-              <img src={coffee} alt="coffee" />
-              <span className="aroma-name">Torréfié</span>
-            </div>
-            <div
-              className={`round aroma-item ${
-                isAromaSelected("mineral") ? "selected" : ""
-              }`}
-              role="button"
-              tabIndex={0}
-              onClick={() => handleAromaClick("mineral")}
-              onKeyDown={handleKeyDown("mineral")}
-            >
-              <img src={mineral} alt="mineral" />
-              <span className="aroma-name">Minéral</span>
-            </div>
-            <div
-              className={`round aroma-item ${
-                isAromaSelected("animal") ? "selected" : ""
-              }`}
-              role="button"
-              tabIndex={0}
-              onClick={() => handleAromaClick("animal")}
-              onKeyDown={handleKeyDown("animal")}
-            >
-              <img src={animal} alt="animal" />
-              <span className="aroma-name">Animal</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Aromas
+        name="Sélectionner un ou plusieurs arômes"
+        tabIndex={0}
+        iconUrl="/path/to/icon.png"
+        ids={[1, 2, 3, 4, 5, 6, 7, 8]}
+        id="idAromas"
+        onAromaClick={handleAromaClick}
+      />
+
       <div className="button-container">
         <ButtonPrimary type="submit" onClick={handleNavigate}>
           Etape suivante

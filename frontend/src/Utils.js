@@ -10,8 +10,14 @@ import eye from "./assets/Icons/Eye_Icon.svg";
 import nose from "./assets/Icons/Nose_Icon.svg";
 import mouth from "./assets/Icons/Mouth_Icon.svg";
 import heart from "./assets/Icons/Hearth_Icon.svg";
-import complexity from "./assets/Icons/Complexity_Icon.svg";
-import intensity from "./assets/Icons/Intensity_Icon.svg";
+import vegetal from "./assets/Flavor_Img/Vegetal.jpg";
+import spice from "./assets/Flavor_Img/Spices.jpg";
+import coffee from "./assets/Flavor_Img/Coffee.jpg";
+import animal from "./assets/Flavor_Img/Animal.jpg";
+import flower from "./assets/Flavor_Img/Flower.jpg";
+import mineral from "./assets/Flavor_Img/Mineral.jpg";
+import wood from "./assets/Flavor_Img/Wood.jpg";
+import redFruits from "./assets/Flavor_Img/Red_Fruits.jpg";
 
 // array used to display the colors in the visual stage 1
 const redWineColors = [
@@ -73,6 +79,65 @@ const redWineColors = [
   },
 ];
 
+// const wineAromas = [
+//   {
+//     id: 1,
+//     aromaName: "Epices",
+//     value: "Epices",
+//     iconUrl: spice,
+//     blotch: "tiled",
+//   },
+//   {
+//     id: 2,
+//     aromaName: "Bois",
+//     value: "Bois",
+//     iconUrl: wood,
+//     blotch: "tiled",
+//   },
+//   {
+//     id: 3,
+//     aromaName: "Fleurs",
+//     value: "Fleurs",
+//     iconUrl: flower,
+//     blotch: "tiled",
+//   },
+//   {
+//     id: 4,
+//     aromaName: "Végétal",
+//     value: "Végétal",
+//     iconUrl: vegetal,
+//     blotch: "tiled",
+//   },
+//   {
+//     id: 5,
+//     aromaName: "Fruits",
+//     value: "Fruits",
+//     iconUrl: redFruits,
+//     blotch: "tiled",
+//   },
+//   {
+//     id: 6,
+//     aromaName: "Torréfié",
+//     value: "Torréfié",
+//     iconUrl: coffee,
+//     blotch: "tiled",
+//   },
+//   {
+//     id: 7,
+//     aromaName: "Minéral",
+//     value: "Minéral",
+//     iconUrl: mineral,
+//     blotch: "tiled",
+//   },
+//   {
+//     id: 8,
+//     aromaName: "Animal",
+//     value: "Animal",
+//     iconUrl: animal,
+//     blotch: "tiled",
+//   },
+// ];
+
 // array used for the steps header in most of the tasting pages
 const steps = [
   {
@@ -124,21 +189,4 @@ const rating = [
   { id: 10, value: 10 },
 ];
 
-//nose//
-
-const noseCheckboxes = [
-  {
-    id: 1,
-    name: "Intensité",
-    iconUrl: intensity,
-    checks: ["Discret", "Ouvert", "Aromatique", "Intense", "Franc"],
-  },
-  {
-    id: 2,
-    name: "Complexité",
-    iconUrl: complexity,
-    checks: ["Simple", "Riche", "Complexe"],
-  },
-];
-
-export { redWineColors, steps, noseCheckboxes, wineQuality, rating };
+export { redWineColors, steps, wineQuality, rating };
