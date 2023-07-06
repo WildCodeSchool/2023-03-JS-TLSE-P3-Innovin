@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import Login from "./pages/Login/Login";
+import Registration from "./pages/Registration/Registration";
 import TastingPresentation from "./pages/TastingPresentation/TastingPresentation";
 import VisualStage1 from "./pages/VisualStage/VisualStage1";
 import VisualStage2 from "./pages/VisualStage/VisualStage2";
@@ -11,7 +12,7 @@ import { TastingNoteProvider } from "./contexts/TastingNoteContext";
 import { TastingProvider } from "./contexts/TastingContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import "primereact/resources/primereact.min.css";
-import Welcome from "./pages/HomeTasting/HomeTasting";
+import Home from "./pages/Home";
 import WinesMap from "./pages/WinesMap/WinesMap";
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
           <TastingNoteProvider>
             <div className="App">
               <Routes>
-                <Route path="/" element={<Welcome />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/registration" element={<Registration />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/tasting" element={<TastingPresentation />} />
                 <Route path="/eye/stage1" element={<VisualStage1 />} />

@@ -208,7 +208,7 @@ p {
   }
 
   .fisrt-part {
-    height: 500px;
+    height: 600px;
 
     width: 100vw;
     display: flex;
@@ -217,44 +217,18 @@ p {
   }
 
   .hero-background {
-    background: url("../../assets/Wine_Img/Winery.jpg") no-repeat;
+    background: url("../../assets/Wine_Img/Frame123.png") no-repeat;
     background-size: cover;
     background-position: center;
-    width: 30%;
-    height: 392.4px;
-    border-radius: 100%;
-    position: relative;
-  }
-
-  .hero-background::before,
-  .hero-background::after {
-    content: "";
-    position: absolute;
-    border-radius: 100%;
-  }
-
-  .hero-background::before {
-    width: 80%;
-    height: 80%;
-    top: 10%;
-    left: 10%;
-    border: 2px solid #fff;
-    /* Couleur et épaisseur de la bordure */
-  }
-
-  .hero-background::after {
-    width: 120%;
-    height: 120%;
-    top: -10%;
-    left: -10%;
-    border: 2px solid #fff;
-    /* Couleur et épaisseur de la bordure */
+    width: 70%;
+    height: 500px;
+    align-items: center;
   }
 
   .h2-hero {
-    width: 100%;
+    width: 80%;
     align-items: center;
-    font-size: 2.1rem;
+    font-size: 2rem;
   }
 
   .icons-all,
