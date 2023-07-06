@@ -20,6 +20,13 @@ class WorkshopManager extends AbstractManager {
       [datetime, place, commentary, id]
     );
   }
+
+  findWorkshopByDate(date) {
+    return this.database.query(
+      `select * from ${this.table} where CONCAT(SUBSTRING(DATE(datetime),9,2),SUBSTRING(DATE(datetime),6,2),SUBSTRING(DATE(datetime),1,4)) = ?`,
+      [date]
+    );
+  }
 }
 
 module.exports = WorkshopManager;

@@ -9,7 +9,7 @@ import Input from "../../components/Input";
 import AuthContext from "../../contexts/AuthContext";
 
 function Login() {
-  const { setUser } = useContext(AuthContext);
+  const { setToken, setUser } = useContext(AuthContext);
 
   const [form, setForm] = useState({
     email: "",
@@ -46,9 +46,18 @@ function Login() {
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/users/login`, form)
       .then((res) => {
-        if (res.data.token) {
-          setUser(res.data.token);
-          navigate("/tasting");
+        const { token } = res.data;
+        if (token) {
+          setToken(token);
+
+          const loggedInUser = res.data.user;
+
+          if (loggedInUser.admin_credentials === 1) {
+            navigate("/admin/dashboard");
+          } else {
+            navigate("/tasting");
+          }
+          setUser(loggedInUser);
         }
       })
       .catch((error) => {

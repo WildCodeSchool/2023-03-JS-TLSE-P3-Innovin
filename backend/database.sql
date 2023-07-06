@@ -724,12 +724,12 @@ INSERT INTO
         id_new_wine
     )
 VALUES (
-        "2023-06-22 16:00:00",
+        "2023/06/22 16:00:00",
         "Toulouse",
         "Inauguration du premier atelier",
         1
     ), (
-        "2023-07-22 16:00:00",
+        "2023/07/22 16:00:00",
         "Toulouse",
         "Inauguration du deuxième atelier",
         2

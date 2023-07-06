@@ -74,7 +74,7 @@ function TasteAdvice() {
         <div className="adviceInputs">
           <Dropdown id="wineQuality" options={wineQuality} />
           <div className="commentArea">
-            <label htmlFor="commentary">Commentary</label>
+            <label htmlFor="commentary">Commentaire</label>
             <textarea
               name="commentary"
               id="commentary"

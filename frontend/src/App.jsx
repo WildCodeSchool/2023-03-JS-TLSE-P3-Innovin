@@ -13,6 +13,7 @@ import { TastingProvider } from "./contexts/TastingContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import "primereact/resources/primereact.min.css";
 import WinesMap from "./pages/WinesMap/WinesMap";
+import AdminHome from "./pages/Admin/AdminHome/AdminHome";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/advice" element={<TasteAdvice />} />
                 <Route path="/selection" element={<WinesTasted />} />
                 <Route path="/carte" element={<WinesMap />} />
+                <Route path="admin/dashboard" element={<AdminHome />} />
               </Routes>
             </div>
           </TastingNoteProvider>
