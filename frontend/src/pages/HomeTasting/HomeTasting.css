@@ -95,13 +95,6 @@ a {
   font-size: 1.8rem;
 }
 
-p {
-  color: var(--whiteGoldColor);
-  font-size: 1rem;
-  font-family: var(--fontFamilyText);
-  margin-top: 1rem;
-}
-
 .button {
   align-items: center;
   display: flex;
