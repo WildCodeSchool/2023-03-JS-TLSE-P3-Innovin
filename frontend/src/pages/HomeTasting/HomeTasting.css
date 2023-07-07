@@ -1,0 +1,345 @@
+.page-content-nose {
+  background: var(--grayBgColor);
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+.Hero,
+.hero {
+  height: 260px;
+  max-width: 100%;
+
+  object-fit: cover;
+
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hero-background {
+  background: url("../../assets/Wine_Img/Winery.jpg");
+  height: 260px;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  align-items: flex-end;
+  justify-content: center;
+  display: flex;
+  opacity: 0.8;
+  backdrop-filter: var(--bgBlur);
+}
+
+.h2-title,
+.h2-hero,
+.h2-title-creation,
+.degustation-h2 {
+  color: var(--whiteGoldColor);
+  font-family: var(--fontFamilyTitle);
+  font-size: 2.5rem;
+  font-weight: 700;
+  justify-content: flex-start;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  margin-bottom: 1rem;
+  width: 326px;
+}
+
+.first-p,
+.degustation-text {
+  color: var(--whiteGoldColor);
+  font-family: var(--fontFamilyText);
+  font-weight: 400;
+  line-height: 25px;
+  margin-top: 31px;
+  padding: 0 40px 0 40px;
+  text-align: center;
+  width: 100%;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.goldline {
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  height: 2px;
+  width: 232px;
+  margin: 1rem 0 1rem 0;
+}
+
+.icon {
+  margin: 2rem;
+  display: flex;
+}
+
+.icon-text {
+  margin: 1rem;
+}
+
+.icon-text p {
+  color: var(--whiteGoldColor);
+  margin-top: 1rem;
+  font-family: var(--fontFamilyText);
+}
+
+.icon-title {
+  font-family: var(--fontFamilyTitle);
+  color: var(--primaryColor);
+  margin-bottom: 0.8rem;
+  font-size: 1.8rem;
+}
+
+.button {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero1 {
+  background: url("../../assets/Wine_Img/unsplash_PQQPlv6oHAA.jpg");
+  align-items: center;
+  display: flex;
+  height: 290px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  align-items: flex-end;
+  justify-content: center;
+  display: flex;
+  opacity: 0.8;
+  backdrop-filter: var(--bgBlur);
+  margin: 0;
+}
+
+.hero2 {
+  background: url("../../assets//Wine_Img/unsplash_3uJt73tr4hI.jpg");
+  align-items: center;
+  display: flex;
+  height: 255px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  align-items: flex-end;
+  justify-content: center;
+  display: flex;
+  opacity: 0.8;
+  backdrop-filter: var(--bgBlur);
+  margin-top: 2rem;
+  margin: 0;
+}
+
+.hero3 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 347px;
+  width: 100%;
+  object-fit: cover;
+  background-size: 100%;
+  margin-top: 2rem;
+  background: url("../../assets/Wine_Img/Creation_Header.png") center no-repeat;
+  margin: 1;
+}
+
+.h2-title,
+.h2-title-creation {
+  background-color: var(--grayBgColor);
+  width: 100%;
+  position: relative;
+  opacity: 0.8;
+}
+
+.scroll-to-top {
+  bottom: 20px;
+  left: 50%;
+  height: 50px;
+  width: 50px;
+  padding: 10px 20px;
+  background: url("../../assets/Icons/Up_Arrow.png") no-repeat;
+  color: #000000;
+  border: none;
+  object-fit: cover;
+
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+.degustation {
+  background: var(--blackBgGradient);
+}
+
+.creation {
+  background: var(--blackBgGradient);
+}
+
+.up {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .page-content-nose {
+    height: auto;
+  }
+
+  .button {
+    display: none;
+  }
+
+  .Hero {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fisrt-part {
+    height: 650px;
+
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-background {
+    background: url("../../assets/Wine_Img/Frame123.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 70%;
+    height: 570px;
+    align-items: center;
+  }
+
+  .h2-hero {
+    width: 80%;
+    align-items: center;
+    font-size: 2rem;
+  }
+
+  .icons-all,
+  .first-p,
+  .goldline {
+    display: none;
+  }
+
+  /* degustation */
+  .degust-desktop {
+    display: flex;
+    background-color: var(--blackBgGradient);
+  }
+
+  .degustation {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: auto;
+  }
+
+  .degust-img {
+    background: var(--grayBgColor);
+    height: auto;
+    width: 50vw;
+    background-color: var(--blackBgGradient);
+  }
+
+  .hero1 {
+    background: var(--grayBgColor);
+    height: auto;
+  }
+
+  .h2-title {
+    padding: 10px;
+    margin-bottom: 0;
+    background: var(--blackBgGradient);
+    opacity: 1;
+    color: var(--primaryColor);
+    font-size: 1.7rem;
+  }
+
+  .degustation-text {
+    padding: 0 70px 0 70px;
+    text-align: center;
+    width: 100%;
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
+    line-height: 35px;
+    background-color: var(---grayBgColor);
+  }
+
+  .degust-img {
+    width: 50vw;
+    background-color: var(--blackBgGradient);
+  }
+
+  .degust-imgage {
+    height: 100%;
+    width: auto;
+    background: url("../../assets/Wine_Img/unsplash_PQQPlv6oHAA.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* selection */
+  .selection-desktop {
+    display: flex;
+    background-color: var(--blackBgGradient);
+
+    flex-direction: row-reverse;
+  }
+
+  .selection {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: auto;
+  }
+
+  .selection-img {
+    width: 50vw;
+    height: auto;
+  }
+
+  .selection-image {
+    height: 100%;
+    width: auto;
+    background: url("../../assets//Wine_Img/unsplash_3uJt73tr4hI.jpg");
+
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero2 {
+    background: var(--grayBgColor);
+    height: auto;
+  }
+
+  /* creation */
+
+  .hero3 {
+    background: url("../../assets/Wine_Img/Illustration_Creation.png") center
+      no-repeat;
+    height: 550px;
+    width: 100%;
+    background-size: 80% auto;
+    /* L'image occupe 70% de la largeur et 70% de la hauteur */
+  }
+
+  .h2-title-creation {
+    width: 26.5%;
+    color: var(--primaryColor);
+  }
+}
