@@ -1,4 +1,5 @@
-import { createContext, useMemo, useState } from "react";
+/* eslint-disable radix */
+import { createContext, useMemo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const TastingNoteContext = createContext();
@@ -43,13 +44,21 @@ export function TastingNoteProvider({ children }) {
   const handleFillmouthId = () => {
     setTastingNote({
       ...tastingNote,
-      idTasteSweetness: `${idTasteSweetnessValue}`,
-      idTasteAlcohol: `${idTasteAlcoholValue}`,
-      idAcidity: `${idAcidityValue}`,
-      idTasteTannin: `${idTasteTanninValue}`,
+      idTasteSweetness: parseInt(`${idTasteSweetnessValue}`),
+      idTasteAlcohol: parseInt(`${idTasteAlcoholValue}`),
+      idAcidity: parseInt(`${idAcidityValue}`),
+      idTasteTannin: parseInt(`${idTasteTanninValue}`),
     });
   };
-  console.info(handleFillmouthId);
+
+  useEffect(() => {
+    handleFillmouthId(); // Update tastingNote
+  }, [
+    idTasteSweetnessValue,
+    idAcidityValue,
+    idTasteAlcoholValue,
+    idTasteTanninValue,
+  ]);
 
   const tastingNoteValue = useMemo(() => {
     return {

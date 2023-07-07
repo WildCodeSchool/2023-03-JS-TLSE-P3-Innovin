@@ -67,9 +67,7 @@ function TasteStage1() {
             dataTasteTannin={dataTasteTannin}
           />
         </div>
-        <ButtonPrimary type="submit" onClick={handleNavigate}>
-          Etape suivante
-        </ButtonPrimary>
+        <ButtonPrimary onClick={handleNavigate}>Etape suivante</ButtonPrimary>
       </div>
     </div>
   );
