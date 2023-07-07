@@ -16,7 +16,7 @@ export default function OlfactoryStage() {
   const { TastingNote } = useContext(TastingNoteContext);
   const navigate = useNavigate();
   const handleNavigate = () => {
-    navigate("mouth/stage1");
+    navigate("/mouth/stage1");
   };
 
   const [selectedAromas, setSelectedAromas] = useState([]);
