@@ -48,13 +48,16 @@ router.get("/newwine/:id", NewWineControllers.read);
 
 router.post("/tastingnote", TastingNoteControllers.add);
 router.get("/tastingnote", TastingNoteControllers.browse);
-
 // ---------------------------------------- Private Routes ----------------------------------------------
 
 router.use(verifyToken);
 
 router.get("/users/:id", UserControllers.read);
 router.put("/users/:id", hashPassword, validateUser, UserControllers.edit);
+router.get(
+  "/workshophasexistingwine/:id_workshop",
+  WorkshopHasExistingWineControllers.read
+);
 
 // ----------------------------------------- Admin routes ------------------------------------------------
 
@@ -83,10 +86,6 @@ router.delete("/workshop/:id", WorkshopControllers.destroy);
 router.get(
   "/workshophasexistingwine",
   WorkshopHasExistingWineControllers.browse
-);
-router.get(
-  "/workshophasexistingwine/:id_workshop",
-  WorkshopHasExistingWineControllers.read
 );
 router.post("/workshophasexistingwine", WorkshopHasExistingWineControllers.add);
 router.delete(
