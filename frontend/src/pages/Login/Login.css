@@ -9,6 +9,7 @@
 }
 
 .login {
+  min-height: 100dvh;
   height: 100%;
   width: 100%;
   background: url("../../assets/Red_Wine_Colors/Grenat.png"),

@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
 import axios from "axios";
 import "./Login.css";
 import eye from "../../assets/Icons/Eye_Icon.svg";
 import logo from "../../assets/Logo_W_Circles.svg";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Input from "../../components/Input";
+import AuthContext from "../../contexts/AuthContext";
 
-function Login({ setUser }) {
+function Login() {
+  const { setUser } = useContext(AuthContext);
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -46,7 +48,7 @@ function Login({ setUser }) {
       .then((res) => {
         if (res.data.token) {
           setUser(res.data.token);
-          navigate("/eye/stage1");
+          navigate("/tasting");
         }
       })
       .catch((error) => {
@@ -110,9 +112,5 @@ function Login({ setUser }) {
     </div>
   );
 }
-
-Login.propTypes = {
-  setUser: PropTypes.func.isRequired,
-};
 
 export default Login;

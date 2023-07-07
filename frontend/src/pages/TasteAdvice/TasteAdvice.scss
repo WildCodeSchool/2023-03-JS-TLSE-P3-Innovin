@@ -1,0 +1,101 @@
+.tasteAdvice,
+.tasteAdviceContainer,
+.intro,
+.header,
+.adviceText,
+.inputs,
+.commentArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tasteAdvice {
+  background: var(--blackBgGradient);
+
+  .tasteAdviceContainer {
+    width: min(80%, 800px);
+    gap: 2rem;
+    font-family: var(--fontFamilyText);
+    font-size: var(--fontSizeText);
+    color: var(--whiteGoldColor);
+    margin: 1.5rem min(2rem, var(--marginPageContent));
+    @media screen and (min-width: 768px) {
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .intro {
+      padding: 0;
+    }
+
+    .intro .adviceText {
+      gap: 1rem;
+      align-items: baseline;
+      line-height: 1.2;
+      p {
+      }
+      @media screen and (min-width: 768px) {
+        align-items: center;
+      }
+    }
+
+    .subtitle {
+      font-family: var(--fontFamilyTitle);
+      font-size: 2rem;
+      color: var(--primaryColor);
+    }
+    .adviceInputs {
+      width: min(100%, 800px);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      @media screen and (min-width: 768px) {
+        width: max(80%, 20em);
+        gap: 3rem;
+      }
+      .commentArea {
+        align-items: baseline;
+        gap: 0.5rem;
+        @media screen and (min-width: 1024px) {
+          gap: 1rem;
+        }
+        #commentary {
+          width: 100%;
+          background: transparent;
+          border: 2px solid var(--smoothWhiteColor);
+          border-radius: 5px;
+          height: 7em;
+          color: var(--whiteGoldColor);
+          font-size: 1rem;
+          @media screen and (min-width: 1024px) {
+            height: 9em;
+          }
+        }
+      }
+    }
+    .ratingContent {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      button {
+        background: none;
+        border: none;
+        color: rgba(172, 146, 77, 0.1);
+        @media screen and (min-width: 768px) {
+          font-size: 1.5rem;
+        }
+        &:hover {
+          color: rgba(172, 146, 77, 0.3);
+        }
+        &.clicked {
+          color: var(--primaryColor);
+          &:hover {
+            color: var(--secondaryColor);
+          }
+        }
+      }
+    }
+  }
+}
