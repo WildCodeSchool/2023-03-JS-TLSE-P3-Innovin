@@ -15,7 +15,6 @@ import { TastingProvider } from "./contexts/TastingContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import WinesMap from "./pages/WinesMap/WinesMap";
 
-
 function App() {
   return (
     <AuthProvider>
