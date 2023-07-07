@@ -13,6 +13,7 @@ import WinesTasted from "./pages/WinesTasted/WinesTasted";
 import { TastingNoteProvider } from "./contexts/TastingNoteContext";
 import { TastingProvider } from "./contexts/TastingContext";
 import { AuthProvider } from "./contexts/AuthContext";
+import WinesMap from "./pages/WinesMap/WinesMap";
 
 
 function App() {
