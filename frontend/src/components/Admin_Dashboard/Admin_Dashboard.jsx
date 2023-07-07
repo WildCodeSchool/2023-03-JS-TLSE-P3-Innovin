@@ -8,7 +8,7 @@ import AuthContext from "../../contexts/AuthContext";
 import AdminContext from "../../contexts/AdminContext";
 
 function AdminDashboard() {
-  const { setWorkshops, workshops } = useContext(AdminContext);
+  const { setWorkshops } = useContext(AdminContext);
   const { userToken } = useContext(AuthContext);
   const [value, onChange] = useState(new Date());
   const navigate = useNavigate();
@@ -19,12 +19,13 @@ function AdminDashboard() {
     const formattedDate = date.toLocaleDateString("fr-FR").split("/").join("");
 
     axios
-      .get(`http://localhost:5000/workshop/${formattedDate}`, {
+      .get(`http://localhost:5000/workshop/date/${formattedDate}`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
       })
       .then((response) => {
+        console.info(response.data);
         setWorkshops(response.data);
       })
       .catch((err) => {
@@ -35,7 +36,6 @@ function AdminDashboard() {
       navigate("/admin/workshops");
     }
   };
-  console.info(workshops);
 
   return (
     <div className="dashboard">
