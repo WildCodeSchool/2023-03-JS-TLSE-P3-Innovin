@@ -1,10 +1,10 @@
-import Login from "./Login/Login";
+import Welcome from "./HomeTasting/HomeTasting";
 import "./Home.css";
 
 function Home() {
   return (
     <div className="home">
-      <Login />
+      <Welcome />
     </div>
   );
 }

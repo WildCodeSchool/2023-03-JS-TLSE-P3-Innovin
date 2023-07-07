@@ -11,6 +11,8 @@ function AdminDashboard() {
   const { setWorkshops } = useContext(AdminContext);
   const { userToken } = useContext(AuthContext);
   const [value, onChange] = useState(new Date());
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const navigate = useNavigate();
 
   const handleClick = (date) => {
@@ -37,59 +39,79 @@ function AdminDashboard() {
     }
   };
 
+  const handleOpenMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className="dashboard">
-      <div className="sideBarLogo">
-        <img src={logo} alt="logo" />
+    <div className={`dashboard ${isMenuOpen ? "open" : ""}`}>
+      <div className="dashboardContent">
+        <div className="sideBarLogo">
+          <img src={logo} alt="logo" />
+        </div>
+        <div className="sideBarLinks">
+          <button type="button">
+            <i className="fi fi-rr-house-chimney" />
+            Accueil
+          </button>
+          <button type="button">
+            <i className="fi fi-rr-users-alt" />
+            Gestion des utilisateurs
+          </button>
+          <button type="button">
+            <i className="fi fi-rr-notebook" />
+            Ateliers
+          </button>
+          <button type="button">
+            <i className="fi fi-rr-glass-champagne" />
+            Fiches de dégustation
+          </button>
+          <button type="button">
+            <i className="fi fi-rr-grape" />
+            Vins
+          </button>
+          <button type="button">
+            <i className="fi fi-rr-trophy-star" />
+            Sélection concours
+          </button>
+        </div>
+        <div className="calendarContent">
+          <h3>Planning</h3>
+          <Calendar
+            onClickDay={handleClick}
+            value={value}
+            defaultView="month"
+            minDetail="year"
+            className="calendar"
+            tileClassName={({ date }) =>
+              `itemCalendar ${
+                value && value.toDateString() === date.toDateString()
+                  ? "clicked"
+                  : ""
+              }`
+            }
+            prevAriaLabel="Previous"
+            prev2AriaLabel="Jump backwards"
+            nextAriaLabel="Next"
+            next2AriaLabel="Jump forwards"
+            showWeekNumbers
+          />
+        </div>
       </div>
-      <div className="sideBarLinks">
-        <button type="button">
-          <i className="fi fi-rr-house-chimney" />
-          Accueil
-        </button>
-        <button type="button">
-          <i className="fi fi-rr-users-alt" />
-          Gestion des utilisateurs
-        </button>
-        <button type="button">
-          <i className="fi fi-rr-notebook" />
-          Ateliers
-        </button>
-        <button type="button">
-          <i className="fi fi-rr-glass-champagne" />
-          Fiches de dégustation
-        </button>
-        <button type="button">
-          <i className="fi fi-rr-grape" />
-          Vins
-        </button>
-        <button type="button">
-          <i className="fi fi-rr-trophy-star" />
-          Sélection concours
-        </button>
-      </div>
-      <div className="calendarContent">
-        <h3>Planning</h3>
-        <Calendar
-          onClickDay={handleClick}
-          value={value}
-          defaultView="month"
-          minDetail="year"
-          className="calendar"
-          tileClassName={({ date }) =>
-            `itemCalendar ${
-              value && value.toDateString() === date.toDateString()
-                ? "clicked"
-                : ""
-            }`
-          }
-          prevAriaLabel="Previous"
-          prev2AriaLabel="Jump backwards"
-          nextAriaLabel="Next"
-          next2AriaLabel="Jump forwards"
-          showWeekNumbers
-        />
-      </div>
+      <button
+        type="button"
+        onClick={handleOpenMenu}
+        className={`closeSidebarButton ${isMenuOpen && "showCloseButton"}`}
+      >
+        <i className="fi fi-rr-circle-xmark" />
+      </button>
+      <button
+        className={`openSidebarButton ${isMenuOpen ? "hideButton" : ""}`}
+        type="button"
+        onClick={handleOpenMenu}
+      >
+        <i className="fi fi-br-burger-alt" />
+      </button>
     </div>
   );
 }

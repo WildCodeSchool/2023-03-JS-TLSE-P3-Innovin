@@ -17,7 +17,7 @@ const CompetitionSelectionControllers = require("./controllers/CompetitionSelect
 const WorkshopHasExistingWineControllers = require("./controllers/WorkshopHasExistingWineControllers");
 const TastingNoteControllers = require("./controllers/TastingNoteControllers");
 
-// const { verifyAdminCredentials } = UserControllers;
+const { verifyAdminCredentials } = UserControllers;
 
 // ----------------------------------------- Public routes -------------------------------------------
 
@@ -55,10 +55,14 @@ router.use(verifyToken);
 
 router.get("/users/:id", UserControllers.read);
 router.put("/users/:id", hashPassword, validateUser, UserControllers.edit);
+router.get(
+  "/workshophasexistingwine/:id_workshop",
+  WorkshopHasExistingWineControllers.read
+);
 
 // ----------------------------------------- Admin routes ------------------------------------------------
 
-// router.use(verifyAdminCredentials);
+router.use(verifyAdminCredentials);
 
 router.get("/users", UserControllers.browse);
 router.delete("/users/:id", UserControllers.destroy);
@@ -84,10 +88,6 @@ router.delete("/workshop/:id", WorkshopControllers.destroy);
 router.get(
   "/workshophasexistingwine",
   WorkshopHasExistingWineControllers.browse
-);
-router.get(
-  "/workshophasexistingwine/:id_workshop",
-  WorkshopHasExistingWineControllers.read
 );
 router.post("/workshophasexistingwine", WorkshopHasExistingWineControllers.add);
 router.delete(
