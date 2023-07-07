@@ -39,7 +39,7 @@ svg {
 
 .nose1,
 .nose2,
-h2 {
+.h2-nose {
   display: flex;
   justify-content: center;
   font-family: var(--fontFamilyTitle);
