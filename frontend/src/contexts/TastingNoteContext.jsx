@@ -6,6 +6,11 @@ const TastingNoteContext = createContext();
 export default TastingNoteContext;
 
 export function TastingNoteProvider({ children }) {
+  const [idTasteSweetnessValue, setIdTasteSweetnessValue] = useState(0);
+  const [idAcidityValue, setIdAcidityValue] = useState(0);
+  const [idTasteAlcoholValue, setIdTasteAlcoholValue] = useState(0);
+  const [idTasteTanninValue, setIdTasteTanninValue] = useState(0);
+
   const [tastingNote, setTastingNote] = useState({
     wineQuality: "",
     idOlfactiveIntensity: null,
@@ -35,8 +40,28 @@ export function TastingNoteProvider({ children }) {
     });
   };
 
+  const handleFillmouthId = () => {
+    setTastingNote({
+      ...tastingNote,
+      idTasteSweetness: `${idTasteSweetnessValue}`,
+      idTasteAlcohol: `${idTasteAlcoholValue}`,
+      idAcidity: `${idAcidityValue}`,
+      idTasteTannin: `${idTasteTanninValue}`,
+    });
+  };
+  console.info(handleFillmouthId);
+
   const tastingNoteValue = useMemo(() => {
-    return { tastingNote, setTastingNote, handleFillVisualColorId };
+    return {
+      tastingNote,
+      setIdTasteSweetnessValue,
+      setIdAcidityValue,
+      setIdTasteAlcoholValue,
+      setIdTasteTanninValue,
+      setTastingNote,
+      handleFillVisualColorId,
+      handleFillmouthId,
+    };
   }, [tastingNote]);
 
   return (

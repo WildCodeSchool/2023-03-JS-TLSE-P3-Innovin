@@ -1,4 +1,7 @@
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import AuthContext from "../../contexts/AuthContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
@@ -6,38 +9,31 @@ import SlidersTasteStage1 from "../../components/TasteStage1Sliders/TasteStage1S
 import "./TasteStage1.css";
 
 function TasteStage1() {
+  const userToken = useContext(AuthContext);
   const navigate = useNavigate();
+  const [dataSweetness, setDataSweetness] = useState([]);
+  const [dataAcidity, setDataAcidity] = useState([]);
+  const [dataAlcohol, setDataAlcohol] = useState([]);
+  const [dataTasteTannin, setDataTasteTannin] = useState([]);
 
-  const tasteTannin = [
-    { id: 1, tannin: "Apre" },
-    { id: 2, tannin: "Chargé" },
-    { id: 3, tannin: "Charpenté" },
-    { id: 4, tannin: "Fondu" },
-    { id: 5, tannin: "Lisse" },
-  ];
-  const tasteSweetness = [
-    { id: 1, sweetness: "Sirupeux" },
-    { id: 2, sweetness: "Liquoreux" },
-    { id: 3, sweetness: "Moelleux" },
-    { id: 4, sweetness: "Doux" },
-    { id: 5, sweetness: "Sec" },
-  ];
-
-  const tasteAcidity = [
-    { id: 1, acidity: "Nerveuse" },
-    { id: 2, acidity: "Pointue" },
-    { id: 3, acidity: "Vive" },
-    { id: 4, acidity: "Fraîche" },
-    { id: 5, acidity: "Molle" },
-  ];
-
-  const tasteAlcool = [
-    { id: 1, alcool: "Alcooleux" },
-    { id: 2, alcool: "Capiteux" },
-    { id: 3, alcool: "Gras" },
-    { id: 4, alcool: "Généreux" },
-    { id: 5, alcool: "Faible" },
-  ];
+  // -----------------------------------------CODE A ENLEVER >> FETCH DIRECT POUR RECUPERATION DES DONNEES ET CREATION ALGO <<
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/mouthslidersdatas`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((response) => {
+        setDataSweetness(response.data.sweetness);
+        setDataAcidity(response.data.acidity);
+        setDataAlcohol(response.data.alcohol);
+        setDataTasteTannin(response.data.taste_tannin);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   // -----------------------------------------handle functions for buttons--------------------------------------------------
 
@@ -63,14 +59,14 @@ function TasteStage1() {
           </p>
           <p>Comment est-il structuré ? </p>
         </div>
-        <form action="" className="FormTasteStage1">
+        <div className="SlidersBoxTasteStage1">
           <SlidersTasteStage1
-            tasteTannin={tasteTannin}
-            tasteSweetness={tasteSweetness}
-            tasteAcidity={tasteAcidity}
-            tasteAlcool={tasteAlcool}
+            dataAlcohol={dataAlcohol}
+            dataSweetness={dataSweetness}
+            dataAcidity={dataAcidity}
+            dataTasteTannin={dataTasteTannin}
           />
-        </form>
+        </div>
         <ButtonPrimary type="submit" onClick={handleNavigate}>
           Etape suivante
         </ButtonPrimary>
