@@ -79,66 +79,6 @@ const redWineColors = [
   },
 ];
 
-// const wineAromas = [
-//   {
-//     id: 1,
-//     aromaName: "Epices",
-//     value: "Epices",
-//     iconUrl: spice,
-//     blotch: "tiled",
-//   },
-//   {
-//     id: 2,
-//     aromaName: "Bois",
-//     value: "Bois",
-//     iconUrl: wood,
-//     blotch: "tiled",
-//   },
-//   {
-//     id: 3,
-//     aromaName: "Fleurs",
-//     value: "Fleurs",
-//     iconUrl: flower,
-//     blotch: "tiled",
-//   },
-//   {
-//     id: 4,
-//     aromaName: "Végétal",
-//     value: "Végétal",
-//     iconUrl: vegetal,
-//     blotch: "tiled",
-//   },
-//   {
-//     id: 5,
-//     aromaName: "Fruits",
-//     value: "Fruits",
-//     iconUrl: redFruits,
-//     blotch: "tiled",
-//   },
-//   {
-//     id: 6,
-//     aromaName: "Torréfié",
-//     value: "Torréfié",
-//     iconUrl: coffee,
-//     blotch: "tiled",
-//   },
-//   {
-//     id: 7,
-//     aromaName: "Minéral",
-//     value: "Minéral",
-//     iconUrl: mineral,
-//     blotch: "tiled",
-//   },
-//   {
-//     id: 8,
-//     aromaName: "Animal",
-//     value: "Animal",
-//     iconUrl: animal,
-//     blotch: "tiled",
-//   },
-// ];
-
-// array used for the steps header in most of the tasting pages
 const steps = [
   {
     id: 1,
