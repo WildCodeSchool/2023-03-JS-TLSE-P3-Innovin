@@ -97,6 +97,8 @@
         color: var(--secondaryColor);
       }
     }
+
+    // -----------------------------------------calendar CSS---------------------------------------------
     .calendarContent {
       background: var(--blackBgGradientSmooth);
       color: var(--whiteGoldColor);
@@ -181,6 +183,8 @@
 
           .react-calendar__month-view__weekdays__weekday {
             text-transform: capitalize;
+            display: grid;
+            place-items: center;
             abbr[title] {
               text-decoration: none;
             }
@@ -198,6 +202,29 @@
           }
         }
       }
+    }
+  }
+}
+
+// -------------------------------------media queries for tablet and desktop------------------------------
+
+@media screen and (min-width: 768px) {
+  .dashboard {
+    width: 370px;
+
+    .closeSidebarButton {
+      display: none;
+      &.showCloseButton {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .dashboard {
+    .openSidebarButton {
+      display: none;
     }
   }
 }

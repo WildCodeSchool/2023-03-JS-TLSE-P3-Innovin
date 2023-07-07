@@ -15,6 +15,22 @@ function AdminDashboard() {
 
   const navigate = useNavigate();
 
+  // ---------------------------------------------------functions-------------------------------------------------------
+
+  // Function to format days names in calendar
+  const dayInitials = ["D", "L", "M", "M", "J", "V", "S"];
+
+  const formatShortWeekday = (_, date) => {
+    const dayIndex = date.getDay();
+    return dayInitials[dayIndex];
+  };
+
+  // function to open and close the sideBar
+  const handleOpenMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // onClick function to fetch and navigate to specific workshop when a day is clicked
   const handleClick = (date) => {
     onChange(date);
 
@@ -39,10 +55,7 @@ function AdminDashboard() {
     }
   };
 
-  const handleOpenMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+  // ---------------------------------------------------return-------------------------------------------------------
   return (
     <div className={`dashboard ${isMenuOpen ? "open" : ""}`}>
       <div className="dashboardContent">
@@ -95,6 +108,7 @@ function AdminDashboard() {
             nextAriaLabel="Next"
             next2AriaLabel="Jump forwards"
             showWeekNumbers
+            formatShortWeekday={formatShortWeekday}
           />
         </div>
       </div>
