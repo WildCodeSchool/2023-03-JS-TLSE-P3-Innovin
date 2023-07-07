@@ -167,8 +167,8 @@ img.logo-nav {
   .navBar h1 {
     color: var(--primaryColor);
     font-family: var(--fontFamilyTitle);
-    font-size: 2.5rem;
-    margin: 20px;
+    font-size: 2rem;
+    letter-spacing: 1;
     display: block;
   }
 
