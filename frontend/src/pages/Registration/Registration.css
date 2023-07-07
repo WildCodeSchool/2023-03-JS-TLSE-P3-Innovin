@@ -9,7 +9,7 @@
 }
 
 .registration {
-  padding : 20% 0 20% 0;
+  padding: 20% 0 20% 0;
   min-height: 100dvh;
   height: 100%;
   width: 100%;
@@ -170,7 +170,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding : 15% 0 15% 0;
+    padding: 15% 0 15% 0;
   }
 
   .registrationContentDiv {
