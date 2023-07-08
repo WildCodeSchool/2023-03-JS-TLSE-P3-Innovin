@@ -30,7 +30,7 @@ export function AuthProvider({ children }) {
       user,
       setUser,
     }),
-    [userToken]
+    [userToken, user]
   );
 
   return (
