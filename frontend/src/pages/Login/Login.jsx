@@ -71,7 +71,7 @@ function Login() {
       <div className="loginContentDiv">
         <div className="logoDiv">
           {" "}
-          <img src={logo} alt="Inovin logo" className="logo" />
+          <img src={logo} alt="Inovin logo" className="logoLogin" />
           <p className="logoText">Inovin</p>
         </div>
 
@@ -91,7 +91,7 @@ function Login() {
             </label>
           </div>
           <div>
-            <p>Password</p>
+            <p>Mot de passe</p>
             <label htmlFor="password" className="loginPasswordLabel">
               <div className="passwordInput">
                 <Input
