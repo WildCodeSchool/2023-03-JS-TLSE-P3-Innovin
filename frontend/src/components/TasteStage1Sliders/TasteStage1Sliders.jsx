@@ -76,6 +76,7 @@ function Sliders({ dataTasteTannin, dataAlcohol, dataAcidity, dataSweetness }) {
           trackSize={23}
           data={sliderDataSweetness}
           dataIndex={2.5}
+          verticalOffset="-0.1rem"
           onChange={handleChangeSweetnessValue}
         />
       </div>
@@ -99,6 +100,7 @@ function Sliders({ dataTasteTannin, dataAlcohol, dataAcidity, dataSweetness }) {
           trackSize={23}
           data={sliderDataAlcohol}
           dataIndex={2.5}
+          verticalOffset="-0.1rem"
           onChange={handleChangeAlcoholValue}
         />
       </div>
@@ -123,6 +125,7 @@ function Sliders({ dataTasteTannin, dataAlcohol, dataAcidity, dataSweetness }) {
           trackSize={23}
           data={sliderDataAcidity}
           dataIndex={2.5}
+          verticalOffset="-0.1rem"
           onChange={handleChangeAcidityValue}
         />
       </div>
@@ -147,6 +150,7 @@ function Sliders({ dataTasteTannin, dataAlcohol, dataAcidity, dataSweetness }) {
           trackSize={23}
           data={sliderDataTasteTannin}
           dataIndex={2.5}
+          verticalOffset="-2rem"
           onChange={handleChangeTasteTanninValue}
         />
       </div>
@@ -175,26 +179,6 @@ Sliders.propTypes = {
       PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
     )
   ).isRequired,
-  /* idTasteSweetness: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.bool,
-  ]).isRequired,
-  idTasteAlcohol: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.bool,
-  ]).isRequired,
-  idAcidity: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.bool,
-  ]).isRequired,
-  idTasteTannin: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.bool,
-  ]).isRequired, */
 };
 
 export default Sliders;

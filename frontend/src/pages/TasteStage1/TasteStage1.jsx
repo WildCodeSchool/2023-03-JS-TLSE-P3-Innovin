@@ -1,6 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import TastingContext from "../../contexts/TastingContext";
 import AuthContext from "../../contexts/AuthContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
@@ -9,14 +10,22 @@ import SlidersTasteStage1 from "../../components/TasteStage1Sliders/TasteStage1S
 import "./TasteStage1.css";
 
 function TasteStage1() {
+  const tastingValue = useContext(TastingContext);
+  const {
+    dataSweetness,
+    setDataSweetness,
+    dataAcidity,
+    setDataAcidity,
+    dataAlcohol,
+    setDataAlcohol,
+    dataTasteTannin,
+    setDataTasteTannin,
+  } = tastingValue;
   const userToken = useContext(AuthContext);
   const navigate = useNavigate();
-  const [dataSweetness, setDataSweetness] = useState([]);
-  const [dataAcidity, setDataAcidity] = useState([]);
-  const [dataAlcohol, setDataAlcohol] = useState([]);
-  const [dataTasteTannin, setDataTasteTannin] = useState([]);
 
-  // -----------------------------------------CODE A ENLEVER >> FETCH DIRECT POUR RECUPERATION DES DONNEES ET CREATION ALGO <<
+  // ----------------------------------------- Data recovery from backend server -----------------------------------------//
+
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/mouthslidersdatas`, {

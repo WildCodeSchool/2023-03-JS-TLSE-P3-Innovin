@@ -7,6 +7,7 @@ const TastingNoteContext = createContext();
 export default TastingNoteContext;
 
 export function TastingNoteProvider({ children }) {
+  // Data recovery from 'TasteStage1Sliders' component
   const [idTasteSweetnessValue, setIdTasteSweetnessValue] = useState(0);
   const [idAcidityValue, setIdAcidityValue] = useState(0);
   const [idTasteAlcoholValue, setIdTasteAlcoholValue] = useState(0);
@@ -41,6 +42,7 @@ export function TastingNoteProvider({ children }) {
     });
   };
 
+  // -------------------- Function retrieving the sliders ids from the tasting "mouth" section --------------------//
   const handleFillmouthId = () => {
     setTastingNote({
       ...tastingNote,
@@ -51,8 +53,10 @@ export function TastingNoteProvider({ children }) {
     });
   };
 
+  // useEffect who Update ids
+
   useEffect(() => {
-    handleFillmouthId(); // Update tastingNote
+    handleFillmouthId();
   }, [
     idTasteSweetnessValue,
     idAcidityValue,
