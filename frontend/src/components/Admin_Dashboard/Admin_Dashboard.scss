@@ -45,10 +45,22 @@
       top: 1rem;
       right: 1rem;
       z-index: 2;
-      color: var(--secondaryColor);
-      font-size: 2em;
+      color: rgba(195, 180, 138, 0.5);
+      font-size: 1.6em;
       background: none;
       border: none;
+      cursor: pointer;
+      &:hover {
+        color: var(--secondaryColor);
+      }
+      i {
+        display: grid;
+        place-items: center;
+        &::before {
+          background: rgba(195, 180, 138, 0.1);
+          border-radius: 50px;
+        }
+      }
     }
   }
   .dashboardContent {

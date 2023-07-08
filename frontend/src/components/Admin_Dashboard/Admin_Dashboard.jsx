@@ -117,7 +117,7 @@ function AdminDashboard() {
         onClick={handleOpenMenu}
         className={`closeSidebarButton ${isMenuOpen && "showCloseButton"}`}
       >
-        <i className="fi fi-rr-circle-xmark" />
+        <i className="fi fi-tr-circle-xmark" />
       </button>
       <button
         className={`openSidebarButton ${isMenuOpen ? "hideButton" : ""}`}
