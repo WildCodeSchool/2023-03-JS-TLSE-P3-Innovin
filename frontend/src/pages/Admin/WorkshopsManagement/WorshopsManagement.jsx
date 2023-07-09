@@ -26,11 +26,14 @@ function WorkshopsManagement() {
             </thead>
             <tbody>
               {workshops.map((workshop) => {
-                // const datetime = workshop.datetime.split("T")[0];
+                const dateElement = workshop.datetime.split("T")[0].split("-");
+                const date = `${dateElement[2]}/${dateElement[1]}/${dateElement[0]}`;
+                const hourElement = workshop.datetime.split("T")[1].split(":");
+                const hour = `${hourElement[0]}:${hourElement[1]}`;
 
                 return (
                   <tr key={workshop.id}>
-                    <td>{workshop.datetime}</td>
+                    <td>{`${date} ${hour}`}</td>
                     {workshop.wine_type.toLowerCase() === "rouge" ? (
                       <td>
                         <div className="redWine" />

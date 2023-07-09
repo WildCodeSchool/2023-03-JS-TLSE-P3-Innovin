@@ -24,6 +24,10 @@
     font-size: var(--fontSizeH2);
   }
 
+  .workshopsTable {
+    width: 100%;
+  }
+
   .tableSection {
     background: var(--blackBgGradientSmooth);
     backdrop-filter: var(--blur);
@@ -51,6 +55,7 @@
       border-bottom: 1px solid rgba(209, 181, 103, 0.1);
 
       tr {
+        width: 100%;
         th {
           position: sticky;
           top: 0;
