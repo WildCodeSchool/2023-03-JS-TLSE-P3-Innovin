@@ -1,0 +1,132 @@
+.workshopsContent {
+  width: 100%;
+  background: var(--blackBgGradient);
+  background-color: aliceblue;
+
+  min-height: 100vh;
+  color: var(--whiteGoldColor);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 8vh, 3rem);
+  overflow: hidden;
+
+  table,
+  th,
+  td {
+    padding: 1em 1.5em;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  h1 {
+    margin-top: 1em;
+    font-size: var(--fontSizeH2);
+  }
+
+  .tableSection {
+    background: var(--blackBgGradientSmooth);
+    backdrop-filter: var(--blur);
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    width: 90vw;
+    min-height: 70vh;
+    margin-bottom: 2em;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--whiteGoldColor);
+      border-radius: 5px;
+      visibility: hidden;
+    }
+    &:hover::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+
+    thead {
+      border-bottom: 1px solid rgba(209, 181, 103, 0.1);
+
+      tr {
+        th {
+          position: sticky;
+          top: 0;
+          left: 0;
+          background-color: var(--darkGoldColor);
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(odd) {
+          background-color: rgba(209, 181, 103, 0.05);
+        }
+        &:hover {
+          background-color: rgba(209, 181, 103, 0.1);
+        }
+        td {
+          vertical-align: middle;
+          .redWine {
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 50px;
+            background-color: var(--redWineColor);
+          }
+          .commentary {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+          }
+          .whiteWine {
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 50px;
+            background-color: #fee347;
+          }
+          .actionButtons {
+            display: flex;
+            gap: 1em;
+            background-color: rgba(209, 181, 103, 0.1);
+            padding: 0.3em;
+            border-radius: 5px;
+
+            .editBtn,
+            .deleteBtn {
+              font-size: 1rem;
+              color: var(--secondaryColor);
+              background: none;
+              border: 1px solid rgba(209, 181, 103, 0.1);
+              padding: 0.3em;
+              border-radius: 5px;
+              &:hover {
+                cursor: pointer;
+                color: var(--darkGoldColor);
+                background-color: var(--secondaryColor);
+              }
+
+              i {
+                display: grid;
+                place-items: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .workshopsContent {
+    padding-left: 370px;
+
+    .tableSection {
+      width: calc(90vw - 370px);
+    }
+  }
+}

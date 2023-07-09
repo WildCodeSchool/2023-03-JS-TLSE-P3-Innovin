@@ -6,7 +6,7 @@ const AdminContext = createContext();
 export default AdminContext;
 
 export function AdminProvider({ children }) {
-  const [workshops, setWorkshops] = useState();
+  const [workshops, setWorkshops] = useState([]);
 
   const AdminValue = useMemo(
     () => ({
