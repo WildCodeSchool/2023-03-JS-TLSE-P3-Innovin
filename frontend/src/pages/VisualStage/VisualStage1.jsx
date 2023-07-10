@@ -28,7 +28,6 @@ function VisualStage1() {
   return (
     <div className="visualStage1">
       <div className="contentStage1">
-        {" "}
         <div className="header">
           <TastingHeaderTitle />
           <StepsHeader />

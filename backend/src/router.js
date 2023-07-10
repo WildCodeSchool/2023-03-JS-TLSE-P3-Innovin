@@ -67,6 +67,10 @@ router.use(verifyToken);
 
 router.get("/users/:id", UserControllers.read);
 router.put("/users/:id", hashPassword, validateUser, UserControllers.edit);
+router.get(
+  "/workshophasexistingwine/:id_workshop",
+  WorkshopHasExistingWineControllers.read
+);
 
 // ----------------------------------------- Admin routes ------------------------------------------------
 
@@ -92,7 +96,15 @@ router.get("/workshop/:id", WorkshopControllers.read);
 router.put("/workshop/:id", WorkshopControllers.edit);
 router.post("/workshop", WorkshopControllers.add);
 router.delete("/workshop/:id", WorkshopControllers.destroy);
-
+router.get(
+  "/workshophasexistingwine",
+  WorkshopHasExistingWineControllers.browse
+);
+router.post("/workshophasexistingwine", WorkshopHasExistingWineControllers.add);
+router.delete(
+  "/workshophasexistingwine/:id_workshop",
+  WorkshopHasExistingWineControllers.destroy
+);
 router.put("/newwine/:id", NewWineControllers.edit);
 router.post("/newwine", NewWineControllers.add);
 router.delete("/newwine/:id", NewWineControllers.destroy);

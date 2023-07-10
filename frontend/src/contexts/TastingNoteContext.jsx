@@ -1,4 +1,5 @@
-import React, { createContext, useMemo, useState } from "react";
+/* eslint-disable radix */
+import { createContext, useMemo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const TastingNoteContext = createContext();
@@ -6,11 +7,16 @@ const TastingNoteContext = createContext();
 export default TastingNoteContext;
 
 export function TastingNoteProvider({ children }) {
+  // Data recovery from 'TasteStage1Sliders' component
+  const [idTasteSweetnessValue, setIdTasteSweetnessValue] = useState(0);
+  const [idAcidityValue, setIdAcidityValue] = useState(0);
+  const [idTasteAlcoholValue, setIdTasteAlcoholValue] = useState(0);
+  const [idTasteTanninValue, setIdTasteTanninValue] = useState(0);
+
   const [tastingNote, setTastingNote] = useState({
     wineQuality: "",
     idOlfactiveIntensity: null,
     idUser: null,
-    selectedWine: 0,
     rating: 0,
     tastingCommentary: "",
     idOlfactiveComplexity: null,
@@ -26,36 +32,50 @@ export function TastingNoteProvider({ children }) {
     idTasteTannin: null,
     idVisualIntensity: null,
     idOlfactiveAromas: null,
-    selectedWines: [], // Ajout de selectedWines comme un tableau vide
+    idFlavorAromas: null,
+    selectedWine: [],
   });
 
   const handleFillVisualColorId = (e, value) => {
     e.preventDefault();
-    setTastingNote((prevTastingNote) => ({
-      ...prevTastingNote,
+    setTastingNote({
+      ...tastingNote,
       idVisualColor: value,
-    }));
+    });
   };
 
+  // -------------------- Function retrieving the sliders ids from the tasting "mouth" section --------------------//
+  const handleFillmouthId = () => {
+    setTastingNote({
+      ...tastingNote,
+      idTasteSweetness: parseInt(`${idTasteSweetnessValue}`),
+      idTasteAlcohol: parseInt(`${idTasteAlcoholValue}`),
+      idAcidity: parseInt(`${idAcidityValue}`),
+      idTasteTannin: parseInt(`${idTasteTanninValue}`),
+    });
+  };
+
+  // useEffect who Update ids
+
+  useEffect(() => {
+    handleFillmouthId();
+  }, [
+    idTasteSweetnessValue,
+    idAcidityValue,
+    idTasteAlcoholValue,
+    idTasteTanninValue,
+  ]);
+
   const tastingNoteValue = useMemo(() => {
-    const handleSelectWine = (wineNumber) => {
-      setTastingNote((prevTastingNote) => {
-        const selectedWines = prevTastingNote.selectedWines.includes(wineNumber)
-          ? prevTastingNote.selectedWines.filter((num) => num !== wineNumber)
-          : [...prevTastingNote.selectedWines, wineNumber];
-
-        return {
-          ...prevTastingNote,
-          selectedWines,
-        };
-      });
-    };
-
     return {
       tastingNote,
+      setIdTasteSweetnessValue,
+      setIdAcidityValue,
+      setIdTasteAlcoholValue,
+      setIdTasteTanninValue,
       setTastingNote,
       handleFillVisualColorId,
-      handleSelectWine,
+      handleFillmouthId,
     };
   }, [tastingNote]);
 
