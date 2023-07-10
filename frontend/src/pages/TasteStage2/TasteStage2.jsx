@@ -58,7 +58,7 @@ function TasteStage2() {
     console.info(formJson);
   };
 
-   // -----------------------------------------handle functions for buttons--------------------------------------------------
+  // -----------------------------------------handle functions for buttons--------------------------------------------------
 
   const handleNavigate = () => {
     navigate("/advice");
