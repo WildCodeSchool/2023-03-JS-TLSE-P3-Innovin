@@ -8,6 +8,7 @@ import TastingPresentation from "./pages/TastingPresentation/TastingPresentation
 import VisualStage1 from "./pages/VisualStage/VisualStage1";
 import VisualStage2 from "./pages/VisualStage/VisualStage2";
 import TasteStage1 from "./pages/TasteStage1/TasteStage1";
+import TasteStage2 from "./pages/TasteStage2/TasteStage2";
 import TasteAdvice from "./pages/TasteAdvice/TasteAdvice";
 import WinesTasted from "./pages/WinesTasted/WinesTasted";
 import { TastingNoteProvider } from "./contexts/TastingNoteContext";
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/eye/stage1" element={<VisualStage1 />} />
                 <Route path="/eye/stage2" element={<VisualStage2 />} />
                 <Route path="/mouth/stage1" element={<TasteStage1 />} />
+                <Route path="/mouth/stage2" element={<TasteStage2 />} />
                 <Route path="/advice" element={<TasteAdvice />} />
                 <Route path="/selection" element={<WinesTasted />} />
                 <Route path="/carte" element={<WinesMap />} />
