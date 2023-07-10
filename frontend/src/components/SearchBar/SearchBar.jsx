@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function SearchBar({ setValue, icon, placeholder, value }) {
   const handleChange = (e) => {
-    setValue(e.target.value);
+    setValue(e.target.value.toLowerCase());
   };
 
   return (

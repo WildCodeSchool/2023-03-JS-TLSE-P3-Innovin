@@ -10,6 +10,9 @@ function WorkshopsManagement() {
   const { workshops, setWorkshops } = useContext(AdminContext);
   const { userToken } = useContext(AuthContext);
   const [searchValue, setSearchValue] = useState("");
+  const [deletedRow, setDeletedRow] = useState([]);
+  const [idToDelete, setIdToDelete] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     axios
@@ -35,6 +38,7 @@ function WorkshopsManagement() {
       })
       .then((res) => {
         console.info(res);
+        setDeletedRow([id, ...deletedRow]);
       })
       .catch((err) => {
         console.error(err);
@@ -70,10 +74,10 @@ function WorkshopsManagement() {
               {workshops
                 .filter((workshop) => {
                   const values = Object.values(workshop);
-
-                  return values.some((value) =>
+                  const filteredValues = values.some((value) =>
                     value.toString().toLowerCase().includes(searchValue)
                   );
+                  return filteredValues;
                 })
                 .map((workshop) => {
                   const dateElement = workshop.datetime
@@ -86,7 +90,12 @@ function WorkshopsManagement() {
                   const hour = `${hourElement[0]}:${hourElement[1]}`;
 
                   return (
-                    <tr key={workshop.id}>
+                    <tr
+                      key={workshop.id}
+                      className={`${
+                        deletedRow.some((id) => id === workshop.id) && "deleted"
+                      }`}
+                    >
                       <td>{`${date} ${hour}`}</td>
                       {workshop.wine_type.toLowerCase() === "rouge" ? (
                         <td>
@@ -111,7 +120,10 @@ function WorkshopsManagement() {
                           <button
                             type="button"
                             className="deleteBtn"
-                            onClick={() => onDelete(workshop.id)}
+                            onClick={() => {
+                              setIsModalOpen(true);
+                              setIdToDelete(workshop.id);
+                            }}
                           >
                             <i className="fi fi-rr-trash" />
                           </button>
@@ -122,6 +134,27 @@ function WorkshopsManagement() {
                 })}
             </tbody>
           </table>
+          {isModalOpen && (
+            <div className="Modal">
+              <div className="deleteModal">
+                <p>Êtes-vous sûr de vouloir supprimer l'atelier ?</p>
+                <button
+                  type="button"
+                  className="yesBtn"
+                  onClick={() => onDelete(idToDelete)}
+                >
+                  Supprimer
+                </button>
+                <button
+                  type="button"
+                  className="noBtn"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Annuler
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>

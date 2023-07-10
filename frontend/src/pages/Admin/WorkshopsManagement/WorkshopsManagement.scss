@@ -22,7 +22,7 @@
   .tableHeader {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
     width: 90vw;
     margin-top: 4em;
     h1 {
@@ -72,11 +72,17 @@
 
       tbody {
         tr {
+          transition: all 0.3s ease-in-out;
           &:nth-child(odd) {
             background-color: rgba(209, 181, 103, 0.05);
           }
           &:hover {
             background-color: rgba(209, 181, 103, 0.1);
+          }
+          &.deleted {
+            td {
+              display: none;
+            }
           }
           td {
             vertical-align: middle;
