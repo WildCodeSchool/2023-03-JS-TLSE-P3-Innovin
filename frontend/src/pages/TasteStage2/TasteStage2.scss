@@ -11,12 +11,18 @@
 
 .section_aromes {
   display: flex;
+  width: 100%;
+  max-width: 900px;
   justify-content: center;
   align-items: center;
 }
-.section_persistanceAromatique {
+.formTasteStage2 {
   display: flex;
   flex-direction: column;
+  gap: 2.5em;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .TasteStage2 {
@@ -63,7 +69,10 @@
     text-align: center;
     padding-inline: var(--paddingTablet);
   }
-
+  .formTasteStage2 {
+    flex-direction: row;
+    align-items: start;
+  }
   .TasteStage2 {
     background: no-repeat bottom 9em left 7em
         url("../../assets/Gold_Blotches/Watercolor_Blotch_2 1.png"),
@@ -79,9 +88,13 @@
   .contentTasteStage2 {
     gap: 5rem;
   }
+  .section_aromes {
+    width: 90%;
+  }
 
-  .section_persistanceAromatique {
+  .formTasteStage2 {
     flex-direction: row;
+    align-items: start;
   }
   .intro {
     align-items: center;

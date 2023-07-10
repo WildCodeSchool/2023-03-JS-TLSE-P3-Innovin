@@ -12,6 +12,7 @@ button {
   backdrop-filter: var(--bgBlur);
   margin-top: 2rem;
   margin-bottom: 2rem;
+  padding: 0.6rem;
   animation: none;
   display: flex;
   align-items: center;
