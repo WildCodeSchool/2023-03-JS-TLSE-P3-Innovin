@@ -7,7 +7,7 @@ import ButtonPrimary from "../../components/ButtonPrimary";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
 import SlidersTasteStage1 from "../../components/TasteStage1Sliders/TasteStage1Sliders";
-import "./TasteStage1.css";
+import "./TasteStage1.scss";
 
 function TasteStage1() {
   const tastingValue = useContext(TastingContext);
