@@ -1,7 +1,7 @@
 /* global style of the page TasteStage1 */
 .TasteStage1,
 .contentTasteStage1,
-.FormTasteStage1,
+.SlidersBoxTasteStage1,
 .intro,
 .header {
   display: flex;
@@ -22,7 +22,7 @@
   font-size: var(--fontSizeText);
 }
 
-.FormTasteStage1 {
+.SlidersBoxTasteStage1 {
   width: 100%;
   background: var(--blackBgGradientSmooth);
   box-shadow: var(--shadow);
@@ -73,7 +73,7 @@
       var(--blackBgGradient);
   }
 
-  .FormTasteStage1 {
+  .SlidersBoxTasteStage1 {
     width: 95%;
     background: var(--blackBgGradientSmooth);
     box-shadow: var(--shadow);
@@ -93,7 +93,7 @@
     text-align: center;
     padding-inline: var(--marginPageContent);
   }
-  .FormTasteStage1 {
+  .SlidersBoxTasteStage1 {
     width: 70%;
   }
 }
