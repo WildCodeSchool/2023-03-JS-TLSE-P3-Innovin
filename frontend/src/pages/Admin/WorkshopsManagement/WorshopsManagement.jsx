@@ -21,6 +21,7 @@ function WorkshopsManagement() {
                 <th>Type</th>
                 <th>Lieu</th>
                 <th>Commentaire</th>
+                <th>Participants</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -34,7 +35,7 @@ function WorkshopsManagement() {
                 return (
                   <tr key={workshop.id}>
                     <td>{`${date} ${hour}`}</td>
-                    {workshop.wine_type.toLowerCase() === "rouge" ? (
+                    {workshop.wine.toLowerCase() === "rouge" ? (
                       <td>
                         <div className="redWine" />
                       </td>
@@ -48,6 +49,7 @@ function WorkshopsManagement() {
                     <td>
                       <p className="commentary">{workshop.commentary}</p>
                     </td>
+                    <td>{workshop.attendees}</td>
                     <td>
                       <div className="actionButtons">
                         <button type="button" className="editBtn">

@@ -23,7 +23,7 @@ class WorkshopManager extends AbstractManager {
 
   findWorkshopByDate(date) {
     return this.database.query(
-      `select datetime, place, commentary, wine_type, COUNT(id_user) FROM ${this.table} LEFT JOIN user_has_workshop as uw ON uw.id_workshop = workshop.id WHERE CONCAT(SUBSTRING(DATE(datetime),9,2),SUBSTRING(DATE(datetime),6,2),SUBSTRING(DATE(datetime),1,4)) = ? GROUP BY datetime,place,commentary, wine_type;`,
+      `SELECT id, datetime, place, commentary, wine_type AS wine, COUNT(id_user) AS attendees FROM ${this.table} LEFT JOIN user_has_workshop as uw ON uw.id_workshop = workshop.id WHERE CONCAT(SUBSTRING(DATE(datetime),9,2),SUBSTRING(DATE(datetime),6,2),SUBSTRING(DATE(datetime),1,4)) = ? GROUP BY id, datetime, place,commentary, wine_type;`,
       [date]
     );
   }
