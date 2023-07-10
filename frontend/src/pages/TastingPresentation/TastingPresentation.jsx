@@ -86,7 +86,7 @@ export default function TastingPresentation() {
           </p>
 
           <div className="button-container">
-            <Link to="/advice">
+            <Link to="/eye/stage1">
               <ButtonPrimary> Démarrer </ButtonPrimary>
             </Link>
           </div>

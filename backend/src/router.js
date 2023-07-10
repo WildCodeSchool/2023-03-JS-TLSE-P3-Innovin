@@ -81,6 +81,7 @@ router.delete("/wineregion/:id", WineRegionControllers.destroy);
 router.get("/workshop", WorkshopControllers.browse);
 router.get("/workshop/:id", WorkshopControllers.read);
 router.put("/workshop/:id", WorkshopControllers.edit);
+router.get("/workshop/date/:date", WorkshopControllers.getWorkshopByDate);
 router.post("/workshop", WorkshopControllers.add);
 router.delete("/workshop/:id", WorkshopControllers.destroy);
 router.get(

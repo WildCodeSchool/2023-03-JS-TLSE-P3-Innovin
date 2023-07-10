@@ -9,8 +9,9 @@ export default AuthContext;
 
 export function AuthProvider({ children }) {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
+  const [user, setUser] = useState({});
 
-  const setUser = (token) => {
+  const setToken = (token) => {
     if (token) {
       Cookies.set("userToken", token, {
         expires: 1 / 8,
@@ -25,9 +26,11 @@ export function AuthProvider({ children }) {
   const AuthValue = useMemo(
     () => ({
       userToken,
+      setToken,
+      user,
       setUser,
     }),
-    [userToken]
+    [userToken, user]
   );
 
   return (

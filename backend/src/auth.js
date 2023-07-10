@@ -44,7 +44,7 @@ const verifyPassword = (req, res) => {
 
         res.send({ token, user: req.user });
       } else {
-        res.sendStatus(401);
+        res.status(401).send("Unauthorized");
       }
     })
     .catch((err) => {
