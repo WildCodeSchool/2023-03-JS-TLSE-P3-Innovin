@@ -51,7 +51,8 @@ function App() {
             </TastingNoteProvider>
           </TastingProvider>
         </Router>
-         </AuthProvider>
+      </AdminProvider>
+    </AuthProvider>
   );
 }
 
