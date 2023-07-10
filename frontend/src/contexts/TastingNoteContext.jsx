@@ -1,4 +1,5 @@
-import { createContext, useMemo, useState } from "react";
+/* eslint-disable radix */
+import { createContext, useMemo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const TastingNoteContext = createContext();
@@ -6,6 +7,12 @@ const TastingNoteContext = createContext();
 export default TastingNoteContext;
 
 export function TastingNoteProvider({ children }) {
+  // Data recovery from 'TasteStage1Sliders' component
+  const [idTasteSweetnessValue, setIdTasteSweetnessValue] = useState(0);
+  const [idAcidityValue, setIdAcidityValue] = useState(0);
+  const [idTasteAlcoholValue, setIdTasteAlcoholValue] = useState(0);
+  const [idTasteTanninValue, setIdTasteTanninValue] = useState(0);
+
   const [tastingNote, setTastingNote] = useState({
     wineQuality: "",
     idOlfactiveIntensity: null,
@@ -35,8 +42,39 @@ export function TastingNoteProvider({ children }) {
     });
   };
 
+  // -------------------- Function retrieving the sliders ids from the tasting "mouth" section --------------------//
+  const handleFillmouthId = () => {
+    setTastingNote({
+      ...tastingNote,
+      idTasteSweetness: parseInt(`${idTasteSweetnessValue}`),
+      idTasteAlcohol: parseInt(`${idTasteAlcoholValue}`),
+      idAcidity: parseInt(`${idAcidityValue}`),
+      idTasteTannin: parseInt(`${idTasteTanninValue}`),
+    });
+  };
+
+  // useEffect who Update ids
+
+  useEffect(() => {
+    handleFillmouthId();
+  }, [
+    idTasteSweetnessValue,
+    idAcidityValue,
+    idTasteAlcoholValue,
+    idTasteTanninValue,
+  ]);
+
   const tastingNoteValue = useMemo(() => {
-    return { tastingNote, setTastingNote, handleFillVisualColorId };
+    return {
+      tastingNote,
+      setIdTasteSweetnessValue,
+      setIdAcidityValue,
+      setIdTasteAlcoholValue,
+      setIdTasteTanninValue,
+      setTastingNote,
+      handleFillVisualColorId,
+      handleFillmouthId,
+    };
   }, [tastingNote]);
 
   return (

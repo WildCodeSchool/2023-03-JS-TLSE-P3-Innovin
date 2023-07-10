@@ -14,7 +14,6 @@ export default function TastingPresentation() {
   const {
     setVisualData,
     setOlfactiveData,
-    setMouthSlidersData,
     setMouthData,
     setWorkshopHasExistingWine,
   } = tastingValue;
@@ -28,7 +27,6 @@ export default function TastingPresentation() {
     const endpoints = [
       "http://localhost:5000/visualdatas",
       "http://localhost:5000/olfactivedatas",
-      "http://localhost:5000/mouthslidersdatas",
       "http://localhost:5000/tastedatas",
       "http://localhost:5000/workshophasexistingwine/1",
     ];
@@ -46,13 +44,11 @@ export default function TastingPresentation() {
         ([
           { data: eye },
           { data: nose },
-          { data: mouth1 },
           { data: mouth2 },
           { data: winesWorkshop },
         ]) => {
           setVisualData(eye);
           setOlfactiveData(nose);
-          setMouthSlidersData(mouth1);
           setMouthData(mouth2);
           setWorkshopHasExistingWine(winesWorkshop);
         }
