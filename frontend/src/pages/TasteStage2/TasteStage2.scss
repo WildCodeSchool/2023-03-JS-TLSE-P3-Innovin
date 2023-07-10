@@ -10,18 +10,20 @@
 }
 
 .section_aromes {
-  display: flex;justify-content: center;align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .section_persistanceAromatique {
-  display: flex;flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .TasteStage2 {
   height: 100%;
   background: no-repeat bottom 9em left 40em
       url("../../assets/Gold_Blotches/Watercolor_Blotch_4.png"),
-    no-repeat top 30em right 40em
-      url("../../assets/Red_Wine_Colors/Cerise.png"),
+    no-repeat top 30em right 40em url("../../assets/Red_Wine_Colors/Cerise.png"),
     var(--blackBgGradient);
   color: var(--whiteGoldColor);
   font-family: var(--fontFamilyText);
@@ -78,8 +80,8 @@
     gap: 5rem;
   }
 
-  .section_persistanceAromatique {flex-direction: row;
-    
+  .section_persistanceAromatique {
+    flex-direction: row;
   }
   .intro {
     align-items: center;
