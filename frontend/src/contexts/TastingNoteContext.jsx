@@ -32,6 +32,8 @@ export function TastingNoteProvider({ children }) {
     idTasteSweetness: null,
     idTasteTannin: null,
     idVisualIntensity: null,
+    idOlfactiveAromas: null,
+    idFlavorAromas: null,
   });
 
   const handleFillVisualColorId = (e, value) => {
