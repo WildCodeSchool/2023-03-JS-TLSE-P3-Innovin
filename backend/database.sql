@@ -630,6 +630,15 @@ VALUES (
         1,
         "Rouge",
         "En toute modestie, je dirai que les vins de Gaillac sont les meilleurs du monde."
+    ), (
+        "Lambda",
+        "User",
+        "1990-09-20",
+        "lambda.user@mail.com",
+        "$argon2id$v=19$m=65536,t=3,p=1$xnCxPMemmygcPnMemighJQ$rPRYmKA",
+        0,
+        "Blanc",
+        "tout!!!"
     );
 
 -- -----------------------------------------------------
