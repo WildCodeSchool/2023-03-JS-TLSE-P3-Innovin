@@ -48,7 +48,19 @@ router.get("/newwine/:id", NewWineControllers.read);
 
 router.post("/tastingnote", TastingNoteControllers.add);
 router.get("/tastingnote", TastingNoteControllers.browse);
-
+router.get(
+  "/workshophasexistingwine",
+  WorkshopHasExistingWineControllers.browse
+);
+router.get(
+  "/workshophasexistingwine/:id_workshop",
+  WorkshopHasExistingWineControllers.read
+);
+router.post("/workshophasexistingwine", WorkshopHasExistingWineControllers.add);
+router.delete(
+  "/workshophasexistingwine/:id_workshop",
+  WorkshopHasExistingWineControllers.destroy
+);
 // ---------------------------------------- Private Routes ----------------------------------------------
 
 router.use(verifyToken);
@@ -80,19 +92,7 @@ router.get("/workshop/:id", WorkshopControllers.read);
 router.put("/workshop/:id", WorkshopControllers.edit);
 router.post("/workshop", WorkshopControllers.add);
 router.delete("/workshop/:id", WorkshopControllers.destroy);
-router.get(
-  "/workshophasexistingwine",
-  WorkshopHasExistingWineControllers.browse
-);
-router.get(
-  "/workshophasexistingwine/:id_workshop",
-  WorkshopHasExistingWineControllers.read
-);
-router.post("/workshophasexistingwine", WorkshopHasExistingWineControllers.add);
-router.delete(
-  "/workshophasexistingwine/:id_workshop",
-  WorkshopHasExistingWineControllers.destroy
-);
+
 router.put("/newwine/:id", NewWineControllers.edit);
 router.post("/newwine", NewWineControllers.add);
 router.delete("/newwine/:id", NewWineControllers.destroy);

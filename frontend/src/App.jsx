@@ -36,6 +36,7 @@ function App() {
                 <Route path="/selection" element={<WinesTasted />} />
                 <Route path="/nose/stage1" element={<OlfactoryStage />} />
                 <Route path="/carte" element={<WinesMap />} />
+                <Route path="/winetasted" element={<WinesTasted />} />
               </Routes>
             </div>
           </TastingNoteProvider>

@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from "react";
+import React, { createContext, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 
 const TastingNoteContext = createContext();
@@ -25,18 +25,38 @@ export function TastingNoteProvider({ children }) {
     idTasteSweetness: null,
     idTasteTannin: null,
     idVisualIntensity: null,
+    idOlfactiveAromas: null,
+    selectedWines: [], // Ajout de selectedWines comme un tableau vide
   });
 
   const handleFillVisualColorId = (e, value) => {
     e.preventDefault();
-    setTastingNote({
-      ...tastingNote,
+    setTastingNote((prevTastingNote) => ({
+      ...prevTastingNote,
       idVisualColor: value,
-    });
+    }));
   };
 
   const tastingNoteValue = useMemo(() => {
-    return { tastingNote, setTastingNote, handleFillVisualColorId };
+    const handleSelectWine = (wineNumber) => {
+      setTastingNote((prevTastingNote) => {
+        const selectedWines = prevTastingNote.selectedWines.includes(wineNumber)
+          ? prevTastingNote.selectedWines.filter((num) => num !== wineNumber)
+          : [...prevTastingNote.selectedWines, wineNumber];
+
+        return {
+          ...prevTastingNote,
+          selectedWines,
+        };
+      });
+    };
+
+    return {
+      tastingNote,
+      setTastingNote,
+      handleFillVisualColorId,
+      handleSelectWine,
+    };
   }, [tastingNote]);
 
   return (

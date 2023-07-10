@@ -1,0 +1,57 @@
+.wine-content {
+  align-items: center;
+  background: no-repeat left url("../../assets/Red_Wine_Colors/Framboise.png"),
+    var(--blackBgGradient);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100vw;
+  color: var(--whiteGoldColor);
+  font-family: var(--fontFamilyText);
+  font-size: var(--fontSizeText);
+  padding-bottom: 3rem;
+}
+
+.title-tasted {
+  display: flex;
+  justify-content: center;
+  font-family: var(--fontFamilyTitle);
+  color: var(--primaryColor);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 3rem 0 2rem 0;
+}
+
+.p-tested {
+  color: white;
+  font-weight: 400;
+  line-height: 31.5px;
+  text-align: center;
+  font-family: var(--fontFamilyText);
+  font-size: 1rem;
+  padding: 0 2rem 0 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .wine-content {
+    height: 100vh;
+    padding: 0 2rem 0 2rem;
+  }
+
+  .title-tasted {
+    font-size: 2.5rem;
+  }
+
+  .p-tested {
+    font-size: 1.2rem;
+  }
+
+  .card-disposition {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
