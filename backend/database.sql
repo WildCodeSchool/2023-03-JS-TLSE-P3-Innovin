@@ -995,7 +995,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`taste_alcohol` (alcohol)
-VALUES ('Alcooleux'), ('Capiteux'), ('Gras'), ('Généreux'), ('Faible ');
+VALUES ('Faible '),('Généreux'),('Gras'),('Capiteux'),('Alcooleux') ;
 
 -- -----------------------------------------------------
 
@@ -1012,7 +1012,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`acidity`(acidity)
-VALUES ('Nerveuse'), ('Pointue'), ('Vive'), ('Fraîche'), ('Molle');
+VALUES ('Molle'),('Fraîche'),('Vive'),('Pointue'),('Nerveuse');
 
 -- -----------------------------------------------------
 
@@ -1029,7 +1029,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`taste_sweetness` (`sweetness`)
-VALUES ('Sirupeux'), ('Liquoreux'), ('Moelleux'), ('Doux'), ('Sec');
+VALUES ('Sec'),('Doux'),('Moelleux'),('Liquoreux'),('Sirupeux');
 
 -- -----------------------------------------------------
 
@@ -1046,7 +1046,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`taste_tannin` (`taste_tannin`)
-VALUES ('Apre'), ('Chargé'), ('Charpenté'), ('Fondu'), ('Lisse');
+VALUES ('Lisse'),('Fondu'), ('Charpenté'),('Chargé'), ('Apre') ;
 
 -- -----------------------------------------------------
 
