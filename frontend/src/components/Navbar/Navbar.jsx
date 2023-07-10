@@ -35,7 +35,7 @@ export default function Navbar() {
             <Link to="/contact">Contact</Link>
           </li>
           <li className="navbar-link">
-            <Link to="/inscription">Inscription</Link>
+            <Link to="/registration">Inscription</Link>
           </li>
         </div>
       </ul>
