@@ -88,6 +88,13 @@ a {
   margin: 1rem;
 }
 
+.icon-text p {
+  color: var(--whiteGoldColor);
+  margin-top: 1rem;
+  font-family: var(--fontFamilyText);
+
+}
+
 .icon-title {
   font-family: var(--fontFamilyTitle);
   color: var(--primaryColor);
