@@ -995,7 +995,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`taste_alcohol` (alcohol)
-VALUES ('Faible '),('Généreux'),('Gras'),('Capiteux'),('Alcooleux') ;
+VALUES ('Faible '), ('Généreux'), ('Gras'), ('Capiteux'), ('Alcooleux');
 
 -- -----------------------------------------------------
 
@@ -1012,7 +1012,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`acidity`(acidity)
-VALUES ('Molle'),('Fraîche'),('Vive'),('Pointue'),('Nerveuse');
+VALUES ('Molle'), ('Fraîche'), ('Vive'), ('Pointue'), ('Nerveuse');
 
 -- -----------------------------------------------------
 
@@ -1029,7 +1029,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`taste_sweetness` (`sweetness`)
-VALUES ('Sec'),('Doux'),('Moelleux'),('Liquoreux'),('Sirupeux');
+VALUES ('Sec'), ('Doux'), ('Moelleux'), ('Liquoreux'), ('Sirupeux');
 
 -- -----------------------------------------------------
 
@@ -1046,7 +1046,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`taste_tannin` (`taste_tannin`)
-VALUES ('Lisse'),('Fondu'), ('Charpenté'),('Chargé'), ('Apre') ;
+VALUES ('Lisse'), ('Fondu'), ('Charpenté'), ('Chargé'), ('Apre');
 
 -- -----------------------------------------------------
 
@@ -1350,8 +1350,8 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`workshop_has_existingWine` (
         `id_workshop` INT NOT NULL,
         `id_existing_wine` INT NOT NULL,
-        CONSTRAINT `fk_workshop_has_existingWine_workshop1` FOREIGN KEY (`id_workshop`) REFERENCES `inovin`.`workshop` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_workshop_has_existingWine_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_workshop_has_existingWine_workshop1` FOREIGN KEY (`id_workshop`) REFERENCES `inovin`.`workshop` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+        CONSTRAINT `fk_workshop_has_existingWine_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 INSERT INTO
@@ -1389,8 +1389,8 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`user_has_workshop` (
         `id_user` INT NOT NULL,
         `id_workshop` INT NOT NULL,
-        CONSTRAINT `fk_CANDIDAT_has_Degustation_CANDIDAT1` FOREIGN KEY (`id_user`) REFERENCES `inovin`.`user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_CANDIDAT_has_Degustation_Degustation1` FOREIGN KEY (`id_workshop`) REFERENCES `inovin`.`workshop` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_CANDIDAT_has_Degustation_CANDIDAT1` FOREIGN KEY (`id_user`) REFERENCES `inovin`.`user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+        CONSTRAINT `fk_CANDIDAT_has_Degustation_Degustation1` FOREIGN KEY (`id_workshop`) REFERENCES `inovin`.`workshop` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 INSERT INTO `inovin`.`user_has_workshop` VALUES (1,1),(2,1);

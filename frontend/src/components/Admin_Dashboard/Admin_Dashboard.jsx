@@ -55,23 +55,6 @@ function AdminDashboard() {
     }
   };
 
-  // Function to fetch all workshops by clicking the button
-  const handlefetchWorkshops = () => {
-    axios
-      .get("http://localhost:5000/workshop", {
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      })
-      .then((response) => {
-        console.info(response.data);
-        setWorkshops(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
   // ---------------------------------------------------return-------------------------------------------------------
   return (
     <div className={`dashboard ${isMenuOpen ? "open" : ""}`}>
@@ -88,7 +71,7 @@ function AdminDashboard() {
             <i className="fi fi-rr-users-alt" />
             Gestion des utilisateurs
           </button>
-          <button type="button" onClick={handlefetchWorkshops}>
+          <button type="button" onClick={() => navigate("/admin/workshops")}>
             <i className="fi fi-rr-notebook" />
             Ateliers
           </button>

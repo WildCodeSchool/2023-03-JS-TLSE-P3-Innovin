@@ -2,7 +2,7 @@ const { models } = require("../models");
 
 const browse = (req, res) => {
   models.workshop
-    .findAll()
+    .findAllWorkshops()
     .then(([rows]) => {
       if (rows.length) {
         res.status(200).send(rows);
@@ -74,8 +74,6 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const workshop = req.body;
-
-  // TODO validations (length, format...)
 
   models.workshop
     .insert(workshop)
