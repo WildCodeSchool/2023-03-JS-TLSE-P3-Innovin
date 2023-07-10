@@ -65,7 +65,7 @@ function Sliders({ dataTasteTannin, dataAlcohol, dataAcidity, dataSweetness }) {
           valueFontSize="2rem"
           label={
             sweetnessValue ||
-            tasteSweetnessItems[sliderDataSweetness.indexOf("12 g/L")] // Affiche la valeur de 'sweetnessValue' si vrai ou l'élément correspondant à "12g/L"
+            tasteSweetnessItems[sliderDataSweetness.indexOf("12 g/L")] // Displays the value of 'sweetnessValue' if true or the element corresponding to "12g/L"
           }
           labelColor="var(--whiteGoldColor)"
           knobColor="#892221"
@@ -83,13 +83,13 @@ function Sliders({ dataTasteTannin, dataAlcohol, dataAcidity, dataSweetness }) {
       <div className="Sliderbox">
         <div className="TitleSliders">
           <img src={WineGlass_Icon} alt="WineGlass_Icon" />
-          <h2>Alcohol</h2>
+          <h2>Alcool</h2>
         </div>
         <CircularSlider
           labelFontSize="2.5rem"
           valueFontSize="2rem"
           label={
-            alcoholValue || alcoholItems[sliderDataAlcohol.indexOf("10 %")] // Affiche la valeur de 'alcoholValue' si vrai ou l'élément correspondant à "10 %"
+            alcoholValue || alcoholItems[sliderDataAlcohol.indexOf("10 %")] // Displays the value of 'alcoholValue' if true or the element corresponding to "10%"
           }
           labelColor="var(--whiteGoldColor)"
           knobColor="#A72438"
@@ -114,7 +114,7 @@ function Sliders({ dataTasteTannin, dataAlcohol, dataAcidity, dataSweetness }) {
           labelFontSize="2.5rem"
           valueFontSize="2rem"
           label={
-            acidityValue || acidityItems[sliderDataAcidity.indexOf("5 g/L")] // Affiche la valeur de 'acidityValue' si vrai ou l'élément correspondant à "5 g/L"
+            acidityValue || acidityItems[sliderDataAcidity.indexOf("5 g/L")] // Displays the value of 'acidityValue' if true or the element corresponding to "5 g/L"
           }
           labelColor="var(--whiteGoldColor)"
           knobColor="#730907"
