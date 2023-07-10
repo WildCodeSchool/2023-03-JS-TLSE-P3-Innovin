@@ -5,7 +5,9 @@ import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
 import Registration from "./pages/Registration/Registration";
 import TastingPresentation from "./pages/TastingPresentation/TastingPresentation";
+
 import VisualStage1 from "./pages/VisualStage/VisualStage1";
+import OlfactoryStage from "./pages/OlfactoryStage/OlfactoryStage";
 import VisualStage2 from "./pages/VisualStage/VisualStage2";
 import TasteStage1 from "./pages/TasteStage1/TasteStage1";
 import TasteAdvice from "./pages/TasteAdvice/TasteAdvice";
@@ -36,6 +38,7 @@ function App() {
                   <Route path="/mouth/stage1" element={<TasteStage1 />} />
                   <Route path="/advice" element={<TasteAdvice />} />
                   <Route path="/selection" element={<WinesTasted />} />
+                  <Route path="/nose/stage1" element={<OlfactoryStage />} />
                   <Route path="/carte" element={<WinesMap />} />
                   <Route path="admin/dashboard" element={<AdminHome />} />
                   <Route

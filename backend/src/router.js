@@ -48,7 +48,6 @@ router.get("/newwine/:id", NewWineControllers.read);
 
 router.post("/tastingnote", TastingNoteControllers.add);
 router.get("/tastingnote", TastingNoteControllers.browse);
-
 // ---------------------------------------- Private Routes ----------------------------------------------
 
 router.use(verifyToken);
