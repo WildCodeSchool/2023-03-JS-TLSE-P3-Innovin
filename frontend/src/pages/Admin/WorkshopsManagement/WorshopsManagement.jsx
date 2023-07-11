@@ -5,15 +5,19 @@ import AdminContext from "../../../contexts/AdminContext";
 import "./WorkshopsManagement.scss";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import AuthContext from "../../../contexts/AuthContext";
+import ButtonPrimary from "../../../components/ButtonPrimary";
 
 function WorkshopsManagement() {
   const { workshops, setWorkshops } = useContext(AdminContext);
   const { userToken } = useContext(AuthContext);
   const [searchValue, setSearchValue] = useState("");
-  const [deletedRow, setDeletedRow] = useState([]);
   const [idToDelete, setIdToDelete] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [order, setOrder] = useState("asc");
 
+  //   ----------------------------------------functions-------------------------------------------------------
+
+  // function to get the workshops data
   useEffect(() => {
     axios
       .get("http://localhost:5000/workshop", {
@@ -29,6 +33,7 @@ function WorkshopsManagement() {
       });
   }, []);
 
+  //   function to delete a workshop
   const onDelete = (id) => {
     axios
       .delete(`${import.meta.env.VITE_BACKEND_URL}/workshop/${id}`, {
@@ -38,13 +43,32 @@ function WorkshopsManagement() {
       })
       .then((res) => {
         console.info(res);
-        setDeletedRow([id, ...deletedRow]);
+        setWorkshops(workshops.filter((workshop) => workshop.id !== id));
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
+  // function to sort workshops by order asc or desc
+  const sortWorkshops = (col) => {
+    if (order === "asc") {
+      const sortedWorkshops = workshops.sort((a, b) => {
+        return a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1;
+      });
+      setWorkshops(sortedWorkshops);
+      setOrder("desc");
+    }
+    if (order === "desc") {
+      const sortedWorkshops = workshops.sort((a, b) => {
+        return a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1;
+      });
+      setWorkshops(sortedWorkshops);
+      setOrder("asc");
+    }
+  };
+
+  //   ---------------------------------------------------return-------------------------------------------------------
   return (
     <>
       <AdminDashboard />
@@ -62,11 +86,11 @@ function WorkshopsManagement() {
           <table className="workshopsTable">
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Lieu</th>
+                <th onClick={() => sortWorkshops("datetime")}>Date</th>
+                <th onClick={() => sortWorkshops("wine_type")}>Type</th>
+                <th onClick={() => sortWorkshops("place")}>Lieu</th>
                 <th>Commentaire</th>
-                <th>Participants</th>
+                <th onClick={() => sortWorkshops("attendees")}>Participants</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -90,12 +114,7 @@ function WorkshopsManagement() {
                   const hour = `${hourElement[0]}:${hourElement[1]}`;
 
                   return (
-                    <tr
-                      key={workshop.id}
-                      className={`${
-                        deletedRow.some((id) => id === workshop.id) && "deleted"
-                      }`}
-                    >
+                    <tr key={workshop.id}>
                       <td>{`${date} ${hour}`}</td>
                       {workshop.wine_type.toLowerCase() === "rouge" ? (
                         <td>
@@ -106,7 +125,6 @@ function WorkshopsManagement() {
                           <div className="whiteWine" />
                         </td>
                       )}
-
                       <td>{workshop.place}</td>
                       <td>
                         <p className="commentary">{workshop.commentary}</p>
@@ -128,33 +146,39 @@ function WorkshopsManagement() {
                             <i className="fi fi-rr-trash" />
                           </button>
                         </div>
-                      </td>
+                      </td>{" "}
+                      <div
+                        className={`deleteModal ${
+                          isModalOpen && idToDelete === workshop.id && "show"
+                        }`}
+                      >
+                        <p>Êtes-vous sûr de vouloir supprimer l'atelier ?</p>
+                        <div className="buttons">
+                          <ButtonPrimary
+                            type="button"
+                            className="yesBtn"
+                            onClick={() => {
+                              onDelete(idToDelete);
+                              setIsModalOpen(false);
+                            }}
+                          >
+                            Supprimer
+                          </ButtonPrimary>
+                          <ButtonPrimary
+                            type="button"
+                            className="noBtn"
+                            onClick={() => setIsModalOpen(false)}
+                          >
+                            Annuler
+                          </ButtonPrimary>
+                        </div>
+                      </div>
                     </tr>
                   );
                 })}
             </tbody>
+            {isModalOpen && <div className="modalContainer" />}
           </table>
-          {isModalOpen && (
-            <div className="Modal">
-              <div className="deleteModal">
-                <p>Êtes-vous sûr de vouloir supprimer l'atelier ?</p>
-                <button
-                  type="button"
-                  className="yesBtn"
-                  onClick={() => onDelete(idToDelete)}
-                >
-                  Supprimer
-                </button>
-                <button
-                  type="button"
-                  className="noBtn"
-                  onClick={() => setIsModalOpen(false)}
-                >
-                  Annuler
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </>

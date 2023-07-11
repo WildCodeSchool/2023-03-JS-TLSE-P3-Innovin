@@ -54,6 +54,7 @@
     }
 
     .workshopsTable {
+      position: relative;
       width: 100%;
 
       thead {
@@ -72,18 +73,14 @@
 
       tbody {
         tr {
-          transition: all 0.3s ease-in-out;
           &:nth-child(odd) {
             background-color: rgba(209, 181, 103, 0.05);
           }
           &:hover {
             background-color: rgba(209, 181, 103, 0.1);
+            cursor: pointer;
           }
-          &.deleted {
-            td {
-              display: none;
-            }
-          }
+
           td {
             vertical-align: middle;
             .redWine {
@@ -95,8 +92,9 @@
             .commentary {
               display: -webkit-box;
               -webkit-box-orient: vertical;
-              -webkit-line-clamp: 3;
+              -webkit-line-clamp: 2;
               overflow: hidden;
+              line-height: 1.5em;
             }
             .whiteWine {
               width: 1.2rem;
@@ -132,7 +130,54 @@
               }
             }
           }
+          .deleteModal {
+            position: fixed;
+            width: 70%;
+            right: 50%;
+            transform: translateX(50%);
+            background: var(--blackBgGradient);
+            box-shadow: var(--shadow);
+            padding: 2em 1em;
+            border-radius: 5px;
+            scale: 0;
+            transition: scale 0.2s ease-in-out;
+            z-index: 5;
+            p {
+              font-size: var(--fontSizeText);
+              text-align: center;
+              line-height: 1.5em;
+            }
+            .buttons {
+              display: flex;
+              justify-content: space-around;
+              width: 100%;
+              gap: 1em;
+              button {
+                font-size: 1rem;
+                width: calc(50% - 1em);
+              }
+            }
+            &.show {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              scale: 1;
+              gap: 1.5em;
+              border: 2px solid rgba(209, 181, 103, 0.3);
+            }
+          }
         }
+      }
+      .modalContainer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: var(--blackBgGradientSmooth);
+        backdrop-filter: var(--bgBlur);
+        display: grid;
+        place-items: center;
       }
     }
   }
@@ -152,6 +197,18 @@
     .tableSection {
       width: calc(90vw - 370px);
       height: auto;
+      .workshopsTable {
+        tbody {
+          tr {
+            .deleteModal {
+              position: absolute;
+              width: 40%;
+              right: 50%;
+              transform: translateX(50%);
+            }
+          }
+        }
+      }
     }
   }
 }
