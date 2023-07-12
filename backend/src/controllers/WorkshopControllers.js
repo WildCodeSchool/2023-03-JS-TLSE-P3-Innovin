@@ -32,6 +32,24 @@ const read = (req, res) => {
     });
 };
 
+const getWorkshopByDate = (req, res) => {
+  const { date } = req.params;
+
+  models.workshop
+    .findWorkshopByDate(date)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.status(404).send("Not found");
+      } else {
+        res.status(200).send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const edit = (req, res) => {
   const workshop = req.body;
 
@@ -92,4 +110,5 @@ module.exports = {
   edit,
   add,
   destroy,
+  getWorkshopByDate,
 };

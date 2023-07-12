@@ -28,6 +28,22 @@ function WinesTasted() {
       });
   }, []);
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/tastingnote", {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((response2) => {
+        setWines(response2.data);
+        console.info(response2.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   const handleWineSelection = (wineNumber) => {
     if (selectedWineNumbers.includes(wineNumber)) {
       setSelectedWineNumbers((prevSelectedWineNumbers) =>

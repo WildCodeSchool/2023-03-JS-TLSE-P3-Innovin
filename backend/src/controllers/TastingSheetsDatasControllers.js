@@ -146,7 +146,7 @@ const findTasteDatas = (req, res) => {
           return acc;
         }, {});
 
-        res.status(200).json(groupedObj);
+        res.status(200).json(Object.values(groupedObj));
       } else {
         res.status(400).send("Bad Request");
       }

@@ -1,0 +1,104 @@
+/* global style of the page TasteStage2 */
+.TasteStage2,
+.contentTasteStage2,
+.intro,
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section_aromes {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  justify-content: center;
+  align-items: center;
+}
+.formTasteStage2 {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5em;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.TasteStage2 {
+  height: 100%;
+  background: no-repeat bottom 9em left 40em
+      url("../../assets/Gold_Blotches/Watercolor_Blotch_4.png"),
+    no-repeat top 30em right 40em url("../../assets/Red_Wine_Colors/Cerise.png"),
+    var(--blackBgGradient);
+  color: var(--whiteGoldColor);
+  font-family: var(--fontFamilyText);
+  font-size: var(--fontSizeText);
+}
+
+.contentTasteStage2 {
+  gap: 4rem;
+  margin: 2rem min(2rem, var(--marginPageContent));
+  margin-bottom: 5rem;
+}
+
+/* style for the header */
+.header {
+  gap: 2rem;
+}
+
+/* style for the text intro */
+.intro {
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem;
+  gap: 2.5rem;
+}
+
+.intro .subtitle {
+  font-family: var(--fontFamilyTitle);
+  font-size: 2rem;
+  color: var(--primaryColor);
+}
+
+/* -------------------------------- Tablet media queries--------------------------------- */
+
+@media screen and (min-width: 768px) and (orientation: portrait) {
+  .intro {
+    align-items: center;
+    text-align: center;
+    padding-inline: var(--paddingTablet);
+  }
+  .formTasteStage2 {
+    flex-direction: row;
+    align-items: start;
+  }
+  .TasteStage2 {
+    background: no-repeat bottom 9em left 7em
+        url("../../assets/Gold_Blotches/Watercolor_Blotch_2 1.png"),
+      no-repeat top 30em right 5em
+        url("../../assets/Gold_Blotches/Watercolor_Splatters 1.png"),
+      var(--blackBgGradient);
+  }
+}
+
+/* -------------------------------- Desktop media queries--------------------------------- */
+
+@media screen and (min-width: 1024px) {
+  .contentTasteStage2 {
+    gap: 5rem;
+  }
+  .section_aromes {
+    width: 90%;
+  }
+
+  .formTasteStage2 {
+    flex-direction: row;
+    align-items: start;
+  }
+  .intro {
+    align-items: center;
+    text-align: center;
+    padding-inline: var(--marginPageContent);
+  }
+}

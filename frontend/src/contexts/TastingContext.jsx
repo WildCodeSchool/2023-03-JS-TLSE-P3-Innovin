@@ -6,7 +6,6 @@ const TastingContext = createContext();
 export function TastingProvider({ children }) {
   const [visualData, setVisualData] = useState(null);
   const [olfactiveData, setOlfactiveData] = useState(null);
-  const [mouthData, setMouthData] = useState(null);
   const [workshopHasExistingWine, setWorkshopHasExistingWine] = useState(null);
   const [wineNumber, setWineNumber] = useState(1);
 
@@ -15,6 +14,9 @@ export function TastingProvider({ children }) {
   const [dataAcidity, setDataAcidity] = useState([]);
   const [dataAlcohol, setDataAlcohol] = useState([]);
   const [dataTasteTannin, setDataTasteTannin] = useState([]);
+
+  // Data recovery from 'TasteStage2' component
+  const [mouthData, setMouthData] = useState();
 
   // function which takes 3 values in parameters, arr corresponds to the global array (visualData for example), x allows to select an index of the global array (array of objects) and y corresponds to the values of the objects of the array that one wishes to recover.
   const visualDataKeys = (arr, x, y) => {

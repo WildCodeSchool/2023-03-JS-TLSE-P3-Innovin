@@ -17,6 +17,7 @@ export function TastingNoteProvider({ children }) {
     wineQuality: "",
     idOlfactiveIntensity: null,
     idUser: null,
+    selectedWine: 0,
     rating: 0,
     tastingCommentary: "",
     idOlfactiveComplexity: null,
@@ -33,7 +34,6 @@ export function TastingNoteProvider({ children }) {
     idVisualIntensity: null,
     idOlfactiveAromas: null,
     idFlavorAromas: null,
-    selectedWine: [],
   });
 
   const handleFillVisualColorId = (e, value) => {
@@ -78,7 +78,7 @@ export function TastingNoteProvider({ children }) {
       handleFillmouthId,
     };
   }, [tastingNote]);
-
+  // console.info(tastingNote);
   return (
     <TastingNoteContext.Provider value={tastingNoteValue}>
       {children}
