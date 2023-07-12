@@ -12,27 +12,6 @@ function CreationWorkshop() {
     navigate("/ending");
   };
 
-  // ----------------------------------------- Data recovery from backend server -----------------------------------------//
-
-  /* useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/mouthslidersdatas`, {
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      })
-      .then((response) => {
-        setDataSweetness(response.data.sweetness);
-        setDataAcidity(response.data.acidity);
-        setDataAlcohol(response.data.alcohol);
-        setDataTasteTannin(response.data.taste_tannin);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
-*/
-
   // -------------------------------------------return the component----------------------------------------------------
 
   return (

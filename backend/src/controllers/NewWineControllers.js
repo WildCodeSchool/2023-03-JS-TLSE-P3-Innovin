@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 const { models } = require("../models");
 
 const browse = (req, res) => {
@@ -40,10 +39,11 @@ const browse = (req, res) => {
 
         // Method that Removes duplicate objects from the aromas and flavor arrays
         result.forEach((obj) => {
-          obj.dosage = obj.dosage.filter(
+          const item = obj;
+          item.dosage = obj.dosage.filter(
             (value, index, self) => self.indexOf(value) === index
           );
-          obj.vintage = obj.vintage.filter(
+          item.vintage = obj.vintage.filter(
             (value, index, self) => self.indexOf(value) === index
           );
         });
@@ -99,10 +99,11 @@ const getNewWineById = (req, res) => {
 
         // Method that Removes duplicate objects from the aromas and flavor arrays
         result.forEach((obj) => {
-          obj.dosage = obj.dosage.filter(
+          const item = obj;
+          item.dosage = obj.dosage.filter(
             (value, index, self) => self.indexOf(value) === index
           );
-          obj.vintage = obj.vintage.filter(
+          item.vintage = obj.vintage.filter(
             (value, index, self) => self.indexOf(value) === index
           );
         });
