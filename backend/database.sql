@@ -728,11 +728,22 @@ VALUES (
         "Toulouse",
         "Inauguration du premier atelier",
         1
-    ), (
-        "2023/07/22 16:00:00",
-        "Toulouse",
-        "Inauguration du deuxième atelier",
+    ), 
+    (
+        "2023/06/22 16:00:00",
+        "Bordeaux",
+        "Ceuxième atelier",
         2
+    ), (
+        "2023/07/23 16:00:00",
+        "Mende",
+        "Troisième atelier",
+        3
+    ),(
+        "2023/07/23 16:00:00",
+        "Gaillac",
+        "Quatrième atelier",
+        4
     );
 
 -- -----------------------------------------------------
@@ -1284,7 +1295,7 @@ CREATE TABLE
         CONSTRAINT `fk_CANDIDAT_has_Degustation_Degustation1` FOREIGN KEY (`id_workshop`) REFERENCES `inovin`.`workshop` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
-INSERT INTO `inovin`.`user_has_workshop` VALUES (1,1),(2,1);
+INSERT INTO `inovin`.`user_has_workshop`(id_user, id_workshop) VALUES (1,2),(2,1);
 
 -- -----------------------------------------------------
 
@@ -1299,6 +1310,9 @@ CREATE TABLE
         CONSTRAINT `fk_Olfactif_aromas_has_tasting_note_Olfactif_aromas1` FOREIGN KEY (`id_olfactive`) REFERENCES `inovin`.`olfactive_aromas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_Olfactif_aromas_has_tasting_note_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
+INSERT INTO
+    `inovin`.`olfactive_aromas_has_tasting_note` (id_tasting_note,id_olfactive)
+VALUES (1,1), (1,2), (1,5), (2,2), (2,3), (2,5), (3,2), (3,4), (3,5), (4,1), (4,4), (4,5), (5,2), (5,3), (5,6), (6,2), (6,5), (6,5), (7,1), (7,4), (7,6), (8,2), (8,4), (8,5), (9,2), (9,2), (9,6), (10,2), (10,4), (10,6);
 
 -- -----------------------------------------------------
 
@@ -1330,6 +1344,10 @@ CREATE TABLE
         CONSTRAINT `fk_tasting_note_has_taste_flavor_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_has_taste_flavor_taste_flavor1` FOREIGN KEY (`id_taste_flavor`) REFERENCES `inovin`.`taste_flavor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
+
+    INSERT INTO
+    `inovin`.`tasting_note_has_taste_flavor` (id_tasting_note,id_taste_flavor)
+VALUES (1,2), (1,4), (1,5), (2,2), (2,4), (2,5), (3,2), (3,4), (3,5), (4,1), (4,2), (4,5), (5,2), (5,3), (5,4), (6,2), (6,4), (6,5), (7,1), (7,4), (7,6), (8,2), (8,4), (8,5), (9,2), (9,1), (9,5), (10,2), (10,3), (10,6);
 
 -- -----------------------------------------------------
 
@@ -1375,7 +1393,7 @@ INSERT INTO
         id_new_wine,
         id_tasting_note
     )
-VALUES (75, 1, 1), (87, 1, 2), (88, 1, 5), (70, 5, 6), (87, 5, 7), (93, 5, 10);
+VALUES (75, 1, 1), (87, 1, 2), (88, 1, 5), (70, 4, 6), (87, 4, 7), (93, 4, 10);
 
 SET SQL_MODE=Traditional;
 

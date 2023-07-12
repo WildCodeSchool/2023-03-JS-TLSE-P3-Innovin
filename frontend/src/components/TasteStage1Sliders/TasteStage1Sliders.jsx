@@ -3,13 +3,18 @@ import { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import CircularSlider from "@fseehawer/react-circular-slider";
 import TastingNoteContext from "../../contexts/TastingNoteContext";
-import "./TasteStage1Sliders.css";
+import "./TasteStage1Sliders.scss";
 import Sugar_Icon from "../../assets/Icons/Sliders_Icons/Sugar_Icon.svg";
 import Acidity_Icon from "../../assets/Icons/Sliders_Icons/Acidity_Icon.svg";
 import WineBarrel_Icon from "../../assets/Icons/Sliders_Icons/WineBarrel_Icon.svg";
 import WineGlass_Icon from "../../assets/Icons/Sliders_Icons/WineGlass_Icon.svg";
 
-function Sliders({ dataTasteTannin, dataAlcohol, dataAcidity, dataSweetness }) {
+function SlidersTasteStage1({
+  dataTasteTannin,
+  dataAlcohol,
+  dataAcidity,
+  dataSweetness,
+}) {
   const tastingNoteValue = useContext(TastingNoteContext);
   const { setIdTasteSweetnessValue } = tastingNoteValue;
   const { setIdAcidityValue } = tastingNoteValue;
@@ -158,7 +163,7 @@ function Sliders({ dataTasteTannin, dataAlcohol, dataAcidity, dataSweetness }) {
   );
 }
 
-Sliders.propTypes = {
+SlidersTasteStage1.propTypes = {
   dataTasteTannin: PropTypes.arrayOf(
     PropTypes.objectOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
@@ -181,4 +186,4 @@ Sliders.propTypes = {
   ).isRequired,
 };
 
-export default Sliders;
+export default SlidersTasteStage1;
