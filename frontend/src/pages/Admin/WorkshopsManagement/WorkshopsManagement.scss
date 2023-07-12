@@ -2,7 +2,7 @@
   width: 100%;
   background: var(--blackBgGradient);
   background-color: aliceblue;
-
+  position: relative;
   min-height: 100vh;
   color: var(--whiteGoldColor);
   display: flex;
@@ -49,12 +49,14 @@
       border-radius: 5px;
       visibility: hidden;
     }
+    &::-webkit-scrollbar-corner {
+      visibility: hidden;
+    }
     &:hover::-webkit-scrollbar-thumb {
       visibility: visible;
     }
 
     .workshopsTable {
-      position: relative;
       width: 100%;
 
       thead {
@@ -63,10 +65,14 @@
         tr {
           width: 100%;
           th {
+            cursor: pointer;
             position: sticky;
             top: 0;
             left: 0;
             background-color: var(--darkGoldColor);
+            &:hover {
+              background-color: var(--redWineColor);
+            }
           }
         }
       }
@@ -121,6 +127,11 @@
                   cursor: pointer;
                   color: var(--darkGoldColor);
                   background-color: var(--secondaryColor);
+                  box-shadow: var(--shadow);
+                }
+                &:active {
+                  background-color: var(--primaryColor);
+                  box-shadow: none;
                 }
 
                 i {
@@ -130,55 +141,223 @@
               }
             }
           }
-          .deleteModal {
-            position: fixed;
-            width: 70%;
-            right: 50%;
-            transform: translateX(50%);
-            background: var(--blackBgGradient);
-            box-shadow: var(--shadow);
-            padding: 2em 1em;
-            border-radius: 5px;
-            scale: 0;
-            transition: scale 0.2s ease-in-out;
-            z-index: 5;
-            p {
-              font-size: var(--fontSizeText);
-              text-align: center;
-              line-height: 1.5em;
+        }
+      }
+    }
+    .deleteModal {
+      position: absolute;
+      width: 70%;
+      right: 50%;
+      top: 50%;
+      transform: translate(50%, -50%);
+      background: var(--blackBgGradient);
+      box-shadow: var(--shadow);
+      padding: 2em 1em;
+      border-radius: 5px;
+      scale: 0;
+      transition: scale 0.2s ease-in-out;
+      z-index: 5;
+      p {
+        font-size: var(--fontSizeText);
+        text-align: center;
+        line-height: 1.5em;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        gap: 1em;
+        button {
+          font-size: 0.8rem;
+          width: calc(50% - 1em);
+        }
+      }
+      &.show {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        scale: 1;
+        gap: 1.5em;
+        border: 2px solid rgba(209, 181, 103, 0.3);
+      }
+    }
+    .workshopInfoModal {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      overflow-y: scroll;
+      top: 0;
+      left: 0;
+      background: var(--blackBgGradient);
+      padding: 2em 2em;
+      scale: 0;
+      transition: scale 0.2s ease-in-out;
+      z-index: 5;
+
+      &.showInfo {
+        scale: 1;
+      }
+      &::-webkit-scrollbar {
+        width: 0.5rem;
+        height: 0.5rem;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--smoothGoldColor);
+        border-radius: 5px;
+        visibility: hidden;
+      }
+      &::-webkit-scrollbar-corner {
+        visibility: hidden;
+      }
+      &:hover::-webkit-scrollbar-thumb {
+        visibility: visible;
+      }
+
+      .closeModalBtn {
+        position: fixed;
+        display: grid;
+        place-items: center;
+        top: 1rem;
+        right: 1rem;
+        font-size: 1.6em;
+        color: rgba(195, 180, 138, 0.5);
+        cursor: pointer;
+        &:hover {
+          color: var(--secondaryColor);
+        }
+
+        i {
+          display: grid;
+          place-items: center;
+          &::before {
+            background: rgba(195, 180, 138, 0.1);
+            border-radius: 50px;
+          }
+        }
+      }
+
+      .modalContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        gap: 1.6em;
+        font-size: var(--fontSizeText);
+
+        .workshopHeader {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          h2 {
+            font-size: var(--fontSizeH2);
+            color: var(--primaryColor);
+          }
+          p {
+            color: rgba(195, 180, 138, 0.5);
+            font-style: italic;
+          }
+        }
+
+        .workshopInfo {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5em;
+
+          div > p:first-of-type {
+            font-weight: 600;
+            color: var(--secondaryColor);
+            margin-bottom: 0.5em;
+          }
+          p {
+            font-family: var(--fontFamilyText);
+            line-height: 1.2em;
+          }
+          .infoType {
+            display: flex;
+            gap: 1em;
+            .redWine {
+              width: 1.2rem;
+              height: 1.2rem;
+              border-radius: 50px;
+              background-color: var(--redWineColor);
             }
-            .buttons {
+            .whiteWine {
+              width: 1.2rem;
+              height: 1.2rem;
+              border-radius: 50px;
+              background-color: #fee347;
+            }
+          }
+          .attendees {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 1em;
+            .userCard {
               display: flex;
-              justify-content: space-around;
+              align-items: center;
+              justify-content: space-between;
               width: 100%;
               gap: 1em;
-              button {
-                font-size: 1rem;
-                width: calc(50% - 1em);
+              min-height: 5em;
+              padding: 1em 0;
+              padding-right: 1em;
+              border-radius: 5px;
+              background-color: var(--grayBgColor);
+
+              .banner {
+                width: 1rem;
+                height: 6.8rem;
+                border-radius: 0 50px 50px 0;
+                &.red {
+                  background-color: var(--redWineColor);
+                }
+                &.white {
+                  background-color: #fee347;
+                }
               }
-            }
-            &.show {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              scale: 1;
-              gap: 1.5em;
-              border: 2px solid rgba(209, 181, 103, 0.3);
+              .userInfo {
+                display: flex;
+                flex-direction: column;
+                gap: 1em;
+                width: 100%;
+                .nameInfo {
+                  display: flex;
+                  flex-direction: column;
+                }
+                .email {
+                  color: var(--smoothWhiteColor);
+                  font-weight: 200;
+                }
+                .pref {
+                  font-size: 12px;
+                  font-style: italic;
+                }
+              }
+
+              p {
+                color: var(--whiteGoldColor);
+                font-weight: 500;
+              }
             }
           }
         }
       }
-      .modalContainer {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: var(--blackBgGradientSmooth);
-        backdrop-filter: var(--bgBlur);
-        display: grid;
-        place-items: center;
-      }
+    }
+
+    .modalBg {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: var(--blackBgGradientSmooth);
+      backdrop-filter: var(--bgBlur);
+      display: grid;
+      place-items: center;
     }
   }
 }
@@ -197,16 +376,32 @@
     .tableSection {
       width: calc(90vw - 370px);
       height: auto;
-      .workshopsTable {
-        tbody {
-          tr {
-            .deleteModal {
-              position: absolute;
-              width: 40%;
-              right: 50%;
-              transform: translateX(50%);
-            }
-          }
+
+      .deleteModal {
+        position: fixed;
+        width: 30%;
+        right: calc(50% - 370px / 2);
+        top: 50%;
+        transform: translate(50%, -50%);
+      }
+      .workshopInfoModal {
+        position: fixed;
+        width: 50%;
+        height: 80vh;
+        height: 80dvh;
+        top: 50%;
+        left: calc(50% + 370px / 2);
+        transform: translate(-50%, -50%);
+        border-radius: 7px;
+        padding: 2em 2em;
+        border: 2px solid rgba(209, 181, 103, 0.2);
+
+        p {
+          font-weight: 300;
+        }
+
+        .modalContent .workshopInfo .attendees .userCard .userInfo .pref {
+          font-size: 16px;
         }
       }
     }

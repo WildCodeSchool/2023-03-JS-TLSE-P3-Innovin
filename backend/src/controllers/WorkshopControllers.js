@@ -53,8 +53,6 @@ const getWorkshopByDate = (req, res) => {
 const edit = (req, res) => {
   const workshop = req.body;
 
-  // TODO validations (length, format...)
-
   workshop.id = parseInt(req.params.id, 10);
 
   models.workshop
@@ -104,9 +102,9 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
+  getWorkshopByDate,
   read,
   edit,
   add,
   destroy,
-  getWorkshopByDate,
 };
