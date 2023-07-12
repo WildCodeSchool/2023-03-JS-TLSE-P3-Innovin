@@ -5,6 +5,7 @@ import eye from "../../assets/Icons/Eye_Icon.svg";
 import nose from "../../assets/Icons/Nose_Icon.svg";
 import mouth from "../../assets/Icons/Mouth_Icon.svg";
 import star from "../../assets/Icons/Star_Default_Icon.svg";
+// import starhover from "../../assets/Icons/Star_Hover_Icon.svg";
 
 function Card({ wine }) {
   // const { setTastingNote } = useContext(TastingNoteContext);
@@ -43,7 +44,9 @@ function Card({ wine }) {
           </p>
           <br />
         </div>{" "}
-        <p className="commentary"> Commentaire : {wine.tasting_commentary}</p>
+        <p className="commentary"> Mon avis : {wine.tasting_commentary}</p>
+        <br />
+        <p>{wine.rating}</p>
       </div>
     </div>
   );
@@ -67,6 +70,7 @@ Card.propTypes = {
     taste_tannin_id: PropTypes.number.isRequired,
     taste_intensity_id: PropTypes.number.isRequired,
     taste_mouth_feel_id: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
   }).isRequired,
   // isSelected: PropTypes.bool.isRequired,
   // number: PropTypes.number.isRequired,

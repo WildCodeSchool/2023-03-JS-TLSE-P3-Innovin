@@ -10,14 +10,14 @@ import eye from "./assets/Icons/Eye_Icon.svg";
 import nose from "./assets/Icons/Nose_Icon.svg";
 import mouth from "./assets/Icons/Mouth_Icon.svg";
 import heart from "./assets/Icons/Hearth_Icon.svg";
-import vegetal from "./assets/Flavor_Img/Vegetal.jpg";
-import spice from "./assets/Flavor_Img/Spices.jpg";
-import coffee from "./assets/Flavor_Img/Coffee.jpg";
-import animal from "./assets/Flavor_Img/Animal.jpg";
-import flower from "./assets/Flavor_Img/Flower.jpg";
-import mineral from "./assets/Flavor_Img/Mineral.jpg";
-import wood from "./assets/Flavor_Img/Wood.jpg";
-import redFruits from "./assets/Flavor_Img/Red_Fruits.jpg";
+// import vegetal from "./assets/Flavor_Img/Vegetal.jpg";
+// import spice from "./assets/Flavor_Img/Spices.jpg";
+// import coffee from "./assets/Flavor_Img/Coffee.jpg";
+// import animal from "./assets/Flavor_Img/Animal.jpg";
+// import flower from "./assets/Flavor_Img/Flower.jpg";
+// import mineral from "./assets/Flavor_Img/Mineral.jpg";
+// import wood from "./assets/Flavor_Img/Wood.jpg";
+// import redFruits from "./assets/Flavor_Img/Red_Fruits.jpg";
 
 // array used to display the colors in the visual stage 1
 const redWineColors = [

@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import TastingNoteContext from "../../contexts/TastingNoteContext";
+// import TastingNoteContext from "../../contexts/TastingNoteContext";
 import AuthContext from "../../contexts/AuthContext";
 import Card from "./Card";
 import "./WinesTasted.css";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
 function WinesTasted() {
-  const { tastingNote } = useContext(TastingNoteContext);
+  // const { tastingNote } = useContext(TastingNoteContext);
   const { userToken } = useContext(AuthContext);
   const [wines, setWines] = useState([]);
   const [selectedWineNumbers, setSelectedWineNumbers] = useState([]);
@@ -57,7 +57,7 @@ function WinesTasted() {
     }
   };
 
-  console.info(tastingNote);
+  // console.info(tastingNote);
 
   return (
     <div className="wine-content">
