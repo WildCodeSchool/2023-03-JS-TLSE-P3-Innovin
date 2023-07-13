@@ -13,6 +13,7 @@ SELECT
     w.place,
     w.datetime,
     whe.id_existing_wine,
+    ex.color,
     ex.vintage
 FROM
 ${this.table} whe
