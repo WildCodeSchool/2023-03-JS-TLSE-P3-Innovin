@@ -67,11 +67,22 @@
           th {
             cursor: pointer;
             position: sticky;
+            color: var(--secondaryColor);
             top: 0;
             left: 0;
             background-color: var(--darkGoldColor);
             &:hover {
               background-color: var(--redWineColor);
+            }
+            div {
+              display: flex;
+              align-items: flex-end;
+              gap: 1em;
+            }
+            i {
+              display: grid;
+              place-items: center;
+              color: var(--whiteGoldColor);
             }
           }
         }

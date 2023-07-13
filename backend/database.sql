@@ -846,11 +846,13 @@ VALUES (
         "2023/07/23 16:00:00",
         "Mende",
         "Troisième atelier",
+        "Rouge",
         3
     ), (
         "2023/07/23 16:00:00",
         "Gaillac",
         "Quatrième atelier",
+        "Rouge",
         4
     );
 
