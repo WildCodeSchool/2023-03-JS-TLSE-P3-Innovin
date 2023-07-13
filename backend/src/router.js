@@ -16,6 +16,7 @@ const NewWineControllers = require("./controllers/NewWineControllers");
 const CompetitionSelectionControllers = require("./controllers/CompetitionSelectionControllers");
 const WorkshopHasExistingWineControllers = require("./controllers/WorkshopHasExistingWineControllers");
 const TastingNoteControllers = require("./controllers/TastingNoteControllers");
+const SelectedWineControllers = require("./controllers/SelectedWineControllers");
 
 const { verifyAdminCredentials } = UserControllers;
 
@@ -44,11 +45,15 @@ router.get("/appellation/:id", AppellationControllers.read);
 router.get("/wineregion", WineRegionControllers.browse);
 router.get("/wineregion/:id", WineRegionControllers.read);
 router.get("/newwine", NewWineControllers.browse);
-router.get("/newwine/:id", NewWineControllers.getNewWineById);
-
+router.get("/newwinebyuser/:id", NewWineControllers.getNewWineByUserId);
+router.get("/newwinebyworkshop/:id", NewWineControllers.getNewWineByWorkshopId);
+router.get("/selectedwine/:id", SelectedWineControllers.add);
 router.post("/tastingnote", TastingNoteControllers.add);
 router.get("/tastingnote", TastingNoteControllers.browse);
-router.get("/tastingnote/:id", TastingNoteControllers.getTastingNoteById);
+router.get(
+  "/tastingnote/:iduser",
+  TastingNoteControllers.getTastingNoteByUserId
+);
 
 // ---------------------------------------- Private Routes ----------------------------------------------
 
@@ -96,7 +101,7 @@ router.delete(
   WorkshopHasExistingWineControllers.destroy
 );
 router.put("/newwine/:id", NewWineControllers.edit);
-router.post("/newwine", NewWineControllers.add);
+router.post("/newwine", WorkshopControllers.addNewWine); // This controller is really created on 'WorkshopControllers', don't delete it !
 router.delete("/newwine/:id", NewWineControllers.destroy);
 router.get("/competitionselection", CompetitionSelectionControllers.browse);
 router.get("/competitionselection/:id", CompetitionSelectionControllers.read);

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const AbstractManager = require("./AbstractManager");
 
 class WorkshopManager extends AbstractManager {
@@ -5,11 +6,11 @@ class WorkshopManager extends AbstractManager {
     super({ table: "workshop" });
   }
 
-  insert(workshop) {
-    const { datetime, place, commentary } = workshop;
+  insertWorkshop(workshop, idNewWine) {
+    const { datetime, place } = workshop;
     return this.database.query(
-      `insert into ${this.table} (datetime, place, commentary) values (?,?,?)`,
-      [datetime, place, commentary]
+      `INSERT INTO ${this.table} (datetime, place, id_new_wine) VALUES (?, ?, ?)`,
+      [datetime, place, idNewWine]
     );
   }
 
