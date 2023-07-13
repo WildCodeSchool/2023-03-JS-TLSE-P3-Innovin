@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import AdminDashboard from "../../../components/Admin_Dashboard/Admin_Dashboard";
 import "./WorkshopModification.scss";
@@ -14,6 +15,7 @@ function WorkshopModification() {
   const { idToUpdate, dateToPost } = useContext(AdminContext);
   const { userToken } = useContext(AuthContext);
   const [workshopToUpdate, setWorkshopToUpdate] = useState({});
+  const navigate = useNavigate();
 
   const handleDateChange = (event) => {
     const selectedDate = new Date(event.target.value);
@@ -90,6 +92,13 @@ function WorkshopModification() {
     workshopToUpdate &&
     userToken && (
       <div className="wsModification">
+        <button
+          type="button"
+          onClick={() => navigate("/admin/workshops")}
+          className="backButton"
+        >
+          <i className="fi fi-rr-undo" />
+        </button>
         <AdminDashboard />
         <div className="globalModifContainer">
           <div className="modifContent">

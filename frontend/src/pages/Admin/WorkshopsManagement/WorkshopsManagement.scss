@@ -21,12 +21,32 @@
 
   .tableHeader {
     display: flex;
-    justify-content: space-between;
-    align-items: end;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
     width: 90vw;
     margin-top: 4em;
     h1 {
       font-size: var(--fontSizeH2);
+    }
+    .searchOrAdd {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 1.6em;
+
+      .addButton {
+        padding: 0 0.8em;
+        margin-right: 0.5rem;
+      }
+      .searchBar {
+        width: 50%;
+        &:hover,
+        &:focus-within {
+          width: 100%;
+          box-shadow: var(--shadow);
+        }
+      }
     }
   }
 
@@ -74,6 +94,7 @@
             &:hover {
               background-color: var(--redWineColor);
             }
+
             div {
               display: flex;
               align-items: flex-end;
@@ -379,8 +400,23 @@
 
     .tableHeader {
       width: calc(90vw - 370px);
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: end;
+      margin-top: 4em;
       h1 {
         font-size: var(--fontSizeH2);
+      }
+      .searchOrAdd {
+        justify-content: flex-end;
+        .searchBar {
+          width: 25%;
+          &:hover,
+          &:focus-within {
+            width: 50%;
+            box-shadow: var(--shadow);
+          }
+        }
       }
     }
 

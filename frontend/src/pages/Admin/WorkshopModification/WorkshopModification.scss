@@ -26,6 +26,20 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   background: var(--blackBgGradient);
   min-height: 100vh;
 
+  .backButton {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2em;
+    color: rgba(255, 251, 239, 0.3);
+    &:hover {
+      color: var(--secondaryColor);
+      cursor: pointer;
+    }
+  }
+
   .modifContent {
     width: 100%;
     padding: 2em;

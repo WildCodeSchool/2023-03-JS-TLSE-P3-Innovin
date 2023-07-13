@@ -127,12 +127,21 @@ function WorkshopsManagement() {
       <div className="workshopsContent">
         <div className="tableHeader">
           <h1>Ateliers</h1>
-          <SearchBar
-            setValue={setSearchValue}
-            icon="search"
-            placeholder="Rechercher"
-            value={searchValue}
-          />
+          <div className="searchOrAdd">
+            <SearchBar
+              className="searchBar"
+              setValue={setSearchValue}
+              icon="search"
+              placeholder="Rechercher"
+              value={searchValue}
+            />
+            <ButtonPrimary
+              className="addButton"
+              onClick={() => navigate("/admin/workshops/add")}
+            >
+              +
+            </ButtonPrimary>
+          </div>
         </div>
         <div className="tableSection">
           <table className="workshopsTable">
