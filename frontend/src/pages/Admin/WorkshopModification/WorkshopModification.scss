@@ -1,0 +1,147 @@
+.date,
+.time,
+.place,
+.commentArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
+  width: 100%;
+}
+.textLabel {
+  font-size: 1.5rem;
+  color: var(--secondaryColor);
+  width: 100%;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.wsModification {
+  background: var(--blackBgGradient);
+  min-height: 100vh;
+
+  .modifContent {
+    width: 100%;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
+    h1 {
+      font-size: var(--fontSizeH2);
+      line-height: 1.3em;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.4em;
+      width: 100%;
+      .dateTime {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 2em;
+        input {
+          width: 100%;
+        }
+      }
+
+      #place {
+        width: 100%;
+      }
+
+      .wineType {
+        width: 100%;
+      }
+      .commentArea {
+        width: 100%;
+        label {
+          width: 100%;
+          #commentary {
+            width: 100%;
+            height: 22vh;
+            font-family: var(--fontFamilyText);
+            font-size: var(--fontSizeText);
+            font-weight: 300;
+            color: var(--whiteGoldColor);
+            background: none;
+            padding: 0.5em;
+            border: 1px solid rgba(209, 181, 103, 0.2);
+            border-radius: 5px;
+            resize: none;
+            ::-webkit-resizer {
+              visibility: hidden;
+            }
+            &::-webkit-scrollbar {
+              width: 0.5rem;
+              height: 0.5rem;
+            }
+            &::-webkit-scrollbar-thumb {
+              background-color: var(--smoothGoldColor);
+              border-radius: 5px;
+              visibility: hidden;
+            }
+            &::-webkit-scrollbar-corner {
+              visibility: hidden;
+            }
+            &:hover::-webkit-scrollbar-thumb {
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .wsModification {
+    .globalModifContainer {
+      padding-left: calc(370px);
+      display: flex;
+      justify-content: center;
+      .modifContent {
+        width: 60%;
+        h1 {
+          text-align: center;
+        }
+        form {
+          gap: 3em;
+          .dateTime {
+            input {
+              font-size: 1.2rem;
+            }
+          }
+
+          #place {
+            font-size: 1.2rem;
+          }
+
+          .wineType .dropdown button {
+            font-size: 1.2rem;
+          }
+          .commentArea {
+            width: 100%;
+            label {
+              width: 100%;
+              #commentary {
+                width: 100%;
+                height: 22vh;
+                font-family: var(--fontFamilyText);
+                font-size: 1em;
+                padding: 1em;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
