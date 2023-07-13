@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import AdminDashboard from "../../../components/Admin_Dashboard/Admin_Dashboard";
 import AdminContext from "../../../contexts/AdminContext";
@@ -17,7 +18,10 @@ function WorkshopsManagement() {
     setWinesOnWorkshop,
     usersInWorkshop,
     winesOnWorkshop,
+    refactorDate,
+    setIdToUpdate,
   } = useContext(AdminContext);
+
   const { userToken } = useContext(AuthContext);
   const [searchValue, setSearchValue] = useState("");
   const [idToDelete, setIdToDelete] = useState(0);
@@ -25,6 +29,7 @@ function WorkshopsManagement() {
   const [isRowClicked, setIsRowClicked] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [order, setOrder] = useState("asc");
+  const navigate = useNavigate();
 
   //   ----------------------------------------functions-------------------------------------------------------
 
@@ -112,20 +117,6 @@ function WorkshopsManagement() {
       });
   };
 
-  // function to format a date
-  const refactorDate = (dateToRefactor) => {
-    if (dateToRefactor) {
-      const dateElement = dateToRefactor.split("T")[0].split("-");
-      const date = `${dateElement[2]}/${dateElement[1]}/${dateElement[0]}`;
-      const hourElement = dateToRefactor.split("T")[1].split(":");
-      const hour = `${hourElement[0]}:${hourElement[1]}`;
-
-      return `${date} ${hour}`;
-    }
-
-    return "";
-  };
-
   //   ---------------------------------------------------return-------------------------------------------------------
   return (
     <>
@@ -187,7 +178,14 @@ function WorkshopsManagement() {
                       <td>{workshop.attendees}</td>
                       <td>
                         <div className="actionButtons">
-                          <button type="button" className="editBtn">
+                          <button
+                            type="button"
+                            className="editBtn"
+                            onClick={() => {
+                              setIdToUpdate(workshop.id);
+                              navigate("/admin/workshops/edit");
+                            }}
+                          >
                             <i className="fi fi-rr-edit" />
                           </button>
                           <button

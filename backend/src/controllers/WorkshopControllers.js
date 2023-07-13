@@ -53,10 +53,10 @@ const getWorkshopByDate = (req, res) => {
 const edit = (req, res) => {
   const workshop = req.body;
 
-  workshop.id = parseInt(req.params.id, 10);
+  const id = parseInt(req.params.id, 10);
 
   models.workshop
-    .update(workshop)
+    .update(workshop, id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);

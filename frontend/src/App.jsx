@@ -19,6 +19,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { AdminProvider } from "./contexts/AdminContext";
 import WinesMap from "./pages/WinesMap/WinesMap";
 import AdminHome from "./pages/Admin/AdminHome/AdminHome";
+import WorkshopModification from "./pages/Admin/WorkshopModification/WorkshopModification";
 
 function App() {
   return (
@@ -44,6 +45,10 @@ function App() {
                   <Route
                     path="admin/workshops"
                     element={<WorkshopsManagement />}
+                  />
+                  <Route
+                    path="admin/workshops/edit"
+                    element={<WorkshopModification />}
                   />
                 </Routes>
               </div>
