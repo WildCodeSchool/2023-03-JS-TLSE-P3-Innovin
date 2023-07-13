@@ -31,7 +31,7 @@ function AdminDashboard() {
   };
 
   // onClick function to fetch and navigate to specific workshop when a day is clicked
-  const handleClick = (date) => {
+  const handleClickDay = (date) => {
     onChange(date);
 
     const formattedDate = date.toLocaleDateString("fr-FR").split("/").join("");
@@ -71,7 +71,7 @@ function AdminDashboard() {
             <i className="fi fi-rr-users-alt" />
             Gestion des utilisateurs
           </button>
-          <button type="button">
+          <button type="button" onClick={() => navigate("/admin/workshops")}>
             <i className="fi fi-rr-notebook" />
             Ateliers
           </button>
@@ -91,7 +91,7 @@ function AdminDashboard() {
         <div className="calendarContent">
           <h3>Planning</h3>
           <Calendar
-            onClickDay={handleClick}
+            onClickDay={handleClickDay}
             value={value}
             defaultView="month"
             minDetail="year"

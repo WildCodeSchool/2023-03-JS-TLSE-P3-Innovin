@@ -17,7 +17,6 @@ export function TastingNoteProvider({ children }) {
     wineQuality: "",
     idOlfactiveIntensity: null,
     idUser: null,
-    selectedWine: 0,
     rating: 0,
     tastingCommentary: "",
     idOlfactiveComplexity: null,

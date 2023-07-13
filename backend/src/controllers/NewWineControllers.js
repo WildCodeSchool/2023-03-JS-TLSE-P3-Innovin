@@ -58,11 +58,26 @@ const browse = (req, res) => {
     });
 };
 
-const getNewWineById = (req, res) => {
-  const { idworkshop } = req.query;
-  console.info(req.params.id, idworkshop);
+const getNewWineByWorkshopId = (req, res) => {
   models.newWine
-    .findNewWineById(req.params.id, idworkshop)
+    .findNewWineIdByWorskhop(req.params.id)
+    .then(([rows]) => {
+      if (rows == null) {
+        res.status(404).send("Not found");
+      } else {
+        res.status(200).send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
+const getNewWineByUserId = (req, res) => {
+  const { idworkshop } = req.query;
+  models.newWine
+    .findNewWineByUserId(req.params.id, idworkshop)
     .then(([rows]) => {
       if (rows.length) {
         const result = rows.reduce((acc, obj) => {
@@ -140,22 +155,6 @@ const edit = (req, res) => {
     });
 };
 
-const add = (req, res) => {
-  const newWine = req.body;
-
-  // TODO validations (length, format...)
-
-  models.newWine
-    .insert(newWine)
-    .then(([result]) => {
-      res.location(`/newwine/${result.insertId}`).status(201).send("Created");
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 const destroy = (req, res) => {
   models.newWine
     .delete(req.params.id)
@@ -174,8 +173,8 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
-  getNewWineById,
+  getNewWineByWorkshopId,
+  getNewWineByUserId,
   edit,
-  add,
   destroy,
 };
