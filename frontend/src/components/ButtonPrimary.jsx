@@ -15,6 +15,11 @@ const ButtonPrimary = styled.button`
   &:hover {
     background-color: var(--secondaryColor);
     color: var(--darkGoldColor);
+    box-shadow: var(--shadow);
+  }
+  &:active {
+    background-color: var(--primaryColor);
+    box-shadow: none;
   }
 `;
 

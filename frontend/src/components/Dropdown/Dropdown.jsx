@@ -1,21 +1,16 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import "./Dropdown.scss";
-import TastingNoteContext from "../../contexts/TastingNoteContext";
 
-function Dropdown({ id, options }) {
-  const tastingNoteValue = useContext(TastingNoteContext);
-  const { setTastingNote, tastingNote } = tastingNoteValue;
+function Dropdown({ id, options, name, object, setObject, inputValue }) {
   const [isActive, setIsActive] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(
-    "sélectionner une option"
-  );
+  const [selectedOption, setSelectedOption] = useState(inputValue);
   const [selected, setSelected] = useState(false);
 
   const handleFillObject = (e, option) => {
     e.preventDefault();
-    setTastingNote({
-      ...tastingNote,
+    setObject({
+      ...object,
       [id]: option,
     });
   };
@@ -26,6 +21,7 @@ function Dropdown({ id, options }) {
         className={`dropdownBtn ${selected ? "selected" : "grey"} `}
         type="button"
         onClick={() => setIsActive(!isActive)}
+        value={selectedOption}
       >
         {selectedOption}
         <i className="fi fi-br-angle-down" />
@@ -37,7 +33,7 @@ function Dropdown({ id, options }) {
               className="dropdownInputs"
               type="button"
               id={id}
-              name="wineQuality"
+              name={name}
               key={option}
               value={option}
               onClick={(e) => {
@@ -60,4 +56,8 @@ export default Dropdown;
 Dropdown.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  setObject: PropTypes.func.isRequired,
+  object: PropTypes.shape({}).isRequired,
+  inputValue: PropTypes.string.isRequired,
 };

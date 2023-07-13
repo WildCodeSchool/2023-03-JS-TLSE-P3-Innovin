@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+
 const AbstractManager = require("./AbstractManager");
 
 class WorkshopManager extends AbstractManager {
@@ -6,25 +7,32 @@ class WorkshopManager extends AbstractManager {
     super({ table: "workshop" });
   }
 
-  insertWorkshop(workshop, idNewWine) {
-    const { datetime, place } = workshop;
+  insert(workshop) {
+    const { datetime, place, commentary, wine_type } = workshop;
     return this.database.query(
-      `INSERT INTO ${this.table} (datetime, place, id_new_wine) VALUES (?, ?, ?)`,
-      [datetime, place, idNewWine]
+      `insert into ${this.table} (datetime, place, commentary, wine_type) values (?,?,?,?)`,
+      [datetime, place, commentary, wine_type]
     );
   }
 
   update(workshop, id) {
-    const { datetime, place, commentary } = workshop;
+    const { datetime, place, commentary, wine_type } = workshop;
+
     return this.database.query(
-      `update ${this.table} set datetime = ?, place = ?, commentary = ? where id = ?`,
-      [datetime, place, commentary, id]
+      `update ${this.table} set datetime = ?, place = ?, commentary = ?, wine_type = ? WHERE id = ?`,
+      [datetime, place, commentary, wine_type, id]
+    );
+  }
+
+  findAllWorkshops() {
+    return this.database.query(
+      `SELECT id, datetime, place, commentary, wine_type, COUNT(id_user) AS attendees FROM ${this.table} LEFT JOIN user_has_workshop as uw ON uw.id_workshop = workshop.id GROUP BY id, datetime, place, commentary, wine_type; `
     );
   }
 
   findWorkshopByDate(date) {
     return this.database.query(
-      `select * from ${this.table} where CONCAT(SUBSTRING(DATE(datetime),9,2),SUBSTRING(DATE(datetime),6,2),SUBSTRING(DATE(datetime),1,4)) = ?`,
+      `SELECT id, datetime, place, commentary, wine_type, COUNT(id_user) AS attendees FROM ${this.table} LEFT JOIN user_has_workshop as uw ON uw.id_workshop = workshop.id WHERE CONCAT(SUBSTRING(DATE(datetime),9,2),SUBSTRING(DATE(datetime),6,2),SUBSTRING(DATE(datetime),1,4)) = ? GROUP BY id, datetime, place, commentary, wine_type;`,
       [date]
     );
   }

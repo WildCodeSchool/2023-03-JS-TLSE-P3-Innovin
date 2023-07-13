@@ -20,6 +20,8 @@
   .loginContentDiv {
     gap: 2rem;
     width: 80%;
+    max-width: 480px;
+
     .logoDiv {
       color: var(--primaryColor);
       font-family: var(--fontFamilyTitle);
@@ -110,25 +112,23 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-  }
-
-  .loginContentDiv {
-    width: min(50%, 90vw);
-    margin: 0 auto;
-    background: var(--blackBgGradientSmooth);
-    box-shadow: var(--shadow);
-    backdrop-filter: var(--bgBlur);
-    gap: 2.5em;
-    padding-inline: clamp(1rem, 10vw + 1rem, 10rem);
-    padding-bottom: 5rem;
-    padding-top: 2rem;
-    border-radius: 5px;
+    .loginContentDiv {
+      width: 40%;
+      min-width: 560px;
+      max-width: none;
+      margin: 0 auto;
+      background: var(--blackBgGradientSmooth);
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--bgBlur);
+      gap: 2.5em;
+      padding-inline: 7rem;
+      padding-bottom: 3rem;
+      padding-top: 2rem;
+      border-radius: 5px;
+    }
   }
 
   .loginButton {
     margin-top: 1em;
-  }
-  .logoLogin {
-    width: min(10rem, 14rem);
   }
 }
