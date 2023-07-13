@@ -1,6 +1,7 @@
 .eye-card,
 .nose-card,
-.mouth-card {
+.mouth-card,
+.comment {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -31,9 +32,6 @@
   padding: 0 1rem 0 1rem;
 }
 
-.card-content {
-}
-
 .h2-card {
   color: var(--primaryColor);
   font-size: 1.2rem;
@@ -41,15 +39,22 @@
   font-family: var(--fontFamilyText);
 }
 
-.p-card {
+.p-card,
+.commentary {
   color: var(--whiteGoldColor);
   font-size: 0.7rem;
   font-family: var(--fontFamilyText);
   font-weight: 300;
+  line-height: 16px;
 }
 
 .img-card {
   padding: 10px 0 10px 0;
+  margin-left: 0.5rem;
+}
+
+.img-card.note {
+  height: 70px;
 }
 
 .commentary {
@@ -57,7 +62,22 @@
   padding: 10px;
 }
 
+.rating {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  padding: 15px;
+}
+
+.rating img {
+  height: 17px;
+}
+
 @media screen and (min-width: 768px) {
+  .card-content {
+    height: auto;
+  }
+
   .card {
     width: 300px;
     display: flex;
@@ -93,11 +113,13 @@
     font-family: var(--fontFamilyText);
   }
 
-  .p-card {
+  .p-card,
+  .commentary {
     color: var(--whiteGoldColor);
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-family: var(--fontFamilyText);
     font-weight: 300;
+    padding-right: 10px;
   }
 
   .img-card {

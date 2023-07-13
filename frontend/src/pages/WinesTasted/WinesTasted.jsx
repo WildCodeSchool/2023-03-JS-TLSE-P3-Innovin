@@ -1,20 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-// import TastingNoteContext from "../../contexts/TastingNoteContext";
-import AuthContext from "../../contexts/AuthContext";
+import TastingNoteContext from "../../contexts/TastingNoteContext";
 import Card from "./Card";
 import "./WinesTasted.css";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
 function WinesTasted() {
-  // const { tastingNote } = useContext(TastingNoteContext);
-  const { userToken } = useContext(AuthContext);
+  const { userToken, setTastingNote, tastingNote } =
+    useContext(TastingNoteContext);
   const [wines, setWines] = useState([]);
   const [selectedWineNumbers, setSelectedWineNumbers] = useState([]);
 
   useEffect(() => {
+    // const userId = tastingNote.idUser;
+    const apiUrl = `http://localhost:5000/tastingnote/1?idworkshop=2`;
     axios
-      .get("http://localhost:5000/workshophasexistingwine/1", {
+      .get(apiUrl, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -26,25 +27,9 @@ function WinesTasted() {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [tastingNote]);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/tastingnote", {
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      })
-      .then((response2) => {
-        setWines(response2.data);
-        console.info(response2.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
-
-  const handleWineSelection = (wineNumber) => {
+  const handleWineSelection = (wineNumber, wineId) => {
     if (selectedWineNumbers.includes(wineNumber)) {
       setSelectedWineNumbers((prevSelectedWineNumbers) =>
         prevSelectedWineNumbers.filter((number) => number !== wineNumber)
@@ -55,14 +40,18 @@ function WinesTasted() {
         wineNumber,
       ]);
     }
+    setTastingNote((prevTastingNote) => ({
+      ...prevTastingNote,
+      selectedWine: wineId,
+    }));
   };
 
-  // console.info(tastingNote);
+  console.info(tastingNote);
 
   return (
     <div className="wine-content">
       <div className="head-tested">
-        <h2 className="title-tasted">Séléction</h2>
+        <h2 className="title-tasted">Sélection</h2>
         <p className="p-tested">
           Sélectionnez au maximum 3 vins favoris parmi ceux dégustés
         </p>
@@ -70,11 +59,10 @@ function WinesTasted() {
       <div className="card-disposition">
         {wines.map((wine, index) => (
           <Card
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
+            key={wine.id}
             wine={wine}
-            isSelected={selectedWineNumbers.includes(wine.id_existing_wine)}
-            number={wine.id_existing_wine}
+            isSelected={selectedWineNumbers.includes(index + 1)}
+            number={index + 1}
             onSelect={handleWineSelection}
           />
         ))}

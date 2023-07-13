@@ -1,52 +1,76 @@
+import React from "react";
 import PropTypes from "prop-types";
-// import TastingNoteContext from "../../contexts/TastingNoteContext";
 import "./card.css";
 import eye from "../../assets/Icons/Eye_Icon.svg";
 import nose from "../../assets/Icons/Nose_Icon.svg";
 import mouth from "../../assets/Icons/Mouth_Icon.svg";
 import star from "../../assets/Icons/Star_Default_Icon.svg";
-// import starhover from "../../assets/Icons/Star_Hover_Icon.svg";
+import starhover from "../../assets/Icons/Star_Hover_Icon.svg";
+import note from "../../assets/Icons/Tasting_Note_Icon.svg";
 
-function Card({ wine }) {
-  // const { setTastingNote } = useContext(TastingNoteContext);
-  // const [selected, setSelected] = useState(false);
+function Card({ wine, number, isSelected, onSelect }) {
+  const handleStarButtonClick = () => {
+    onSelect(number, wine.id);
+  };
 
   return (
-    <div className="card">
-      <div className="title-card">
-        <h2 className="h2-card">Vin numéro {wine.id}</h2>
-        <button className="star-button" aria-label="Toggle Star" type="button">
-          <img className="img-card" src={star} alt="star" />
-        </button>
-      </div>
-      <div className="card-content">
-        <div className="eye-card">
-          <img className="img-card" src={eye} alt="eye" />
-          <p className="p-card">
-            {wine.visual_color_id} • {wine.visual_limpidity_id} •{" "}
-            {wine.visual_brightness_id} • {wine.visual_intensity_id} •{" "}
-            {wine.visual_tears_id}
-          </p>
+    <div className="card_content">
+      <div className={`card ${isSelected ? "selected" : ""}`}>
+        <div className="title-card">
+          <h2 className="h2-card">Vin numéro {number}</h2>
+          <button
+            className="star-button"
+            aria-label="Toggle Star"
+            type="button"
+            onClick={handleStarButtonClick}
+          >
+            <img
+              className="img-card"
+              src={isSelected ? starhover : star}
+              alt={isSelected ? "filled star" : "unfilled star"}
+            />
+          </button>
         </div>
-        <div className="nose-card">
-          <img className="img-card" src={nose} alt="nose" />
-          <p className="p-card">
-            {wine.id_olfactive_intensity} • {wine.olfactive_complexity_id} •{" "}
-            {/* {wine.idOlfactiveAromas} */}
-          </p>
+        <div className="card-content">
+          <div className="eye-card">
+            <img className="img-card" src={eye} alt="eye" />
+            <p className="p-card">
+              {wine.color} • {wine.limpidity} • {wine.brightness} •{" "}
+              {wine.visual_intensity} • {wine.tears}
+            </p>
+          </div>
+          <div className="nose-card">
+            <img className="img-card" src={nose} alt="nose" />
+            <p className="p-card">
+              {wine.intensity_aromas} • {wine.complexity} •{" "}
+              {wine.aromas.join(" , ")}
+            </p>
+          </div>
+          <div className="mouth-card">
+            <img className="img-card" src={mouth} alt="mouth" />
+            <p className="p-card">
+              {wine.sweetness} • {wine.alcohol} • {wine.acidity} •{" "}
+              {wine.taste_tannin} • {wine.taste_intensity} • {wine.mouth_feel} •{" "}
+              {wine.flavor.join(" , ")}
+            </p>
+            <br />
+          </div>
+          <div className="comment">
+            <img className="img-card note" src={note} alt="comment" />
+            <p className="commentary">" {wine.tasting_commentary} "</p>
+            <br />
+          </div>
+          <div className="rating">
+            {Array.from(Array(10), (e, i) => (
+              <img
+                key={i}
+                className="rating-star"
+                src={i < wine.rating ? starhover : star}
+                alt={i < wine.rating ? "filled star" : "unfilled star"}
+              />
+            ))}
+          </div>
         </div>
-        <div className="mouth-card">
-          <img className="img-card" src={mouth} alt="mouth" />
-          <p className="p-card">
-            {wine.taste_sweetness_id} • {wine.taste_alcohol_id} •{" "}
-            {wine.acidity_id} • {wine.taste_tannin_id} •{" "}
-            {wine.taste_intensity_id} • {wine.taste_mouth_feel_id}
-          </p>
-          <br />
-        </div>{" "}
-        <p className="commentary"> Mon avis : {wine.tasting_commentary}</p>
-        <br />
-        <p>{wine.rating}</p>
       </div>
     </div>
   );
@@ -55,26 +79,27 @@ function Card({ wine }) {
 Card.propTypes = {
   wine: PropTypes.shape({
     tasting_commentary: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    visual_color_id: PropTypes.number.isRequired,
-    visual_limpidity_id: PropTypes.number.isRequired,
-    visual_brightness_id: PropTypes.number.isRequired,
-    visual_intensity_id: PropTypes.number.isRequired,
-    visual_tears_id: PropTypes.number.isRequired,
-    olfactive_complexity_id: PropTypes.number.isRequired,
-    id_olfactive_intensity: PropTypes.number.isRequired,
-    // idOlfactiveAromas: PropTypes.string.isRequired,
-    taste_sweetness_id: PropTypes.number.isRequired,
-    taste_alcohol_id: PropTypes.number.isRequired,
-    acidity_id: PropTypes.number.isRequired,
-    taste_tannin_id: PropTypes.number.isRequired,
-    taste_intensity_id: PropTypes.number.isRequired,
-    taste_mouth_feel_id: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired, // Added id_existing_wine to the prop types
+    color: PropTypes.string.isRequired,
+    limpidity: PropTypes.string.isRequired,
+    brightness: PropTypes.string.isRequired,
+    visual_intensity: PropTypes.string.isRequired,
+    tears: PropTypes.string.isRequired,
+    complexity: PropTypes.string.isRequired,
+    intensity_aromas: PropTypes.string.isRequired,
+    aromas: PropTypes.string.isRequired,
+    flavor: PropTypes.string.isRequired,
+    sweetness: PropTypes.string.isRequired,
+    alcohol: PropTypes.string.isRequired,
+    acidity: PropTypes.string.isRequired,
+    taste_tannin: PropTypes.string.isRequired,
+    taste_intensity: PropTypes.string.isRequired,
+    mouth_feel: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
   }).isRequired,
-  // isSelected: PropTypes.bool.isRequired,
-  // number: PropTypes.number.isRequired,
-  // onSelect: PropTypes.func.isRequired,
+  number: PropTypes.number.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default Card;
