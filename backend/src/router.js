@@ -44,10 +44,12 @@ router.get("/appellation/:id", AppellationControllers.read);
 router.get("/wineregion", WineRegionControllers.browse);
 router.get("/wineregion/:id", WineRegionControllers.read);
 router.get("/newwine", NewWineControllers.browse);
-router.get("/newwine/:id", NewWineControllers.read);
+router.get("/newwine/:id", NewWineControllers.getNewWineById);
 
 router.post("/tastingnote", TastingNoteControllers.add);
 router.get("/tastingnote", TastingNoteControllers.browse);
+router.get("/tastingnote/:id", TastingNoteControllers.getTastingNoteById);
+
 // ---------------------------------------- Private Routes ----------------------------------------------
 
 router.use(verifyToken);

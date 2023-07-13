@@ -2,10 +2,52 @@ const { models } = require("../models");
 
 const browse = (req, res) => {
   models.newWine
-    .findAll()
+    .findNewWine()
     .then(([rows]) => {
       if (rows.length) {
-        res.status(200).send(rows);
+        const result = rows.reduce((acc, obj) => {
+          const existingObj = acc.find((item) => item.id === obj.id);
+
+          if (existingObj) {
+            //  Adds the new value to the existing object
+            if (!existingObj.dosage.includes(obj.dosage)) {
+              existingObj.dosage.push(obj.dosage);
+            }
+            if (!existingObj.vintage.includes(obj.vintage)) {
+              existingObj.vintage.push(obj.vintage);
+            }
+          } else {
+            // Method that creates a new object with an array containing its values
+            acc.push({
+              id: obj.id,
+              color: obj.color,
+              dosage: [obj.dosage],
+              vintage: [obj.vintage],
+              selected_for_competition: obj.selected_for_competition,
+              commentary_wine: obj.commentary_wine,
+              competition_name: obj.competition_name,
+              commentary_competition: obj.commentary_competition,
+              place: obj.place,
+              datetime: obj.datetime,
+              id_user: obj.id_user,
+              firstname: obj.firstname,
+              lastname: obj.lastname,
+            });
+          }
+          return acc;
+        }, []);
+
+        // Method that Removes duplicate objects from the aromas and flavor arrays
+        result.forEach((obj) => {
+          const item = obj;
+          item.dosage = obj.dosage.filter(
+            (value, index, self) => self.indexOf(value) === index
+          );
+          item.vintage = obj.vintage.filter(
+            (value, index, self) => self.indexOf(value) === index
+          );
+        });
+        res.status(200).json(Object.values(result));
       } else {
         res.status(400).send("Bad Request");
       }
@@ -16,14 +58,58 @@ const browse = (req, res) => {
     });
 };
 
-const read = (req, res) => {
+const getNewWineById = (req, res) => {
+  const { idworkshop } = req.query;
+  console.info(req.params.id, idworkshop);
   models.newWine
-    .find(req.params.id)
+    .findNewWineById(req.params.id, idworkshop)
     .then(([rows]) => {
-      if (rows[0] == null) {
-        res.status(404).send("Not found");
+      if (rows.length) {
+        const result = rows.reduce((acc, obj) => {
+          const existingObj = acc.find((item) => item.id === obj.id);
+
+          if (existingObj) {
+            //  Adds the new value to the existing object
+            if (!existingObj.dosage.includes(obj.dosage)) {
+              existingObj.dosage.push(obj.dosage);
+            }
+            if (!existingObj.vintage.includes(obj.vintage)) {
+              existingObj.vintage.push(obj.vintage);
+            }
+          } else {
+            // Method that creates a new object with an array containing its values
+            acc.push({
+              id: obj.id,
+              color: obj.color,
+              dosage: [obj.dosage],
+              vintage: [obj.vintage],
+              selected_for_competition: obj.selected_for_competition,
+              commentary_wine: obj.commentary_wine,
+              competition_name: obj.competition_name,
+              commentary_competition: obj.commentary_competition,
+              place: obj.place,
+              datetime: obj.datetime,
+              id_user: obj.id_user,
+              firstname: obj.firstname,
+              lastname: obj.lastname,
+            });
+          }
+          return acc;
+        }, []);
+
+        // Method that Removes duplicate objects from the aromas and flavor arrays
+        result.forEach((obj) => {
+          const item = obj;
+          item.dosage = obj.dosage.filter(
+            (value, index, self) => self.indexOf(value) === index
+          );
+          item.vintage = obj.vintage.filter(
+            (value, index, self) => self.indexOf(value) === index
+          );
+        });
+        res.status(200).json(Object.values(result));
       } else {
-        res.status(200).send(rows[0]);
+        res.status(400).send("Bad Request");
       }
     })
     .catch((err) => {
@@ -88,7 +174,7 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
-  read,
+  getNewWineById,
   edit,
   add,
   destroy,
