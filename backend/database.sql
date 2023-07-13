@@ -852,7 +852,7 @@ VALUES (
         "2023/07/23 16:00:00",
         "Gaillac",
         "Quatrième atelier",
-        "Rouge"
+         "Rouge",
         4
     );
 
