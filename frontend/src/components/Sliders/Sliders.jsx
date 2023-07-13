@@ -1,8 +1,5 @@
 /* eslint-disable camelcase */
-// import { useContext, useState } from "react";
-// import PropTypes from "prop-types";
 import CircularSlider from "@fseehawer/react-circular-slider";
-// import TastingNoteContext from "../../contexts/TastingNoteContext";
 import "./Sliders.scss";
 import Glass_Wine_Icon1 from "../../assets/Icons/Glass_Wine_Icon1.svg";
 
