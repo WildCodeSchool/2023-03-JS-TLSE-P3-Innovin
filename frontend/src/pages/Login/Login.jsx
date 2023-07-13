@@ -1,15 +1,17 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Login.css";
+import "./Login.scss";
 import eye from "../../assets/Icons/Eye_Icon.svg";
 import logo from "../../assets/Logo_W_Circles.svg";
+import line from "../../assets/Line.svg";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Input from "../../components/Input";
 import AuthContext from "../../contexts/AuthContext";
 
 function Login() {
-  const { setUser } = useContext(AuthContext);
+  const { setToken, setUser } = useContext(AuthContext);
+  const [errorMsg, setErrorMsg] = useState(false);
 
   const [form, setForm] = useState({
     email: "",
@@ -25,6 +27,7 @@ function Login() {
       ...form,
       email: event.target.value,
     });
+    setErrorMsg(false);
   };
 
   const handlePasswordChange = (event) => {
@@ -32,6 +35,7 @@ function Login() {
       ...form,
       password: event.target.value,
     });
+    setErrorMsg(false);
   };
 
   // ------------------------------------------Function to hide or show password----------------------------------------------------
@@ -46,13 +50,24 @@ function Login() {
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/users/login`, form)
       .then((res) => {
-        if (res.data.token) {
-          setUser(res.data.token);
-          navigate("/tasting");
+        const { token } = res.data;
+
+        if (token) {
+          setToken(token);
+
+          const loggedInUser = res.data.user;
+
+          if (loggedInUser.admin_credentials === 1) {
+            navigate("/admin/dashboard");
+          } else {
+            navigate("/tasting");
+          }
+          setUser(loggedInUser);
         }
       })
-      .catch((error) => {
-        console.error(error.message);
+      .catch((err) => {
+        console.error(err.message);
+        setErrorMsg(true);
       });
   };
 
@@ -62,10 +77,9 @@ function Login() {
       <div className="loginContentDiv">
         <div className="logoDiv">
           {" "}
-          <img src={logo} alt="Inovin logo" className="logo" />
+          <img src={logo} alt="Inovin logo" className="logoLogin" />
           <p className="logoText">Inovin</p>
         </div>
-
         <form action="" className="loginForm" onSubmit={handleSubmit}>
           <div>
             <p>Email</p>
@@ -82,7 +96,7 @@ function Login() {
             </label>
           </div>
           <div>
-            <p>Password</p>
+            <p>Mot de passe</p>
             <label htmlFor="password" className="loginPasswordLabel">
               <div className="passwordInput">
                 <Input
@@ -104,10 +118,31 @@ function Login() {
               </div>
             </label>
           </div>
-          <ButtonPrimary className="loginButton" type="submit">
+          <ButtonPrimary
+            disabled={errorMsg}
+            className="loginButton"
+            type="submit"
+          >
             Se connecter
           </ButtonPrimary>
+          {errorMsg && <p className="error">Email ou mot de passe incorrect</p>}
         </form>
+        <div className="split">
+          <img src={line} alt="split line" className="splitLine" />
+          <p>ou</p>
+          <img src={line} alt="split line" className="splitLine" />
+        </div>
+        <div className="noAccount">
+          <p>Pas encore en possession d'un compte ?</p>
+
+          <button
+            type="button"
+            className="registerLink"
+            onClick={() => navigate("/registration")}
+          >
+            S'inscrire
+          </button>
+        </div>
       </div>
     </div>
   );

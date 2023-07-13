@@ -2,7 +2,7 @@ const { models } = require("../models");
 
 const browse = (req, res) => {
   models.workshop
-    .findAll()
+    .findAllWorkshops()
     .then(([rows]) => {
       if (rows.length) {
         res.status(200).send(rows);
@@ -32,15 +32,31 @@ const read = (req, res) => {
     });
 };
 
+const getWorkshopByDate = (req, res) => {
+  const { date } = req.params;
+
+  models.workshop
+    .findWorkshopByDate(date)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.status(404).send("Not found");
+      } else {
+        res.status(200).send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const edit = (req, res) => {
   const workshop = req.body;
 
-  // TODO validations (length, format...)
-
-  workshop.id = parseInt(req.params.id, 10);
+  const id = parseInt(req.params.id, 10);
 
   models.workshop
-    .update(workshop)
+    .update(workshop, id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -56,8 +72,6 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const workshop = req.body;
-
-  // TODO validations (length, format...)
 
   models.workshop
     .insert(workshop)
@@ -88,6 +102,7 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
+  getWorkshopByDate,
   read,
   edit,
   add,

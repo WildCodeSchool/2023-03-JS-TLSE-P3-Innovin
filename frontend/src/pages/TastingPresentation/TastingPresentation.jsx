@@ -11,13 +11,8 @@ import AuthContext from "../../contexts/AuthContext";
 export default function TastingPresentation() {
   // destructuring the context and each value needed to store data in states
   const tastingValue = useContext(TastingContext);
-  const {
-    setVisualData,
-    setOlfactiveData,
-    setMouthSlidersData,
-    setMouthData,
-    setWorkshopHasExistingWine,
-  } = tastingValue;
+  const { setVisualData, setOlfactiveData, setWorkshopHasExistingWine } =
+    tastingValue;
 
   const { userToken } = useContext(AuthContext);
 
@@ -28,8 +23,6 @@ export default function TastingPresentation() {
     const endpoints = [
       "http://localhost:5000/visualdatas",
       "http://localhost:5000/olfactivedatas",
-      "http://localhost:5000/mouthslidersdatas",
-      "http://localhost:5000/tastedatas",
       "http://localhost:5000/workshophasexistingwine/1",
     ];
 
@@ -42,21 +35,11 @@ export default function TastingPresentation() {
         })
       )
     )
-      .then(
-        ([
-          { data: eye },
-          { data: nose },
-          { data: mouth1 },
-          { data: mouth2 },
-          { data: winesWorkshop },
-        ]) => {
-          setVisualData(eye);
-          setOlfactiveData(nose);
-          setMouthSlidersData(mouth1);
-          setMouthData(mouth2);
-          setWorkshopHasExistingWine(winesWorkshop);
-        }
-      )
+      .then(([{ data: eye }, { data: nose }, { data: winesWorkshop }]) => {
+        setVisualData(eye);
+        setOlfactiveData(nose);
+        setWorkshopHasExistingWine(winesWorkshop);
+      })
       .catch((err) => {
         console.error(err);
       });
@@ -90,7 +73,7 @@ export default function TastingPresentation() {
           </p>
 
           <div className="button-container">
-            <Link to="/advice">
+            <Link to="/eye/stage1">
               <ButtonPrimary> Démarrer </ButtonPrimary>
             </Link>
           </div>
