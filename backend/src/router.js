@@ -16,6 +16,7 @@ const NewWineControllers = require("./controllers/NewWineControllers");
 const CompetitionSelectionControllers = require("./controllers/CompetitionSelectionControllers");
 const WorkshopHasExistingWineControllers = require("./controllers/WorkshopHasExistingWineControllers");
 const TastingNoteControllers = require("./controllers/TastingNoteControllers");
+const SelectedWineControllers = require("./controllers/SelectedWineControllers");
 
 const { verifyAdminCredentials } = UserControllers;
 
@@ -44,10 +45,15 @@ router.get("/appellation/:id", AppellationControllers.read);
 router.get("/wineregion", WineRegionControllers.browse);
 router.get("/wineregion/:id", WineRegionControllers.read);
 router.get("/newwine", NewWineControllers.browse);
-router.get("/newwine/:id", NewWineControllers.read);
-
+router.get("/newwinebyuser/:id", NewWineControllers.getNewWineByUserId);
+router.get("/newwinebyworkshop/:id", NewWineControllers.getNewWineByWorkshopId);
+router.get("/selectedwine/:id", SelectedWineControllers.add);
 router.post("/tastingnote", TastingNoteControllers.add);
 router.get("/tastingnote", TastingNoteControllers.browse);
+router.get(
+  "/tastingnote/:iduser",
+  TastingNoteControllers.getTastingNoteByUserId
+);
 
 // ---------------------------------------- Private Routes ----------------------------------------------
 
@@ -55,6 +61,10 @@ router.use(verifyToken);
 
 router.get("/users/:id", UserControllers.read);
 router.put("/users/:id", hashPassword, validateUser, UserControllers.edit);
+router.get(
+  "/workshophasexistingwine/:id_workshop",
+  WorkshopHasExistingWineControllers.read
+);
 
 // ----------------------------------------- Admin routes ------------------------------------------------
 
@@ -78,15 +88,12 @@ router.delete("/wineregion/:id", WineRegionControllers.destroy);
 router.get("/workshop", WorkshopControllers.browse);
 router.get("/workshop/:id", WorkshopControllers.read);
 router.put("/workshop/:id", WorkshopControllers.edit);
+router.get("/workshop/date/:date", WorkshopControllers.getWorkshopByDate);
 router.post("/workshop", WorkshopControllers.add);
 router.delete("/workshop/:id", WorkshopControllers.destroy);
 router.get(
   "/workshophasexistingwine",
   WorkshopHasExistingWineControllers.browse
-);
-router.get(
-  "/workshophasexistingwine/:id_workshop",
-  WorkshopHasExistingWineControllers.read
 );
 router.post("/workshophasexistingwine", WorkshopHasExistingWineControllers.add);
 router.delete(
@@ -94,7 +101,7 @@ router.delete(
   WorkshopHasExistingWineControllers.destroy
 );
 router.put("/newwine/:id", NewWineControllers.edit);
-router.post("/newwine", NewWineControllers.add);
+router.post("/newwine", WorkshopControllers.addNewWine); // This controller is really created on 'WorkshopControllers', don't delete it !
 router.delete("/newwine/:id", NewWineControllers.destroy);
 router.get("/competitionselection", CompetitionSelectionControllers.browse);
 router.get("/competitionselection/:id", CompetitionSelectionControllers.read);
