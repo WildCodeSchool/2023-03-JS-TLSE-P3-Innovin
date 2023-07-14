@@ -1,0 +1,188 @@
+.adminHome {
+  background: var(--blackBgGradient);
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  table,
+  th,
+  td {
+    padding: 1em 1.5em;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  .homeContent {
+    width: 100%;
+    padding: 3em 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: clamp(1rem, 8vh, 3rem);
+    color: var(--whiteGoldColor);
+    h1 {
+      font-size: var(--fontSizeH2);
+      line-height: 1.3em;
+    }
+    .welcomeAdmin {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8em;
+      p {
+        font-family: var(--fontFamilyText);
+        font-size: 1.1rem;
+        line-height: 1.4;
+      }
+    }
+    .nextTastings {
+      overflow: hidden;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6em;
+
+      h2 {
+        font-size: 1.6em;
+        color: var(--secondaryColor);
+      }
+
+      .tableSection {
+        background: var(--blackBgGradientSmooth);
+        backdrop-filter: var(--blur);
+        box-shadow: var(--shadow);
+        border-radius: 5px;
+        margin-bottom: 2em;
+        overflow: auto;
+
+        &.showInfo {
+          scale: 1;
+        }
+        &::-webkit-scrollbar {
+          width: 0.5rem;
+          height: 0.5rem;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--smoothGoldColor);
+          border-radius: 5px;
+          visibility: hidden;
+        }
+        &::-webkit-scrollbar-corner {
+          visibility: hidden;
+        }
+        &:hover::-webkit-scrollbar-thumb {
+          visibility: visible;
+        }
+
+        .table {
+          width: 100%;
+          thead {
+            border-bottom: 1px solid rgba(209, 181, 103, 0.1);
+
+            tr {
+              width: 100%;
+              th {
+                position: sticky;
+                color: var(--secondaryColor);
+                top: 0;
+                left: 0;
+                background-color: var(--darkGoldColor);
+              }
+            }
+          }
+          tbody {
+            tr {
+              &:nth-child(odd) {
+                background-color: rgba(209, 181, 103, 0.05);
+              }
+              &:hover {
+                background-color: rgba(209, 181, 103, 0.1);
+                cursor: pointer;
+              }
+
+              vertical-align: middle;
+              .redWine {
+                width: 1.2rem;
+                height: 1.2rem;
+                border-radius: 50px;
+                background-color: var(--redWineColor);
+              }
+              .commentary {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+                line-height: 1.5em;
+              }
+              .whiteWine {
+                width: 1.2rem;
+                height: 1.2rem;
+                border-radius: 50px;
+                background-color: #fee347;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .adminHome {
+    .homeContent {
+      padding-left: calc(370px + 2em);
+      padding-right: 2em;
+
+      .welcomeAdmin {
+        width: 100%;
+
+        .nextTastings {
+          overflow: hidden;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 1.6em;
+
+          h2 {
+            font-size: 1.6em;
+            color: var(--secondaryColor);
+          }
+
+          .tableSection {
+            background: var(--blackBgGradientSmooth);
+            backdrop-filter: var(--blur);
+            box-shadow: var(--shadow);
+            border-radius: 5px;
+            margin-bottom: 2em;
+            overflow: auto;
+
+            &.showInfo {
+              scale: 1;
+            }
+            &::-webkit-scrollbar {
+              width: 0.5rem;
+              height: 0.5rem;
+            }
+            &::-webkit-scrollbar-thumb {
+              background-color: var(--smoothGoldColor);
+              border-radius: 5px;
+              visibility: hidden;
+            }
+            &::-webkit-scrollbar-corner {
+              visibility: hidden;
+            }
+            &:hover::-webkit-scrollbar-thumb {
+              visibility: visible;
+            }
+
+            .table {
+              width: 100%;
+              thead {
+                border-bottom: 1px solid rgba(209, 181, 103, 0.1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

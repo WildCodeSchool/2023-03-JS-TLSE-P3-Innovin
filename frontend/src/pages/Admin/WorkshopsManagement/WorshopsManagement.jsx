@@ -37,7 +37,7 @@ function WorkshopsManagement() {
   // function to get the workshops data
   useEffect(() => {
     axios
-      .get("http://localhost:5000/workshop", {
+      .get(`${import.meta.env.VITE_BACKEND_URL}/workshop`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },

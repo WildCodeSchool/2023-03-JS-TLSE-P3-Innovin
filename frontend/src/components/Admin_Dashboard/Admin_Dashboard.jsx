@@ -63,7 +63,7 @@ function AdminDashboard() {
           <img src={logo} alt="logo" />
         </div>
         <div className="sideBarLinks">
-          <button type="button">
+          <button type="button" onClick={() => navigate("/admin/dashboard")}>
             <i className="fi fi-rr-house-chimney" />
             Accueil
           </button>

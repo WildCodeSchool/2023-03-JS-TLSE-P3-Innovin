@@ -1,6 +1,7 @@
 .wsCreation {
   background: var(--blackBgGradient);
   min-height: 100vh;
+  min-height: 100dvh;
   .backButton {
     display: grid;
     place-items: center;
