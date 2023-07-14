@@ -6,16 +6,19 @@ class NewWineManager extends AbstractManager {
     super({ table: "new_wine" });
   }
 
-  insert(newWine) {
-    const {
+  insertNewWine(newWine) {
+    const { color } = newWine;
+    return this.database.query(`INSERT INTO ${this.table} (color) VALUES (?)`, [
       color,
-      selected_for_competition,
-      commentary,
-      id_competition_selection,
-    } = newWine;
+    ]);
+  }
+
+  findNewWineIdByWorskhop(idWorkshop) {
     return this.database.query(
-      `insert into ${this.table} (color,selected_for_competition,commentary,id_competition_selection) values (?,?,?,?)`,
-      [color, selected_for_competition, commentary, id_competition_selection]
+      `SELECT nw.id FROM new_wine nw 
+      JOIN workshop w ON w.id_new_wine=nw.id 
+      WHERE w.id = ?;`,
+      [idWorkshop]
     );
   }
 
@@ -46,7 +49,7 @@ JOIN existing_wine ex ON ex.id = tnhe.id_existing_wine`
     );
   }
 
-  findNewWineById(idUser, idWorkshop) {
+  findNewWineByUserId(idUser, idWorkshop) {
     return this.database.query(
       `SELECT
       nw.id,

@@ -44,6 +44,7 @@ const OlfactiveManager = require("./OlfactiveManager");
 const TasteManager = require("./TasteManager");
 const TastingAromasManager = require("./TastingAromasManager");
 const TastingNoteManager = require("./TastingNoteManager");
+const SelectedWineManager = require("./SelectedWineManager");
 
 models.item = new ItemManager();
 models.item.setDatabase(pool);
@@ -89,6 +90,9 @@ models.tasteAromasData.setDatabase(pool);
 
 models.tastingNote = new TastingNoteManager();
 models.tastingNote.setDatabase(pool);
+
+models.selectedWine = new SelectedWineManager();
+models.selectedWine.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model

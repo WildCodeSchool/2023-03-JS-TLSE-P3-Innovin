@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-
 import CircularSlider from "@fseehawer/react-circular-slider";
 import "./Sliders.scss";
 import Glass_Wine_Icon1 from "../../assets/Icons/Glass_Wine_Icon1.svg";
