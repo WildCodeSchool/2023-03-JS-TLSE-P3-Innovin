@@ -49,8 +49,9 @@ function WorkshopCreation() {
           Authorization: `Bearer ${userToken}`,
         },
       })
-      .then((response) => {
-        console.info(response);
+      .then((res) => {
+        console.info(res);
+        navigate("/admin/workshops");
       })
       .catch((err) => {
         console.error(err);

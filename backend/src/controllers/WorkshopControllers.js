@@ -70,33 +70,32 @@ const edit = (req, res) => {
     });
 };
 
-let idNewWine;
-const addNewWine = (req, res) => {
-  const { newWine } = req.body;
-  // TODO validations (length, format...)
-  models.newWine
-    .insertNewWine(newWine)
-    .then(([result]) => {
-      idNewWine = result.insertId; // Récupération de l'Id de la table New_wine
-      res.location(`/newwine/${result.insertId}`).status(201).send("Created");
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
+// let idNewWine;
+// const addNewWine = (req, res) => {
+//   const { newWine } = req.body;
+//   models.newWine
+//     .insertNewWine(newWine)
+//     .then(([result]) => {
+//       idNewWine = result.insertId; // Récupération de l'Id de la table New_wine
+//       res.location(`/newwine/${result.insertId}`).status(201).send("Created");
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.sendStatus(500);
+//     });
+// };
 
 const add = (req, res) => {
-  const { workshop } = req.body;
+  const workshop = req.body;
 
   models.workshop
-    .insertWorkshop(workshop, idNewWine) // Passage l'Id de la table New_wine en paramètre à la méthode 'insertWorkshop'
+    .insert(workshop)
     .then(([result]) => {
       res.location(`/workshop/${result.insertId}`).status(201).send("Created");
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -121,7 +120,6 @@ module.exports = {
   getWorkshopByDate,
   read,
   edit,
-  addNewWine,
   add,
   destroy,
 };
