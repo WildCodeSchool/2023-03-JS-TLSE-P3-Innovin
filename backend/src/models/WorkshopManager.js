@@ -39,7 +39,7 @@ class WorkshopManager extends AbstractManager {
 
   findNextWorkshops() {
     return this.database.query(
-      `SELECT commentary, place, wine_type, datetime, COUNT(id_user) AS attendees FROM ${this.table} JOIN user_has_workshop as uw ON uw.id_workshop = workshop.id  WHERE datetime > NOW() GROUP BY datetime, place, wine_type, commentary LIMIT 5 ;`
+      `SELECT id, commentary, place, wine_type, datetime, COUNT(id_user) AS attendees FROM ${this.table} JOIN user_has_workshop as uw ON uw.id_workshop = workshop.id  WHERE datetime > NOW() GROUP BY id, datetime, place, wine_type, commentary LIMIT 5 ;`
     );
   }
 }

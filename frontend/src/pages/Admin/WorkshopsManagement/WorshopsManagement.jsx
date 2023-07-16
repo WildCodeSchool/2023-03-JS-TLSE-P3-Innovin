@@ -7,6 +7,7 @@ import "./WorkshopsManagement.scss";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import AuthContext from "../../../contexts/AuthContext";
 import ButtonPrimary from "../../../components/ButtonPrimary";
+import ModalValidation from "../../../components/ModalValidation/ModalValidation";
 
 function WorkshopsManagement() {
   const {
@@ -265,30 +266,15 @@ function WorkshopsManagement() {
           </table>
 
           {/* modal to control the delete */}
-          <div className={`deleteModal ${isModalOpen && "show"}`}>
-            <p>Êtes-vous sûr de vouloir supprimer l'atelier ?</p>
-            <div className="buttons">
-              <ButtonPrimary
-                type="button"
-                className="yesBtn"
-                onClick={() => {
-                  onDelete(idToDelete);
-                  setIsModalOpen(false);
-                }}
-              >
-                Supprimer
-              </ButtonPrimary>
-              <ButtonPrimary
-                type="button"
-                className="noBtn"
-                onClick={() => {
-                  setIsModalOpen(false);
-                }}
-              >
-                Annuler
-              </ButtonPrimary>
-            </div>
-          </div>
+          <ModalValidation
+            isOpen={isModalOpen}
+            setIsOpen={setIsModalOpen}
+            question="Êtes-vous sûr de vouloir supprimer l'atelier ?"
+            firstButton="Supprimer"
+            actionFunction={onDelete}
+            functionParam={idToDelete}
+            secondButton="Annuler"
+          />
 
           {/* Modal wich contains workshop information when click on the row */}
 
@@ -330,14 +316,14 @@ function WorkshopsManagement() {
                   <div>
                     <p>Vins dégustés :</p>
                     {winesOnWorkshop.map((wine) => (
-                      <p>{wine.vintage}</p>
+                      <p key={wine.id_existing_wine}>{wine.vintage}</p>
                     ))}
                   </div>
                   <div className="attendees">
                     <p>Participants :</p>
                     {usersInWorkshop.map((user) => {
                       return (
-                        <div className="userCard">
+                        <div className="userCard" key={user.id}>
                           <div
                             className={`banner ${
                               user.wine_color.toLowerCase() === "rouge"
