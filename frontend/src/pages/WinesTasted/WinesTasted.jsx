@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import TastingNoteContext from "../../contexts/TastingNoteContext";
 import Card from "./Card";
@@ -12,8 +13,8 @@ function WinesTasted() {
   const [selectedWineNumbers, setSelectedWineNumbers] = useState([]);
 
   useEffect(() => {
-    // const userId = tastingNote.idUser;
-    const apiUrl = `http://localhost:5000/tastingnote/1?idworkshop=2`;
+    // const userId = tastingNote.idUser;/1?idworkshop=2
+    const apiUrl = `http://localhost:5000/tastingnote`;
     axios
       .get(apiUrl, {
         headers: {
@@ -67,7 +68,9 @@ function WinesTasted() {
           />
         ))}
       </div>
-      <ButtonPrimary>Révélation</ButtonPrimary>
+      <Link to="/revelation">
+        <ButtonPrimary> Révélation</ButtonPrimary>
+      </Link>
     </div>
   );
 }

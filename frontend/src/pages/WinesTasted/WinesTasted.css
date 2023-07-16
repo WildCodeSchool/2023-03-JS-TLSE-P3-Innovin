@@ -2,7 +2,7 @@
   align-items: center;
   background: no-repeat left url("../../assets/Red_Wine_Colors/Framboise.png"),
     var(--blackBgGradient);
-
+  height: 100;
   display: flex;
   flex-direction: column;
   overflow: hidden;

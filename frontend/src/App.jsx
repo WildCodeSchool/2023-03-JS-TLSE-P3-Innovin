@@ -22,6 +22,8 @@ import WinesMap from "./pages/WinesMap/WinesMap";
 import AdminHome from "./pages/Admin/AdminHome/AdminHome";
 import WorkshopModification from "./pages/Admin/WorkshopModification/WorkshopModification";
 
+import Revelation from "./pages/Revelation/Revelation";
+
 function App() {
   return (
     <AuthProvider>
@@ -42,6 +44,7 @@ function App() {
                   <Route path="/advice" element={<TasteAdvice />} />
                   <Route path="/selection" element={<WinesTasted />} />
                   <Route path="/nose/stage1" element={<OlfactoryStage />} />
+                  <Route path="/revelation" element={<Revelation />} />
                   <Route
                     path="/creationworkshop"
                     element={<CreationWorkshop />}
