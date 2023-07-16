@@ -1,0 +1,100 @@
+.glossary-content {
+  align-items: center;
+  background: no-repeat left url("../../assets/Red_Wine_Colors/Framboise.png"),
+    var(--blackBgGradient);
+  border: 1px none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100vw;
+}
+
+content {
+  width: 80%;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+}
+
+input.search-input {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.glossary-content h1 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  color: var(--primaryColor);
+  font-family: "Kaisei Tokumin";
+  font-size: 4rem;
+}
+
+.glossary-content p {
+  color: white;
+  font-family: var(--fontFamilyText);
+  padding: 0 10px 10px 10px;
+}
+
+.glossary-content h3 {
+  color: var(--primaryColor);
+  font-family: var(--fontFamilyTitle);
+  font-weight: 600;
+  padding: 10px;
+}
+
+.search.result {
+  display: flex;
+  justify-content: center;
+}
+
+.glossary-content h2 {
+  color: var(--primaryColor);
+  text-align: center;
+  font-family: var(--fontFamilyTitle);
+  font-weight: 600;
+  font-size: 2rem;
+  background: var(--blackBgGradientSmooth);
+  height: 40px;
+
+  margin-top: 2rem;
+}
+
+.alphabet {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 5rem;
+  border-radius: 20px;
+}
+
+.alphabet button {
+  margin: 0.5rem;
+  border-radius: 20px;
+  border: rgba(172, 145, 77, 1);
+  background: rgb(51, 49, 49);
+  color: rgba(172, 145, 77, 1);
+  height: 40px;
+  width: ;
+}
+
+.scroll-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  height: 50px;
+  width: 50px;
+  background: url("../../assets/Icons/Up_Arrow.png") no-repeat;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}

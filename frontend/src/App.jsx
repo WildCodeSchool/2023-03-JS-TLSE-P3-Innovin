@@ -21,6 +21,7 @@ import { AdminProvider } from "./contexts/AdminContext";
 import WinesMap from "./pages/WinesMap/WinesMap";
 import AdminHome from "./pages/Admin/AdminHome/AdminHome";
 import WorkshopModification from "./pages/Admin/WorkshopModification/WorkshopModification";
+import Glossary from "./pages/Glossary/Glossary";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
                     element={<CreationWorkshop />}
                   />
                   <Route path="/carte" element={<WinesMap />} />
+                  <Route path="/glossaire" element={<Glossary />} />
                   <Route path="admin/dashboard" element={<AdminHome />} />
                   <Route
                     path="admin/workshops"
