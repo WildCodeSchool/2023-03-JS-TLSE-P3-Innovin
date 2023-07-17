@@ -61,7 +61,7 @@ function CreationWorkshop() {
   useEffect(() => {
     postNewWine();
     getIdNewWine();
-  }, [newWine, userToken]);
+  }, [newWine]);
 
   const getExistingWineByTastingNoteId = () => {
     Promise.all(
@@ -92,7 +92,8 @@ function CreationWorkshop() {
     getExistingWineByTastingNoteId();
   }, []);
 
-  const postSelectedWines = () => {
+  // -----------------------------------------handle functions for buttons--------------------------------------------------
+  const handleNavigateAndpostSelectedWines = () => {
     workshopSelectedWines.map((selectedWine) => {
       axios
         .post(
@@ -106,18 +107,13 @@ function CreationWorkshop() {
         )
         .then((res) => {
           console.info(res);
+          navigate("/blendedwine");
         })
         .catch((err) => {
           console.error(err);
         });
-      return null; // Ajoutez un retour de valeur pour chaque élément du tableau
+      return null; // Ajoute un retour de valeur pour chaque élément du tableau
     });
-  };
-
-  // -----------------------------------------handle functions for buttons--------------------------------------------------
-
-  const handleNavigate = () => {
-    navigate("/ending");
   };
 
   // -------------------------------------------return the component----------------------------------------------------
@@ -147,11 +143,10 @@ function CreationWorkshop() {
             <button type="button" onClick={handleClick}>
               POSTER
             </button>
-            <button type="button" onClick={postSelectedWines}>
-              POSTER2
-            </button>
           </div>
-          <ButtonPrimary onClick={handleNavigate}>Etape finale</ButtonPrimary>
+          <ButtonPrimary onClick={handleNavigateAndpostSelectedWines}>
+            Etape suivante
+          </ButtonPrimary>
         </div>
       </div>
     )

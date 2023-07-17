@@ -13,6 +13,7 @@ import TasteStage2 from "./pages/TasteStage2/TasteStage2";
 import TasteAdvice from "./pages/TasteAdvice/TasteAdvice";
 import WinesTasted from "./pages/WinesTasted/WinesTasted";
 import CreationWorkshop from "./pages/CreationWorkshop/CreationWorkshop";
+import BlendedWine from "./pages/BlendedWine/BlendedWine";
 import WorkshopsManagement from "./pages/Admin/WorkshopsManagement/WorshopsManagement";
 import { TastingNoteProvider } from "./contexts/TastingNoteContext";
 import { TastingProvider } from "./contexts/TastingContext";
@@ -51,6 +52,7 @@ function App() {
                       path="/creationworkshop"
                       element={<CreationWorkshop />}
                     />
+                    <Route path="/blendedWine" element={<BlendedWine />} />
                     <Route path="/carte" element={<WinesMap />} />
                     <Route path="admin/dashboard" element={<AdminHome />} />
                     <Route

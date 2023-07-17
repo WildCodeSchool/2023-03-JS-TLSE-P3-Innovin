@@ -19,6 +19,7 @@ export function CreationWorkshopProvider({ children }) {
   const [workshopData, setWorkshopData] = useState(null);
   const [newWine, setNewWine] = useState(null);
   const [newWineData, setNewWineData] = useState([{ id: null }]);
+  const [blendedWine, setBlendedWine] = useState(null);
   const [existingWineByTastingNote, setExistingWineByTastingNote] = useState(
     []
   );
@@ -71,6 +72,8 @@ export function CreationWorkshopProvider({ children }) {
       setNewWine,
       newWineData,
       setNewWineData,
+      blendedWine,
+      setBlendedWine,
       existingWineByTastingNote,
       setExistingWineByTastingNote,
       workshopSelectedWines,
@@ -88,6 +91,7 @@ export function CreationWorkshopProvider({ children }) {
     workshopData,
     newWine,
     newWineData,
+    blendedWine,
     workshopSelectedWines,
     existingWineByTastingNote,
     selectedWinesIds,
