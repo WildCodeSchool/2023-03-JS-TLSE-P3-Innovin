@@ -716,14 +716,11 @@ VALUES (
 
 CREATE TABLE
     IF NOT EXISTS `inovin`.`workshop` (
-        `id` INT NOT NULL AUTO_INCREMENT,
+        `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         `datetime` DATETIME NOT NULL,
         `place` VARCHAR(55) NOT NULL,
         `commentary` LONGTEXT NULL,
-        `wine_type` VARCHAR(45) NULL,
-        `id_new_wine` INT NOT NULL,
-        PRIMARY KEY (`id`),
-        CONSTRAINT `fk_workshop_new_wine1` FOREIGN KEY (`id_new_wine`) REFERENCES `inovin`.`new_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        `wine_type` VARCHAR(45) NULL
     ) ENGINE = InnoDB;
 
 INSERT INTO
@@ -731,127 +728,108 @@ INSERT INTO
         datetime,
         place,
         commentary,
-        wine_type,
-        id_new_wine
+        wine_type
     )
 VALUES (
         "2023/07/20 16:00:00",
         "Toulouse",
         "Ne manquez pas cet atelier d'inauguration du premier atelier de notre programme! Plongez dans l'univers envoûtant des vins rouges et laissez-vous séduire par une sélection exquise de cépages prestigieux. Nos sommeliers passionnés vous guideront à travers un voyage sensoriel, révélant les secrets de chaque vin. Préparez-vous à vivre une expérience inoubliable, où convivialité et découverte se mêlent harmonieusement.",
-        "Rouge",
-        1
+        "Rouge"
     ), (
         "2023/07/22 16:00:00",
         "Toulouse",
         "Nous vous invitons chaleureusement à l'inauguration du deuxième atelier de notre programme. Cette fois-ci, nous mettons à l'honneur les vins blancs, symboles de fraîcheur et d'élégance. Laissez-vous surprendre par notre sélection soigneusement choisie, mettant en lumière des appellations renommées et des cépages emblématiques. Nos experts vous dévoileront les secrets de ces nectars délicats, vous offrant ainsi une expérience gustative unique et enrichissante.",
-        "Blanc",
-        2
+        "Blanc"
     ), (
         "2023/07/22 19:00:00",
         "Toulouse",
         "Accordez vos sens lors de cet atelier exceptionnel dédié aux accords mets et vins. Plongez dans l'art subtil de marier harmonieusement les saveurs pour créer des expériences culinaires inoubliables. Nos chefs talentueux vous présenteront une sélection de mets savoureux, soigneusement associés à des vins d'exception. Vous découvrirez les subtilités des accords et apprendrez les principes fondamentaux pour créer vos propres harmonies gustatives. Préparez-vous à vivre une expérience gastronomique hors du commun, où l'équilibre des saveurs sera à l'honneur.",
-        "Rouge",
-        1
+        "Rouge"
     ), (
         "2023/07/24 14:00:00",
         "Bordeaux",
         "Plongez dans l'univers passionnant des vins rouges bio lors de cet atelier de dégustation unique. Explorez une sélection exclusive de crus biologiques, issus de terroirs d'exception. Vous découvrirez comment ces vins préservent l'expression authentique du fruit tout en respectant l'environnement.",
-        "Rouge",
-        1
+        "Rouge"
     ), (
         "2023/07/31 15:30:00",
         "Lyon",
         "Rejoignez-nous pour une expérience effervescente lors de cet atelier dédié aux vins pétillants du monde entier. Des champagnes aux proseccos en passant par les crémants, vous découvrirez la diversité des vins effervescents et leurs caractéristiques uniques. ",
-        "Blanc",
-        1
+        "Blanc"
     ), (
         "2023/07/31 18:00:00",
         "Lyon",
         "Laissez-vous charmer par la palette de couleurs et d'arômes des vins rosés lors de cet atelier exclusif. Découvrez une sélection variée de rosés provenant de différentes régions viticoles, chacun offrant sa propre expression de fraîcheur et de légèreté. Nos sommeliers vous guideront dans cette dégustation en mettant en lumière les nuances subtiles et les accords parfaits pour accompagner ces vins délicats. Préparez-vous à être émerveillé par la finesse et l'élégance de ces vins rosés qui séduisent les palais les plus exigeants.",
-        "Rouge",
-        1
+        "Rouge"
     ), (
         "2023/08/03 19:00:00",
         "Nice",
         "Explorez un univers gourmand lors de cet atelier dédié aux vins de dessert. Découvrez des vins liquoreux, moelleux et autres nectars sucrés, accompagnés de délices sucrés et de créations pâtissières exquises. Nos sommeliers vous guideront dans cette dégustation sensorielle, vous révélant les accords parfaits entre les vins et les desserts. Laissez-vous séduire par la magie des saveurs sucrées et plongez dans un univers où chaque gorgée vous transportera vers le plaisir gustatif ultime.",
-        "Blanc",
-        1
+        "Blanc"
     ), (
         "2023/08/06 12:00:00",
         "Strasbourg",
         "Plongez dans l'univers des vins blancs secs lors de cet atelier captivant. Découvrez la diversité des cépages blancs secs provenant de différentes régions viticoles, offrant des profils aromatiques uniques et des caractéristiques variées. Nos sommeliers passionnés partageront avec vous leur expertise et vous guideront à travers cette dégustation immersive, révélant les secrets de chaque vin. Préparez-vous à explorer un monde de fraîcheur et de finesse, où les vins blancs secs éveilleront vos sens et vous feront voyager au cœur des vignobles.",
-        "Blanc",
-        1
+        "Blanc"
     ), (
         "2023/08/12 13:00:00",
         "Toulouse",
         "Plongez dans l'univers des vins rouges. Une dégustation passionnante vous attend, avec des cépages sélectionnés avec soin pour vous offrir une expérience inoubliable. Rejoignez-nous pour explorer les arômes complexes et les saveurs intenses des vins rouges les plus prestigieux.",
-        "Rouge",
-        1
+        "Rouge"
     ), (
         "2023/08/12 16:00:00",
         "Toulouse",
         "Atelier dédié aux vins blancs. Laissez-vous séduire par la fraîcheur et l'élégance de ces vins, provenant de différentes régions viticoles. Découvrez les arômes délicats et les nuances subtiles qui font la renommée des vins blancs sélectionnés pour cet atelier.",
-        "Blanc",
-        2
+        "Blanc"
     ), (
         "2023/08/15 18:30:00",
         "Paris",
         "Explorez les accords mets et vins lors de cet atelier spécial. Plongez dans un voyage gustatif où chaque bouchée est harmonieusement accompagnée d'un vin soigneusement choisi. Nos experts vous guideront dans l'art de marier les saveurs, vous offrant ainsi une expérience culinaire exceptionnelle et mémorable.",
-        "Rouge",
-        2
+        "Rouge"
     ), (
         "2023/08/16 14:00:00",
         "Bordeaux",
         "Découvrez les vins rouges bio lors de cet atelier de dégustation. Appréciez la qualité et l'authenticité de ces vins issus de pratiques respectueuses de l'environnement. Laissez-vous séduire par leur caractère unique et leur expression du terroir, révélant des saveurs riches et équilibrées.",
-        "Rouge",
-        2
+        "Rouge"
     ), (
         "2023/08/17 17:00:00",
         "Marseille",
         "Plongez dans le monde des vins effervescents lors de cet atelier festif. Découvrez la magie des bulles et laissez-vous surprendre par la diversité des vins effervescents, des champagnes aux proseccos en passant par les crémants. Éveillez vos papilles avec ces vins pétillants, symboles de célébration et de joie.",
-        "Blanc",
-        2
+        "Blanc"
     ), (
         "2023/08/18 15:30:00",
         "Lyon",
         "Appréciez la subtilité des vins rosés lors de cet atelier exclusif. Découvrez une sélection variée de rosés aux couleurs délicates et aux arômes frais. Laissez-vous séduire par leur fraîcheur et leur légèreté, et découvrez les accords parfaits pour sublimer ces vins rosés lors d'une dégustation raffinée.",
-        "Rouge",
-        2
+        "Rouge"
     ), (
         "2023/08/18 19:00:00",
         "Nice",
         "Succombez aux plaisirs des vins de dessert lors de cet atelier gourmand. Découvrez une palette de saveurs sucrées et explorez l'art de l'association entre les vins liquoreux et les délices sucrés. Laissez-vous envoûter par ces accords divins qui éveilleront tous vos sens.",
-        "Blanc",
-        2
+        "Blanc"
     ), (
         "2023/08/19 12:00:00",
         "Nice",
         "Découvrez la fraîcheur des vins blancs secs lors de cet atelier captivant. Explorez une sélection variée de cépages blancs secs, reflétant la richesse et la diversité des régions viticoles. Laissez-vous emporter par les arômes délicats et les notes fruitées de ces vins qui sauront égayer vos papilles.",
-        "Blanc",
-        2
+        "Blanc"
     ), (
         "2023/08/23 13:00:00",
         "Lille",
         "Célébrez la Saint-Valentin avec notre atelier spécial vins et chocolats. Plongez dans une expérience sensorielle irrésistible en découvrant l'art de l'association entre les vins et les chocolats fins. Laissez-vous guider par notre sommelier pour créer des accords parfaits entre ces délices sucrés et les vins qui les mettront en valeur.",
-        "Divers",
-        2
+        "Divers"
     ), (
         "2023/08/23 17:30:00",
         "Lille",
         "Initiez-vous aux vins naturels lors de cet atelier authentique. Découvrez des vins produits selon des méthodes artisanales, où l'accent est mis sur la simplicité et le respect du terroir. Plongez dans l'univers des vins naturels et laissez-vous séduire par leur expression pure et leur caractère unique.",
-        "Naturel",
-        2
+        "Naturel"
     ), (
         "2023/07/23 16:00:00",
         "Mende",
         "Troisième atelier",
-        3
+        "Rouge"
     ), (
         "2023/07/23 16:00:00",
         "Gaillac",
         "Quatrième atelier",
-        4
+        "Rouge"
     );
 
 -- -----------------------------------------------------

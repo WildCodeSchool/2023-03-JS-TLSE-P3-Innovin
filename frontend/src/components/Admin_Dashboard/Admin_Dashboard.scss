@@ -22,10 +22,10 @@
 
   .openSidebarButton {
     position: absolute;
-    top: 50%;
+    top: 2%;
     left: calc(100% - 2em);
     width: 4em;
-    height: 3em;
+    height: 2.4em;
     color: var(--whiteGoldColor);
     border-radius: 0 5px 5px 0;
     border: none;
@@ -36,6 +36,10 @@
     justify-content: flex-end;
     align-items: center;
     padding-right: 0.5em;
+    &:hover {
+      color: var(--secondaryColor);
+      cursor: pointer;
+    }
   }
   .closeSidebarButton {
     display: none;

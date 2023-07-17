@@ -28,7 +28,8 @@ function WorkshopsManagement() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isRowClicked, setIsRowClicked] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [order, setOrder] = useState("asc");
+  const [sortOrder, setSortOrder] = useState("");
+  const [sortColumn, setSortColumn] = useState("");
   const navigate = useNavigate();
 
   //   ----------------------------------------functions-------------------------------------------------------
@@ -67,25 +68,27 @@ function WorkshopsManagement() {
   };
 
   // function to sort workshops by order asc or desc
+
   const sortWorkshops = (col) => {
-    if (order === "asc") {
-      const sortedWorkshops = workshops.sort((a, b) => {
-        return a[col].toString().toLowerCase() > b[col].toString().toLowerCase()
-          ? 1
-          : -1;
-      });
-      setWorkshops(sortedWorkshops);
-      setOrder("desc");
+    let newSortOrder = "asc";
+
+    if (sortColumn === col && sortOrder === "asc") {
+      newSortOrder = "desc";
     }
-    if (order === "desc") {
-      const sortedWorkshops = workshops.sort((a, b) => {
-        return a[col].toString().toLowerCase() < b[col].toString().toLowerCase()
-          ? 1
-          : -1;
-      });
-      setWorkshops(sortedWorkshops);
-      setOrder("asc");
-    }
+
+    const sortedWorkshops = workshops.sort((a, b) => {
+      const aValue = a[col].toString().toLowerCase();
+      const bValue = b[col].toString().toLowerCase();
+
+      if (newSortOrder === "asc") {
+        return aValue > bValue ? 1 : -1;
+      }
+      return aValue < bValue ? 1 : -1;
+    });
+
+    setWorkshops(sortedWorkshops);
+    setSortColumn(col);
+    setSortOrder(newSortOrder);
   };
 
   //   function to get all the data of a workshop
@@ -124,22 +127,76 @@ function WorkshopsManagement() {
       <div className="workshopsContent">
         <div className="tableHeader">
           <h1>Ateliers</h1>
-          <SearchBar
-            setValue={setSearchValue}
-            icon="search"
-            placeholder="Rechercher"
-            value={searchValue}
-          />
+          <div className="searchOrAdd">
+            <SearchBar
+              className="searchBar"
+              setValue={setSearchValue}
+              icon="search"
+              placeholder="Rechercher"
+              value={searchValue}
+            />
+            <ButtonPrimary
+              className="addButton"
+              onClick={() => navigate("/admin/workshops/add")}
+            >
+              +
+            </ButtonPrimary>
+          </div>
         </div>
         <div className="tableSection">
           <table className="workshopsTable">
             <thead>
               <tr>
-                <th onClick={() => sortWorkshops("datetime")}>Date</th>
-                <th onClick={() => sortWorkshops("wine_type")}>Type</th>
-                <th onClick={() => sortWorkshops("place")}>Lieu</th>
-                <th>Commentaire</th>
-                <th onClick={() => sortWorkshops("attendees")}>Participants</th>
+                <th onClick={() => sortWorkshops("datetime")}>
+                  <div>
+                    <p> Date</p>
+                    {sortOrder === "asc" && sortColumn === "datetime" ? (
+                      <i className="fi fi-rr-angle-small-up" />
+                    ) : (
+                      <i className="fi fi-rr-angle-small-down" />
+                    )}
+                  </div>
+                </th>
+                <th onClick={() => sortWorkshops("wine_type")}>
+                  <div>
+                    <p>Type</p>
+                    {sortOrder === "asc" && sortColumn === "wine_type" ? (
+                      <i className="fi fi-rr-angle-small-up" />
+                    ) : (
+                      <i className="fi fi-rr-angle-small-down" />
+                    )}
+                  </div>
+                </th>
+                <th onClick={() => sortWorkshops("place")}>
+                  <div>
+                    <p>Lieu</p>
+                    {sortOrder === "asc" && sortColumn === "place" ? (
+                      <i className="fi fi-rr-angle-small-up" />
+                    ) : (
+                      <i className="fi fi-rr-angle-small-down" />
+                    )}
+                  </div>
+                </th>
+                <th onClick={() => sortWorkshops("commentary")}>
+                  <div>
+                    <p> Commentaire</p>
+                    {sortOrder === "asc" && sortColumn === "commentary" ? (
+                      <i className="fi fi-rr-angle-small-up" />
+                    ) : (
+                      <i className="fi fi-rr-angle-small-down" />
+                    )}
+                  </div>
+                </th>
+                <th onClick={() => sortWorkshops("attendees")}>
+                  <div>
+                    <p>Participants</p>
+                    {sortOrder === "asc" && sortColumn === "attendees" ? (
+                      <i className="fi fi-rr-angle-small-up" />
+                    ) : (
+                      <i className="fi fi-rr-angle-small-down" />
+                    )}
+                  </div>
+                </th>
                 <th>Actions</th>
               </tr>
             </thead>

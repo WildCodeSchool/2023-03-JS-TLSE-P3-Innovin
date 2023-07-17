@@ -101,7 +101,7 @@ router.delete(
   WorkshopHasExistingWineControllers.destroy
 );
 router.put("/newwine/:id", NewWineControllers.edit);
-router.post("/newwine", WorkshopControllers.addNewWine); // This controller is really created on 'WorkshopControllers', don't delete it !
+// router.post("/newwine", WorkshopControllers.addNewWine); // This controller is really created on 'WorkshopControllers', don't delete it !
 router.delete("/newwine/:id", NewWineControllers.destroy);
 router.get("/competitionselection", CompetitionSelectionControllers.browse);
 router.get("/competitionselection/:id", CompetitionSelectionControllers.read);
