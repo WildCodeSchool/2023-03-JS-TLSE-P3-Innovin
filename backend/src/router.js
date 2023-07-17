@@ -89,6 +89,7 @@ router.get("/workshop", WorkshopControllers.browse);
 router.get("/workshop/:id", WorkshopControllers.read);
 router.put("/workshop/:id", WorkshopControllers.edit);
 router.get("/workshop/date/:date", WorkshopControllers.getWorkshopByDate);
+router.get("/nextworkshops", WorkshopControllers.getNextWorkshops);
 router.post("/workshop", WorkshopControllers.add);
 router.delete("/workshop/:id", WorkshopControllers.destroy);
 router.get(
@@ -101,7 +102,6 @@ router.delete(
   WorkshopHasExistingWineControllers.destroy
 );
 router.put("/newwine/:id", NewWineControllers.edit);
-router.post("/newwine", WorkshopControllers.addNewWine); // This controller is really created on 'WorkshopControllers', don't delete it !
 router.delete("/newwine/:id", NewWineControllers.destroy);
 router.get("/competitionselection", CompetitionSelectionControllers.browse);
 router.get("/competitionselection/:id", CompetitionSelectionControllers.read);

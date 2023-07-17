@@ -50,6 +50,22 @@ const getWorkshopByDate = (req, res) => {
     });
 };
 
+const getNextWorkshops = (req, res) => {
+  models.workshop
+    .findNextWorkshops()
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.status(404).send("Not found");
+      } else {
+        res.status(200).send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const edit = (req, res) => {
   const workshop = req.body;
 
@@ -70,33 +86,17 @@ const edit = (req, res) => {
     });
 };
 
-let idNewWine;
-const addNewWine = (req, res) => {
-  const { newWine } = req.body;
-  // TODO validations (length, format...)
-  models.newWine
-    .insertNewWine(newWine)
-    .then(([result]) => {
-      idNewWine = result.insertId; // Récupération de l'Id de la table New_wine
-      res.location(`/newwine/${result.insertId}`).status(201).send("Created");
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 const add = (req, res) => {
-  const { workshop } = req.body;
+  const workshop = req.body;
 
   models.workshop
-    .insertWorkshop(workshop, idNewWine) // Passage l'Id de la table New_wine en paramètre à la méthode 'insertWorkshop'
+    .insert(workshop)
     .then(([result]) => {
       res.location(`/workshop/${result.insertId}`).status(201).send("Created");
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -119,9 +119,9 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   getWorkshopByDate,
+  getNextWorkshops,
   read,
   edit,
-  addNewWine,
   add,
   destroy,
 };
