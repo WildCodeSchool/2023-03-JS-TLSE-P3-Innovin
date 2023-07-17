@@ -50,6 +50,22 @@ const getWorkshopByDate = (req, res) => {
     });
 };
 
+const getNextWorkshops = (req, res) => {
+  models.workshop
+    .findNextWorkshops()
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.status(404).send("Not found");
+      } else {
+        res.status(200).send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const edit = (req, res) => {
   const workshop = req.body;
 
@@ -69,21 +85,6 @@ const edit = (req, res) => {
       res.sendStatus(500);
     });
 };
-
-// let idNewWine;
-// const addNewWine = (req, res) => {
-//   const { newWine } = req.body;
-//   models.newWine
-//     .insertNewWine(newWine)
-//     .then(([result]) => {
-//       idNewWine = result.insertId; // Récupération de l'Id de la table New_wine
-//       res.location(`/newwine/${result.insertId}`).status(201).send("Created");
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-// };
 
 const add = (req, res) => {
   const workshop = req.body;
@@ -118,6 +119,7 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   getWorkshopByDate,
+  getNextWorkshops,
   read,
   edit,
   add,
