@@ -1,9 +1,9 @@
 .workshopsContent {
   width: 100%;
   background: var(--blackBgGradient);
-  background-color: aliceblue;
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   color: var(--whiteGoldColor);
   display: flex;
   flex-direction: column;
@@ -354,6 +354,22 @@
       backdrop-filter: var(--bgBlur);
       display: grid;
       place-items: center;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .workshopsContent {
+    .tableHeader {
+      .searchOrAdd {
+        .searchBar {
+          width: 25%;
+          &:hover,
+          &:focus-within {
+            width: 40%;
+          }
+        }
+      }
     }
   }
 }

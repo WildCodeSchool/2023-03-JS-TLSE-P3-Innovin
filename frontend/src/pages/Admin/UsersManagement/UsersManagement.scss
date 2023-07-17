@@ -1,0 +1,178 @@
+.usersManagement {
+  width: 100%;
+  background: var(--blackBgGradient);
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  color: var(--whiteGoldColor);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 8vh, 3rem);
+  overflow: hidden;
+
+  table,
+  th,
+  td {
+    padding: 1em 1.5em;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  .userTableHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
+    width: 90vw;
+    margin-top: 4em;
+    h1 {
+      font-size: var(--fontSizeH2);
+    }
+    .searchOrAdd {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 1.6em;
+
+      .addButton {
+        padding: 0 0.8em;
+        margin-right: 0.5rem;
+      }
+      .searchBar {
+        width: 50%;
+        &:hover,
+        &:focus-within {
+          width: 100%;
+          box-shadow: var(--shadow);
+        }
+      }
+    }
+  }
+
+  .tableSection {
+    background: var(--blackBgGradientSmooth);
+    backdrop-filter: var(--blur);
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    width: 90vw;
+    height: 80dvh;
+    margin-bottom: 2em;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--smoothGoldColor);
+      border-radius: 5px;
+      visibility: hidden;
+    }
+    &::-webkit-scrollbar-corner {
+      visibility: hidden;
+    }
+    &:hover::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+
+    .usersTable {
+      width: 100%;
+
+      thead {
+        tr {
+          width: 100%;
+          th {
+            cursor: pointer;
+            position: sticky;
+            color: var(--secondaryColor);
+            top: 0;
+            left: 0;
+            background-color: var(--darkGoldColor);
+            &:hover {
+              background-color: var(--redWineColor);
+            }
+
+            div {
+              display: flex;
+              align-items: flex-end;
+              gap: 1em;
+            }
+            i {
+              display: grid;
+              place-items: center;
+              color: var(--whiteGoldColor);
+            }
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          &:nth-child(odd) {
+            background-color: rgba(209, 181, 103, 0.05);
+          }
+          &:hover {
+            background-color: rgba(209, 181, 103, 0.1);
+            cursor: pointer;
+          }
+
+          td {
+            vertical-align: middle;
+            .redWine {
+              width: 1.2rem;
+              height: 1.2rem;
+              border-radius: 50px;
+              background-color: var(--redWineColor);
+            }
+            .prefDesc {
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              overflow: hidden;
+              line-height: 1.5em;
+            }
+            .whiteWine {
+              width: 1.2rem;
+              height: 1.2rem;
+              border-radius: 50px;
+              background-color: #fee347;
+            }
+            .actionButtons {
+              display: flex;
+              gap: 1em;
+              background-color: rgba(209, 181, 103, 0.1);
+              padding: 0.3em;
+              border-radius: 5px;
+
+              .editBtn,
+              .deleteBtn {
+                font-size: 1rem;
+                color: var(--secondaryColor);
+                background: none;
+                border: 1px solid rgba(209, 181, 103, 0.1);
+                padding: 0.3em;
+                border-radius: 5px;
+                &:hover {
+                  cursor: pointer;
+                  color: var(--darkGoldColor);
+                  background-color: var(--secondaryColor);
+                  box-shadow: var(--shadow);
+                }
+                &:active {
+                  background-color: var(--primaryColor);
+                  box-shadow: none;
+                }
+
+                i {
+                  display: grid;
+                  place-items: center;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
