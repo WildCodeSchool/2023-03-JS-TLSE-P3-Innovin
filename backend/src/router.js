@@ -60,7 +60,7 @@ router.get(
 router.use(verifyToken);
 
 router.get("/users/:id", UserControllers.read);
-router.put("/users/:id", hashPassword, validateUser, UserControllers.edit);
+router.put("/users/:id", validateUser, UserControllers.edit);
 router.get(
   "/workshophasexistingwine/:id_workshop",
   WorkshopHasExistingWineControllers.read

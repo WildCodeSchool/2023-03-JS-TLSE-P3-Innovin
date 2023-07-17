@@ -22,6 +22,8 @@ import WinesMap from "./pages/WinesMap/WinesMap";
 import AdminHome from "./pages/Admin/AdminHome/AdminHome";
 import WorkshopModification from "./pages/Admin/WorkshopModification/WorkshopModification";
 import WorkshopCreation from "./pages/Admin/WorkshopCreation/WorkshopCreation";
+import UsersManagement from "./pages/Admin/UsersManagement/UsersManagement";
+import UsersModification from "./pages/Admin/UsersModification/UsersModification";
 
 function App() {
   return (
@@ -60,6 +62,11 @@ function App() {
                   <Route
                     path="admin/workshops/add"
                     element={<WorkshopCreation />}
+                  />
+                  <Route path="admin/users" element={<UsersManagement />} />
+                  <Route
+                    path="admin/users/edit"
+                    element={<UsersModification />}
                   />
                 </Routes>
               </div>

@@ -97,7 +97,7 @@ function AdminDashboard() {
             <i className="fi fi-rr-house-chimney" />
             Accueil
           </button>
-          <button type="button">
+          <button type="button" onClick={() => navigate("/admin/users")}>
             <i className="fi fi-rr-users-alt" />
             Gestion des utilisateurs
           </button>

@@ -6,11 +6,15 @@ const AdminContext = createContext();
 export default AdminContext;
 
 export function AdminProvider({ children }) {
+  // states for workshops
   const [workshops, setWorkshops] = useState([]);
   const [workshopById, setWorkshopById] = useState({});
   const [winesOnWorkshop, setWinesOnWorkshop] = useState([]);
   const [usersInWorkshop, setUsersInWorkshop] = useState([]);
   const [idToUpdate, setIdToUpdate] = useState(0);
+
+  // states for users
+  const [userIdToUpdate, setUserIdToUpdate] = useState(0);
 
   // function to format a date
   const refactorDate = (dateToRefactor) => {
@@ -76,8 +80,17 @@ export function AdminProvider({ children }) {
       setIdToUpdate,
       handleDateChange,
       handleTimeChange,
+      userIdToUpdate,
+      setUserIdToUpdate,
     }),
-    [workshops, workshopById, winesOnWorkshop, usersInWorkshop, idToUpdate]
+    [
+      workshops,
+      workshopById,
+      winesOnWorkshop,
+      usersInWorkshop,
+      idToUpdate,
+      userIdToUpdate,
+    ]
   );
 
   return (
