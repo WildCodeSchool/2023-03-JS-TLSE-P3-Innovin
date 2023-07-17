@@ -114,7 +114,7 @@ const lexique = [
     id: 20,
     mot: "Armagnac",
     definition:
-      "eau-de-vie produite dans le Sud Ouest de la France. Obtenue par la distillation de vin blanc dans un alambic armagnacais et mise en vieillissement de longues années en fûts de chêne avant d'être commercialisée.",
+      "Eau-de-vie produite dans le Sud Ouest de la France. Obtenue par la distillation de vin blanc dans un alambic armagnacais et mise en vieillissement de longues années en fûts de chêne avant d'être commercialisée.",
   },
   {
     id: 21,
@@ -126,7 +126,7 @@ const lexique = [
     id: 22,
     mot: "Arôme",
     definition:
-      "odeur ressentie lors de la dégustation émise par le vin, au nez et en bouche.",
+      "Odeur ressentie lors de la dégustation émise par le vin, au nez et en bouche.",
   },
   {
     id: 23,
@@ -138,13 +138,13 @@ const lexique = [
     id: 24,
     mot: "Assemblage ",
     definition:
-      "mélange de différents lots de vin d'un même millésime, issus du même cépage ou de cépages différents, d'un ou de plusieurs territoires ou parcelles.\n",
+      "Mélange de différents lots de vin d'un même millésime, issus du même cépage ou de cépages différents, d'un ou de plusieurs territoires ou parcelles.\n",
   },
   {
     id: 25,
     mot: "Astringent",
     definition:
-      "qualité d'un vin dont les tanins dessèchent désagréablement la bouche. Seuls les vins rouges peuvent être astringents.",
+      "Qualité d'un vin dont les tanins dessèchent désagréablement la bouche. Seuls les vins rouges peuvent être astringents.",
   },
   {
     id: 26,
@@ -162,13 +162,13 @@ const lexique = [
     id: 28,
     mot: "Barrique",
     definition:
-      "fût en bois (généralement de chêne) servant à élever et conserver le vin.",
+      "Fût en bois (généralement de chêne) servant à élever et conserver le vin.",
   },
   {
     id: 29,
     mot: "Bâtonnage ",
     definition:
-      "remise en suspension des levures mortes et des résidus de raisins dans la cuve. Opération de vinification permettant la complexification des arômes et le renforcement de la charpente du vin.",
+      "Remise en suspension des levures mortes et des résidus de raisins dans la cuve. Opération de vinification permettant la complexification des arômes et le renforcement de la charpente du vin.",
   },
   {
     id: 30,
@@ -240,7 +240,7 @@ const lexique = [
     id: 41,
     mot: "Bourbes",
     definition:
-      " résidus indésirables subsistants dans le moût constitués de fragments de pellicules, de pépins, de rafles, d'impuretés.",
+      " Résidus indésirables subsistants dans le moût constitués de fragments de pellicules, de pépins, de rafles, d'impuretés.",
   },
   {
     id: 42,
@@ -263,7 +263,7 @@ const lexique = [
   {
     id: 45,
     mot: "Brandy",
-    definition: "terme anglais désignant une eau-de-vie.",
+    definition: "Terme anglais désignant une eau-de-vie.",
   },
   {
     id: 46,
@@ -790,7 +790,7 @@ const lexique = [
     id: 133,
     mot: "Frapper (un vin.)",
     definition:
-      "Refroidir rapidement un vin en le plaçant dans un seau à glace ou en utilisant une méthode de refroidissement rapide pour servir à une température",
+      "Refroidir rapidement un vin en le plaçant dans un seau à glace ou en utilisant une méthode de refroidissement rapide.",
   },
   {
     id: 134,

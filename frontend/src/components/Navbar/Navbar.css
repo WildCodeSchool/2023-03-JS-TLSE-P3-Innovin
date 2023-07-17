@@ -3,8 +3,9 @@
   align-items: center;
   justify-content: space-between;
   top: 0;
-  width: 100%;
+  width: 100vw;
   height: 90px;
+  background: var(--blackBgGradient);
 }
 
 h1 {

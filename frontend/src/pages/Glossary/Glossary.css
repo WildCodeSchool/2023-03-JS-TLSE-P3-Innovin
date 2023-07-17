@@ -9,19 +9,46 @@
   width: 100vw;
 }
 
+.img-logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5rem;
+}
+
 content {
   width: 80%;
 }
 
-.search {
+.search-bar {
   display: flex;
-  justify-content: center;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.search-bar input {
+  border-radius: 10px;
+  height: 40px;
+  padding: 3px;
+  width: 35%;
+}
+
+.search-bar li {
+  color: white;
+  font-family: var(--fontFamilyText);
+  background: var(--blackBgGradient);
+  padding: 5px;
 }
 
 input.search-input {
   align-items: center;
   display: flex;
   justify-content: center;
+  border: solid 3px var(--primaryColor);
+  background: var(--blackBgGradientSmooth);
+  color: var(--primaryColor);
+  font-family: var(--fontFamilyText);
 }
 
 .glossary-content h1 {
@@ -29,21 +56,22 @@ input.search-input {
   justify-content: center;
   margin-bottom: 2rem;
   color: var(--primaryColor);
-  font-family: "Kaisei Tokumin";
+  font-family: var(--fontFamilyTitle);
   font-size: 4rem;
 }
 
 .glossary-content p {
   color: white;
   font-family: var(--fontFamilyText);
-  padding: 0 10px 10px 10px;
+  margin: 0.5rem 2rem 2rem 2rem;
 }
 
 .glossary-content h3 {
   color: var(--primaryColor);
   font-family: var(--fontFamilyTitle);
   font-weight: 600;
-  padding: 10px;
+  margin: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .search.result {
@@ -67,7 +95,7 @@ input.search-input {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
   border-radius: 20px;
 }
 
@@ -78,7 +106,7 @@ input.search-input {
   background: rgb(51, 49, 49);
   color: rgba(172, 145, 77, 1);
   height: 40px;
-  width: ;
+  padding: 10px;
 }
 
 .scroll-button {
@@ -97,4 +125,37 @@ input.search-input {
   border-radius: 50%;
   cursor: pointer;
   outline: none;
+}
+
+@media (max-width: 768px) {
+  .scroll-button {
+    height: 40px;
+    width: 40px;
+    font-size: 14px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .search-bar input {
+    border-radius: 10px;
+    height: 40px;
+    padding: 3px;
+    width: 65%;
+  }
+
+  .glossary-content h1 {
+    font-size: 2rem;
+  }
+
+  .img-logo {
+    height: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .alphabet {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
 }
