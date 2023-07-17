@@ -13,6 +13,10 @@
   margin: 1.5rem;
 }
 
+.card-disposition {
+  justify-content: center;
+}
+
 h2.title-revelation {
   color: var(--primaryColor);
   font-family: var(--fontFamilyText);
@@ -27,6 +31,7 @@ h2.title-revelation {
   color: white;
   font-size: 0.7rem;
   text-align: center;
+  line-height: 15px;
 }
 
 .img-card {
@@ -47,9 +52,14 @@ h2.title-revelation {
 
 @media (min-width: 768px) {
   .card-revelation {
-    width: 100%;
-
+    width: 90%;
+    height: 100%;
     padding-top: 0;
+  }
+
+  .card-disposition {
+
+    width: 100%;
   }
 
   .revelation-card {
@@ -66,7 +76,7 @@ h2.title-revelation {
     display: flex;
     flex-direction: row;
     height: 50%;
-
+    gap: 20px;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
@@ -75,7 +85,7 @@ h2.title-revelation {
   .carddown {
     display: flex;
     flex-direction: row;
-
+    gap: 20px;
     height: 50%;
     align-items: center;
     padding: 10px;
@@ -103,9 +113,39 @@ h2.title-revelation {
     gap: 20px;
   }
 
-  @media (min-width: 110px) {
+  @media (min-width: 900px) {
     .card-revelation {
       width: 80%;
+    }
+
+    .card-disposition {
+      width: 90%;
+    }
+  }
+
+  @media (min-width: 1110px) {
+    .card-revelation {
+      width: 80%;
+    }
+
+    .card-disposition {
+      width: 80%;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .card-revelation {
+      width: 70%;
+    }
+
+    .card-disposition {
+      width: 80%;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .card-revelation {
+      width: 60%;
     }
   }
 }

@@ -36,6 +36,7 @@ export default function Revelation() {
   return (
     <div className="page-revel">
       <h1 className="h1-revelation">REVELATION</h1>
+      <p>Voici les vins correspondants à votre séléction</p>
       <div className="card-disposition">
         {selectedWines && selectedWines.length > 0 ? (
           selectedWines.map((wine, index) => (
