@@ -1081,7 +1081,7 @@ CREATE TABLE
         `taste_tannin_id` INT NOT NULL,
         PRIMARY KEY (`id`),
         CONSTRAINT `fk_tasting_note_olfactif_intensityAromas1` FOREIGN KEY (`id_olfactive_intensity`) REFERENCES `inovin`.`olfactive_intensityAromas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_tasting_note_user1` FOREIGN KEY (`id_user`) REFERENCES `inovin`.`user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_tasting_note_user1` FOREIGN KEY (`id_user`) REFERENCES `inovin`.`user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_olfactive_complexity1` FOREIGN KEY (`olfactive_complexity_id`) REFERENCES `inovin`.`olfactive_complexity` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_visual_color1` FOREIGN KEY (`visual_color_id`) REFERENCES `inovin`.`visual_color` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_visual_intensity` FOREIGN KEY (`visual_intensity_id`) REFERENCES `inovin`.`visual_intensity` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -1344,7 +1344,7 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`tastingnote_has_existingwine` (
         `id_tasting_note` INT NOT NULL,
         `id_existing_wine` INT NOT NULL,
-        CONSTRAINT `fk_tasting_note_has_existing_wine_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_tasting_note_has_existing_wine_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_has_existing_wine_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
@@ -1384,7 +1384,7 @@ CREATE TABLE
         `id_olfactive` INT NOT NULL,
         `id_tasting_note` INT NOT NULL,
         CONSTRAINT `fk_Olfactif_aromas_has_tasting_note_Olfactif_aromas1` FOREIGN KEY (`id_olfactive`) REFERENCES `inovin`.`olfactive_aromas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_Olfactif_aromas_has_tasting_note_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_Olfactif_aromas_has_tasting_note_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 INSERT INTO
@@ -1418,7 +1418,7 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`tasting_note_has_taste_flavor` (
         `id_tasting_note` INT NOT NULL,
         `id_taste_flavor` INT NOT NULL,
-        CONSTRAINT `fk_tasting_note_has_taste_flavor_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_tasting_note_has_taste_flavor_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_has_taste_flavor_taste_flavor1` FOREIGN KEY (`id_taste_flavor`) REFERENCES `inovin`.`taste_flavor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
@@ -1464,7 +1464,7 @@ CREATE TABLE
         `id_tasting_note` INT NOT NULL,
         PRIMARY KEY (`id`),
         CONSTRAINT `fk_selected_wine_new_wine1` FOREIGN KEY (`id_new_wine`) REFERENCES `inovin`.`new_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_selected_wine_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_selected_wine_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 INSERT INTO

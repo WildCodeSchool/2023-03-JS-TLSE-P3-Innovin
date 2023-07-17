@@ -111,12 +111,6 @@ function UsersManagement() {
                 placeholder="Rechercher"
                 value={searchValue}
               />
-              <ButtonPrimary
-                className="addButton"
-                onClick={() => navigate("/admin/users/add")}
-              >
-                +
-              </ButtonPrimary>
             </div>
           </div>
           <div className="tableSection">
