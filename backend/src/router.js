@@ -69,6 +69,7 @@ router.delete(
   "/workshophasexistingwine/:id_workshop",
   WorkshopHasExistingWineControllers.destroy
 );
+router.get("/nextworkshops", WorkshopControllers.getNextWorkshops);
 // ---------------------------------------- Private Routes ----------------------------------------------
 
 router.use(verifyToken);
@@ -103,7 +104,7 @@ router.get("/workshop", WorkshopControllers.browse);
 router.get("/workshop/:id", WorkshopControllers.read);
 router.put("/workshop/:id", WorkshopControllers.edit);
 router.get("/workshop/date/:date", WorkshopControllers.getWorkshopByDate);
-router.get("/nextworkshops", WorkshopControllers.getNextWorkshops);
+
 router.post("/workshop", WorkshopControllers.add);
 router.delete("/workshop/:id", WorkshopControllers.destroy);
 router.get(
