@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const AbstractManager = require("./AbstractManager");
 
 class SelectedWineManager extends AbstractManager {
@@ -6,10 +7,10 @@ class SelectedWineManager extends AbstractManager {
   }
 
   insert(selectedWine) {
-    const { nom, label } = selectedWine;
+    const { dosage, id_new_wine, id_tasting_note } = selectedWine;
     return this.database.query(
-      `insert into ${this.table} (nom , label) values (?, ?)`,
-      [nom, label]
+      `insert into ${this.table} (dosage , id_new_wine,id_tasting_note) values (?, ?,?)`,
+      [dosage, id_new_wine, id_tasting_note]
     );
   }
 

@@ -16,6 +16,7 @@ import CreationWorkshop from "./pages/CreationWorkshop/CreationWorkshop";
 import WorkshopsManagement from "./pages/Admin/WorkshopsManagement/WorshopsManagement";
 import { TastingNoteProvider } from "./contexts/TastingNoteContext";
 import { TastingProvider } from "./contexts/TastingContext";
+import { CreationWorkshopProvider } from "./contexts/CreationWorkshopContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import { AdminProvider } from "./contexts/AdminContext";
 import WinesMap from "./pages/WinesMap/WinesMap";
@@ -32,44 +33,46 @@ function App() {
         <Router>
           <TastingProvider>
             <TastingNoteProvider>
-              <div className="App">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/registration" element={<Registration />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/tasting" element={<TastingPresentation />} />
-                  <Route path="/eye/stage1" element={<VisualStage1 />} />
-                  <Route path="/eye/stage2" element={<VisualStage2 />} />
-                  <Route path="/mouth/stage1" element={<TasteStage1 />} />
-                  <Route path="/mouth/stage2" element={<TasteStage2 />} />
-                  <Route path="/advice" element={<TasteAdvice />} />
-                  <Route path="/selection" element={<WinesTasted />} />
-                  <Route path="/nose/stage1" element={<OlfactoryStage />} />
-                  <Route
-                    path="/creationworkshop"
-                    element={<CreationWorkshop />}
-                  />
-                  <Route path="/carte" element={<WinesMap />} />
-                  <Route path="admin/dashboard" element={<AdminHome />} />
-                  <Route
-                    path="admin/workshops"
-                    element={<WorkshopsManagement />}
-                  />
-                  <Route
-                    path="admin/workshops/edit"
-                    element={<WorkshopModification />}
-                  />
-                  <Route
-                    path="admin/workshops/add"
-                    element={<WorkshopCreation />}
-                  />
-                  <Route path="admin/users" element={<UsersManagement />} />
-                  <Route
-                    path="admin/users/edit"
-                    element={<UsersModification />}
-                  />
-                </Routes>
-              </div>
+              <CreationWorkshopProvider>
+                <div className="App">
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/registration" element={<Registration />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/tasting" element={<TastingPresentation />} />
+                    <Route path="/eye/stage1" element={<VisualStage1 />} />
+                    <Route path="/eye/stage2" element={<VisualStage2 />} />
+                    <Route path="/mouth/stage1" element={<TasteStage1 />} />
+                    <Route path="/mouth/stage2" element={<TasteStage2 />} />
+                    <Route path="/advice" element={<TasteAdvice />} />
+                    <Route path="/selection" element={<WinesTasted />} />
+                    <Route path="/nose/stage1" element={<OlfactoryStage />} />
+                    <Route
+                      path="/creationworkshop"
+                      element={<CreationWorkshop />}
+                    />
+                    <Route path="/carte" element={<WinesMap />} />
+                    <Route path="admin/dashboard" element={<AdminHome />} />
+                    <Route
+                      path="admin/workshops"
+                      element={<WorkshopsManagement />}
+                    />
+                    <Route
+                      path="admin/workshops/edit"
+                      element={<WorkshopModification />}
+                    />
+                    <Route
+                      path="admin/workshops/add"
+                      element={<WorkshopCreation />}
+                    />
+                    <Route path="admin/users" element={<UsersManagement />} />
+                    <Route
+                      path="admin/users/edit"
+                      element={<UsersModification />}
+                    />
+                  </Routes>
+                </div>
+              </CreationWorkshopProvider>
             </TastingNoteProvider>
           </TastingProvider>
         </Router>

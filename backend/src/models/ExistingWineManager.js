@@ -6,6 +6,17 @@ class ExistingWineManager extends AbstractManager {
     super({ table: "existing_wine" });
   }
 
+  findOneExistingWineByTastingNoteId(id) {
+    return this.database.query(
+      `SELECT ew.vintage
+      FROM ${this.table} ew
+      JOIN tastingnote_has_existingwine tnhe ON ew.id = tnhe.id_existing_wine
+       JOIN tasting_note tn ON tn.id = tnhe.id_tasting_note  
+       WHERE tn.id = ?`,
+      [id]
+    );
+  }
+
   findOneExistingWine(id) {
     return this.database.query(
       `SELECT
