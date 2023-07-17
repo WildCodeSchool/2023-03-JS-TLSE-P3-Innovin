@@ -19,7 +19,11 @@ function ModalValidation({
           type="button"
           className="yesBtn"
           onClick={() => {
-            actionFunction(functionParam);
+            if (functionParam) {
+              actionFunction(functionParam);
+            } else {
+              actionFunction();
+            }
             setIsOpen(false);
           }}
         >
@@ -48,5 +52,9 @@ ModalValidation.propTypes = {
   firstButton: PropTypes.string.isRequired,
   secondButton: PropTypes.string.isRequired,
   actionFunction: PropTypes.func.isRequired,
-  functionParam: PropTypes.number.isRequired,
+  functionParam: PropTypes.number,
+};
+
+ModalValidation.defaultProps = {
+  functionParam: 1,
 };

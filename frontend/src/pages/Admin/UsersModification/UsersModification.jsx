@@ -8,19 +8,19 @@ import AdminDashboard from "../../../components/Admin_Dashboard/Admin_Dashboard"
 import Input from "../../../components/Input";
 import ButtonPrimary from "../../../components/ButtonPrimary";
 import ToggleButton from "../../../components/ToggleButton/ToggleButton";
+import ModalValidation from "../../../components/ModalValidation/ModalValidation";
 
 function UsersModification() {
   const { userIdToUpdate, dateToPost } = useContext(AdminContext);
   const { userToken } = useContext(AuthContext);
   const [isLoaded, setIsLoaded] = useState(false);
   const [userToUpdate, setUserToUpdate] = useState({});
-  const [isToggled, setIsToggled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
 
   const onToggle = () => {
-    setIsToggled(!isToggled);
-    if (isToggled === true) {
+    if (userToUpdate.admin_credentials === 0) {
       setUserToUpdate({
         ...userToUpdate,
         admin_credentials: 1,
@@ -142,13 +142,35 @@ function UsersModification() {
                 <ToggleButton
                   rounded
                   isToggled={Boolean(userToUpdate.admin_credentials)}
-                  onToggle={onToggle}
+                  onToggle={() => setIsOpen(true)}
                 />
               </div>
+
+              <ModalValidation
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                question={`${
+                  userToUpdate.admin_credentials === 1
+                    ? "souhaitez-vous retirer les droits administrateur à cet utilisateur ?"
+                    : "souhaitez-vous donner les droits administrateur de cet utilisateur ?"
+                }`}
+                firstButton="Oui"
+                secondButton="Non"
+                actionFunction={onToggle}
+              />
 
               <ButtonPrimary type="submit">Modifier</ButtonPrimary>
             </form>
           </div>
+          {isOpen && (
+            <div
+              className="modalBg"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+              aria-hidden="true"
+            />
+          )}
         </div>
       </div>
     )
