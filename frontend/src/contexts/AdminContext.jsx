@@ -37,6 +37,29 @@ export function AdminProvider({ children }) {
     return "";
   };
 
+  const handleDateChange = (event, object, setObject) => {
+    const selectedDate = new Date(event.target.value);
+    const updatedDate = new Date(object.datetime);
+    updatedDate.setFullYear(selectedDate.getFullYear());
+    updatedDate.setMonth(selectedDate.getMonth());
+    updatedDate.setDate(selectedDate.getDate());
+    setObject({
+      ...object,
+      datetime: updatedDate.toISOString(),
+    });
+  };
+
+  const handleTimeChange = (event, object, setObject) => {
+    const [hours, minutes] = event.target.value.split(":");
+    const updatedDate = new Date(object.datetime);
+    updatedDate.setUTCHours(hours);
+    updatedDate.setUTCMinutes(minutes);
+    setObject({
+      ...object,
+      datetime: updatedDate.toISOString(),
+    });
+  };
+
   const AdminValue = useMemo(
     () => ({
       workshops,
@@ -51,6 +74,8 @@ export function AdminProvider({ children }) {
       dateToPost,
       idToUpdate,
       setIdToUpdate,
+      handleDateChange,
+      handleTimeChange,
     }),
     [workshops, workshopById, winesOnWorkshop, usersInWorkshop, idToUpdate]
   );

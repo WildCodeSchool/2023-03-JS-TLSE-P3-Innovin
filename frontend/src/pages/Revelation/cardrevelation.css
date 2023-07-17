@@ -50,20 +50,16 @@ h2.title-revelation {
     width: 100%;
 
     padding-top: 0;
-
   }
-
 
   .revelation-card {
     display: flex;
     flex-direction: row;
-
   }
 
   .card-text {
     display: flex;
     flex-direction: column;
-
   }
 
   .cardup {
@@ -74,7 +70,6 @@ h2.title-revelation {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-
   }
 
   .carddown {
@@ -90,7 +85,6 @@ h2.title-revelation {
     width: 60%;
 
     display: flex;
-
   }
 
   .img .wine-img {
@@ -107,9 +101,6 @@ h2.title-revelation {
     flex-direction: row;
     width: 60%;
     gap: 20px;
-
-
-
   }
 
   @media (min-width: 110px) {
@@ -117,5 +108,4 @@ h2.title-revelation {
       width: 80%;
     }
   }
-
 }
