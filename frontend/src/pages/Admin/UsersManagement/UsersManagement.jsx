@@ -11,7 +11,7 @@ import AdminContext from "../../../contexts/AdminContext";
 
 function UsersManagement() {
   const { userToken } = useContext(AuthContext);
-  const { setUserIdToUpdate } = useContext(AdminContext);
+  const { setUserIdToUpdate, refactorDate } = useContext(AdminContext);
   const [users, setUsers] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [areUsersLoaded, setAreUsersLoaded] = useState(false);
@@ -42,21 +42,6 @@ function UsersManagement() {
   }, []);
 
   const getUserData = (id) => {
-    // const endpoints = [
-    //   `${import.meta.env.VITE_BACKEND_URL}/workshop/${id}`,
-    //   `${import.meta.env.VITE_BACKEND_URL}/workshophasexistingwine/${id}`,
-    //   `${import.meta.env.VITE_BACKEND_URL}/admin/workshop/${id}`,
-    // ];
-
-    // Promise.all(
-    //   endpoints.map((endpoint) =>
-    //     axios.get(endpoint, {
-    //       headers: {
-    //         Authorization: `Bearer ${userToken}`,
-    //       },
-    //     })
-    //   )
-    // )
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/users/${id}`, {
         headers: {
@@ -128,7 +113,7 @@ function UsersManagement() {
               />
               <ButtonPrimary
                 className="addButton"
-                onClick={() => navigate("/admin/workshops/add")}
+                onClick={() => navigate("/admin/users/add")}
               >
                 +
               </ButtonPrimary>
@@ -229,7 +214,7 @@ function UsersManagement() {
                               className="editBtn"
                               onClick={() => {
                                 setUserIdToUpdate(user.id);
-                                // navigate("/admin/workshops/edit");
+                                navigate("/admin/users/edit");
                               }}
                             >
                               <i className="fi fi-rr-edit" />
@@ -257,19 +242,17 @@ function UsersManagement() {
             <ModalValidation
               isOpen={isUserModalOpen}
               setIsOpen={setIsUserModalOpen}
-              question="Êtes-vous sûr de vouloir supprimer l'atelier ?"
+              question="Êtes-vous sûr de vouloir supprimer cet utilisateur ?"
               firstButton="Supprimer"
               actionFunction={onDelete}
               functionParam={userIdToDelete}
               secondButton="Annuler"
             />
 
-            {/* Modal wich contains workshop information when click on the row */}
+            {/* Modal wich contains user information when click on the row */}
 
             {isUserLoaded && (
-              <div
-                className={`workshopInfoModal ${isRowClicked && "showInfo"}`}
-              >
+              <div className={`userInfoModal ${isRowClicked && "showInfo"}`}>
                 <button
                   className="closeModalBtn "
                   type="button"
@@ -279,52 +262,38 @@ function UsersManagement() {
                 </button>
 
                 <div className="modalContent">
-                  <div className="workshopHeader">
-                    <h2>Atelier N° {userById.id}</h2>
-                    <p />
+                  <div className="userHeader">
+                    <h2>Utilisateur N° {userById.id}</h2>
                   </div>
-                  <div className="workshopInfo">
-                    <div className="infoType">
-                      <p>Type :</p>
+                  <div className="userInfo">
+                    <div className="name">
+                      <p>Nom :</p>
+                      <p>
+                        {userById.lastname} {userById.firstname}
+                      </p>
                     </div>
-                    <div className="infoPlace">
-                      <p>Lieu :</p>
-                      <p>{userById.place}</p>
+                    <div className="birth">
+                      <p>Date de naissance :</p>
+                      <p>{refactorDate(userById.birth_date).split(" ")[0]}</p>
                     </div>
-                    <div className="infoCommentary">
-                      <p>Commentaire :</p>
-                      <p>{userById.commentary}</p>
+                    <div className="email">
+                      <p>email :</p>
+                      <p>{userById.email}</p>
                     </div>
-
-                    {/* <div className="attendees">
-                      <p>Participants :</p>
-                      {usersInWorkshop.map((user) => {
-                        return (
-                          <div className="userCard" key={user.id}>
-                            <div
-                              className={`banner ${
-                                user.wine_color.toLowerCase() === "rouge"
-                                  ? "red"
-                                  : "white"
-                              }`}
-                            />
-                            <div className="userInfo">
-                              <div className="nameInfo">
-                                <p>
-                                  {user.firstname} {user.lastname}
-                                </p>
-
-                                <p className="email">{user.email}</p>
-                              </div>
-
-                              <p className="pref">
-                                " {user.preference_description} "
-                              </p>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div> */}
+                    <div className="wineColor">
+                      <p>Préférence type de vin :</p>
+                      <div
+                        className={` ${
+                          userById.wine_color.toLowerCase() === "rouge"
+                            ? "redWine"
+                            : "whiteWine"
+                        }`}
+                      />
+                    </div>
+                    <div className="prefText">
+                      <p>Description :</p>
+                      <p>{userById.preference_description}</p>
+                    </div>
                   </div>
                   <ButtonPrimary>modifier</ButtonPrimary>
                 </div>
