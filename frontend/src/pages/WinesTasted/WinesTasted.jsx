@@ -7,13 +7,12 @@ import "./WinesTasted.css";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
 function WinesTasted() {
-  const { userToken, setTastingNote, tastingNote } =
+  const { userToken, tastingNote, setSelectedWinesIds } =
     useContext(TastingNoteContext);
+
   const [wines, setWines] = useState([]);
-  const [selectedWineNumbers, setSelectedWineNumbers] = useState([]);
 
   useEffect(() => {
-    // const userId = tastingNote.idUser;/1?idworkshop=2
     const apiUrl = `http://localhost:5000/tastingnote`;
     axios
       .get(apiUrl, {
@@ -28,23 +27,18 @@ function WinesTasted() {
       .catch((err) => {
         console.error(err);
       });
-  }, [tastingNote]);
+  }, [userToken]);
 
   const handleWineSelection = (wineNumber, wineId) => {
-    if (selectedWineNumbers.includes(wineNumber)) {
-      setSelectedWineNumbers((prevSelectedWineNumbers) =>
-        prevSelectedWineNumbers.filter((number) => number !== wineNumber)
+    const currentSelectedWinesIds = tastingNote.selectedWinesIds;
+
+    if (currentSelectedWinesIds.includes(wineId)) {
+      setSelectedWinesIds(
+        currentSelectedWinesIds.filter((id) => id !== wineId)
       );
-    } else {
-      setSelectedWineNumbers((prevSelectedWineNumbers) => [
-        ...prevSelectedWineNumbers,
-        wineNumber,
-      ]);
+    } else if (currentSelectedWinesIds.length < 3) {
+      setSelectedWinesIds([...currentSelectedWinesIds, wineId]);
     }
-    setTastingNote((prevTastingNote) => ({
-      ...prevTastingNote,
-      selectedWine: wineId,
-    }));
   };
 
   console.info(tastingNote);
@@ -62,7 +56,7 @@ function WinesTasted() {
           <Card
             key={wine.id}
             wine={wine}
-            isSelected={selectedWineNumbers.includes(index + 1)}
+            isSelected={tastingNote.selectedWinesIds.includes(wine.id)}
             number={index + 1}
             onSelect={handleWineSelection}
           />

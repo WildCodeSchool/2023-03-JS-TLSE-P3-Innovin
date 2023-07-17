@@ -42,7 +42,7 @@ export default function Revelation() {
           <p>No data available</p>
         )}
       </div>
-      <Link to="/creation">
+      <Link to="/creationworkshop">
         <ButtonPrimary> Création </ButtonPrimary>
       </Link>
     </div>

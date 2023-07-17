@@ -79,7 +79,7 @@ function Card({ wine, number, isSelected, onSelect }) {
 Card.propTypes = {
   wine: PropTypes.shape({
     tasting_commentary: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired, // Added id_existing_wine to the prop types
+    id: PropTypes.number.isRequired,
     color: PropTypes.string.isRequired,
     limpidity: PropTypes.string.isRequired,
     brightness: PropTypes.string.isRequired,
@@ -87,8 +87,8 @@ Card.propTypes = {
     tears: PropTypes.string.isRequired,
     complexity: PropTypes.string.isRequired,
     intensity_aromas: PropTypes.string.isRequired,
-    aromas: PropTypes.string.isRequired,
-    flavor: PropTypes.string.isRequired,
+    aromas: PropTypes.arrayOf(PropTypes.string).isRequired, // Use array instead of string for aromas and flavor
+    flavor: PropTypes.arrayOf(PropTypes.string).isRequired,
     sweetness: PropTypes.string.isRequired,
     alcohol: PropTypes.string.isRequired,
     acidity: PropTypes.string.isRequired,

@@ -1,10 +1,13 @@
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Sliders from "../../components/Sliders/Sliders";
 import "./CreationWorkshop.scss";
+import TastingNoteContext from "../../contexts/TastingNoteContext"; // Étape 1 : Import du contexte
 
 function CreationWorkshop() {
   const navigate = useNavigate();
+  const { tastingNote } = useContext(TastingNoteContext); // Étape 2 : Utilisation du hook useContext
 
   // -----------------------------------------handle functions for buttons--------------------------------------------------
 
@@ -30,6 +33,8 @@ function CreationWorkshop() {
         </div>
         <ButtonPrimary onClick={handleNavigate}>Etape finale</ButtonPrimary>
       </div>
+
+      {console.info("tastingNote:", tastingNote)}
     </div>
   );
 }

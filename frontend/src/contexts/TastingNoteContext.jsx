@@ -1,4 +1,3 @@
-/* eslint-disable radix */
 import { createContext, useMemo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
@@ -33,6 +32,7 @@ export function TastingNoteProvider({ children }) {
     idVisualIntensity: null,
     idOlfactiveAromas: null,
     idFlavorAromas: null,
+    selectedWinesIds: [], // Added selectedWines array to keep track of selected wines
   });
 
   const handleFillVisualColorId = (e, value) => {
@@ -43,18 +43,15 @@ export function TastingNoteProvider({ children }) {
     });
   };
 
-  // -------------------- Function retrieving the sliders ids from the tasting "mouth" section --------------------//
   const handleFillmouthId = () => {
     setTastingNote({
       ...tastingNote,
-      idTasteSweetness: parseInt(`${idTasteSweetnessValue}`),
-      idTasteAlcohol: parseInt(`${idTasteAlcoholValue}`),
-      idAcidity: parseInt(`${idAcidityValue}`),
-      idTasteTannin: parseInt(`${idTasteTanninValue}`),
+      idTasteSweetness: parseInt(`${idTasteSweetnessValue}`, 10),
+      idTasteAlcohol: parseInt(`${idTasteAlcoholValue}`, 10),
+      idAcidity: parseInt(`${idAcidityValue}`, 10),
+      idTasteTannin: parseInt(`${idTasteTanninValue}`, 10),
     });
   };
-
-  // useEffect who Update ids
 
   useEffect(() => {
     handleFillmouthId();
@@ -75,9 +72,15 @@ export function TastingNoteProvider({ children }) {
       setTastingNote,
       handleFillVisualColorId,
       handleFillmouthId,
+      setSelectedWinesIds: (selectedWinesIds) => {
+        setTastingNote((prevTastingNote) => ({
+          ...prevTastingNote,
+          selectedWinesIds,
+        }));
+      },
     };
   }, [tastingNote]);
-  // console.info(tastingNote);
+
   return (
     <TastingNoteContext.Provider value={tastingNoteValue}>
       {children}
