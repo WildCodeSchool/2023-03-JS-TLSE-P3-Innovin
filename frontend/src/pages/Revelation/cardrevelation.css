@@ -47,7 +47,75 @@ h2.title-revelation {
 
 @media (min-width: 768px) {
   .card-revelation {
+    width: 100%;
+
+    padding-top: 0;
+
+  }
+
+
+  .revelation-card {
     display: flex;
     flex-direction: row;
+
   }
+
+  .card-text {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .cardup {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+  }
+
+  .carddown {
+    display: flex;
+    flex-direction: row;
+
+    height: 50%;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .img-card {
+    width: 60%;
+
+    display: flex;
+
+  }
+
+  .img .wine-img {
+    height: 100%;
+  }
+
+  .h3-wine {
+    display: flex;
+    align-items: center;
+  }
+
+  .text-down {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    gap: 20px;
+
+
+
+  }
+
+  @media (min-width: 110px) {
+    .card-revelation {
+      width: 80%;
+    }
+  }
+
 }

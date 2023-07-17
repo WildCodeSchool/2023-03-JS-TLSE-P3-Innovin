@@ -32,7 +32,7 @@ export function TastingNoteProvider({ children }) {
     idVisualIntensity: null,
     idOlfactiveAromas: null,
     idFlavorAromas: null,
-    selectedWinesIds: [], // Added selectedWines array to keep track of selected wines
+    selectedWinesIds: [],
   });
 
   const handleFillVisualColorId = (e, value) => {

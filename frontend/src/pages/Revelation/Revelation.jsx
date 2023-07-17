@@ -7,7 +7,7 @@ import TastingNoteContext from "../../contexts/TastingNoteContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
 export default function Revelation() {
-  const { userToken } = useContext(TastingNoteContext);
+  const { userToken, tastingNote } = useContext(TastingNoteContext);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -24,14 +24,21 @@ export default function Revelation() {
       .catch((error) => {
         console.error(error.message);
       });
-  }, []);
+  }, [userToken]);
+
+  console.info(tastingNote);
+
+  // Filter the wines based on the selectedWinesIds array from the tastingNote
+  const selectedWines = data.filter((wine) =>
+    tastingNote.selectedWinesIds.includes(wine.id)
+  );
 
   return (
     <div className="page-revel">
       <h1 className="h1-revelation">REVELATION</h1>
       <div className="card-disposition">
-        {data && data.length > 0 ? (
-          data.map((wine, index) => (
+        {selectedWines && selectedWines.length > 0 ? (
+          selectedWines.map((wine, index) => (
             <CardRevelation
               key={`${wine.id}-${wine.appellation_name}`}
               wine={wine}
@@ -39,7 +46,7 @@ export default function Revelation() {
             />
           ))
         ) : (
-          <p>No data available</p>
+          <p>No selected wines available</p>
         )}
       </div>
       <Link to="/creationworkshop">

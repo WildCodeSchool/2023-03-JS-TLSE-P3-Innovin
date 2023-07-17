@@ -29,6 +29,7 @@ function WinesTasted() {
       });
   }, [userToken]);
 
+  // Selection wine for TastingNote max 3
   const handleWineSelection = (wineNumber, wineId) => {
     const currentSelectedWinesIds = tastingNote.selectedWinesIds;
 

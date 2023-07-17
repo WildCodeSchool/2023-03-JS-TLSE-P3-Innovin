@@ -10,33 +10,41 @@ export default function CardRevelation({ wine, cardNumber }) {
         <div className="img-card">
           <img className="wine-img" src={wine.picture} alt="wine" />
         </div>
-        <div className="domaine">
-          <h2 className="title-revelation">Cépage</h2>
-          <p>{wine.grape_variety_name}</p>
-        </div>
-        <div className="vintage">
-          <h2 className="title-revelation">Millésime</h2>
-          <p>{wine.vintage}</p>
-        </div>
-        <div className="alcool">
-          <h2 className="title-revelation">Teneur en Alcool</h2>
-          <p>{wine.alcohol_percentage}°</p>
-        </div>
-        <div className="wine-info">
-          <h2 className="title-revelation">Description</h2>
-          <p>{wine.grape_variety_description}</p>
-        </div>
-        <div className="appellation">
-          <h2 className="title-revelation">Appellation</h2>
-          <p>{wine.appellation_name}</p>
-        </div>
-        <div className="winery">
-          <h2 className="title-revelation">Domaine</h2>
-          <p>{wine.winery_name}</p>
-        </div>
-        <div className="region">
-          <h2 className="title-revelation">Région viticole</h2>
-          <p>{wine.wine_region_name}</p>
+        <div className="card-text">
+          <div className="cardup">
+            <div className="domaine">
+              <h2 className="title-revelation">Cépage</h2>
+              <p>{wine.grape_variety_name}</p>
+            </div>
+            <div className="region">
+              <h2 className="title-revelation">Région viticole</h2>
+              <p>{wine.wine_region_name}</p>
+            </div>
+            <div className="vintage">
+              <h2 className="title-revelation">Millésime</h2>
+              <p>{wine.vintage}</p>
+            </div>
+            <div className="alcool">
+              <h2 className="title-revelation">Teneur en Alcool</h2>
+              <p>{wine.alcohol_percentage}°</p>
+            </div>
+          </div>
+          <div className="carddown">
+            <div className="text-down">
+              <div className="appellation">
+                <h2 className="title-revelation">Appellation</h2>
+                <p>{wine.appellation_name}</p>
+              </div>
+              <div className="winery">
+                <h2 className="title-revelation">Domaine</h2>
+                <p>{wine.winery_name}</p>
+              </div>
+            </div>
+            <div className="wine-info">
+              <h2 className="title-revelation">Description</h2>
+              <p>{wine.grape_variety_description}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
