@@ -10,7 +10,7 @@ import ButtonPrimary from "../../../components/ButtonPrimary";
 import ToggleButton from "../../../components/ToggleButton/ToggleButton";
 
 function UsersModification() {
-  const { userIdToUpdate } = useContext(AdminContext);
+  const { userIdToUpdate, dateToPost } = useContext(AdminContext);
   const { userToken } = useContext(AuthContext);
   const [isLoaded, setIsLoaded] = useState(false);
   const [userToUpdate, setUserToUpdate] = useState({});
@@ -56,6 +56,30 @@ function UsersModification() {
     });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const { id, ...formData } = userToUpdate;
+    const form = { ...formData, birth_date: dateToPost(formData.birth_date) };
+
+    axios
+      .put(
+        `${import.meta.env.VITE_BACKEND_URL}/users/${userIdToUpdate}`,
+        form,
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.info(response);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     isLoaded &&
     userToken && (
@@ -71,7 +95,7 @@ function UsersModification() {
         <div className="globalModifContainer">
           <div className="modifContent">
             <h1>Utilisateur N° {userToUpdate.id}</h1>
-            <form action="">
+            <form action="" onSubmit={handleSubmit}>
               <div className="name">
                 <div className="lastname">
                   <p className="textLabel">Nom</p>
@@ -117,7 +141,7 @@ function UsersModification() {
                 <p>Droits Administrateur</p>
                 <ToggleButton
                   rounded
-                  isToggled={userToUpdate.admin_credentials}
+                  isToggled={Boolean(userToUpdate.admin_credentials)}
                   onToggle={onToggle}
                 />
               </div>
