@@ -19,7 +19,7 @@ function WinesTasted() {
   // const to stock workshop id
   const firstWorkshopId = nextWorkshops.length > 0 ? nextWorkshops[0].id : null;
 
-  // fetch tasting note
+  // fetchto get all tasting note
   useEffect(() => {
     const apiUrl = `http://localhost:5000/tastingnote`;
     axios
@@ -30,7 +30,6 @@ function WinesTasted() {
       })
       .then((response) => {
         setWines(response.data);
-        console.info(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -38,7 +37,7 @@ function WinesTasted() {
   }, [userToken]);
 
   useEffect(() => {
-    // Fetch next workshops
+    // Fetch to get the next workshop
     const nextWorkshopsApiUrl = "http://localhost:5000/nextworkshops";
     axios
       .get(nextWorkshopsApiUrl, {
@@ -48,7 +47,6 @@ function WinesTasted() {
       })
       .then((response) => {
         setNextWorkshops(response.data);
-        console.info(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -67,7 +65,6 @@ function WinesTasted() {
       })
       .then((response) => {
         setExistingWineWorkshops(response.data);
-        console.info(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -87,11 +84,11 @@ function WinesTasted() {
     }
   };
 
-  console.info(wines);
-  console.info(nextWorkshops);
-  console.info(existingWineWorkshops);
-  console.info(firstWorkshopId);
-  console.info(tastingNote);
+  // console.info(wines);
+  // console.info(nextWorkshops);
+  // console.info(existingWineWorkshops);
+  // console.info(firstWorkshopId);
+  // console.info(tastingNote);
 
   return (
     <div className="wine-content">

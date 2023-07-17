@@ -95,7 +95,7 @@ Card.propTypes = {
     taste_tannin: PropTypes.string.isRequired,
     taste_intensity: PropTypes.string.isRequired,
     mouth_feel: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
+    rating: PropTypes.string.isRequired,
   }).isRequired,
   number: PropTypes.number.isRequired,
   isSelected: PropTypes.bool.isRequired,
