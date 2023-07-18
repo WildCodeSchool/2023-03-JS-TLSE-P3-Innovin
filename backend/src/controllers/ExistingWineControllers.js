@@ -16,6 +16,34 @@ const browse = (req, res) => {
     });
 };
 
+const refactorWinesData = (req, res) => {
+  models.existingWine
+    .findAllExistingWines()
+    .then(([rows]) => {
+      if (rows.length) {
+        const groupedData = rows.reduce((acc, obj) => {
+          const { id } = obj;
+          if (!acc[id]) {
+            acc[id] = { ...obj, appellation_name: [obj.appellation_name] };
+          } else {
+            acc[id].appellation_name.push(obj.appellation_name);
+          }
+          return acc;
+        }, {});
+
+        const groupedArray = Object.values(groupedData);
+
+        res.status(200).send(groupedArray);
+      } else {
+        res.status(400).send("Bad Request");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
 const read = (req, res) => {
   models.existingWine
     .findOneExistingWine(req.params.id)
@@ -91,6 +119,7 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
+  refactorWinesData,
   read,
   edit,
   add,

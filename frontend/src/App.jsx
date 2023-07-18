@@ -24,6 +24,7 @@ import WorkshopModification from "./pages/Admin/WorkshopModification/WorkshopMod
 import WorkshopCreation from "./pages/Admin/WorkshopCreation/WorkshopCreation";
 import UsersManagement from "./pages/Admin/UsersManagement/UsersManagement";
 import UsersModification from "./pages/Admin/UsersModification/UsersModification";
+import WinesManager from "./pages/Admin/WinesSheetsManagement/WinesSheetsManagement";
 
 function App() {
   return (
@@ -68,6 +69,7 @@ function App() {
                     path="admin/users/edit"
                     element={<UsersModification />}
                   />
+                  <Route path="admin/wines" element={<WinesManager />} />
                 </Routes>
               </div>
             </TastingNoteProvider>

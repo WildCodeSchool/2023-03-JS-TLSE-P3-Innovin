@@ -40,6 +40,7 @@ router.get("/grapevariety", GrapeVarietyControllers.browse);
 router.get("/grapevariety/:id", GrapeVarietyControllers.read);
 router.get("/existingwine", ExistingWineControllers.browse);
 router.get("/existingwine/:id", ExistingWineControllers.read);
+router.get("/winesdata", ExistingWineControllers.refactorWinesData);
 router.get("/appellation", AppellationControllers.browse);
 router.get("/appellation/:id", AppellationControllers.read);
 router.get("/wineregion", WineRegionControllers.browse);
