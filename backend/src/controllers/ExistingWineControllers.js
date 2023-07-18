@@ -16,6 +16,22 @@ const browse = (req, res) => {
     });
 };
 
+const getOneExistingWineByTastingNoteId = (req, res) => {
+  models.existingWine
+    .findOneExistingWineByTastingNoteId(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.status(404).send("Not found");
+      } else {
+        res.status(200).send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
 const refactorWinesData = (req, res) => {
   models.existingWine
     .findAllExistingWines()
@@ -119,6 +135,7 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
+  getOneExistingWineByTastingNoteId,
   refactorWinesData,
   read,
   edit,

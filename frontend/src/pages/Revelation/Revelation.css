@@ -1,0 +1,29 @@
+.page-revel {
+  align-items: center;
+  background: left url("../../assets/Red_Wine_Colors/Framboise.png"),
+    var(--blackBgGradient);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100vw;
+  color: var(--whiteGoldColor);
+  font-family: var(--fontFamilyText);
+  font-size: var(--fontSizeText);
+  padding-bottom: 3rem;
+}
+
+.h1-revelation {
+  text-align: center;
+  color: var(--primaryColor);
+  font-family: var(--fontFamilyTitly);
+  font-size: 2.4rem;
+  font-weight: 400;
+  margin: 2rem;
+}
+
+@media (min-width: 768px) {
+  .card-disposition {
+    display: flex;
+    width: 80%;
+  }
+}
