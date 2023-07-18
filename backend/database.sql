@@ -394,7 +394,7 @@ VALUES (
 CREATE TABLE
     IF NOT EXISTS `inovin`.`existing_wine` (
         `id` INT NOT NULL AUTO_INCREMENT,
-        `vintage` VARCHAR(45) NOT NULL,
+        `vintage` INT NOT NULL,
         `blend` VARCHAR(45) NULL,
         `color` VARCHAR(45) NOT NULL,
         `alcohol_percentage` INT NOT NULL,
@@ -424,110 +424,110 @@ INSERT INTO
         `id_winery`
     )
 VALUES (
-        'Malbec',
+        '2021',
         '',
         'Rouge',
         13,
-        '',
+        'https://www.vinatis.com/73176-detail_default/prestige-2020-chateau-de-hauterive.png',
         '',
         '',
         14,
         40,
         1
     ), (
-        'Cabernet Sauvignon',
+        '2019',
         '',
         'Rouge',
         13,
-        '',
+        'https://www.vinatis.com/69777-detail_default/cabernet-sauvignon-2021-villa-des-anges-jeff-carrel.png',
         '',
         '',
         3,
         16,
         2
     ), (
-        'Syrah',
+        '2015',
         '',
         'Rouge',
         13,
-        '',
+        'https://www.vinatis.com/77056-detail_default/syrah-2021-les-jamelles.png',
         '',
         '',
         5,
         70,
         3
     ), (
-        'Merlot',
+        '1998',
         '',
         'Rouge',
-        0,
-        '',
+        14,
+        'https://www.vinatis.com/64358-detail_default/petrus-2001.png',
         '',
         '',
         3,
         44,
         5
     ), (
-        'Pinot Noir',
+        '2020',
         '',
         'Rouge',
         12,
-        '',
+        'https://www.vinatis.com/73907-detail_default/bourgogne-pinot-noir-sieur-aubry-2021-domaine-du-mont-verrier.png',
         '',
         '',
         6,
         63,
         6
     ), (
-        'Sauvignon Blanc',
+        '2017',
         '',
         'Blanc',
         13,
-        '',
+        'https://www.vinatis.com/76173-detail_default/saint-bris-2021-maison-simonnet-febvre.png',
         '',
         '',
         15,
         68,
         7
     ), (
-        'Gewurztraminer',
+        '2021',
         '',
         'Blanc',
         12,
-        '',
+        'https://www.vinatis.com/73942-detail_default/gewurztraminer-grand-cru-hatschbourg-2021-joseph-cattin.png',
         '',
         '',
         1,
         34,
         8
     ), (
-        'Chardonnay',
+        '2022',
         '',
         'Blanc',
         12,
-        '',
+        'https://www.vinatis.com/65892-detail_default/chardonnay-2021-chateau-auzias.png',
         '',
         '',
         6,
         23,
         6
     ), (
-        'Pinot Gris',
+        '1989',
         '',
         'Blanc',
         12,
-        '',
+        'https://www.vinatis.com/68525-detail_default/pinot-gris-2018-les-princes-abbes-domaine-schlumberger.png',
         '',
         '',
         1,
         61,
         8
     ), (
-        'Cabernet Franc',
+        '2016',
         '',
-        'Blanc',
+        'Rouge',
         12,
-        '',
+        'https://www.vinatis.com/78832-detail_default/clin-doeil-rouge-2021-alliance-loire.png',
         '',
         '',
         15,
@@ -825,11 +825,13 @@ VALUES (
         "Mende",
         "Troisième atelier",
         "Rouge"
+        
     ), (
         "2023/07/23 16:00:00",
         "Gaillac",
         "Quatrième atelier",
         "Rouge"
+        
     );
 
 -- -----------------------------------------------------

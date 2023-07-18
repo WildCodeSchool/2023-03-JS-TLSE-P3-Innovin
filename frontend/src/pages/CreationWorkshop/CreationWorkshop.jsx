@@ -22,6 +22,7 @@ function CreationWorkshop() {
     setWineSelectedDosages,
   } = CreationWorkshopValue;
   const navigate = useNavigate();
+
   const [isLoaded, setIsloaded] = useState(false);
 
   const handleClick = (e) => {

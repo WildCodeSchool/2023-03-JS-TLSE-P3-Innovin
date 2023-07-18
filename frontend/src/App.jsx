@@ -24,6 +24,8 @@ import WinesMap from "./pages/WinesMap/WinesMap";
 import AdminHome from "./pages/Admin/AdminHome/AdminHome";
 import WorkshopModification from "./pages/Admin/WorkshopModification/WorkshopModification";
 import WorkshopCreation from "./pages/Admin/WorkshopCreation/WorkshopCreation";
+
+import Revelation from "./pages/Revelation/Revelation";
 import UsersManagement from "./pages/Admin/UsersManagement/UsersManagement";
 import UsersModification from "./pages/Admin/UsersModification/UsersModification";
 
@@ -48,6 +50,8 @@ function App() {
                     <Route path="/advice" element={<TasteAdvice />} />
                     <Route path="/selection" element={<WinesTasted />} />
                     <Route path="/nose/stage1" element={<OlfactoryStage />} />
+                    <Route path="/nose/stage1" element={<Revelation />} />
+
                     <Route
                       path="/creationworkshop"
                       element={<CreationWorkshop />}
