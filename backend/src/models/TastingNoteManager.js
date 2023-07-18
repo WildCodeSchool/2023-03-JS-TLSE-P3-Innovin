@@ -164,7 +164,7 @@ class TastingNoteManager extends AbstractManager {
       wineQuality,
     } = tastingNote;
     return this.database.query(
-      `insert into ${this.table} (wine_quality, id_olfactive_intensity, id_user, rating, tasting_commentary, olfactive_complexity_id, visual_color_id, visual_intensity_id, visual_limpidity_id, visual_brightness_id, visual_tears_id, taste_intensity_id,taste_mouth_feel_id, taste_alcohol_id, acidity_id, taste_sweetness_id, taste_tannin_id ) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+      `insert into ${this.table} (wine_quality, id_olfactive_intensity, id_user, rating, tasting_commentary, olfactive_complexity_id, visual_color_id, visual_intensity_id, visual_limpidity_id, visual_brightness_id, visual_tears_id, taste_intensity_id,taste_mouth_feel_id, taste_alcohol_id, acidity_id, taste_sweetness_id, taste_tannin_id ) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
       [
         wineQuality,
         idOlfactiveIntensity,

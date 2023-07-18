@@ -10,6 +10,7 @@ function WinesTasted() {
   // const for context
   const { userToken, tastingNote, setSelectedWinesIds } =
     useContext(TastingNoteContext);
+  const { idUser } = tastingNote;
 
   // const for fetch
   const [wines, setWines] = useState([]);
@@ -19,9 +20,10 @@ function WinesTasted() {
   // const to stock workshop id
   const firstWorkshopId = nextWorkshops.length > 0 ? nextWorkshops[0].id : null;
 
-  // fetchto get all tasting note
+  // fetch to get tasting note of dynamic user and workshop
   useEffect(() => {
-    const apiUrl = `http://localhost:5000/tastingnote`;
+    const apiUrl = `http://localhost:5000/tastingnote/${idUser}?idworkshop=${firstWorkshopId}`;
+    //
     axios
       .get(apiUrl, {
         headers: {
@@ -83,12 +85,6 @@ function WinesTasted() {
       setSelectedWinesIds([...currentSelectedWinesIds, wineId]);
     }
   };
-
-  // console.info(wines);
-  // console.info(nextWorkshops);
-  // console.info(existingWineWorkshops);
-  // console.info(firstWorkshopId);
-  // console.info(tastingNote);
 
   return (
     <div className="wine-content">
