@@ -23,11 +23,9 @@ export function CreationWorkshopProvider({ children }) {
   const [existingWineByTastingNote, setExistingWineByTastingNote] = useState(
     []
   );
-  // const [selectedWinesIds, setSelectedWinesIds] = useState(null);
   const [selectedWines, setSelectedWines] = useState([]);
   const [workshopSelectedWines, setWorkshopSelectedWines] = useState([]);
   const [maxSelected, setMaxSelected] = useState(false);
-  // const [wineSelectedCounter, setWineSelectedCounter] = useState(0);
   const wineSelectedCounter = 3;
   const selectedWinesIds = [1, 4, 3];
   const [wineSelectedDosages, setWineSelectedDosages] = useState(
@@ -79,9 +77,7 @@ export function CreationWorkshopProvider({ children }) {
       workshopSelectedWines,
       setWineSelectedDosages,
       wineSelectedDosages,
-      // setSelectedWinesIds,
       selectedWinesIds,
-      // setWineSelectedCounter,
       wineSelectedCounter,
       setMaxSelected,
       maxSelected,
