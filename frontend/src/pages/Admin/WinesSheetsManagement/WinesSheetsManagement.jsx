@@ -4,12 +4,15 @@ import AdminDashboard from "../../../components/Admin_Dashboard/Admin_Dashboard"
 import "./WinesSheetsManagement.scss";
 import AuthContext from "../../../contexts/AuthContext";
 import SearchBar from "../../../components/SearchBar/SearchBar";
+import ModalValidation from "../../../components/ModalValidation/ModalValidation";
 
 function WinesManager() {
   const { userToken } = useContext(AuthContext);
   const [areWinesLoaded, setAreWinesLoaded] = useState(false);
   const [wines, setWines] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [isArchiveCardModalOpen, setIsArchiveCardModalOpen] = useState(false);
+  const [wineToArchive, setWineToArchive] = useState({});
 
   useEffect(() => {
     axios
@@ -25,7 +28,49 @@ function WinesManager() {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [wines]);
+
+  const getWineById = (id) => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/onlyexistingwine/${id}`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((res) => {
+        setWineToArchive(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const onArchive = (idWine) => {
+    const { id, ...updatedData } = wineToArchive;
+
+    const archivedWine = {
+      ...updatedData,
+      is_archived: 1,
+    };
+
+    axios
+      .put(
+        `${import.meta.env.VITE_BACKEND_URL}/existingwine/${idWine}`,
+        archivedWine,
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.info(res);
+        setWines(wines.filter((wine) => wine.id !== idWine));
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   return (
     areWinesLoaded && (
@@ -88,10 +133,21 @@ function WinesManager() {
                             <p>{wine.grape_variety_name}</p>
                             <p className="winery">{wine.winery_name}</p>
                           </div>
-
-                          <button type="button" className="infoBtn">
-                            <i className="fi fi-br-information" />
-                          </button>
+                          <div className="buttons">
+                            <button type="button" className="infoBtn">
+                              <i className="fi fi-br-information" />
+                            </button>
+                            <button
+                              type="button"
+                              className="archiveBtn"
+                              onClick={() => {
+                                setIsArchiveCardModalOpen(true);
+                                getWineById(wine.id);
+                              }}
+                            >
+                              <i className="fi fi-rr-folder-upload" />
+                            </button>
+                          </div>
                         </div>
                         <div className="appellations">
                           {wine.appellation_name.map((appellation) => (
@@ -113,20 +169,44 @@ function WinesManager() {
                         <br />
                         {wine.grape_variety_description}
                       </p>
-                      <a
-                        href={wine.website}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="website"
-                      >
-                        Découvrir le domaine
-                      </a>
+                      <div className="linkContainer">
+                        {" "}
+                        <a
+                          href={wine.website}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="website"
+                        >
+                          Découvrir le domaine
+                        </a>
+                        <i className="fi fi-br-arrow-alt-right" />
+                      </div>
                     </div>
                   </div>
                 );
               })}
           </div>
         </div>
+        {wineToArchive && (
+          <ModalValidation
+            isOpen={isArchiveCardModalOpen}
+            setIsOpen={setIsArchiveCardModalOpen}
+            question="Êtes-vous sûr de vouloir archiver ce vin ?"
+            firstButton="archiver"
+            actionFunction={onArchive}
+            functionParam={wineToArchive.id}
+            secondButton="Annuler"
+          />
+        )}
+        {isArchiveCardModalOpen && (
+          <div
+            className="modalBg"
+            onClick={() => {
+              setIsArchiveCardModalOpen(false);
+            }}
+            aria-hidden="true"
+          />
+        )}
       </div>
     )
   );

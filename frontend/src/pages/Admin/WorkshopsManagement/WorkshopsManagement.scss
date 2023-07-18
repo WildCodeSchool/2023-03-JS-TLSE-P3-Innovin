@@ -263,13 +263,21 @@
           gap: 1.5em;
 
           div > p:first-of-type {
-            font-weight: 600;
+            font-weight: 500;
             color: var(--secondaryColor);
             margin-bottom: 0.5em;
           }
           p {
             font-family: var(--fontFamilyText);
-            line-height: 1.2em;
+            line-height: 1.4em;
+            font-weight: 200;
+            font-size: 1rem;
+
+            span {
+              font-style: italic;
+              color: rgba(195, 180, 138, 0.5);
+              margin-left: 0.6em;
+            }
           }
           .infoType {
             display: flex;

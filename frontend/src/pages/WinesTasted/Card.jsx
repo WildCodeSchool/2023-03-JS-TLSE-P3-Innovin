@@ -57,7 +57,7 @@ function Card({ wine, number, isSelected, onSelect }) {
           </div>
           <div className="comment">
             <img className="img-card note" src={note} alt="comment" />
-            <p className="commentary">" {wine.tasting_commentary} "</p>
+            <p className="card-commentary">" {wine.tasting_commentary} "</p>
             <br />
           </div>
           <div className="rating">

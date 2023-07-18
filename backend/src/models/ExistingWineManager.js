@@ -44,7 +44,7 @@ FROM  ${this.table} ew
     JOIN grape_variety gv ON gv.id = ew.id_grape_variety
     JOIN winery w ON w.id = ew.id_winery 
     JOIN existing_wine_has_appellation ewha ON ew.id = ewha.id_existing_wine
-    JOIN appellation ap ON ap.id = ewha.id_appellation WHERE ew.id = ?`,
+    JOIN appellation ap ON ap.id = ewha.id_appellation WHERE ew.id = ? AND ew.is_archived = 0`,
       [id]
     );
   }
@@ -75,7 +75,8 @@ FROM  ${this.table} ew
     JOIN grape_variety gv ON gv.id = ew.id_grape_variety
     JOIN winery w ON w.id = ew.id_winery
     JOIN existing_wine_has_appellation ewha ON ew.id = ewha.id_existing_wine
-    JOIN appellation ap ON ap.id = ewha.id_appellation;`);
+    JOIN appellation ap ON ap.id = ewha.id_appellation 
+    WHERE ew.is_archived = 0;`);
   }
 
   insert(existingWine) {
@@ -87,12 +88,12 @@ FROM  ${this.table} ew
       picture,
       description,
       name,
-      id_Wine_Region,
-      id_Grape_Variety,
-      id_Winery,
+      id_wine_region,
+      id_grape_variety,
+      id_winery,
     } = existingWine;
     return this.database.query(
-      `INSERT INTO ${this.table} (vintage, blend, color, alcohol_percentage, picture, description, name, id_Wine_Region, id_Grape_Variety, id_Winery) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO ${this.table} (vintage, blend, color, alcohol_percentage, picture, description, name, id_wine_region, id_grape_variety, id_winery) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         vintage,
         blend,
@@ -101,9 +102,9 @@ FROM  ${this.table} ew
         picture,
         description,
         name,
-        id_Wine_Region,
-        id_Grape_Variety,
-        id_Winery,
+        id_wine_region,
+        id_grape_variety,
+        id_winery,
       ]
     );
   }
@@ -117,12 +118,13 @@ FROM  ${this.table} ew
       picture,
       description,
       name,
-      id_Wine_Region,
-      id_Grape_Variety,
-      id_Winery,
+      id_wine_region,
+      id_grape_variety,
+      id_winery,
+      is_archived,
     } = existingWine;
     return this.database.query(
-      `UPDATE ${this.table} SET vintage = ?, blend = ?, color = ?, alcohol_percentage = ?, picture = ?, description = ?, name = ?, id_Wine_Region = ?, id_Grape_Variety = ?, id_Winery = ? WHERE id = ?`,
+      `UPDATE ${this.table} SET vintage = ?, blend = ?, color = ?, alcohol_percentage = ?, picture = ?, description = ?, name = ?, id_wine_region = ?, id_grape_variety = ?, id_winery = ?, is_archived = ? WHERE id = ?`,
       [
         vintage,
         blend,
@@ -131,9 +133,10 @@ FROM  ${this.table} ew
         picture,
         description,
         name,
-        id_Wine_Region,
-        id_Grape_Variety,
-        id_Winery,
+        id_wine_region,
+        id_grape_variety,
+        id_winery,
+        is_archived,
         id,
       ]
     );

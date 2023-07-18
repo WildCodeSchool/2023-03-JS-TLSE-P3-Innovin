@@ -28,11 +28,13 @@ ${this.table} whe
       w.place,
       w.datetime,
       whe.id_existing_wine,
-      ex.vintage
+      ex.vintage,
+      gv.name AS grape_variety
   FROM
   ${this.table} whe
       JOIN workshop w ON w.id = whe.id_workshop
       JOIN existing_wine ex ON ex.id = whe.id_existing_wine
+      JOIN grape_variety gv ON gv.id = ex.id_grape_variety
 WHERE
 id_workshop = ?`,
       [id_workshop]

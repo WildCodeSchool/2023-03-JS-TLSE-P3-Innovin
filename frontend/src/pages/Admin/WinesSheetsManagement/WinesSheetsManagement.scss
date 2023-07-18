@@ -6,7 +6,6 @@
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
-
   position: relative;
   gap: clamp(1rem, 8vh, 3rem);
 
@@ -25,6 +24,7 @@
 
       h1 {
         font-size: var(--fontSizeH2);
+        color: var(--primaryColor);
       }
       .searchBar {
         width: 100%;
@@ -44,7 +44,7 @@
         padding: 1rem;
         padding-left: calc(0.5em + 4px);
         gap: 1em;
-        background: var(--blackBgGradientSmooth);
+        background: var(--blackBgGradient);
         backdrop-filter: var(--bgBlur);
         border-radius: 5px;
         box-shadow: var(--shadow);
@@ -67,8 +67,10 @@
 
         .wineImg {
           width: 9rem;
+          padding-block: 1em;
           border-radius: 5px;
           background: var(--blackBgGradient);
+          box-shadow: 2px 5px 6px 2px rgba(18, 17, 11, 0.5);
           display: grid;
           place-items: center;
           i {
@@ -76,7 +78,7 @@
             font-size: 3em;
           }
           .bottleImg {
-            width: 100%;
+            width: 80%;
           }
         }
 
@@ -118,24 +120,29 @@
                   font-weight: 200;
                 }
               }
+              .buttons {
+                display: flex;
+                gap: 0.5em;
 
-              .infoBtn {
-                padding: 0.5em;
-                display: grid;
-                place-items: center;
-                border-radius: 50px;
-                background-color: rgba(209, 181, 103, 0.1);
-                border: 1px solid rgba(209, 181, 103, 0.1);
-                color: rgba(209, 181, 103, 0.5);
-                i {
+                .infoBtn,
+                .archiveBtn {
+                  padding: 0.4em;
                   display: grid;
                   place-items: center;
-                  font-size: 10px;
-                }
-                &:hover {
-                  color: var(--whiteGoldColor);
-                  cursor: pointer;
-                  background-color: var(--smoothGoldColor);
+                  border-radius: 50px;
+                  background-color: rgba(209, 181, 103, 0.1);
+                  border: 1px solid rgba(209, 181, 103, 0.1);
+                  color: rgba(209, 181, 103, 0.5);
+                  i {
+                    display: grid;
+                    place-items: center;
+                    font-size: 13px;
+                  }
+                  &:hover {
+                    color: var(--whiteGoldColor);
+                    cursor: pointer;
+                    background-color: var(--smoothGoldColor);
+                  }
                 }
               }
             }
@@ -187,6 +194,17 @@
       }
     }
   }
+  .modalBg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--blackBgGradientSmooth);
+    backdrop-filter: var(--bgBlur);
+    display: grid;
+    place-items: center;
+  }
 }
 
 @media screen and (min-width: 512px) {
@@ -223,10 +241,15 @@
           line-height: 1.8rem;
         }
       }
-      .website {
-        font-style: italic;
-        font-size: 0.9rem;
+      .linkContainer {
+        display: flex;
+        gap: 1rem;
         color: var(--primaryColor);
+        .website {
+          font-style: italic;
+          font-size: 0.9rem;
+          color: var(--primaryColor);
+        }
       }
     }
   }
@@ -244,6 +267,7 @@
       max-width: 40%;
       flex-direction: column;
       padding-bottom: 1.5rem;
+      gap: 1.4rem;
 
       .colorBanner {
         width: 40%;
@@ -290,6 +314,9 @@
 
 @media screen and (min-width: 1024px) {
   .winesManager {
+    background: url("../../../assets/Red_Wine_Colors/Grenat.png") no-repeat left
+        800px top 150px,
+      var(--blackBgGradient);
     .winesContent {
       padding-left: calc(370px + 2em);
       padding-right: 2em;

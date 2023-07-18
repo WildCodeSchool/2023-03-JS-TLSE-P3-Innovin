@@ -55,6 +55,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
       h1 {
         font-size: var(--fontSizeH2);
         line-height: 1.3em;
+        color: var(--primaryColor);
       }
       form {
         display: flex;
@@ -87,7 +88,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
               width: 100%;
               height: 22vh;
               font-family: var(--fontFamilyText);
-              font-size: var(--fontSizeText);
+              font-size: 1rem;
               font-weight: 300;
               color: var(--whiteGoldColor);
               background: none;
