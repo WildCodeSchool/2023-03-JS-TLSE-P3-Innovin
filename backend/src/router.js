@@ -57,10 +57,7 @@ router.get("/selectedwine/:id", SelectedWineControllers.read);
 router.post("/selectedwine", SelectedWineControllers.add);
 router.post("/tastingnote", TastingNoteControllers.add);
 router.get("/tastingnote", TastingNoteControllers.browse);
-router.get(
-  "/tastingnote/:iduser",
-  TastingNoteControllers.getTastingNoteByUserId
-);
+router.get("/tastingnote/:id", TastingNoteControllers.getTastingNoteByUserId);
 
 // ---------------------------------------- Private Routes ----------------------------------------------
 

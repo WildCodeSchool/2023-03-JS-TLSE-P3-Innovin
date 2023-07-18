@@ -2,24 +2,24 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CreationWorkshopContext from "../../contexts/CreationWorkshopContext";
-// import TastingNoteContext from "../../contexts/TastingNoteContext";
 import AuthContext from "../../contexts/AuthContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import "./BlendedWine.scss";
 
 function BlendedWine() {
   const CreationWorkshopValue = useContext(CreationWorkshopContext);
-  // const tastingNoteValue = useContext(TastingNoteContext);
-  const userToken = useContext(AuthContext);
+  const { userToken, AuthValue } = useContext(AuthContext);
   const { blendedWine, setBlendedWine } = CreationWorkshopValue;
-  // const { idUser } = tastingNoteValue;
+  const { user } = AuthValue;
   const navigate = useNavigate();
   const [isLoaded, setIsloaded] = useState(false);
 
   const getBlendedWine = () => {
     axios
       .get(
-        `${import.meta.env.VITE_BACKEND_URL}/newwinebyuser/1?idworkshop=2`, // ${idUser}?idworkshop=${idWorkshop}`
+        `${import.meta.env.VITE_BACKEND_URL}/newwinebyuser/${
+          user.id
+        }?idworkshop=1`,
         {
           headers: {
             Authorization: `Bearer ${userToken}`,
@@ -60,7 +60,20 @@ function BlendedWine() {
             </p>
           </div>
           <div className="BlendedWine_winecontent">
-            <p>{blendedWine[0].color}</p>
+            <p>Couleur du vin :{blendedWine[0].color}</p>
+            <p>
+              Dosages <br />
+              {blendedWine[0].vintage[0]} : {blendedWine[0].dosage[0]}
+              <br />
+              {blendedWine[0].vintage[1]} : {blendedWine[0].dosage[1]}
+              <br />
+              {blendedWine[0].vintage[2]} : {blendedWine[0].dosage[2]}
+              <br />
+            </p>
+            <p>Votre appréciation : {blendedWine[0].commentary_wine}</p>
+            <p>
+              Atelier du {blendedWine[0].datetime} à {blendedWine[0].place}{" "}
+            </p>
           </div>
           <ButtonPrimary onClick={handleNavigate}>Etape finale</ButtonPrimary>
         </div>
