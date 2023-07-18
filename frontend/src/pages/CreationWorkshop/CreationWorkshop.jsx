@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Sliders from "../../components/Sliders/Sliders";
 import "./CreationWorkshop.scss";
-import TastingNoteContext from "../../contexts/TastingNoteContext"; // Étape 1 : Import du contexte
+import TastingNoteContext from "../../contexts/TastingNoteContext"; 
 
 function CreationWorkshop() {
   const navigate = useNavigate();
-  const { tastingNote } = useContext(TastingNoteContext); // Étape 2 : Utilisation du hook useContext
+  const { tastingNote } = useContext(TastingNoteContext); 
 
   // -----------------------------------------handle functions for buttons--------------------------------------------------
 
