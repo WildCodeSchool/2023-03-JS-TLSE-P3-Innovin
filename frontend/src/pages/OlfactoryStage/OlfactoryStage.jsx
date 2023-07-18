@@ -46,8 +46,6 @@ export default function OlfactoryStage() {
     }));
   };
 
-  console.info(tastingNote);
-
   return (
     <div className="page-container">
       <TastingHeaderTitle />
