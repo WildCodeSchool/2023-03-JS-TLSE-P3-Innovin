@@ -20,6 +20,7 @@ function CreationWorkshop() {
     workshopSelectedWines,
     wineSelectedDosages,
     setWineSelectedDosages,
+    nextWorkshops,
   } = CreationWorkshopValue;
   const navigate = useNavigate();
 
@@ -27,9 +28,8 @@ function CreationWorkshop() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    setNewWine({ newWine: { color: "Rouge sang" } });
+    setNewWine({ newWine: { color: `${nextWorkshops[0].wine_type}` } });
   };
-
   const postNewWine = () => {
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/newwine`, newWine, {
