@@ -50,10 +50,7 @@ router.get("/newwinebyworkshop/:id", NewWineControllers.getNewWineByWorkshopId);
 router.get("/selectedwine/:id", SelectedWineControllers.add);
 router.post("/tastingnote", TastingNoteControllers.add);
 router.get("/tastingnote", TastingNoteControllers.browse);
-router.get(
-  "/tastingnote/:iduser",
-  TastingNoteControllers.getTastingNoteByUserId
-);
+router.get("/tastingnote/:id", TastingNoteControllers.getTastingNoteByUserId);
 
 router.get("/tastingnote/:id", TastingNoteControllers.browse);
 router.get(
