@@ -1,0 +1,114 @@
+.userModification {
+  background: var(--blackBgGradient);
+  min-height: 100vh;
+
+  .backButton {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.3em;
+    color: rgba(255, 251, 239, 0.3);
+    &:hover {
+      color: var(--secondaryColor);
+      cursor: pointer;
+    }
+  }
+
+  .globalModifContainer {
+    display: grid;
+    place-items: center;
+
+    .modifContent {
+      width: 100%;
+      max-width: 39rem;
+      padding: 2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4em;
+      h1 {
+        font-size: var(--fontSizeH2);
+        line-height: 1.3em;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3.2em;
+        width: 100%;
+        .name {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          gap: 2em;
+          .lastname,
+          .firstname {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            gap: 1em;
+            label {
+              input {
+                font-size: 1.2rem;
+                width: 100%;
+              }
+            }
+          }
+        }
+
+        .email {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 1em;
+
+          #email {
+            font-size: 1.2rem;
+            width: 100%;
+          }
+        }
+
+        .credentials {
+          display: flex;
+          width: 100%;
+          gap: 3em;
+          font-size: 1.5rem;
+          color: var(--secondaryColor);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .userModification {
+    .backButton {
+      font-size: 2em;
+    }
+    .globalModifContainer {
+      padding-left: calc(370px);
+
+      .modifContent {
+        width: 60%;
+        h1 {
+          text-align: center;
+        }
+        form {
+          gap: 3em;
+          .name {
+            #lastname,
+            #firstname {
+              font-size: 1.2rem;
+            }
+          }
+
+          #email {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}

@@ -8,10 +8,10 @@
   background: var(--blackBgGradient);
 }
 
-.navBar h1 {
+h1 {
   color: var(--primaryColor);
   font-family: var(--fontFamilyTitle);
-  font-size: 1.2rem;
+  font-size: 1rem;
   align-items: center;
   display: flex;
 }

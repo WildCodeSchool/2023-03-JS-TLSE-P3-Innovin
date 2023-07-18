@@ -38,6 +38,7 @@ class UserManager extends AbstractManager {
 
   update(user, id) {
     const {
+      admin_credentials,
       firstname,
       lastname,
       birth_date,
@@ -47,8 +48,9 @@ class UserManager extends AbstractManager {
       preference_description,
     } = user;
     return this.database.query(
-      `update ${this.table} set firstname = ?, lastname = ?, birth_date = ?, email = ?, hashed_password = ?, wine_color = ?, preference_description = ? where id = ?`,
+      `update ${this.table} set admin_credentials = ?, firstname = ?, lastname = ?, birth_date = ?, email = ?, hashed_password = ?, wine_color = ?, preference_description = ? where id = ?`,
       [
+        admin_credentials,
         firstname,
         lastname,
         birth_date,

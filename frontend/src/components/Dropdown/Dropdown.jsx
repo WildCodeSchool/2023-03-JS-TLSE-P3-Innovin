@@ -17,15 +17,16 @@ function Dropdown({ id, options, name, object, setObject, inputValue }) {
 
   return (
     <div className="dropdown">
-      <button
+      <input
         className={`dropdownBtn ${selected ? "selected" : "grey"} `}
-        type="button"
         onClick={() => setIsActive(!isActive)}
+        onChange={(e) => setSelectedOption(e.target.value)}
         value={selectedOption}
-      >
-        {selectedOption}
-        <i className="fi fi-br-angle-down" />
-      </button>
+        readOnly
+      />
+
+      <i className="fi fi-br-angle-down" />
+
       <div className="dropdownContent">
         {isActive &&
           options.map((option) => (

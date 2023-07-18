@@ -1,9 +1,9 @@
-.workshopsContent {
+.usersManagement {
   width: 100%;
   background: var(--blackBgGradient);
-  position: relative;
   min-height: 100vh;
   min-height: 100dvh;
+  position: relative;
   color: var(--whiteGoldColor);
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@
     text-align: left;
   }
 
-  .tableHeader {
+  .userTableHeader {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,10 +35,6 @@
       justify-content: space-between;
       gap: 1.6em;
 
-      .addButton {
-        padding: 0 0.8em;
-        margin-right: 0.5rem;
-      }
       .searchBar {
         width: 50%;
         &:hover,
@@ -76,12 +72,10 @@
       visibility: visible;
     }
 
-    .workshopsTable {
+    .usersTable {
       width: 100%;
 
       thead {
-        border-bottom: 1px solid rgba(209, 181, 103, 0.1);
-
         tr {
           width: 100%;
           th {
@@ -127,7 +121,7 @@
               border-radius: 50px;
               background-color: var(--redWineColor);
             }
-            .commentary {
+            .prefDesc {
               display: -webkit-box;
               -webkit-box-orient: vertical;
               -webkit-line-clamp: 2;
@@ -176,8 +170,7 @@
         }
       }
     }
-
-    .workshopInfoModal {
+    .userInfoModal {
       position: fixed;
       width: 100%;
       height: 100vh;
@@ -239,10 +232,10 @@
         align-items: center;
         width: 100%;
         height: auto;
-        gap: 1.6em;
+        gap: 3.4em;
         font-size: var(--fontSizeText);
 
-        .workshopHeader {
+        .userHeader {
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -257,23 +250,25 @@
           }
         }
 
-        .workshopInfo {
+        .userInfo {
           display: flex;
           flex-direction: column;
-          gap: 1.5em;
+          gap: 2em;
+
+          & > div {
+            display: flex;
+            gap: 1em;
+          }
 
           div > p:first-of-type {
             font-weight: 600;
             color: var(--secondaryColor);
-            margin-bottom: 0.5em;
           }
           p {
             font-family: var(--fontFamilyText);
             line-height: 1.2em;
           }
-          .infoType {
-            display: flex;
-            gap: 1em;
+          .wineColor {
             .redWine {
               width: 1.2rem;
               height: 1.2rem;
@@ -287,58 +282,10 @@
               background-color: #fee347;
             }
           }
-          .attendees {
+          .prefText {
             display: flex;
             flex-direction: column;
-            width: 100%;
-            gap: 1em;
-            .userCard {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              width: 100%;
-              gap: 1em;
-              min-height: 5em;
-              padding: 1em 0;
-              padding-right: 1em;
-              border-radius: 5px;
-              background-color: var(--grayBgColor);
-
-              .banner {
-                width: 1rem;
-                height: 6.8rem;
-                border-radius: 0 50px 50px 0;
-                &.red {
-                  background-color: var(--redWineColor);
-                }
-                &.white {
-                  background-color: #fee347;
-                }
-              }
-              .userInfo {
-                display: flex;
-                flex-direction: column;
-                gap: 1em;
-                width: 100%;
-                .nameInfo {
-                  display: flex;
-                  flex-direction: column;
-                }
-                .email {
-                  color: var(--smoothWhiteColor);
-                  font-weight: 200;
-                }
-                .pref {
-                  font-size: 12px;
-                  font-style: italic;
-                }
-              }
-
-              p {
-                color: var(--whiteGoldColor);
-                font-weight: 500;
-              }
-            }
+            gap: 0.5em;
           }
         }
       }
@@ -375,22 +322,20 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .workshopsContent {
+  .usersManagement {
     padding-left: 370px;
 
-    .tableHeader {
+    .userTableHeader {
       width: calc(90vw - 370px);
-      flex-direction: row;
       justify-content: space-between;
-      align-items: end;
+      align-items: center;
       margin-top: 4em;
       h1 {
         font-size: var(--fontSizeH2);
       }
       .searchOrAdd {
-        justify-content: flex-end;
         .searchBar {
-          width: 25%;
+          width: 35%;
           &:hover,
           &:focus-within {
             width: 50%;
@@ -404,7 +349,7 @@
       width: calc(90vw - 370px);
       height: auto;
 
-      .workshopInfoModal {
+      .userInfoModal {
         position: fixed;
         width: 50%;
         height: 80vh;
@@ -419,10 +364,6 @@
         p {
           font-weight: 300;
           font-size: 1.2rem;
-        }
-
-        .modalContent .workshopInfo .attendees .userCard .userInfo .pref {
-          font-size: 16px;
         }
       }
     }

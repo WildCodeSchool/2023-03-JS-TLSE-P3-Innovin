@@ -13,6 +13,12 @@ class NewWineManager extends AbstractManager {
     ]);
   }
 
+  findNewWineCreated(idNewWine) {
+    return this.database.query(`SELECT id FROM ${this.table} WHERE id = ?`, [
+      idNewWine,
+    ]);
+  }
+
   findNewWineIdByWorskhop(idWorkshop) {
     return this.database.query(
       `SELECT nw.id FROM new_wine nw 

@@ -3,25 +3,37 @@
   border: none;
   font-size: var(--fontSizeText);
   position: relative;
-  &:focus,
-  &:active {
-    outline: none;
-  }
+
   .dropdownBtn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    position: relative;
     width: 100%;
     background: transparent;
     border: none;
-    font-size: var(--fontSizeText);
     border-bottom: 1px solid var(--smoothWhiteColor);
-    padding-block: 0.5rem;
+    font-size: var(--fontSizeText);
+    padding-block: 0.6em;
+    cursor: pointer;
     &.grey {
       color: var(--smoothWhiteColor);
     }
     &.selected {
-      color: var(--secondaryColor);
+      color: var(--whiteGoldColor);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1em;
+    display: grid;
+    place-content: center;
+    font-size: 12px;
+    &:hover {
+      color: var(--redWineColor);
     }
   }
 
@@ -44,6 +56,17 @@
       &:last-of-type {
         border-radius: 0 0 5px 5px;
         border: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dropdown {
+    .dropdownBtn {
+      font-size: 1.2rem;
+      i {
+        font-size: 1rem;
       }
     }
   }

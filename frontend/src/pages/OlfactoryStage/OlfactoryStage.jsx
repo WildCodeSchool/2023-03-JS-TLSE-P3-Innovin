@@ -13,7 +13,7 @@ import TastingNoteContext from "../../contexts/TastingNoteContext";
 
 export default function OlfactoryStage() {
   const { olfactiveData, visualDataKeys } = useContext(TastingContext);
-  const { TastingNote } = useContext(TastingNoteContext);
+  const { setTastingNote } = useContext(TastingNoteContext);
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/mouth/stage1");
@@ -38,9 +38,13 @@ export default function OlfactoryStage() {
     const formJson = Object.fromEntries(formData.entries());
     formJson.aromas = selectedAromas;
     console.info(formJson);
-  };
 
-  console.info(TastingNote);
+    // Mettre à jour le contexte TastingNote
+    setTastingNote((prevTastingNote) => ({
+      ...prevTastingNote,
+      idOlfactiveAromas: selectedAromas,
+    }));
+  };
 
   return (
     <div className="page-container">
@@ -89,7 +93,7 @@ export default function OlfactoryStage() {
         tabIndex={0}
         iconUrl="/path/to/icon.png"
         ids={[1, 2, 3, 4, 5, 6, 7, 8]}
-        id="idAromas"
+        id="idOlfactiveAromas"
         onAromaClick={handleAromaClick}
       />
 

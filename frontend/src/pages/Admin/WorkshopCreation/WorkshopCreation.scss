@@ -1,31 +1,7 @@
-.date,
-.time,
-.place,
-.commentArea {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1em;
-  width: 100%;
-}
-.textLabel {
-  font-size: 1.5rem;
-  color: var(--secondaryColor);
-  width: 100%;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-}
-
-input[type="time"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-}
-
-.wsModification {
+.wsCreation {
   background: var(--blackBgGradient);
   min-height: 100vh;
-
+  min-height: 100dvh;
   .backButton {
     display: grid;
     place-items: center;
@@ -39,15 +15,13 @@ input[type="time"]::-webkit-calendar-picker-indicator {
       cursor: pointer;
     }
   }
-
-  .globalModifContainer {
+  .creationContainer {
     display: grid;
     place-items: center;
-
-    .modifContent {
+    .creationContent {
       width: 100%;
       max-width: 39rem;
-      padding: 2em;
+      padding: 3em 2em;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -62,16 +36,16 @@ input[type="time"]::-webkit-calendar-picker-indicator {
         align-items: center;
         gap: 2.4em;
         width: 100%;
+
         .dateTime {
           display: flex;
           width: 100%;
           justify-content: space-between;
-          gap: 2em;
+          gap: 3em;
           input {
             width: 100%;
           }
         }
-
         #place {
           width: 100%;
         }
@@ -123,14 +97,14 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 @media screen and (min-width: 1024px) {
-  .wsModification {
+  .wsCreation {
     .backButton {
       font-size: 2em;
     }
-    .globalModifContainer {
+    .creationContainer {
       padding-left: calc(370px);
 
-      .modifContent {
+      .creationContent {
         width: 60%;
         h1 {
           text-align: center;
@@ -149,19 +123,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
           .wineType .dropdown button {
             font-size: 1.2rem;
-          }
-          .commentArea {
-            width: 100%;
-            label {
-              width: 100%;
-              #commentary {
-                width: 100%;
-                height: 22vh;
-                font-family: var(--fontFamilyText);
-                font-size: 1em;
-                padding: 1em;
-              }
-            }
           }
         }
       }

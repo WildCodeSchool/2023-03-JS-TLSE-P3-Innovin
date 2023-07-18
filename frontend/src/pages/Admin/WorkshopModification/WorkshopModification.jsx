@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import AdminDashboard from "../../../components/Admin_Dashboard/Admin_Dashboard";
 import "./WorkshopModification.scss";
@@ -11,32 +12,13 @@ import Dropdown from "../../../components/Dropdown/Dropdown";
 import ButtonPrimary from "../../../components/ButtonPrimary";
 
 function WorkshopModification() {
-  const { idToUpdate, dateToPost } = useContext(AdminContext);
+  const { idToUpdate, dateToPost, handleDateChange, handleTimeChange } =
+    useContext(AdminContext);
   const { userToken } = useContext(AuthContext);
   const [workshopToUpdate, setWorkshopToUpdate] = useState({});
+  const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
 
-  const handleDateChange = (event) => {
-    const selectedDate = new Date(event.target.value);
-    const updatedDate = new Date(workshopToUpdate.datetime);
-    updatedDate.setFullYear(selectedDate.getFullYear());
-    updatedDate.setMonth(selectedDate.getMonth());
-    updatedDate.setDate(selectedDate.getDate());
-    setWorkshopToUpdate({
-      ...workshopToUpdate,
-      datetime: updatedDate.toISOString(),
-    });
-  };
-
-  const handleTimeChange = (event) => {
-    const [hours, minutes] = event.target.value.split(":");
-    const updatedDate = new Date(workshopToUpdate.datetime);
-    updatedDate.setUTCHours(hours);
-    updatedDate.setUTCMinutes(minutes);
-    setWorkshopToUpdate({
-      ...workshopToUpdate,
-      datetime: updatedDate.toISOString(),
-    });
-  };
   const handlePlaceChange = (event) => {
     setWorkshopToUpdate({
       ...workshopToUpdate,
@@ -60,6 +42,7 @@ function WorkshopModification() {
       })
       .then((response) => {
         setWorkshopToUpdate(response.data);
+        setIsLoaded(true);
       })
       .catch((err) => {
         console.error(err);
@@ -87,9 +70,16 @@ function WorkshopModification() {
   };
 
   return (
-    workshopToUpdate &&
+    isLoaded &&
     userToken && (
       <div className="wsModification">
+        <button
+          type="button"
+          onClick={() => navigate("/admin/workshops")}
+          className="backButton"
+        >
+          <i className="fi fi-rr-undo" />
+        </button>
         <AdminDashboard />
         <div className="globalModifContainer">
           <div className="modifContent">
@@ -110,7 +100,13 @@ function WorkshopModification() {
                           : ""
                       }
                       autoComplete="date"
-                      onChange={handleDateChange}
+                      onChange={(e) =>
+                        handleDateChange(
+                          e,
+                          workshopToUpdate,
+                          setWorkshopToUpdate
+                        )
+                      }
                     />
                   </label>
                 </div>
@@ -127,7 +123,13 @@ function WorkshopModification() {
                           : ""
                       }
                       autoComplete="time"
-                      onChange={handleTimeChange}
+                      onChange={(e) =>
+                        handleTimeChange(
+                          e,
+                          workshopToUpdate,
+                          setWorkshopToUpdate
+                        )
+                      }
                     />
                   </label>
                 </div>
