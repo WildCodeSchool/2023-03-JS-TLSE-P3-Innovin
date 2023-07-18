@@ -39,7 +39,7 @@ export default function OlfactoryStage() {
     formJson.aromas = selectedAromas;
     console.info(formJson);
 
-    // Mettre à jour le contexte TastingNote
+    
     setTastingNote((prevTastingNote) => ({
       ...prevTastingNote,
       idOlfactiveAromas: selectedAromas,
