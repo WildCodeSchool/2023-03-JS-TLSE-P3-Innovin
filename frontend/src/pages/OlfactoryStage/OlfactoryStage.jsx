@@ -13,7 +13,7 @@ import TastingNoteContext from "../../contexts/TastingNoteContext";
 
 export default function OlfactoryStage() {
   const { olfactiveData, visualDataKeys } = useContext(TastingContext);
-  const { tastingNote, setTastingNote } = useContext(TastingNoteContext);
+  const { setTastingNote } = useContext(TastingNoteContext);
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/mouth/stage1");
