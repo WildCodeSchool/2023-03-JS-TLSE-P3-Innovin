@@ -113,7 +113,14 @@ function WinesManager() {
                         <br />
                         {wine.grape_variety_description}
                       </p>
-                      <p className="website">{wine.website}</p>
+                      <a
+                        href={wine.website}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="website"
+                      >
+                        Découvrir le domaine
+                      </a>
                     </div>
                   </div>
                 );
