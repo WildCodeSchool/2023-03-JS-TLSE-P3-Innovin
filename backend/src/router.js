@@ -40,6 +40,10 @@ router.get("/grapevariety", GrapeVarietyControllers.browse);
 router.get("/grapevariety/:id", GrapeVarietyControllers.read);
 router.get("/existingwine", ExistingWineControllers.browse);
 router.get("/existingwine/:id", ExistingWineControllers.read);
+router.get(
+  "/existingwinebytastingnote/:id",
+  ExistingWineControllers.getOneExistingWineByTastingNoteId
+);
 router.get("/appellation", AppellationControllers.browse);
 router.get("/appellation/:id", AppellationControllers.read);
 router.get("/wineregion", WineRegionControllers.browse);
@@ -47,13 +51,13 @@ router.get("/wineregion/:id", WineRegionControllers.read);
 router.get("/newwine", NewWineControllers.browse);
 router.get("/newwinebyuser/:id", NewWineControllers.getNewWineByUserId);
 router.get("/newwinebyworkshop/:id", NewWineControllers.getNewWineByWorkshopId);
-router.get("/selectedwine/:id", SelectedWineControllers.add);
+router.get("/newwinecreated", NewWineControllers.getNewWineCreated);
+router.post("/newwine", NewWineControllers.addNewWine);
+router.get("/selectedwine/:id", SelectedWineControllers.read);
+router.post("/selectedwine", SelectedWineControllers.add);
 router.post("/tastingnote", TastingNoteControllers.add);
 router.get("/tastingnote", TastingNoteControllers.browse);
-router.get(
-  "/tastingnote/:iduser",
-  TastingNoteControllers.getTastingNoteByUserId
-);
+router.get("/tastingnote/:id", TastingNoteControllers.getTastingNoteByUserId);
 
 // ---------------------------------------- Private Routes ----------------------------------------------
 
