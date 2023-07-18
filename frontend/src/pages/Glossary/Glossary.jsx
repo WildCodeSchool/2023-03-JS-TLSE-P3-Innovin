@@ -1,3 +1,5 @@
+// LexiqueVin.js
+
 import React, { useState, useRef, useEffect } from "react";
 import lexique from "./lexique-vin";
 import "./Glossary.css";
@@ -41,7 +43,27 @@ export default function LexiqueVin() {
 
   const handleSearchItemClick = (definition) => {
     scrollToLetter(definition.mot.charAt(0).toUpperCase());
-    setSearchTerm(""); // Clear the search term after selecting a search result
+    setSearchTerm("");
+    // Remove the "selected" class from all definitions
+    const allDefinitions = document.querySelectorAll(".definition-item");
+    allDefinitions.forEach((def) => {
+      def.classList.remove("selected");
+    });
+    // Add the "selected" class to the chosen definition for highlighting
+    const selectedDefinition = document.getElementById(
+      definition.mot.toLowerCase()
+    );
+    if (selectedDefinition) {
+      selectedDefinition.classList.add("selected");
+      // Scroll to the centered position of the highlighted definition
+      const glossaryContent = document.querySelector(".glossary-content");
+      if (glossaryContent && definitionRef.current) {
+        const glossaryTop = glossaryContent.getBoundingClientRect().top;
+        const definitionTop = definitionRef.current.getBoundingClientRect().top;
+        const offset = definitionTop - glossaryTop;
+        glossaryContent.scrollTop += offset;
+      }
+    }
   };
 
   const searchResults = searchTerm
@@ -131,6 +153,11 @@ export default function LexiqueVin() {
                       ? definitionRef
                       : null
                   }
+                  className={`definition-item ${
+                    item.mot.toLowerCase() === searchTerm.toLowerCase()
+                      ? "selected"
+                      : ""
+                  }`}
                 >
                   <h3>{item.mot}</h3>
                   <p>{item.definition}</p>

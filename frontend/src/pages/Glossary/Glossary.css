@@ -1,7 +1,6 @@
 .glossary-content {
   align-items: center;
-  background: no-repeat left url("../../assets/Red_Wine_Colors/Framboise.png"),
-    var(--blackBgGradient);
+  background: var(--blackBgGradient);
   border: 1px none;
   display: flex;
   flex-direction: column;
@@ -74,9 +73,11 @@ input.search-input {
   margin-bottom: 0.5rem;
 }
 
-.search.result {
-  display: flex;
-  justify-content: center;
+.definition-item.selected {
+  border: 4px solid var(--redWineColor);
+  width: 100vw;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 .glossary-content h2 {
@@ -89,6 +90,10 @@ input.search-input {
   height: 40px;
 
   margin-top: 2rem;
+}
+
+.selected {
+  background-color: var(---redWineColor);
 }
 
 .alphabet {
