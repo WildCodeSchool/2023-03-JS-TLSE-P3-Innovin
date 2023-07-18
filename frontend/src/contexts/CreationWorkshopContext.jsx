@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
-import { createContext, useMemo, useEffect, useState } from "react";
+import { createContext, useContext, useMemo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import TastingNoteContext from "./TastingNoteContext";
 
 const CreationWorkshopContext = createContext();
 export default CreationWorkshopContext;
@@ -16,7 +17,8 @@ class SelectedWine {
 }
 
 export function CreationWorkshopProvider({ children }) {
-  const [workshopData, setWorkshopData] = useState(null);
+  const { tastingNote } = useContext(TastingNoteContext);
+  const [nextWorkshops, setNextWorkshops] = useState([]);
   const [newWine, setNewWine] = useState(null);
   const [newWineData, setNewWineData] = useState([{ id: null }]);
   const [blendedWine, setBlendedWine] = useState(null);
@@ -26,8 +28,8 @@ export function CreationWorkshopProvider({ children }) {
   const [selectedWines, setSelectedWines] = useState([]);
   const [workshopSelectedWines, setWorkshopSelectedWines] = useState([]);
   const [maxSelected, setMaxSelected] = useState(false);
-  const wineSelectedCounter = 3;
-  const selectedWinesIds = [1, 4, 3];
+  const [wineSelectedCounter, setWineSelectedCounter] = useState(0);
+  const { selectedWinesIds } = tastingNote;
   const [wineSelectedDosages, setWineSelectedDosages] = useState(
     Array(selectedWinesIds.length).fill(0)
   );
@@ -64,8 +66,8 @@ export function CreationWorkshopProvider({ children }) {
     return {
       selectedWines,
       setSelectedWines,
-      setWorkshopData,
-      workshopData,
+      nextWorkshops,
+      setNextWorkshops,
       newWine,
       setNewWine,
       newWineData,
@@ -78,13 +80,14 @@ export function CreationWorkshopProvider({ children }) {
       setWineSelectedDosages,
       wineSelectedDosages,
       selectedWinesIds,
-      wineSelectedCounter,
       setMaxSelected,
       maxSelected,
+      wineSelectedCounter,
+      setWineSelectedCounter,
     };
   }, [
     selectedWines,
-    workshopData,
+    nextWorkshops,
     newWine,
     newWineData,
     blendedWine,

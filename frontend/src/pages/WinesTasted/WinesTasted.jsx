@@ -2,27 +2,32 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import TastingNoteContext from "../../contexts/TastingNoteContext";
+import CreationWorkshopContext from "../../contexts/CreationWorkshopContext";
 import Card from "./Card";
 import "./WinesTasted.css";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
 function WinesTasted() {
   // const for context
+  const CreationWorkshopValue = useContext(CreationWorkshopContext);
   const { userToken, tastingNote, setSelectedWinesIds } =
     useContext(TastingNoteContext);
-  const { idUser } = tastingNote;
+  const {
+    wineSelectedCounter,
+    setWineSelectedCounter,
+    nextWorkshops,
+    setNextWorkshops,
+    setMaxSelected,
+    maxSelected,
+  } = CreationWorkshopValue;
 
   // const for fetch
   const [wines, setWines] = useState([]);
-  const [nextWorkshops, setNextWorkshops] = useState([]);
   const [existingWineWorkshops, setExistingWineWorkshops] = useState([]);
-
-  // const to stock workshop id
-  const firstWorkshopId = nextWorkshops.length > 0 ? nextWorkshops[0].id : null;
 
   // fetch to get tasting note of dynamic user and workshop
   useEffect(() => {
-    const apiUrl = `http://localhost:5000/tastingnote/${idUser}?idworkshop=${firstWorkshopId}`;
+    const apiUrl = `http://localhost:5000/tastingnote/`;
     //
     axios
       .get(apiUrl, {
@@ -74,15 +79,18 @@ function WinesTasted() {
   }, [userToken]);
 
   // Selection wine for TastingNote max 3
-  const handleWineSelection = (wineNumber, wineId) => {
+  const handleWineSelection = (wineId) => {
     const currentSelectedWinesIds = tastingNote.selectedWinesIds;
 
     if (currentSelectedWinesIds.includes(wineId)) {
       setSelectedWinesIds(
         currentSelectedWinesIds.filter((id) => id !== wineId)
       );
-    } else if (currentSelectedWinesIds.length < 3) {
+    } else if (currentSelectedWinesIds.length < 3 && wineSelectedCounter < 4) {
       setSelectedWinesIds([...currentSelectedWinesIds, wineId]);
+      setWineSelectedCounter(wineSelectedCounter + 1);
+    } else {
+      setMaxSelected(!maxSelected);
     }
   };
 
@@ -99,7 +107,7 @@ function WinesTasted() {
           .filter((wine) =>
             existingWineWorkshops.some(
               (workshop) =>
-                workshop.id_workshop === firstWorkshopId &&
+                workshop.id_workshop === nextWorkshops[0].id &&
                 workshop.id_existing_wine === wine.id
             )
           )
