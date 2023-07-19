@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CreationWorkshopContext from "../../contexts/CreationWorkshopContext";
@@ -12,38 +12,17 @@ function CreationWorkshop() {
   const userToken = useContext(AuthContext);
   const {
     selectedWinesIds,
-    setNewWineData,
-    newWine,
-    setNewWine,
+    setNewWineId,
     existingWineByTastingNote,
     setExistingWineByTastingNote,
     workshopSelectedWines,
     wineSelectedDosages,
     setWineSelectedDosages,
-    nextWorkshops,
   } = CreationWorkshopValue;
   const navigate = useNavigate();
 
-  const [isLoaded, setIsloaded] = useState(false);
+  // const [isLoaded, setIsloaded] = useState(false);
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    setNewWine({ newWine: { color: `${nextWorkshops[0].wine_type}` } });
-  };
-  const postNewWine = () => {
-    axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/newwine`, newWine, {
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      })
-      .then((res) => {
-        console.info(res);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
   const getIdNewWine = () => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/newwinecreated`, {
@@ -52,7 +31,7 @@ function CreationWorkshop() {
         },
       })
       .then((res) => {
-        setNewWineData(res.data);
+        setNewWineId(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -60,10 +39,8 @@ function CreationWorkshop() {
   };
 
   useEffect(() => {
-    postNewWine();
     getIdNewWine();
-  }, [newWine]);
-
+  }, []);
   const getExistingWineByTastingNoteId = () => {
     Promise.all(
       selectedWinesIds.map((tastingNoteId) =>
@@ -82,7 +59,7 @@ function CreationWorkshop() {
       .then((responses) => {
         const existingWine = responses.map((res) => res.data);
         setExistingWineByTastingNote(existingWine);
-        setIsloaded(true);
+        // setIsloaded(true);
       })
       .catch((err) => {
         console.error(err);
@@ -120,37 +97,30 @@ function CreationWorkshop() {
   // -------------------------------------------return the component----------------------------------------------------
 
   return (
-    isLoaded && (
-      <div className="workshop_container">
-        <div className="workshop_Content">
-          <div className="intro">
-            <h3 className="subtitle">Assemblez votre propre vin</h3>
-            <p>
-              Assemblez votre vin à l'aide de vos cépages préférés. Utilisez les
-              sliders ci-dessous pour inscrire vos dosages.
-              <br />{" "}
-            </p>
-          </div>
-          <div className="workshop_Sliderbox">
-            <p>Quelles quantités avez-vous utilisé ?</p>
-            <Sliders
-              workshopSelectedWines={workshopSelectedWines}
-              existingWineByTastingNote={existingWineByTastingNote}
-              wineSelectedDosages={wineSelectedDosages}
-              setWineSelectedDosages={setWineSelectedDosages}
-            />
-          </div>
-          <div>
-            <button type="button" onClick={handleClick}>
-              POSTER
-            </button>
-          </div>
-          <ButtonPrimary onClick={handleNavigateAndpostSelectedWines}>
-            Etape suivante
-          </ButtonPrimary>
+    <div className="workshop_container">
+      <div className="workshop_Content">
+        <div className="intro">
+          <h3 className="subtitle">Assemblez votre propre vin</h3>
+          <p>
+            Assemblez votre vin à l'aide de vos cépages préférés. Utilisez les
+            sliders ci-dessous pour inscrire vos dosages.
+            <br />{" "}
+          </p>
         </div>
+        <div className="workshop_Sliderbox">
+          <p>Quelles quantités avez-vous utilisé ?</p>
+          <Sliders
+            workshopSelectedWines={workshopSelectedWines}
+            existingWineByTastingNote={existingWineByTastingNote}
+            wineSelectedDosages={wineSelectedDosages}
+            setWineSelectedDosages={setWineSelectedDosages}
+          />
+        </div>
+        <ButtonPrimary onClick={handleNavigateAndpostSelectedWines}>
+          Etape suivante
+        </ButtonPrimary>
       </div>
-    )
+    </div>
   );
 }
 
