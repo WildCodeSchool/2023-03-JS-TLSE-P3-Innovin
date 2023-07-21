@@ -1,5 +1,3 @@
-// LexiqueVin.js
-
 import React, { useState, useRef, useEffect } from "react";
 import lexique from "./lexique-vin";
 import "./Glossary.css";
@@ -9,6 +7,7 @@ import logo from "../../assets/Logo_W_Circles.svg";
 export default function LexiqueVin() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showScrollButton, setShowScrollButton] = useState(false);
+
   const definitionRef = useRef(null);
 
   const groupByLetter = (definitions) => {
@@ -44,18 +43,17 @@ export default function LexiqueVin() {
   const handleSearchItemClick = (definition) => {
     scrollToLetter(definition.mot.charAt(0).toUpperCase());
     setSearchTerm("");
-    // Remove the "selected" class from all definitions
     const allDefinitions = document.querySelectorAll(".definition-item");
     allDefinitions.forEach((def) => {
       def.classList.remove("selected");
     });
-    // Add the "selected" class to the chosen definition for highlighting
+    // hihglight  the definition
     const selectedDefinition = document.getElementById(
       definition.mot.toLowerCase()
     );
     if (selectedDefinition) {
       selectedDefinition.classList.add("selected");
-      // Scroll to the centered position of the highlighted definition
+      // Scroll to defintion
       const glossaryContent = document.querySelector(".glossary-content");
       if (glossaryContent && definitionRef.current) {
         const glossaryTop = glossaryContent.getBoundingClientRect().top;
@@ -123,7 +121,9 @@ export default function LexiqueVin() {
             {searchResults.length > 0 && (
               <ul className="search-results">
                 {searchResults.slice(0, 4).map((definition) => (
-                  <li
+                  <button
+                    className="button-search"
+                    type="button"
                     key={definition.id}
                     onClick={() => handleSearchItemClick(definition)}
                     onKeyDown={(event) => {
@@ -131,12 +131,9 @@ export default function LexiqueVin() {
                         handleSearchItemClick(definition);
                       }
                     }}
-                    tabIndex="0"
-                    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-                    role="button"
                   >
                     {definition.mot}
-                  </li>
+                  </button>
                 ))}
               </ul>
             )}

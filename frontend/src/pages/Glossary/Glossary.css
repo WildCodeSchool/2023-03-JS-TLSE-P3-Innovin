@@ -33,7 +33,7 @@ content {
   width: 35%;
 }
 
-.search-bar li {
+.button-search {
   color: white;
   font-family: var(--fontFamilyText);
   background: var(--blackBgGradient);
