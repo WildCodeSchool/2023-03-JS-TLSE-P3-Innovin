@@ -40,6 +40,7 @@ export default function LexiqueVin() {
     setSearchTerm(event.target.value);
   };
 
+  // alphabet scroll
   const handleSearchItemClick = (definition) => {
     scrollToLetter(definition.mot.charAt(0).toUpperCase());
     setSearchTerm("");
@@ -64,11 +65,14 @@ export default function LexiqueVin() {
     }
   };
 
+  // lowercase authorisation in searchbar
   const searchResults = searchTerm
     ? lexique.filter((item) =>
         item.mot.toLowerCase().includes(searchTerm.toLowerCase())
       )
     : [];
+
+  // Scroll top button
 
   useEffect(() => {
     const handleScroll = () => {

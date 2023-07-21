@@ -19,8 +19,7 @@ class SelectedWine {
 export function CreationWorkshopProvider({ children }) {
   const { tastingNote } = useContext(TastingNoteContext);
   const [nextWorkshops, setNextWorkshops] = useState([]);
-  const [newWine, setNewWine] = useState(null);
-  const [newWineData, setNewWineData] = useState([{ id: null }]);
+  const [newWineId, setNewWineId] = useState([{ id: null }]);
   const [blendedWine, setBlendedWine] = useState(null);
   const [existingWineByTastingNote, setExistingWineByTastingNote] = useState(
     []
@@ -41,16 +40,19 @@ export function CreationWorkshopProvider({ children }) {
       wineSelectedDosages &&
       selectedWinesIds &&
       wineSelectedDosages.length === wineSelectedCounter &&
-      selectedWinesIds.length === wineSelectedCounter
+      selectedWinesIds.length === wineSelectedCounter &&
+      newWineId[0] &&
+      newWineId[0].id !== null
     ) {
       for (let i = 0; i < wineSelectedCounter; i += 1) {
         const dosage = wineSelectedDosages[i];
-        const id_new_wine = newWineData[0].id + 1;
+        const id_new_wine = newWineId[0].id + 1;
         const id_tasting_note = selectedWinesIds[i];
         const newObj = new SelectedWine(dosage, id_new_wine, id_tasting_note);
         selectedWinesArray.push(newObj);
       }
       setSelectedWines(selectedWinesArray);
+      setWorkshopSelectedWines(selectedWinesArray);
       return selectedWinesArray;
     }
     console.info("Données incomplètes");
@@ -58,9 +60,8 @@ export function CreationWorkshopProvider({ children }) {
   };
 
   useEffect(() => {
-    const selectedWinesResult = handleFillSelectedWines();
-    setWorkshopSelectedWines(selectedWinesResult); // Mettez à jour la variable d'état
-  }, [wineSelectedDosages, newWineData]);
+    handleFillSelectedWines();
+  }, [selectedWinesIds, newWineId]);
 
   const CreationWorkshopValue = useMemo(() => {
     return {
@@ -68,10 +69,8 @@ export function CreationWorkshopProvider({ children }) {
       setSelectedWines,
       nextWorkshops,
       setNextWorkshops,
-      newWine,
-      setNewWine,
-      newWineData,
-      setNewWineData,
+      newWineId,
+      setNewWineId,
       blendedWine,
       setBlendedWine,
       existingWineByTastingNote,
@@ -88,8 +87,7 @@ export function CreationWorkshopProvider({ children }) {
   }, [
     selectedWines,
     nextWorkshops,
-    newWine,
-    newWineData,
+    newWineId,
     blendedWine,
     workshopSelectedWines,
     existingWineByTastingNote,
