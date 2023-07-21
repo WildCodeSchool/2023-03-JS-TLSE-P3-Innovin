@@ -63,7 +63,7 @@ function Sliders({
       {workshopSelectedWines.map(({ dosage }, index) => (
         <div key={dosage.id} className="slider-container">
           <img src={Grapes_Icon} alt="Sugar_Icon" />
-          <h2>{existingWineByTastingNote[index].vintage}</h2>
+          <h2>{existingWineByTastingNote[index].id}</h2>
           <span className="slider-value">
             {wineSelectedDosages[index] || 0} ml
           </span>
@@ -99,9 +99,15 @@ Sliders.propTypes = {
     )
   ).isRequired,
   existingWineByTastingNote: PropTypes.arrayOf(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
+    PropTypes.objectOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
+    )
   ).isRequired,
-  wineSelectedDosages: PropTypes.arrayOf(PropTypes.number).isRequired,
+  wineSelectedDosages: PropTypes.arrayOf(
+    PropTypes.objectOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
+    )
+  ).isRequired,
   setWineSelectedDosages: PropTypes.func.isRequired,
 };
 
