@@ -21,8 +21,6 @@ function CreationWorkshop() {
   } = CreationWorkshopValue;
   const navigate = useNavigate();
 
-  // const [isLoaded, setIsloaded] = useState(false);
-
   const getIdNewWine = () => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/newwinecreated`, {
@@ -59,7 +57,6 @@ function CreationWorkshop() {
       .then((responses) => {
         const existingWine = responses.map((res) => res.data);
         setExistingWineByTastingNote(existingWine);
-        // setIsloaded(true);
       })
       .catch((err) => {
         console.error(err);
