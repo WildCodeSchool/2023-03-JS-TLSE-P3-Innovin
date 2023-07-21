@@ -20,7 +20,6 @@ function WinesTasted() {
     setMaxSelected,
     maxSelected,
   } = CreationWorkshopValue;
-  // const { idUser } = tastingNote;
 
   // const for fetch
   const [wines, setWines] = useState([]);
