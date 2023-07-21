@@ -1,15 +1,94 @@
+import { useContext, useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CreationWorkshopContext from "../../contexts/CreationWorkshopContext";
+import AuthContext from "../../contexts/AuthContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Sliders from "../../components/Sliders/Sliders";
 import "./CreationWorkshop.scss";
 
 function CreationWorkshop() {
+  const CreationWorkshopValue = useContext(CreationWorkshopContext);
+  const userToken = useContext(AuthContext);
+  const {
+    selectedWinesIds,
+    setNewWineId,
+    existingWineByTastingNote,
+    setExistingWineByTastingNote,
+    workshopSelectedWines,
+    wineSelectedDosages,
+    setWineSelectedDosages,
+  } = CreationWorkshopValue;
   const navigate = useNavigate();
 
-  // -----------------------------------------handle functions for buttons--------------------------------------------------
+  const getIdNewWine = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/newwinecreated`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((res) => {
+        setNewWineId(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
-  const handleNavigate = () => {
-    navigate("/ending");
+  useEffect(() => {
+    getIdNewWine();
+  }, []);
+  const getExistingWineByTastingNoteId = () => {
+    Promise.all(
+      selectedWinesIds.map((tastingNoteId) =>
+        axios.get(
+          `${
+            import.meta.env.VITE_BACKEND_URL
+          }/existingwinebytastingnote/${tastingNoteId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${userToken}`,
+            },
+          }
+        )
+      )
+    )
+      .then((responses) => {
+        const existingWine = responses.map((res) => res.data);
+        setExistingWineByTastingNote(existingWine);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  useEffect(() => {
+    getExistingWineByTastingNoteId();
+  }, []);
+
+  // -----------------------------------------handle functions for buttons--------------------------------------------------
+  const handleNavigateAndpostSelectedWines = () => {
+    workshopSelectedWines.map((selectedWine) => {
+      axios
+        .post(
+          `${import.meta.env.VITE_BACKEND_URL}/selectedwine`,
+          selectedWine,
+          {
+            headers: {
+              Authorization: `Bearer ${userToken}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.info(res);
+          navigate("/blendedwine");
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+      return null; // Ajoute un retour de valeur pour chaque élément du tableau
+    });
   };
 
   // -------------------------------------------return the component----------------------------------------------------
@@ -20,17 +99,26 @@ function CreationWorkshop() {
         <div className="intro">
           <h3 className="subtitle">Assemblez votre propre vin</h3>
           <p>
-            Utilisez maintenant les éléments ci-dessous pour réaliser un
-            assemblage en dosant chacun des vins précédemment sélectionnés.
+            Assemblez votre vin à l'aide de vos cépages préférés. Utilisez les
+            sliders ci-dessous pour inscrire vos dosages.
             <br />{" "}
           </p>
         </div>
         <div className="workshop_Sliderbox">
-          <Sliders />
+          <p>Quelles quantités avez-vous utilisé ?</p>
+          <Sliders
+            workshopSelectedWines={workshopSelectedWines}
+            existingWineByTastingNote={existingWineByTastingNote}
+            wineSelectedDosages={wineSelectedDosages}
+            setWineSelectedDosages={setWineSelectedDosages}
+          />
         </div>
-        <ButtonPrimary onClick={handleNavigate}>Etape finale</ButtonPrimary>
+        <ButtonPrimary onClick={handleNavigateAndpostSelectedWines}>
+          Etape suivante
+        </ButtonPrimary>
       </div>
     </div>
   );
 }
+
 export default CreationWorkshop;

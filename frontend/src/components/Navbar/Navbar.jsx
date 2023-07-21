@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../../assets/Logo_W_Circles.svg";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +12,6 @@ export default function Navbar() {
   return (
     <nav className="navBar">
       <div className="logo-h1">
-        <img className="logo-nav" src={logo} alt="innovin logo" />
         <h1 className="titre-logo">INOVIN</h1>
       </div>
 
