@@ -33,7 +33,6 @@
   "dependencies": {
     "node-sass": "^9.0.0",
     "react-calendar": "^4.3.0",
-    "react-input-slider": "^6.0.1",
     "react-leaflet": "^4.2.1"
   }
 }
