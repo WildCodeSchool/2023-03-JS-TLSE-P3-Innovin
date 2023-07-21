@@ -52,7 +52,7 @@ function App() {
                     <Route path="/selection" element={<WinesTasted />} />
                     <Route path="/nose/stage1" element={<OlfactoryStage />} />
                     <Route path="/revelation" element={<Revelation />} />
-                    <Route path="/glossaire" element={<Glossary />} />
+                    <Route path="/glossary" element={<Glossary />} />
                     <Route
                       path="/creationworkshop"
                       element={<CreationWorkshop />}

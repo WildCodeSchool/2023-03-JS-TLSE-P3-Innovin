@@ -10,7 +10,7 @@ function WinesTasted() {
   // const for context
   const { userToken, tastingNote, setSelectedWinesIds } =
     useContext(TastingNoteContext);
-  // const { idUser } = tastingNote;
+  const { idUser } = tastingNote;
 
   // const for fetch
   const [wines, setWines] = useState([]);
@@ -18,26 +18,11 @@ function WinesTasted() {
   const [existingWineWorkshops, setExistingWineWorkshops] = useState([]);
 
   // const to stock workshop id
+  const firstWorkshopId = nextWorkshops.length > 0 ? nextWorkshops[0].id : null;
 
+  // fetch to get tasting note of dynamic user and workshop
   useEffect(() => {
-    // Fetch workshops with existing wine to match with tasting note
-    const existingWineWorkshopsApiUrl =
-      "http://localhost:5000/workshophasexistingwine";
-    axios
-      .get(existingWineWorkshopsApiUrl, {
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      })
-      .then((response) => {
-        setExistingWineWorkshops(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [userToken]); // fetch to get tasting note of dynamic user and workshop
-  useEffect(() => {
-    const apiUrl = `http://localhost:5000/tastingnote/`;
+    const apiUrl = `http://localhost:5000/tastingnote/${idUser}?idworkshop=${firstWorkshopId}}`;
     //
     axios
       .get(apiUrl, {
@@ -70,7 +55,23 @@ function WinesTasted() {
       });
   }, [userToken]);
 
-  const firstWorkshopId = nextWorkshops.length > 0 ? nextWorkshops[0].id : null;
+  useEffect(() => {
+    // Fetch workshops with existing wine to match with tasting note
+    const existingWineWorkshopsApiUrl =
+      "http://localhost:5000/workshophasexistingwine";
+    axios
+      .get(existingWineWorkshopsApiUrl, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((response) => {
+        setExistingWineWorkshops(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [userToken]);
 
   // Selection wine for TastingNote max 3
   const handleWineSelection = (wineNumber, wineId) => {
@@ -94,25 +95,26 @@ function WinesTasted() {
         </p>
       </div>
       <div className="card-disposition">
-        {wines
-          .filter((wine) =>
-            existingWineWorkshops.some(
-              (workshop) =>
-                workshop.id_workshop === firstWorkshopId &&
-                workshop.id_existing_wine === wine.id
+        {wines &&
+          wines
+            .filter((wine) =>
+              existingWineWorkshops.some(
+                (workshop) =>
+                  workshop.id_workshop === firstWorkshopId &&
+                  workshop.id_existing_wine === wine.id
+              )
             )
-          )
-          // Sort the wines based on their IDs
-          .sort((wineA, wineB) => wineA.id - wineB.id)
-          .map((wine, index) => (
-            <Card
-              key={wine.id}
-              wine={wine}
-              isSelected={tastingNote.selectedWinesIds.includes(wine.id)}
-              number={index + 1}
-              onSelect={handleWineSelection}
-            />
-          ))}
+            // Sort the wines based on their IDs
+            .sort((wineA, wineB) => wineA.id - wineB.id)
+            .map((wine, index) => (
+              <Card
+                key={wine.id}
+                wine={wine}
+                isSelected={tastingNote.selectedWinesIds.includes(wine.id)}
+                number={index + 1}
+                onSelect={handleWineSelection}
+              />
+            ))}
       </div>
 
       <Link to="/revelation">

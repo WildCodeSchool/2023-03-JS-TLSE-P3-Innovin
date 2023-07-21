@@ -13,13 +13,15 @@ class CompetitionSelection extends AbstractManager {
   nw.color,
   nw.commentary AS commentary_wine,
   sw.dosage,
-  ex.vintage
+  ex.name AS wine_name,
+  gv.name AS grape_variety
 FROM ${this.table} cs
   JOIN new_wine nw ON cs.id = nw.id_competition_selection
   JOIN selected_wine sw ON nw.id = sw.id_new_wine
   JOIN tasting_note tn ON tn.id = sw.id_tasting_note
   JOIN tastingnote_has_existingwine tnhe ON tn.id = tnhe.id_tasting_note
   JOIN existing_wine ex ON ex.id = tnhe.id_existing_wine
+  JOIN grape_variety gv ON ex.id_grape_variety = gv.id
 WHERE
   nw.selected_for_competition = 1`);
   }
@@ -32,13 +34,15 @@ WHERE
       nw.color,
       nw.commentary AS commentary_wine,
   sw.dosage,
-  ex.vintage
+  ex.name AS wine_name,
+  gv.name AS grape_variety
 FROM ${this.table} cs
   JOIN new_wine nw ON cs.id = nw.id_competition_selection
   JOIN selected_wine sw ON nw.id = sw.id_new_wine
   JOIN tasting_note tn ON tn.id = sw.id_tasting_note
   JOIN tastingnote_has_existingwine tnhe ON tn.id = tnhe.id_tasting_note
   JOIN existing_wine ex ON ex.id = tnhe.id_existing_wine
+  JOIN grape_variety gv ON ex.id_grape_variety = gv.id
 WHERE
   nw.selected_for_competition = 1  AND cs.id = ?`,
       [id]
