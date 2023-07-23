@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import AdminDashboard from "../../../components/Admin_Dashboard/Admin_Dashboard";
 import "./WinesSheetsManagement.scss";
 import AuthContext from "../../../contexts/AuthContext";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import ModalValidation from "../../../components/ModalValidation/ModalValidation";
+import ButtonPrimary from "../../../components/ButtonPrimary";
 
 function WinesManager() {
   const { userToken } = useContext(AuthContext);
@@ -13,6 +15,8 @@ function WinesManager() {
   const [searchValue, setSearchValue] = useState("");
   const [isArchiveCardModalOpen, setIsArchiveCardModalOpen] = useState(false);
   const [wineToArchive, setWineToArchive] = useState({});
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -73,19 +77,29 @@ function WinesManager() {
   };
 
   return (
+    userToken &&
     areWinesLoaded && (
       <div className="winesManager">
         <AdminDashboard />
         <div className="winesContent">
           <div className="winesHeader">
             <h1>Gestion des vins</h1>
-            <SearchBar
-              value={searchValue}
-              placeholder="Rechercher un vin"
-              setValue={setSearchValue}
-              icon="search"
-              className="searchBar"
-            />
+            <div className="searchAndAdd">
+              {" "}
+              <SearchBar
+                value={searchValue}
+                placeholder="Rechercher un vin"
+                setValue={setSearchValue}
+                icon="search"
+                className="searchBar"
+              />
+              <ButtonPrimary
+                className="addButton"
+                onClick={() => navigate("/admin/wines/add")}
+              >
+                +
+              </ButtonPrimary>
+            </div>
           </div>
           <div className="winesList">
             {wines

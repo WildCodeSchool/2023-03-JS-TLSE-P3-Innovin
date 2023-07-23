@@ -14,12 +14,12 @@ function Login() {
   const { setToken, setUser } = useContext(AuthContext);
   const { tastingNote, setTastingNote } = useContext(TastingNoteContext);
   const [errorMsg, setErrorMsg] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
 
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
-  const [isHidden, setIsHidden] = useState(true);
 
   const navigate = useNavigate();
 

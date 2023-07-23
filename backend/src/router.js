@@ -17,6 +17,7 @@ const CompetitionSelectionControllers = require("./controllers/CompetitionSelect
 const WorkshopHasExistingWineControllers = require("./controllers/WorkshopHasExistingWineControllers");
 const TastingNoteControllers = require("./controllers/TastingNoteControllers");
 const SelectedWineControllers = require("./controllers/SelectedWineControllers");
+const WineryControllers = require("./controllers/WineryControllers");
 
 const { verifyAdminCredentials } = UserControllers;
 
@@ -49,6 +50,7 @@ router.get(
   "/existingwinebytastingnote/:id",
   ExistingWineControllers.getOneExistingWineByTastingNoteId
 );
+router.get("/winery", WineryControllers.browse);
 router.get("/appellation", AppellationControllers.browse);
 router.get("/appellation/:id", AppellationControllers.read);
 router.get("/wineregion", WineRegionControllers.browse);

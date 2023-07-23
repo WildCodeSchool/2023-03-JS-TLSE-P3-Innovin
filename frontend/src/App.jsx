@@ -29,6 +29,7 @@ import Revelation from "./pages/Revelation/Revelation";
 import UsersManagement from "./pages/Admin/UsersManagement/UsersManagement";
 import UsersModification from "./pages/Admin/UsersModification/UsersModification";
 import WinesManager from "./pages/Admin/WinesSheetsManagement/WinesSheetsManagement";
+import WinesCreation from "./pages/Admin/WinesCreation/WinesCreation";
 
 function App() {
   return (
@@ -78,6 +79,7 @@ function App() {
                       element={<UsersModification />}
                     />
                     <Route path="admin/wines" element={<WinesManager />} />
+                    <Route path="admin/wines/add" element={<WinesCreation />} />
                   </Routes>
                 </div>
               </CreationWorkshopProvider>
