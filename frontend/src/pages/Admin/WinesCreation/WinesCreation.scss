@@ -28,7 +28,7 @@
 
     .addContent {
       width: 100%;
-      max-width: 39rem;
+      max-width: 34rem;
       padding: 3em 2em;
       display: flex;
       flex-direction: column;
@@ -69,6 +69,7 @@
 
             input {
               padding: 0.6em;
+              font-size: 1rem;
             }
           }
           .vintage {
@@ -78,6 +79,7 @@
             }
             input {
               padding: 0.6em;
+              font-size: 1rem;
             }
           }
 
@@ -188,13 +190,13 @@
 @media screen and (min-width: 1024px) {
   .winesCreation {
     .backButton {
-      font-size: 2em;
+      font-size: 1.6em;
     }
     .addWineContainer {
-      padding-left: calc(370px);
+      padding-left: calc(370px + 2em);
 
       .addContent {
-        width: 60%;
+        max-width: 85%;
         h1 {
           text-align: center;
         }
@@ -203,10 +205,68 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 2rem;
+          gap: 4rem;
 
           .section {
             flex-direction: row;
+            gap: 4.8rem;
+            label {
+              font-size: 1.4rem;
+            }
+
+            .wineName {
+              input {
+                font-size: 1.2rem;
+              }
+            }
+            .vintage {
+              input {
+                font-size: 1.2rem;
+              }
+            }
+
+            &.description {
+              flex-direction: column;
+              textarea {
+                width: 100%;
+                padding: 0.6em;
+                resize: none;
+                height: 10rem;
+                border: 2px solid rgba(209, 181, 103, 0.3);
+                background: var(--blackBgGradientSmooth);
+                border-radius: 5px;
+                outline: none;
+                color: var(--whiteGoldColor);
+
+                &:focus-within {
+                  box-shadow: var(--shadow);
+                }
+              }
+            }
+
+            &.alcohol {
+              gap: 1.6rem;
+              flex-direction: column;
+              .alcoholHeader {
+                .degBtn {
+                  display: flex;
+                  align-items: flex-end;
+                  border: none;
+                  background: none;
+                  font-size: 1.2rem;
+                  font-weight: 600;
+                  padding: 0;
+                  color: var(--secondaryColor);
+                  cursor: pointer;
+                }
+              }
+
+              .alcoholValues {
+                .degValue {
+                  font-size: 1.2rem;
+                }
+              }
+            }
           }
         }
       }
