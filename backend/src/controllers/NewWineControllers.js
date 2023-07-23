@@ -13,8 +13,8 @@ const browse = (req, res) => {
             if (!existingObj.dosage.includes(obj.dosage)) {
               existingObj.dosage.push(obj.dosage);
             }
-            if (!existingObj.vintage.includes(obj.vintage)) {
-              existingObj.vintage.push(obj.vintage);
+            if (!existingObj.grapeVariety.includes(obj.grapeVariety)) {
+              existingObj.grapeVariety.push(obj.grapeVariety);
             }
           } else {
             // Method that creates a new object with an array containing its values
@@ -22,7 +22,7 @@ const browse = (req, res) => {
               id: obj.id,
               color: obj.color,
               dosage: [obj.dosage],
-              vintage: [obj.vintage],
+              grapeVariety: [obj.grapeVariety],
               selected_for_competition: obj.selected_for_competition,
               commentary_wine: obj.commentary_wine,
               competition_name: obj.competition_name,
@@ -43,7 +43,7 @@ const browse = (req, res) => {
           item.dosage = obj.dosage.filter(
             (value, index, self) => self.indexOf(value) === index
           );
-          item.vintage = obj.vintage.filter(
+          item.grapeVariety = obj.grapeVariety.filter(
             (value, index, self) => self.indexOf(value) === index
           );
         });
@@ -88,8 +88,8 @@ const getNewWineByUserId = (req, res) => {
             if (!existingObj.dosage.includes(obj.dosage)) {
               existingObj.dosage.push(obj.dosage);
             }
-            if (!existingObj.vintage.includes(obj.vintage)) {
-              existingObj.vintage.push(obj.vintage);
+            if (!existingObj.grapeVariety.includes(obj.grapeVariety)) {
+              existingObj.grapeVariety.push(obj.grapeVariety);
             }
           } else {
             // Method that creates a new object with an array containing its values
@@ -97,8 +97,9 @@ const getNewWineByUserId = (req, res) => {
               id: obj.id,
               color: obj.color,
               dosage: [obj.dosage],
-              vintage: [obj.vintage],
+              grapeVariety: [obj.grapeVariety],
               selected_for_competition: obj.selected_for_competition,
+              commentaryTasting: obj.commentaryTasting,
               commentary_wine: obj.commentary_wine,
               competition_name: obj.competition_name,
               commentary_competition: obj.commentary_competition,
@@ -118,7 +119,7 @@ const getNewWineByUserId = (req, res) => {
           item.dosage = obj.dosage.filter(
             (value, index, self) => self.indexOf(value) === index
           );
-          item.vintage = obj.vintage.filter(
+          item.grapeVariety = obj.grapeVariety.filter(
             (value, index, self) => self.indexOf(value) === index
           );
         });

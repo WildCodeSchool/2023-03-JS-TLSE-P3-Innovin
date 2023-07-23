@@ -63,7 +63,7 @@ function Sliders({
       {workshopSelectedWines.map(({ dosage }, index) => (
         <div key={dosage.id} className="slider-container">
           <img src={Grapes_Icon} alt="Sugar_Icon" />
-          <h2>{existingWineByTastingNote[index].id}</h2>
+          <h2>{existingWineByTastingNote[index].grape_variety}</h2>
           <span className="slider-value">
             {wineSelectedDosages[index] || 0} ml
           </span>

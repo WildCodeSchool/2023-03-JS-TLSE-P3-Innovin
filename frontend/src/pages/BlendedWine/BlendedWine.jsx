@@ -1,25 +1,26 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { format } from "date-fns";
 import CreationWorkshopContext from "../../contexts/CreationWorkshopContext";
 import AuthContext from "../../contexts/AuthContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
+import Wineworkshop from "../../assets/Wine_Img/Wineworkshop.jpg";
 import "./BlendedWine.scss";
 
 function BlendedWine() {
   const CreationWorkshopValue = useContext(CreationWorkshopContext);
-  const { userToken, AuthValue } = useContext(AuthContext);
-  const { blendedWine, setBlendedWine, nextWorkshops } = CreationWorkshopValue;
-  const { user } = AuthValue;
+  const { userToken /* , AuthValue */ } = useContext(AuthContext);
+  const { blendedWine, setBlendedWine /* nextWorkshops */ } =
+    CreationWorkshopValue;
+  // const { user } = AuthValue;
   const navigate = useNavigate();
   const [isLoaded, setIsloaded] = useState(false);
 
   const getBlendedWine = () => {
     axios
       .get(
-        `${import.meta.env.VITE_BACKEND_URL}/newwinebyuser/${
-          user.id
-        }?idworkshop=${nextWorkshops[0].id}`,
+        `${import.meta.env.VITE_BACKEND_URL}/newwinebyuser/2?idworkshop=1`, // {import.meta.env.VITE_BACKEND_URL}/newwinebyuser/${user.id}?idworkshop=${nextWorkshops[0].id}`
         {
           headers: {
             Authorization: `Bearer ${userToken}`,
@@ -39,6 +40,22 @@ function BlendedWine() {
     getBlendedWine();
   }, []);
 
+  // -----------------------------------------To format date--------------------------------------------------
+
+  function formatDate(dateString) {
+    const dateObj = new Date(dateString);
+    const formattedDate = format(dateObj, "dd/MM/yyyy 'à' HH:mm");
+    return formattedDate;
+  }
+
+  let originalDateString = "";
+  let formattedDate = "";
+
+  if (blendedWine && blendedWine[0]) {
+    originalDateString = blendedWine[0].datetime;
+    formattedDate = formatDate(originalDateString);
+  }
+
   // -----------------------------------------handle functions for buttons--------------------------------------------------
 
   const handleNavigate = () => {
@@ -54,26 +71,45 @@ function BlendedWine() {
           <div className="intro">
             <h3 className="subtitle">Assemblez votre propre vin</h3>
             <p>
-              Félicitations, vous avez réussi à assembler votre vin ! Voici un
-              résumé global de votre atelier.
+              Félicitations, vous avez terminé l'assemblage votre vin ! Voici un
+              résumé global de votre parcours.
               <br />
             </p>
           </div>
           <div className="BlendedWine_winecontent">
-            <p>Couleur du vin :{blendedWine[0].color}</p>
-            <p>
-              Dosages <br />
-              {blendedWine[0].vintage[0]} : {blendedWine[0].dosage[0]}
-              <br />
-              {blendedWine[0].vintage[1]} : {blendedWine[0].dosage[1]}
-              <br />
-              {blendedWine[0].vintage[2]} : {blendedWine[0].dosage[2]}
-              <br />
-            </p>
-            <p>Votre appréciation : {blendedWine[0].commentary_wine}</p>
-            <p>
-              Atelier du {blendedWine[0].datetime} à {blendedWine[0].place}{" "}
-            </p>
+            <div className="BlendedWine_imgWineContainer">
+              <h2>
+                Atelier du {formattedDate} à {blendedWine[0].place}
+              </h2>
+              <img src={Wineworkshop} alt="vin" />
+            </div>
+            <div className="BlendedWine_textWineContainer">
+              <p>
+                <span className="TextWine">Couleur du vin :</span>{" "}
+                {blendedWine[0].color}
+                <br />
+              </p>
+              <ul>
+                <span className="TextWine">Dosages :</span> <br /> <br />
+                <li>
+                  {blendedWine[0].grapeVariety[0]} : {blendedWine[0].dosage[0]}{" "}
+                  ml
+                </li>
+                <li>
+                  {blendedWine[0].grapeVariety[1]} : {blendedWine[0].dosage[1]}{" "}
+                  ml
+                </li>
+                <li>
+                  {blendedWine[0].grapeVariety[2]} : {blendedWine[0].dosage[2]}{" "}
+                  ml
+                </li>
+              </ul>
+              <p>
+                <span className="TextWine">Votre appréciation :</span>
+                <br />
+                {blendedWine[0].commentaryTasting}
+              </p>
+            </div>
           </div>
           <ButtonPrimary onClick={handleNavigate}>Etape finale</ButtonPrimary>
         </div>
