@@ -135,6 +135,7 @@
                 aspect-ratio: 1;
                 opacity: 0;
                 transition: opacity 0.2s;
+                font-size: 1.2rem;
                 cursor: pointer;
 
                 &.selected {
@@ -181,6 +182,10 @@
               }
             }
           }
+        }
+
+        .wineSubmitBtn {
+          font-size: 1.2rem;
         }
       }
     }

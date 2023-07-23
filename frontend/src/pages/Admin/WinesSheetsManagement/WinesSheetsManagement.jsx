@@ -32,7 +32,7 @@ function WinesManager() {
       .catch((err) => {
         console.error(err);
       });
-  }, [wines]);
+  }, []);
 
   const getWineById = (id) => {
     axios

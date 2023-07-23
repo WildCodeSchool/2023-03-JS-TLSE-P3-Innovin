@@ -404,7 +404,7 @@ CREATE TABLE
         `id_wine_region` INT NOT NULL,
         `id_grape_variety` INT NOT NULL,
         `id_winery` INT NOT NULL,
-        `is_archived` BOOLEAN NOT NULL,
+        `is_archived` BOOLEAN NOT NULL DEFAULT 0,
         PRIMARY KEY (`id`),
         CONSTRAINT `fk_existing_wine_wine_region1` FOREIGN KEY (`id_wine_region`) REFERENCES `inovin`.`wine_region` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_existing_wine_grape_variety1` FOREIGN KEY (`id_grape_variety`) REFERENCES `inovin`.`grape_variety` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,

@@ -117,15 +117,23 @@ const edit = (req, res) => {
 const add = (req, res) => {
   const existingWine = req.body;
 
-  // TODO validations (length, format...)
-
   models.existingWine
     .insert(existingWine)
     .then(([result]) => {
-      res
-        .location(`/existingwine/${result.insertId}`)
-        .status(201)
-        .send("Created");
+      res.location(`/existingwine/${result.insertId}`).status(201).send(result);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
+const addEwHasAppellation = (req, res) => {
+  const ids = req.body;
+  models.existingWine
+    .insertEwHasAppellation(ids)
+    .then(([result]) => {
+      res.status(201).send(result);
     })
     .catch((err) => {
       console.error(err);
@@ -157,5 +165,6 @@ module.exports = {
   read,
   edit,
   add,
+  addEwHasAppellation,
   destroy,
 };

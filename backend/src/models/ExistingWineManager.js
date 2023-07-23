@@ -109,6 +109,14 @@ FROM  ${this.table} ew
     );
   }
 
+  insertEwHasAppellation(ids) {
+    const { id_existing_wine, id_appellation } = ids;
+    return this.database.query(
+      `INSERT INTO existing_wine_has_appellation (id_existing_wine, id_appellation) VALUES (?, ?)`,
+      [id_existing_wine, id_appellation]
+    );
+  }
+
   update(existingWine, id) {
     const {
       vintage,

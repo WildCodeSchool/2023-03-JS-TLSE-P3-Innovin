@@ -50,6 +50,10 @@ router.get(
   "/existingwinebytastingnote/:id",
   ExistingWineControllers.getOneExistingWineByTastingNoteId
 );
+router.post(
+  "/existingwinehasappellation",
+  ExistingWineControllers.addEwHasAppellation
+);
 router.get("/winery", WineryControllers.browse);
 router.get("/appellation", AppellationControllers.browse);
 router.get("/appellation/:id", AppellationControllers.read);
