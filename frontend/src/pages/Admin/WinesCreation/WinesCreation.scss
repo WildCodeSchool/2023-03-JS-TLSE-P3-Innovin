@@ -201,7 +201,7 @@
       padding-left: calc(370px + 2em);
 
       .addContent {
-        max-width: 85%;
+        max-width: 80%;
         h1 {
           text-align: center;
         }
@@ -271,6 +271,11 @@
                   font-size: 1.2rem;
                 }
               }
+            }
+
+            &.appellation {
+              max-width: calc(50% - 2.4rem);
+              align-self: flex-start;
             }
           }
         }

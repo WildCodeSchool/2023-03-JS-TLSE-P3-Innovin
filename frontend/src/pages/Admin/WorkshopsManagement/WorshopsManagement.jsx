@@ -128,7 +128,7 @@ function WorkshopsManagement() {
       <div className="workshopsContent">
         <div className="tableHeader">
           <h1>Ateliers</h1>
-          <div className="searchOrAdd">
+          <div className="searchOrAddHeader">
             <SearchBar
               className="searchBar"
               setValue={setSearchValue}

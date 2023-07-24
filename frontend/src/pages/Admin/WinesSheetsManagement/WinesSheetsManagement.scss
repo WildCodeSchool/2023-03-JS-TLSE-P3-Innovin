@@ -36,6 +36,7 @@
         .addButton {
           padding: 0 0.6rem;
           margin-right: 0.5rem;
+          cursor: pointer;
         }
       }
     }
@@ -266,7 +267,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1.5em;
-    align-items: baseline;
+    align-items: flex-start;
     justify-content: center;
 
     .wineCard {

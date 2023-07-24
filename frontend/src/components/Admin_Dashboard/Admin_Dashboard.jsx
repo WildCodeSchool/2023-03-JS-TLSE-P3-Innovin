@@ -105,17 +105,10 @@ function AdminDashboard() {
             <i className="fi fi-rr-notebook" />
             Ateliers
           </button>
-          <button type="button">
-            <i className="fi fi-rr-glass-champagne" />
-            Fiches de dégustation
-          </button>
+
           <button type="button" onClick={() => navigate("/admin/wines")}>
             <i className="fi fi-rr-grape" />
             Vins
-          </button>
-          <button type="button">
-            <i className="fi fi-rr-trophy-star" />
-            Sélection concours
           </button>
         </div>
         <div className="calendarContent">

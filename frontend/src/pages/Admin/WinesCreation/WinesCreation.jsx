@@ -36,6 +36,8 @@ function WinesCreation() {
 
   const alcoholPercentage = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 
+  // -----------------------------------------------------functions-------------------------------------------------
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -52,14 +54,14 @@ function WinesCreation() {
 
       console.info("res1", res1.data.insertId);
 
-      // Mettez à jour l'état de façon synchrone avec les valeurs correctes
+      // Update state synchronously with correct values
       setEwHasAppellations((prevEwHasAppellations) => {
         const updatedEwHasAppellations = {
           ...prevEwHasAppellations,
           id_existing_wine: res1.data.insertId,
         };
 
-        // Effectuer le deuxième appel API ici, à l'intérieur de la fonction de mise à jour de l'état
+        // Make the second API call here, inside the state update function
         axios
           .post(
             `${import.meta.env.VITE_BACKEND_URL}/existingwinehasappellation`,
@@ -76,13 +78,15 @@ function WinesCreation() {
           .catch((err) => {
             console.error(err);
           });
-        // Retourne la nouvelle valeur de l'état mise à jour
+        // Returns the new value of the updated state
         return updatedEwHasAppellations;
       });
     } catch (err) {
       console.error(err);
     }
   };
+
+  // ---------------------------------------------return-----------------------------------------------------
 
   return (
     userToken && (
@@ -180,6 +184,8 @@ function WinesCreation() {
                   formObject={wineForm}
                   setFormObject={setWineForm}
                 />
+              </div>
+              <div className="section appellation">
                 <SearchOrAdd
                   label="Appellation"
                   icon="diploma"
