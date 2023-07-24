@@ -30,6 +30,7 @@ import UsersManagement from "./pages/Admin/UsersManagement/UsersManagement";
 import UsersModification from "./pages/Admin/UsersModification/UsersModification";
 import WinesManager from "./pages/Admin/WinesSheetsManagement/WinesSheetsManagement";
 import WinesCreation from "./pages/Admin/WinesCreation/WinesCreation";
+import ScrollToTop from "./components/ScrolltoTop/Scroll";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <TastingNoteProvider>
               <CreationWorkshopProvider>
                 <div className="App">
+                  <ScrollToTop />
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/registration" element={<Registration />} />
