@@ -31,7 +31,7 @@ function AdminDashboard() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // onClick function to fetch and navigate to specific workshop when a day is clicked
+  // onClick function to fetch and navigate to specific workshops when a day is clicked
   const handleClickDay = (date) => {
     onChange(date);
 
@@ -57,6 +57,22 @@ function AdminDashboard() {
     if (window.location.pathname !== "/admin/workshops") {
       navigate("/admin/workshops");
     }
+  };
+
+  // fetch all workshops by clicking on the link
+  const handleClick = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/workshop`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((response) => {
+        setWorkshops(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   // function to get the workshops data and compare with calendar date
@@ -101,7 +117,13 @@ function AdminDashboard() {
             <i className="fi fi-rr-users-alt" />
             Gestion des utilisateurs
           </button>
-          <button type="button" onClick={() => navigate("/admin/workshops")}>
+          <button
+            type="button"
+            onClick={() => {
+              navigate("/admin/workshops");
+              handleClick();
+            }}
+          >
             <i className="fi fi-rr-notebook" />
             Ateliers
           </button>

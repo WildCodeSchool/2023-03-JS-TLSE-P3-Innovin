@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 import AdminDashboard from "../../../components/Admin_Dashboard/Admin_Dashboard";
 import "./WinesSheetsManagement.scss";
@@ -69,6 +70,18 @@ function WinesManager() {
       )
       .then((res) => {
         console.info(res);
+        toast.success(`Vin N°${idWine} archivé`, {
+          style: {
+            border: "1px solid #B0F2B6",
+            background: "#12110b",
+            padding: "16px",
+            color: "#B0F2B6",
+          },
+          iconTheme: {
+            primary: "#083B32",
+            secondary: "#B0F2B6",
+          },
+        });
         setWines(wines.filter((wine) => wine.id !== idWine));
       })
       .catch((err) => {
@@ -80,12 +93,12 @@ function WinesManager() {
     userToken &&
     areWinesLoaded && (
       <div className="winesManager">
+        <Toaster />
         <AdminDashboard />
         <div className="winesContent">
           <div className="winesHeader">
             <h1>Gestion des vins</h1>
             <div className="searchAndAdd">
-              {" "}
               <SearchBar
                 value={searchValue}
                 placeholder="Rechercher un vin"
@@ -211,6 +224,7 @@ function WinesManager() {
             actionFunction={onArchive}
             functionParam={wineToArchive.id}
             secondButton="Annuler"
+            toastCancelledMsg="le vin n'a pas été archivé"
           />
         )}
         {isArchiveCardModalOpen && (

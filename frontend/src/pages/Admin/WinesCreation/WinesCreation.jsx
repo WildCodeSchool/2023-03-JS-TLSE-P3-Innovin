@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 import AdminDashboard from "../../../components/Admin_Dashboard/Admin_Dashboard";
 import "./WinesCreation.scss";
 import Input from "../../../components/Input";
@@ -38,52 +39,53 @@ function WinesCreation() {
 
   // -----------------------------------------------------functions-------------------------------------------------
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const res1 = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/existingwine`,
-        wineForm,
-        {
-          headers: {
-            Authorization: `Bearer ${userToken}`,
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/existingwine`, wineForm, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((res) => {
+        console.info(res);
+        toast.success(`Vin N°${res.data.insertId} créé`, {
+          style: {
+            border: "1px solid #B0F2B6",
+            background: "#12110b",
+            padding: "16px",
+            color: "#B0F2B6",
           },
-        }
-      );
+          iconTheme: {
+            primary: "#083B32",
+            secondary: "#B0F2B6",
+          },
+        });
 
-      console.info("res1", res1.data.insertId);
-
-      // Update state synchronously with correct values
-      setEwHasAppellations((prevEwHasAppellations) => {
-        const updatedEwHasAppellations = {
-          ...prevEwHasAppellations,
-          id_existing_wine: res1.data.insertId,
-        };
-
-        // Make the second API call here, inside the state update function
         axios
           .post(
             `${import.meta.env.VITE_BACKEND_URL}/existingwinehasappellation`,
-            updatedEwHasAppellations,
+            {
+              ...ewHasAppellations,
+              id_existing_wine: res.data.insertId,
+            },
             {
               headers: {
                 Authorization: `Bearer ${userToken}`,
               },
             }
           )
-          .then((res2) => {
-            console.info(res2);
+          .then(() => {
+            navigate("/admin/wines");
           })
           .catch((err) => {
             console.error(err);
           });
-        // Returns the new value of the updated state
-        return updatedEwHasAppellations;
+      })
+      .catch((err) => {
+        console.error(err);
       });
-    } catch (err) {
-      console.error(err);
-    }
   };
 
   // ---------------------------------------------return-----------------------------------------------------
@@ -91,6 +93,7 @@ function WinesCreation() {
   return (
     userToken && (
       <div className="winesCreation">
+        <Toaster />
         <button
           type="button"
           onClick={() => navigate("/admin/wines")}
@@ -102,12 +105,7 @@ function WinesCreation() {
         <div className="addWineContainer">
           <div className="addContent">
             <h1>Nouveau vin</h1>
-            <form
-              action=""
-              method="post"
-              className="createWineForm"
-              onSubmit={onSubmit}
-            >
+            <form className="createWineForm" onSubmit={onSubmit}>
               <div className="section">
                 <div className="wineName">
                   <label htmlFor="name">Nom du vin</label>

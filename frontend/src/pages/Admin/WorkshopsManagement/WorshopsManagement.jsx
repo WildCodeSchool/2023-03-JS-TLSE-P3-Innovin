@@ -274,6 +274,7 @@ function WorkshopsManagement() {
             actionFunction={onDelete}
             functionParam={idToDelete}
             secondButton="Annuler"
+            toastValidMsg={`Atelier ${idToDelete} supprimé !`}
           />
 
           {/* Modal wich contains workshop information when click on the row */}
