@@ -11,16 +11,15 @@
   height: 100vh;
 }
 
-.page-content {
-  align-items: flex-start;
+.page-content-degust {
   background: var(--blackBgGradientSmooth);
   border-radius: 5px;
-  backdrop-filter: var(--bgBlur);
+
   display: flex;
   gap: 10px;
 
   padding: 17px 24px;
-  margin: 25px;
+  margin-top: 5rem;
 }
 
 .text {
@@ -36,7 +35,7 @@
   width: 100%;
 }
 
-.title {
+.title-degust {
   text-align: center;
   color: var(--primaryColor);
   font-family: var(--fontFamilyTitly);
@@ -47,15 +46,14 @@
   margin-top: -1px;
   position: relative;
   text-align: center;
+  display: block;
 }
 
 .box {
-  flex: 1;
   flex-direction: column;
   justify-content: center;
   gap: 32px;
-
-  height: auto;
+  backdrop-filter: var(--bgBlur);
 }
 
 .button-container {
@@ -114,6 +112,5 @@
     gap: 54px;
     margin-left: 1px;
     width: auto;
-    height: 100%;
   }
 }

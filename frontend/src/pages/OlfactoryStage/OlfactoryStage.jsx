@@ -54,7 +54,7 @@ export default function OlfactoryStage() {
         <h2 className="h2-nose">
           Je devine l’intensité et la complexité de ses arômes
         </h2>
-        <p>
+        <p className="p-nose">
           Sentez le vin sans l’aérer en laissant votre verre immobile. Quelles
           propriétés percevez-vous dans les arômes de votre vin ?
         </p>
@@ -82,7 +82,7 @@ export default function OlfactoryStage() {
       </div>
       <div className="nose2">
         <h2 className="h2-nose">Je libère ses arômes</h2>
-        <p>
+        <p className="p-nose">
           Remuez votre verre en formant un petit cercle avec son pied sur une
           table ou en l’air, et humez son parfum. A quelle famille d’arôme
           appartient votre vin ?

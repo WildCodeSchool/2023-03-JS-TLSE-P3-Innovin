@@ -34,7 +34,7 @@ svg {
   gap: 30px;
   margin-top: 50px;
   position: relative;
-  width: 320px;
+  width: 600px;
 }
 
 .nose1,
@@ -44,18 +44,23 @@ svg {
   justify-content: center;
   font-family: var(--fontFamilyTitle);
   color: var(--primaryColor);
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 100vw;
 }
 
 .nose1,
-.nose2 p {
+.nose2 {
   color: white;
   font-weight: 400;
   line-height: 31.5px;
   text-align: center;
   font-family: var(--fontFamilyText);
   font-size: 1rem;
-  margin-top: 10px;
+  margin-top: 2rem;
+  width: 80%;
+  background: var(--blackBgGradientSmooth);
+  padding: 15px;
 }
 
 .aromas {

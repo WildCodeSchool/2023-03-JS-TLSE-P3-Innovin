@@ -52,9 +52,9 @@ export default function TastingPresentation() {
       <div className="start-degust">
         <Navbar />
 
-        <div className="page-content">
+        <div className="page-content-degust">
           <div className="box">
-            <h1 className="title">Dégustation</h1>
+            <h1 className="title-degust">Dégustation</h1>
             <p className="text">
               Vous vous apprêtez à déguster 5 vins monocépages avec une fiche à
               remplir pour chacun des vins.
