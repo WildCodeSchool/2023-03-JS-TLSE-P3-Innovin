@@ -34,7 +34,7 @@ svg {
   gap: 30px;
   margin-top: 50px;
   position: relative;
-  width: 600px;
+  width: 100%;
 }
 
 .nose1,
@@ -44,7 +44,7 @@ svg {
   justify-content: center;
   font-family: var(--fontFamilyTitle);
   color: var(--primaryColor);
-  font-size: 2rem;
+  font-size: 1.3rem;
   font-weight: bold;
   width: 100vw;
 }
@@ -58,7 +58,7 @@ svg {
   font-family: var(--fontFamilyText);
   font-size: 1rem;
   margin-top: 2rem;
-  width: 80%;
+
   background: var(--blackBgGradientSmooth);
   padding: 15px;
 }
@@ -72,6 +72,10 @@ svg {
   margin-top: 2rem;
   margin-bottom: 2rem;
   animation: none;
+}
+
+.p-nose {
+  font-size: 1rem;
 }
 
 .aromas h3 {
@@ -208,5 +212,10 @@ svg {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .nose1,
+  .nose2 {
+    width: 70%;
   }
 }
