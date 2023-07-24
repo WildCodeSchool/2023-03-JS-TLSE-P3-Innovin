@@ -30,6 +30,15 @@
   margin: 2rem min(2rem, var(--marginPageContent));
   margin-bottom: 5rem;
 }
+.commentary_container {
+  padding: 2em;
+  .TextWine {
+    color: var(--secondaryColor);
+  }
+  #commentaryWine {
+    margin-top: 1em;
+  }
+}
 
 /* style for the text intro */
 .intro {

@@ -1,12 +1,7 @@
 /* eslint-disable camelcase */
-import {
-  createContext,
-  /* useContext, */ useMemo,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useMemo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-// import TastingNoteContext from "./TastingNoteContext";
+import TastingNoteContext from "./TastingNoteContext";
 
 const CreationWorkshopContext = createContext();
 export default CreationWorkshopContext;
@@ -22,23 +17,25 @@ class SelectedWine {
 }
 
 export function CreationWorkshopProvider({ children }) {
-  // const { tastingNote } = useContext(TastingNoteContext);
+  const { tastingNote } = useContext(TastingNoteContext);
   const [nextWorkshops, setNextWorkshops] = useState([]);
   const [newWineId, setNewWineId] = useState([{ id: null }]);
   const [blendedWine, setBlendedWine] = useState(null);
+  const [newWineCommentary, setnewWineCommentary] = useState(null);
   const [existingWineByTastingNote, setExistingWineByTastingNote] = useState(
     []
   );
   const [selectedWines, setSelectedWines] = useState([]);
   const [workshopSelectedWines, setWorkshopSelectedWines] = useState([]);
   const [maxSelected, setMaxSelected] = useState(false);
-  // const [wineSelectedCounter, setWineSelectedCounter] = useState(0);
-  // const { selectedWinesIds } = tastingNote;
-  const selectedWinesIds = [2, 5, 3];
-  const wineSelectedCounter = 3;
-  const [wineSelectedDosages, setWineSelectedDosages] = useState(
-    Array(selectedWinesIds.length).fill(0)
-  );
+  const [wineSelectedCounter, setWineSelectedCounter] = useState(0);
+  const { selectedWinesIds } = tastingNote;
+  const initTab = Array(selectedWinesIds.length).fill(0);
+  const [wineSelectedDosages, setWineSelectedDosages] = useState(initTab);
+
+  useEffect(() => {
+    setWineSelectedDosages(initTab);
+  }, [selectedWinesIds]);
 
   // Fonction qui créé un objet de type SelectedWine en fonction du compteur 'wineSelectedCounter' (nombre de vins sélectionnés).
   const handleFillSelectedWines = () => {
@@ -78,6 +75,8 @@ export function CreationWorkshopProvider({ children }) {
       setNewWineId,
       blendedWine,
       setBlendedWine,
+      newWineCommentary,
+      setnewWineCommentary,
       existingWineByTastingNote,
       setExistingWineByTastingNote,
       workshopSelectedWines,
@@ -87,9 +86,10 @@ export function CreationWorkshopProvider({ children }) {
       setMaxSelected,
       maxSelected,
       wineSelectedCounter,
-      // setWineSelectedCounter,
+      setWineSelectedCounter,
     };
   }, [
+    newWineCommentary,
     selectedWines,
     nextWorkshops,
     newWineId,

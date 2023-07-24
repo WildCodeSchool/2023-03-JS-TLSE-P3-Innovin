@@ -38,7 +38,7 @@ class NewWineManager extends AbstractManager {
       ew.vintage,
       gv.name AS grapeVariety,
       nw.selected_for_competition,
-      nw.commentary AS commentary_wine,
+      nw.commentary AS commentaryWine,
       cs.competition_name,
       cs.commentary AS commentary_competition,
       w.place,
@@ -69,7 +69,7 @@ JOIN grape_variety gv ON ew.id_grape_variety = gv.id`
       ew.vintage,
       gv.name AS grapeVariety,
       nw.selected_for_competition,
-      nw.commentary AS commentary_wine,
+      nw.commentary AS commentaryWine,
       tn.tasting_commentary AS commentaryTasting,
       cs.competition_name,
       cs.commentary AS commentary_competition,
@@ -111,6 +111,14 @@ JOIN grape_variety gv ON ew.id_grape_variety = gv.id`
         id_competition_selection,
         id,
       ]
+    );
+  }
+
+  updateCommentary(newWine, id) {
+    const { commentary } = newWine;
+    return this.database.query(
+      `UPDATE ${this.table} SET commentary = ? WHERE id = ?`,
+      [commentary, id]
     );
   }
 }

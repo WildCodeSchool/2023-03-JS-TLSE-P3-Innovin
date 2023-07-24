@@ -24,7 +24,7 @@ const browse = (req, res) => {
               dosage: [obj.dosage],
               grapeVariety: [obj.grapeVariety],
               selected_for_competition: obj.selected_for_competition,
-              commentary_wine: obj.commentary_wine,
+              commentaryWine: obj.commentaryWine,
               competition_name: obj.competition_name,
               commentary_competition: obj.commentary_competition,
               place: obj.place,
@@ -100,7 +100,7 @@ const getNewWineByUserId = (req, res) => {
               grapeVariety: [obj.grapeVariety],
               selected_for_competition: obj.selected_for_competition,
               commentaryTasting: obj.commentaryTasting,
-              commentary_wine: obj.commentary_wine,
+              commentaryWine: obj.commentaryWine,
               competition_name: obj.competition_name,
               commentary_competition: obj.commentary_competition,
               place: obj.place,
@@ -189,6 +189,28 @@ const edit = (req, res) => {
     });
 };
 
+const putCommentary = (req, res) => {
+  const newWine = req.body;
+
+  // TODO validations (length, format...)
+
+  const id = parseInt(req.params.id, 10);
+
+  models.newWine
+    .updateCommentary(newWine, id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.status(400).send("Bad request");
+      } else {
+        res.status(204).send("Updated");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const destroy = (req, res) => {
   models.newWine
     .delete(req.params.id)
@@ -212,5 +234,6 @@ module.exports = {
   addNewWine,
   getNewWineCreated,
   edit,
+  putCommentary,
   destroy,
 };

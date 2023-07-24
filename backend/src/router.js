@@ -53,6 +53,7 @@ router.get("/newwinebyuser/:id", NewWineControllers.getNewWineByUserId);
 router.get("/newwinebyworkshop/:id", NewWineControllers.getNewWineByWorkshopId);
 router.get("/newwinecreated", NewWineControllers.getNewWineCreated);
 router.post("/newwine", NewWineControllers.addNewWine);
+router.put("/newwinecommentary/:id", NewWineControllers.putCommentary);
 router.get("/selectedwine/:id", SelectedWineControllers.read);
 router.post("/selectedwine", SelectedWineControllers.add);
 router.post("/tastingnote", TastingNoteControllers.add);

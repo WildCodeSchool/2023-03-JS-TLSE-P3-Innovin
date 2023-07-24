@@ -15,7 +15,7 @@ export function TastingNoteProvider({ children }) {
   const [tastingNote, setTastingNote] = useState({
     wineQuality: "",
     idOlfactiveIntensity: null,
-    idUser: null,
+    idUser: 2, // Inscrire 'null'
     rating: 0,
     tastingCommentary: "",
     idOlfactiveComplexity: null,

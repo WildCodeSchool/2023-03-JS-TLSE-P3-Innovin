@@ -10,23 +10,18 @@ import "./BlendedWine.scss";
 
 function BlendedWine() {
   const CreationWorkshopValue = useContext(CreationWorkshopContext);
-  const { userToken /* , AuthValue */ } = useContext(AuthContext);
-  const { blendedWine, setBlendedWine /* nextWorkshops */ } =
-    CreationWorkshopValue;
-  // const { user } = AuthValue;
+  const { userToken } = useContext(AuthContext);
+  const { blendedWine, setBlendedWine } = CreationWorkshopValue;
   const navigate = useNavigate();
   const [isLoaded, setIsloaded] = useState(false);
 
   const getBlendedWine = () => {
     axios
-      .get(
-        `${import.meta.env.VITE_BACKEND_URL}/newwinebyuser/2?idworkshop=1`, // {import.meta.env.VITE_BACKEND_URL}/newwinebyuser/${user.id}?idworkshop=${nextWorkshops[0].id}`
-        {
-          headers: {
-            Authorization: `Bearer ${userToken}`,
-          },
-        }
-      )
+      .get(`${import.meta.env.VITE_BACKEND_URL}/newwinebyuser/2?idworkshop=1`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
       .then((res) => {
         setBlendedWine(res.data);
         setIsloaded(true);

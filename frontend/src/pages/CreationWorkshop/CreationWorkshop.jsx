@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { InputTextarea } from "primereact/inputtextarea";
 import CreationWorkshopContext from "../../contexts/CreationWorkshopContext";
 import AuthContext from "../../contexts/AuthContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
@@ -13,15 +14,21 @@ function CreationWorkshop() {
   const {
     selectedWinesIds,
     setNewWineId,
-    existingWineByTastingNote,
     setExistingWineByTastingNote,
     workshopSelectedWines,
-    wineSelectedDosages,
-    setWineSelectedDosages,
   } = CreationWorkshopValue;
   const navigate = useNavigate();
   const [isLoaded, setIsloaded] = useState(false);
+  const [form, setForm] = useState({
+    commentary: "",
+  });
 
+  // ------------------------------Function to get commentary of the new wine-------------------------------------------------------------
+  const handleCommentaryChange = (e) => {
+    setForm({ ...form, commentary: e.target.value });
+  };
+
+  // ------------------------------Fetch to get the new wine Id-------------------------------------------------------------------
   const getIdNewWine = () => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/newwinecreated`, {
@@ -40,6 +47,8 @@ function CreationWorkshop() {
   useEffect(() => {
     getIdNewWine();
   }, []);
+
+  // ------------------------------Fetch to get the existing wines used before to make dosage-------------------------------------------------------------------
   const getExistingWineByTastingNoteId = () => {
     Promise.all(
       selectedWinesIds.map((tastingNoteId) =>
@@ -69,8 +78,8 @@ function CreationWorkshop() {
     getExistingWineByTastingNoteId();
   }, []);
 
-  // -----------------------------------------handle functions for buttons--------------------------------------------------
-  const handleNavigateAndpostSelectedWines = () => {
+  // -----------------------------------------Fetch functions for buttons--------------------------------------------------
+  const handlePostSelectedWines = () => {
     workshopSelectedWines.map((selectedWine) => {
       axios
         .post(
@@ -84,13 +93,29 @@ function CreationWorkshop() {
         )
         .then((res) => {
           console.info(res);
-          navigate("/blendedwine");
         })
         .catch((err) => {
           console.error(err);
         });
       return null; // Ajoute un retour de valeur pour chaque élément du tableau
     });
+  };
+  // ------------------------------Function that sends the comment on the new wine and navigate to Ending page----------------------------------------------------
+
+  const handleNavigateAndCommentaryNewWine = () => {
+    axios
+      .put(`${import.meta.env.VITE_BACKEND_URL}/newwinecommentary/2`, form, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((res) => {
+        console.info(res);
+        navigate("/blendedwine");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   // -------------------------------------------return the component----------------------------------------------------
@@ -109,14 +134,28 @@ function CreationWorkshop() {
           </div>
           <div className="workshop_Sliderbox">
             <p>Quelles quantités avez-vous utilisé ?</p>
-            <Sliders
-              workshopSelectedWines={workshopSelectedWines}
-              existingWineByTastingNote={existingWineByTastingNote}
-              wineSelectedDosages={wineSelectedDosages}
-              setWineSelectedDosages={setWineSelectedDosages}
-            />
+            <Sliders />
+            <div className="commentary_container">
+              <span className="TextWine">
+                Donnez votre avis sur votre vin :
+              </span>
+              <InputTextarea
+                name="commentary"
+                placeholder="Write a review about your workshop"
+                autoResize
+                value={form.Commentary}
+                id="commentaryWine"
+                onChange={handleCommentaryChange}
+                rows={5}
+                cols={30}
+              />
+            </div>
           </div>
-          <ButtonPrimary onClick={handleNavigateAndpostSelectedWines}>
+          <ButtonPrimary
+            onClick={
+              (handlePostSelectedWines, handleNavigateAndCommentaryNewWine)
+            }
+          >
             Etape suivante
           </ButtonPrimary>
         </div>
