@@ -8,10 +8,12 @@ class ExistingWineManager extends AbstractManager {
 
   findOneExistingWineByTastingNoteId(id) {
     return this.database.query(
-      `SELECT ew.vintage
+      `SELECT  ew.name AS wine_name,
+      gv.name AS grape_variety 
       FROM ${this.table} ew
       JOIN tastingnote_has_existingwine tnhe ON ew.id = tnhe.id_existing_wine
-       JOIN tasting_note tn ON tn.id = tnhe.id_tasting_note  
+       JOIN tasting_note tn ON tn.id = tnhe.id_tasting_note
+       JOIN grape_variety gv ON ew.id_grape_variety = gv.id  
        WHERE tn.id = ?`,
       [id]
     );

@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
-import { createContext, useMemo, useEffect, useState } from "react";
+import { createContext, useContext, useMemo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import TastingNoteContext from "./TastingNoteContext";
 
 const CreationWorkshopContext = createContext();
 export default CreationWorkshopContext;
@@ -16,9 +17,9 @@ class SelectedWine {
 }
 
 export function CreationWorkshopProvider({ children }) {
-  const [workshopData, setWorkshopData] = useState(null);
-  const [newWine, setNewWine] = useState(null);
-  const [newWineData, setNewWineData] = useState([{ id: null }]);
+  const { tastingNote } = useContext(TastingNoteContext);
+  const [nextWorkshops, setNextWorkshops] = useState([]);
+  const [newWineId, setNewWineId] = useState([{ id: null }]);
   const [blendedWine, setBlendedWine] = useState(null);
   const [existingWineByTastingNote, setExistingWineByTastingNote] = useState(
     []
@@ -26,8 +27,8 @@ export function CreationWorkshopProvider({ children }) {
   const [selectedWines, setSelectedWines] = useState([]);
   const [workshopSelectedWines, setWorkshopSelectedWines] = useState([]);
   const [maxSelected, setMaxSelected] = useState(false);
-  const wineSelectedCounter = 3;
-  const selectedWinesIds = [1, 4, 3];
+  const [wineSelectedCounter, setWineSelectedCounter] = useState(0);
+  const { selectedWinesIds } = tastingNote;
   const [wineSelectedDosages, setWineSelectedDosages] = useState(
     Array(selectedWinesIds.length).fill(0)
   );
@@ -39,16 +40,19 @@ export function CreationWorkshopProvider({ children }) {
       wineSelectedDosages &&
       selectedWinesIds &&
       wineSelectedDosages.length === wineSelectedCounter &&
-      selectedWinesIds.length === wineSelectedCounter
+      selectedWinesIds.length === wineSelectedCounter &&
+      newWineId[0] &&
+      newWineId[0].id !== null
     ) {
       for (let i = 0; i < wineSelectedCounter; i += 1) {
         const dosage = wineSelectedDosages[i];
-        const id_new_wine = newWineData[0].id + 1;
+        const id_new_wine = newWineId[0].id + 1;
         const id_tasting_note = selectedWinesIds[i];
         const newObj = new SelectedWine(dosage, id_new_wine, id_tasting_note);
         selectedWinesArray.push(newObj);
       }
       setSelectedWines(selectedWinesArray);
+      setWorkshopSelectedWines(selectedWinesArray);
       return selectedWinesArray;
     }
     console.info("Données incomplètes");
@@ -56,20 +60,17 @@ export function CreationWorkshopProvider({ children }) {
   };
 
   useEffect(() => {
-    const selectedWinesResult = handleFillSelectedWines();
-    setWorkshopSelectedWines(selectedWinesResult); // Mettez à jour la variable d'état
-  }, [wineSelectedDosages, newWineData]);
+    handleFillSelectedWines();
+  }, [selectedWinesIds, newWineId]);
 
   const CreationWorkshopValue = useMemo(() => {
     return {
       selectedWines,
       setSelectedWines,
-      setWorkshopData,
-      workshopData,
-      newWine,
-      setNewWine,
-      newWineData,
-      setNewWineData,
+      nextWorkshops,
+      setNextWorkshops,
+      newWineId,
+      setNewWineId,
       blendedWine,
       setBlendedWine,
       existingWineByTastingNote,
@@ -78,15 +79,15 @@ export function CreationWorkshopProvider({ children }) {
       setWineSelectedDosages,
       wineSelectedDosages,
       selectedWinesIds,
-      wineSelectedCounter,
       setMaxSelected,
       maxSelected,
+      wineSelectedCounter,
+      setWineSelectedCounter,
     };
   }, [
     selectedWines,
-    workshopData,
-    newWine,
-    newWineData,
+    nextWorkshops,
+    newWineId,
     blendedWine,
     workshopSelectedWines,
     existingWineByTastingNote,

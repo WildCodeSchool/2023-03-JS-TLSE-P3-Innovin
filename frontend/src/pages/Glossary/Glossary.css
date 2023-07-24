@@ -1,0 +1,166 @@
+.glossary-content {
+  align-items: center;
+  background: var(--blackBgGradient);
+  border: 1px none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100vw;
+}
+
+.img-logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+content {
+  width: 80%;
+}
+
+.search-bar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.search-bar input {
+  border-radius: 10px;
+  height: 40px;
+  padding: 3px;
+  width: 35%;
+}
+
+.button-search {
+  color: white;
+  font-family: var(--fontFamilyText);
+  background: var(--blackBgGradient);
+  padding: 5px;
+}
+
+input.search-input {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border: solid 3px var(--primaryColor);
+  background: var(--blackBgGradientSmooth);
+  color: var(--primaryColor);
+  font-family: var(--fontFamilyText);
+}
+
+.glossary-content h1 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  color: var(--primaryColor);
+  font-family: var(--fontFamilyTitle);
+  font-size: 4rem;
+}
+
+.glossary-content p {
+  color: white;
+  font-family: var(--fontFamilyText);
+  margin: 0.5rem 2rem 2rem 2rem;
+}
+
+.glossary-content h3 {
+  color: var(--primaryColor);
+  font-family: var(--fontFamilyTitle);
+  font-weight: 600;
+  margin: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.definition-item.selected {
+  border: 4px solid var(--redWineColor);
+  width: 100vw;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.glossary-content h2 {
+  color: var(--primaryColor);
+  text-align: center;
+  font-family: var(--fontFamilyTitle);
+  font-weight: 600;
+  font-size: 2rem;
+  background: var(--blackBgGradientSmooth);
+  height: 40px;
+
+  margin-top: 2rem;
+}
+
+.selected {
+  background-color: var(---redWineColor);
+}
+
+.alphabet {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  border-radius: 20px;
+}
+
+.alphabet button {
+  margin: 0.5rem;
+  border-radius: 20px;
+  border: rgba(172, 145, 77, 1);
+  background: rgb(51, 49, 49);
+  color: rgba(172, 145, 77, 1);
+  height: 40px;
+  padding: 10px;
+}
+
+.scroll-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  height: 50px;
+  width: 50px;
+  background: url("../../assets/Icons/Up_Arrow.png") no-repeat;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .scroll-button {
+    height: 40px;
+    width: 40px;
+    font-size: 14px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .search-bar input {
+    border-radius: 10px;
+    height: 40px;
+    padding: 3px;
+    width: 65%;
+  }
+
+  .glossary-content h1 {
+    font-size: 2rem;
+  }
+
+  .img-logo {
+    height: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .alphabet {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+}

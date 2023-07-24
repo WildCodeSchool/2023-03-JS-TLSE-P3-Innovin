@@ -9,7 +9,7 @@ import "./BlendedWine.scss";
 function BlendedWine() {
   const CreationWorkshopValue = useContext(CreationWorkshopContext);
   const { userToken, AuthValue } = useContext(AuthContext);
-  const { blendedWine, setBlendedWine } = CreationWorkshopValue;
+  const { blendedWine, setBlendedWine, nextWorkshops } = CreationWorkshopValue;
   const { user } = AuthValue;
   const navigate = useNavigate();
   const [isLoaded, setIsloaded] = useState(false);
@@ -19,7 +19,7 @@ function BlendedWine() {
       .get(
         `${import.meta.env.VITE_BACKEND_URL}/newwinebyuser/${
           user.id
-        }?idworkshop=1`,
+        }?idworkshop=${nextWorkshops[0].id}`,
         {
           headers: {
             Authorization: `Bearer ${userToken}`,
