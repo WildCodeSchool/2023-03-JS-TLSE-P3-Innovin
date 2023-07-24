@@ -289,7 +289,14 @@ function UsersManagement() {
                       <p>{userById.preference_description}</p>
                     </div>
                   </div>
-                  <ButtonPrimary>modifier</ButtonPrimary>
+                  <ButtonPrimary
+                    onClick={() => {
+                      setUserIdToUpdate(userById.id);
+                      navigate("/admin/users/edit");
+                    }}
+                  >
+                    modifier
+                  </ButtonPrimary>
                 </div>
               </div>
             )}
