@@ -23,8 +23,8 @@ import { AdminProvider } from "./contexts/AdminContext";
 import WinesMap from "./pages/WinesMap/WinesMap";
 import AdminHome from "./pages/Admin/AdminHome/AdminHome";
 import WorkshopModification from "./pages/Admin/WorkshopModification/WorkshopModification";
+import Glossary from "./pages/Glossary/Glossary";
 import WorkshopCreation from "./pages/Admin/WorkshopCreation/WorkshopCreation";
-
 import Revelation from "./pages/Revelation/Revelation";
 import UsersManagement from "./pages/Admin/UsersManagement/UsersManagement";
 import UsersModification from "./pages/Admin/UsersModification/UsersModification";
@@ -51,7 +51,7 @@ function App() {
                     <Route path="/selection" element={<WinesTasted />} />
                     <Route path="/nose/stage1" element={<OlfactoryStage />} />
                     <Route path="/revelation" element={<Revelation />} />
-
+                    <Route path="/glossaire" element={<Glossary />} />
                     <Route
                       path="/creationworkshop"
                       element={<CreationWorkshop />}

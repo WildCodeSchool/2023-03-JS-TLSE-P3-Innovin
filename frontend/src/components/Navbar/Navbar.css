@@ -3,11 +3,12 @@
   align-items: center;
   justify-content: space-between;
   top: 0;
-  width: 100%;
+  width: 100vw;
   height: 90px;
+  background: var(--blackBgGradient);
 }
 
-.titre-logo {
+h1 {
   color: var(--primaryColor);
   font-family: var(--fontFamilyTitle);
   font-size: 1rem;
@@ -17,6 +18,11 @@
 
 .navBar a {
   font-family: var(--fontFamilyText);
+}
+
+.navBar a:hover {
+  color: var(--whiteGoldColor);
+  font-weight: bold;
 }
 
 .logo-h1 {
