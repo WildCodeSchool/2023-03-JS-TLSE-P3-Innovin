@@ -1,0 +1,98 @@
+.startDegust {
+  align-items: center;
+  background-image: url(../../assets/Wine_Img/unsplash_VuZ9U7cWqc8.jpg);
+  object-fit: cover;
+  background-position: 50% 50%;
+  background-size: cover;
+  border: 1px none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+
+  .pageContentDegust {
+    background: var(--blackBgGradientSmooth);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5rem;
+    padding: 17px 24px;
+  }
+
+  .textDegust {
+    text-align: center;
+    color: #ffff;
+    font-weight: 400;
+    line-height: 25px;
+    font-family: var(--fontFamilyText);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 20px;
+    position: relative;
+    width: 100%;
+  }
+
+  .titleDegust {
+    text-align: center;
+    color: var(--primaryColor);
+    font-family: var(--fontFamilyTitle);
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    display: block;
+  }
+
+  .box {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    backdrop-filter: var(--bgBlur);
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    .startDegust {
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      object-fit: center;
+
+      .pageContent {
+        display: flex;
+        width: 70vw;
+        align-items: center;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .textDegust {
+        color: #ffff;
+        font-weight: 400;
+        position: relative;
+        font-size: 24px;
+        text-align: center;
+      }
+
+      .box {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 1px;
+        width: auto;
+      }
+    }
+  }
+}

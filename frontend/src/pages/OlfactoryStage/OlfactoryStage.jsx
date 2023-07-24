@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary";
-import "./OlfactoryStage.css";
+import "./OlfactoryStage.scss";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
 import Checkboxes from "../../components/Checkboxes/Checkboxes";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
@@ -47,14 +47,14 @@ export default function OlfactoryStage() {
   };
 
   return (
-    <div className="page-container">
+    <div className="pageContainer">
       <TastingHeaderTitle />
       <StepsHeader />
       <div className="nose1">
-        <h2 className="h2-nose">
+        <h2 className="h2Nose">
           Je devine l’intensité et la complexité de ses arômes
         </h2>
-        <p className="p-nose">
+        <p>
           Sentez le vin sans l’aérer en laissant votre verre immobile. Quelles
           propriétés percevez-vous dans les arômes de votre vin ?
         </p>
@@ -81,8 +81,8 @@ export default function OlfactoryStage() {
         </form>
       </div>
       <div className="nose2">
-        <h2 className="h2-nose">Je libère ses arômes</h2>
-        <p className="p-nose">
+        <h2 className="h2Nose">Je libère ses arômes</h2>
+        <p className="pNose">
           Remuez votre verre en formant un petit cercle avec son pied sur une
           table ou en l’air, et humez son parfum. A quelle famille d’arôme
           appartient votre vin ?
@@ -97,7 +97,7 @@ export default function OlfactoryStage() {
         onAromaClick={handleAromaClick}
       />
 
-      <div className="button-container">
+      <div className="buttonContainer">
         <ButtonPrimary type="submit" onClick={handleNavigate}>
           Etape suivante
         </ButtonPrimary>

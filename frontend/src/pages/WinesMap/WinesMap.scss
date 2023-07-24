@@ -1,0 +1,119 @@
+.pageContentMap {
+  background: var(--grayBgColor);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  margin: 0;
+  height: 100%;
+  border-radius: 0;
+  padding-top: 0;
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  h1 .titleMap {
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--whiteGoldColor);
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .titleMap {
+    text-align: center;
+    margin: 2rem;
+    font-size: 2.5rem;
+    color: var(--primaryColor);
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .map {
+    height: 95vh;
+    width: 90vw;
+    border: solid 5px var(--primaryColor);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .leaflet-popup-content-wrapper {
+    background: var(--blackBgGradient);
+    opacity: 1;
+    backdrop-filter: blur(0px);
+    border: 4px solid var(--primaryColor);
+    color: white;
+    font-weight: 400;
+  }
+
+  b {
+    color: var(--secondaryColor);
+    font-weight: 700;
+  }
+
+  #root
+    > div
+    > div
+    > div
+    > div
+    > div.leaflet-pane.leaflet-map-pane
+    > div.leaflet-pane.leaflet-popup-pane
+    > div
+    > div.leaflet-popup-content-wrapper
+    > div
+    > div
+    > div {
+    color: var(--primaryColor);
+  }
+
+  #root
+    > div
+    > div
+    > div
+    > div
+    > div.leaflet-pane.leaflet-map-pane
+    > div.leaflet-pane.leaflet-popup-pane
+    > div
+    > a
+    > span {
+    color: var(--redWineColor);
+    font-weight: bold;
+    left: 8px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .pageContentMap {
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  header {
+    margin-bottom: 2rem;
+  }
+
+  .logo {
+    margin: 0;
+  }
+
+  img.logo {
+    height: 40px;
+    width: 40px;
+  }
+
+  .map {
+    height: 70vh;
+    width: 100vw;
+    border: solid 4px var(--whiteGoldColor);
+  }
+
+  .titleMap {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
