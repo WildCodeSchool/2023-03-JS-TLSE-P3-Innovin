@@ -17,6 +17,7 @@ const CompetitionSelectionControllers = require("./controllers/CompetitionSelect
 const WorkshopHasExistingWineControllers = require("./controllers/WorkshopHasExistingWineControllers");
 const TastingNoteControllers = require("./controllers/TastingNoteControllers");
 const SelectedWineControllers = require("./controllers/SelectedWineControllers");
+const WineryControllers = require("./controllers/WineryControllers");
 
 const { verifyAdminCredentials } = UserControllers;
 
@@ -41,9 +42,19 @@ router.get("/grapevariety/:id", GrapeVarietyControllers.read);
 router.get("/existingwine", ExistingWineControllers.browse);
 router.get("/existingwine/:id", ExistingWineControllers.read);
 router.get(
+  "/onlyexistingwine/:id",
+  ExistingWineControllers.getExistingWineById
+);
+router.get("/winesdata", ExistingWineControllers.refactorWinesData);
+router.get(
   "/existingwinebytastingnote/:id",
   ExistingWineControllers.getOneExistingWineByTastingNoteId
 );
+router.post(
+  "/existingwinehasappellation",
+  ExistingWineControllers.addEwHasAppellation
+);
+router.get("/winery", WineryControllers.browse);
 router.get("/appellation", AppellationControllers.browse);
 router.get("/appellation/:id", AppellationControllers.read);
 router.get("/wineregion", WineRegionControllers.browse);

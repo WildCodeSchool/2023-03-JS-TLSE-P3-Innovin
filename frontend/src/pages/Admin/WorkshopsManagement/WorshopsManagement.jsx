@@ -128,7 +128,7 @@ function WorkshopsManagement() {
       <div className="workshopsContent">
         <div className="tableHeader">
           <h1>Ateliers</h1>
-          <div className="searchOrAdd">
+          <div className="searchOrAddHeader">
             <SearchBar
               className="searchBar"
               setValue={setSearchValue}
@@ -274,6 +274,7 @@ function WorkshopsManagement() {
             actionFunction={onDelete}
             functionParam={idToDelete}
             secondButton="Annuler"
+            toastValidMsg={`Atelier ${idToDelete} supprimé !`}
           />
 
           {/* Modal wich contains workshop information when click on the row */}
@@ -316,7 +317,9 @@ function WorkshopsManagement() {
                   <div>
                     <p>Vins dégustés :</p>
                     {winesOnWorkshop.map((wine) => (
-                      <p key={wine.id_existing_wine}>{wine.vintage}</p>
+                      <p key={wine.id_existing_wine}>
+                        {wine.grape_variety} <span>{wine.vintage}</span>
+                      </p>
                     ))}
                   </div>
                   <div className="attendees">
@@ -349,7 +352,15 @@ function WorkshopsManagement() {
                     })}
                   </div>
                 </div>
-                <ButtonPrimary>modifier</ButtonPrimary>
+                <ButtonPrimary
+                  type="button"
+                  onClick={() => {
+                    setIdToUpdate(workshopById.id);
+                    navigate("/admin/workshops/edit");
+                  }}
+                >
+                  modifier
+                </ButtonPrimary>
               </div>
             </div>
           )}
