@@ -15,7 +15,7 @@ export function TastingNoteProvider({ children }) {
   const [tastingNote, setTastingNote] = useState({
     wineQuality: "",
     idOlfactiveIntensity: null,
-    idUser: 2, // Inscrire 'null'
+    idUser: null,
     rating: 0,
     tastingCommentary: "",
     idOlfactiveComplexity: null,
@@ -32,7 +32,6 @@ export function TastingNoteProvider({ children }) {
     idVisualIntensity: null,
     idOlfactiveAromas: null,
     idFlavorAromas: null,
-    selectedWinesIds: [],
   });
 
   const handleFillVisualColorId = (e, value) => {
@@ -72,12 +71,6 @@ export function TastingNoteProvider({ children }) {
       setTastingNote,
       handleFillVisualColorId,
       handleFillmouthId,
-      setSelectedWinesIds: (selectedWinesIds) => {
-        setTastingNote((prevTastingNote) => ({
-          ...prevTastingNote,
-          selectedWinesIds,
-        }));
-      },
     };
   }, [tastingNote]);
 

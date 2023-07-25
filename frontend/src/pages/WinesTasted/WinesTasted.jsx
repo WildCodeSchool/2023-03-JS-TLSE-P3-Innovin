@@ -11,12 +11,13 @@ import ButtonPrimary from "../../components/ButtonPrimary";
 function WinesTasted() {
   // const for context
   const CreationWorkshopValue = useContext(CreationWorkshopContext);
-  const { userToken } = useContext(AuthContext);
-  const { tastingNote, setSelectedWinesIds } = useContext(TastingNoteContext);
+  const { userToken, user } = useContext(AuthContext);
+  const { tastingNote } = useContext(TastingNoteContext);
   const {
     wineSelectedCounter,
     setWineSelectedCounter,
-    setNextWorkshops,
+    setSelectedWinesIds,
+    nextWorkshops,
     setMaxSelected,
     maxSelected,
   } = CreationWorkshopValue;
@@ -25,8 +26,9 @@ function WinesTasted() {
   const [wines, setWines] = useState([]);
 
   // fetch to get tasting note of dynamic user and workshop
+
   useEffect(() => {
-    const apiUrl = `http://localhost:5000/tastingnote/2?idworkshop=1`;
+    const apiUrl = `http://localhost:5000/tastingnote/${user.id}?idworkshop=${nextWorkshops[0].id}`;
     axios
       .get(apiUrl, {
         headers: {
@@ -35,23 +37,6 @@ function WinesTasted() {
       })
       .then((response) => {
         setWines(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [userToken]);
-
-  useEffect(() => {
-    // Fetch to get the next workshop
-    const nextWorkshopsApiUrl = "http://localhost:5000/nextworkshops";
-    axios
-      .get(nextWorkshopsApiUrl, {
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      })
-      .then((response) => {
-        setNextWorkshops(response.data);
       })
       .catch((err) => {
         console.error(err);

@@ -14,9 +14,15 @@ import TastingContext from "../../contexts/TastingContext";
 
 function TasteAdvice() {
   const { setTastingNote, tastingNote } = useContext(TastingNoteContext);
-  const { workshopHasExistingWine, wineNumber, setWineNumber } =
-    useContext(TastingContext);
+  const {
+    ExistingWinesIds,
+    workshopHasExistingWine,
+    wineNumber,
+    setWineNumber,
+    setTastingNotesIds,
+  } = useContext(TastingContext);
   const { userToken } = useContext(AuthContext);
+  const indexOfWine = wineNumber - 1;
 
   const [rateValue, setRateValue] = useState(null);
 
@@ -43,7 +49,26 @@ function TasteAdvice() {
         },
       })
       .then((res) => {
-        console.info(res);
+        setTastingNotesIds(res.data.insertId); // Get the tastingNote Id posted
+        axios
+          .post(
+            `${import.meta.env.VITE_BACKEND_URL}/tastingnotehasexistingwine`,
+            {
+              id_tasting_note: res.data.insertId,
+              id_existing_wine: ExistingWinesIds[indexOfWine],
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${userToken}`,
+              },
+            }
+          )
+          .then((response) => {
+            console.info(response);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       })
       .catch((err) => {
         console.error(err);

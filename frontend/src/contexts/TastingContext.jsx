@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { createContext, useState, useMemo } from "react";
 import PropTypes from "prop-types";
 
@@ -6,8 +7,17 @@ const TastingContext = createContext();
 export function TastingProvider({ children }) {
   const [visualData, setVisualData] = useState(null);
   const [olfactiveData, setOlfactiveData] = useState(null);
-  const [workshopHasExistingWine, setWorkshopHasExistingWine] = useState(null);
+  const [workshopHasExistingWine, setWorkshopHasExistingWine] = useState([]);
   const [wineNumber, setWineNumber] = useState(1);
+  const [tastingNotesIds, setTastingNotesIds] = useState();
+
+  // Get the workshop ExistingWine Ids for insert in 'tastingNote_has_existingWine'
+  const ExistingWinesIds = workshopHasExistingWine.map(
+    (ids) => ids.id_existing_wine
+  );
+
+  const TastingNotesIds = [];
+  TastingNotesIds.push(tastingNotesIds);
 
   // Data recovery from 'TasteStage1' component
   const [dataSweetness, setDataSweetness] = useState([]);
@@ -50,6 +60,9 @@ export function TastingProvider({ children }) {
       wineNumber,
       setWineNumber,
       visualDataKeys,
+      tastingNotesIds,
+      setTastingNotesIds,
+      ExistingWinesIds,
     };
   }, [
     visualData,
@@ -61,6 +74,8 @@ export function TastingProvider({ children }) {
     mouthData,
     workshopHasExistingWine,
     wineNumber,
+    tastingNotesIds,
+    ExistingWinesIds,
   ]);
 
   return (

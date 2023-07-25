@@ -30,7 +30,7 @@ export default function Revelation() {
       });
   }, [userToken]);
 
-  // Create new wine
+  // Create a new wine
   const postNewWine = () => {
     const newWine = { newWine: { color: `${nextWorkshops[0].wine_type}` } };
     axios

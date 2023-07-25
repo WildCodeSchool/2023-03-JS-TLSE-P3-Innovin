@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
-import { createContext, useContext, useMemo, useEffect, useState } from "react";
+import { createContext, useMemo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import TastingNoteContext from "./TastingNoteContext";
 
 const CreationWorkshopContext = createContext();
 export default CreationWorkshopContext;
@@ -17,7 +16,6 @@ class SelectedWine {
 }
 
 export function CreationWorkshopProvider({ children }) {
-  const { tastingNote } = useContext(TastingNoteContext);
   const [nextWorkshops, setNextWorkshops] = useState([]);
   const [newWineId, setNewWineId] = useState([{ id: null }]);
   const [blendedWine, setBlendedWine] = useState(null);
@@ -29,7 +27,7 @@ export function CreationWorkshopProvider({ children }) {
   const [workshopSelectedWines, setWorkshopSelectedWines] = useState([]);
   const [maxSelected, setMaxSelected] = useState(false);
   const [wineSelectedCounter, setWineSelectedCounter] = useState(0);
-  const { selectedWinesIds } = tastingNote;
+  const [selectedWinesIds, setSelectedWinesIds] = useState([]);
   const initTab = Array(selectedWinesIds.length).fill(0);
   const [wineSelectedDosages, setWineSelectedDosages] = useState(initTab);
 
@@ -83,6 +81,7 @@ export function CreationWorkshopProvider({ children }) {
       setWineSelectedDosages,
       wineSelectedDosages,
       selectedWinesIds,
+      setSelectedWinesIds,
       setMaxSelected,
       maxSelected,
       wineSelectedCounter,
