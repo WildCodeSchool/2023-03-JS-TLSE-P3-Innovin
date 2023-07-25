@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import lexique from "./lexique-vin";
-import "./Glossary.css";
+import "./Glossary.scss";
 import Navbar from "../../components/Navbar/Navbar";
 import logo from "../../assets/Logo_W_Circles.svg";
 
@@ -44,7 +44,7 @@ export default function LexiqueVin() {
   const handleSearchItemClick = (definition) => {
     scrollToLetter(definition.mot.charAt(0).toUpperCase());
     setSearchTerm("");
-    const allDefinitions = document.querySelectorAll(".definition-item");
+    const allDefinitions = document.querySelectorAll(".definitionItem");
     allDefinitions.forEach((def) => {
       def.classList.remove("selected");
     });
@@ -55,7 +55,7 @@ export default function LexiqueVin() {
     if (selectedDefinition) {
       selectedDefinition.classList.add("selected");
       // Scroll to defintion
-      const glossaryContent = document.querySelector(".glossary-content");
+      const glossaryContent = document.querySelector(".glossaryContent");
       if (glossaryContent && definitionRef.current) {
         const glossaryTop = glossaryContent.getBoundingClientRect().top;
         const definitionTop = definitionRef.current.getBoundingClientRect().top;
@@ -91,9 +91,9 @@ export default function LexiqueVin() {
   return (
     <div>
       <Navbar />
-      <div className="glossary-content">
+      <div className="glossaryContent">
         <div className="content">
-          <div className="img-logo">
+          <div className="imgLogo">
             <img src={logo} alt="" />
           </div>
           <h1>Glossaire du vin</h1>
@@ -115,7 +115,7 @@ export default function LexiqueVin() {
               );
             })}
           </div>
-          <div className="search-bar">
+          <div className="searchBar">
             <input
               type="text"
               value={searchTerm}
@@ -123,10 +123,10 @@ export default function LexiqueVin() {
               placeholder="Rechercher une définition..."
             />
             {searchResults.length > 0 && (
-              <ul className="search-results">
+              <ul className="searchResults">
                 {searchResults.slice(0, 4).map((definition) => (
                   <button
-                    className="button-search"
+                    className="buttonSearch"
                     type="button"
                     key={definition.id}
                     onClick={() => handleSearchItemClick(definition)}
@@ -154,7 +154,7 @@ export default function LexiqueVin() {
                       ? definitionRef
                       : null
                   }
-                  className={`definition-item ${
+                  className={`definitionItem ${
                     item.mot.toLowerCase() === searchTerm.toLowerCase()
                       ? "selected"
                       : ""
@@ -169,7 +169,7 @@ export default function LexiqueVin() {
           {showScrollButton && (
             <button
               type="button"
-              className="scroll-button"
+              className="scrollButton"
               onClick={handleScrollToTop}
             >
               {" "}

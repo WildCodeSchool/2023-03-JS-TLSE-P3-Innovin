@@ -1596,7 +1596,7 @@ const lexique = [
   },
   {
     id: 273,
-    mot: "Thermorégulatio",
+    mot: "Thermorégulation",
     definition:
       "La thermorégulation est une technique utilisée dans la vinification pour contrôler et maintenir la température des moûts ou des vins pendant le processus de fermentation, permettant ainsi un meilleur contrôle de la fermentation et une préservation des arômes.",
   },
