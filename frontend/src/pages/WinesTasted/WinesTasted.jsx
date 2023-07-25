@@ -4,26 +4,25 @@ import axios from "axios";
 import TastingNoteContext from "../../contexts/TastingNoteContext";
 import CreationWorkshopContext from "../../contexts/CreationWorkshopContext";
 import Card from "./Card";
-import "./WinesTasted.css";
+import "./WinesTasted.scss";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
 function WinesTasted() {
   // const for context
-  const CreationWorkshopValue = useContext(CreationWorkshopContext);
+  const creationWorkshopValue = useContext(CreationWorkshopContext);
   const { userToken, tastingNote, setSelectedWinesIds } =
     useContext(TastingNoteContext);
   const {
     wineSelectedCounter,
     setWineSelectedCounter,
-    nextWorkshops,
     setNextWorkshops,
     setMaxSelected,
     maxSelected,
-  } = CreationWorkshopValue;
+  } = creationWorkshopValue;
 
   // const for fetch
   const [wines, setWines] = useState([]);
-  const [existingWineWorkshops, setExistingWineWorkshops] = useState([]);
+  const [setExistingWineWorkshops] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -85,33 +84,23 @@ function WinesTasted() {
   };
 
   return (
-    <div className="wine-content">
-      <div className="head-tested">
-        <h2 className="title-tasted">Sélection</h2>
-        <p className="p-tested">
+    <div className="wineContent">
+      <div className="headTested">
+        <h2 className="titleTasted">Sélection</h2>
+        <p className="pTested">
           Sélectionnez au maximum 3 vins favoris parmi ceux dégustés
         </p>
       </div>
-      <div className="card-disposition">
-        {wines
-          .filter((wine) =>
-            existingWineWorkshops.some(
-              (workshop) =>
-                workshop.id_workshop === nextWorkshops[0].id &&
-                workshop.id_existing_wine === wine.id
-            )
-          )
-          // Sort the wines based on their IDs
-          .sort((wineA, wineB) => wineA.id - wineB.id)
-          .map((wine, index) => (
-            <Card
-              key={wine.id}
-              wine={wine}
-              isSelected={tastingNote.selectedWinesIds.includes(wine.id)}
-              number={index + 1}
-              onSelect={handleWineSelection}
-            />
-          ))}
+      <div className="cardDisposition">
+        {wines.map((wine, index) => (
+          <Card
+            key={wine.id}
+            wine={wine}
+            isSelected={tastingNote.selectedWinesIds.includes(wine.id)}
+            number={index + 1}
+            onSelect={handleWineSelection}
+          />
+        ))}
       </div>
 
       <Link to="/revelation">

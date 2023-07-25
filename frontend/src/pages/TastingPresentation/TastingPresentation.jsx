@@ -2,8 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import TastingContext from "../../contexts/TastingContext";
-import "./TastingPresentation.css";
-import Navbar from "../../components/Navbar/Navbar";
+import "./TastingPresentation.scss";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import AuthContext from "../../contexts/AuthContext";
 
@@ -49,13 +48,11 @@ export default function TastingPresentation() {
   // --------------------------------------------------return the page-----------------------------------------------------------
   return (
     userToken && (
-      <div className="start-degust">
-        <Navbar />
-
-        <div className="page-content">
+      <div className="startDegust">
+        <div className="pageContentDegust">
           <div className="box">
-            <h1 className="title">Dégustation</h1>
-            <p className="text">
+            <h1 className="titleDegust">Dégustation</h1>
+            <p className="textDegust">
               Vous vous apprêtez à déguster 5 vins monocépages avec une fiche à
               remplir pour chacun des vins.
               <br />
@@ -70,7 +67,7 @@ export default function TastingPresentation() {
               Soyez attentifs et laissez vous porter par vos sens.
             </p>
 
-            <div className="button-container">
+            <div className="buttonContainer">
               <Link to="/eye/stage1">
                 <ButtonPrimary type="button">Démarrer</ButtonPrimary>
               </Link>
