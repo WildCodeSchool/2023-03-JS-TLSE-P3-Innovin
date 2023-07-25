@@ -5,7 +5,7 @@ import TastingNoteContext from "../../contexts/TastingNoteContext";
 import CreationWorkshopContext from "../../contexts/CreationWorkshopContext";
 import AuthContext from "../../contexts/AuthContext";
 import Card from "./Card";
-import "./WinesTasted.scss";
+import "./WinesTasted.css";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
 function WinesTasted() {
@@ -19,7 +19,7 @@ function WinesTasted() {
     nextWorkshops,
     setMaxSelected,
     maxSelected,
-  } = creationWorkshopValue;
+  } = CreationWorkshopValue;
 
   // const for fetch
   const [wines, setWines] = useState([]);
@@ -61,10 +61,10 @@ function WinesTasted() {
   };
 
   return (
-    <div className="wineContent">
-      <div className="headTested">
-        <h2 className="titleTasted">Sélection</h2>
-        <p className="pTested">
+    <div className="wine-content">
+      <div className="head-tested">
+        <h2 className="title-tasted">Sélection</h2>
+        <p className="p-tested">
           Sélectionnez au maximum 3 vins favoris parmi ceux dégustés
         </p>
       </div>
@@ -81,6 +81,7 @@ function WinesTasted() {
           ))}
         </div>
       )}
+
       <Link to="/revelation">
         <ButtonPrimary> Révélation</ButtonPrimary>
       </Link>
