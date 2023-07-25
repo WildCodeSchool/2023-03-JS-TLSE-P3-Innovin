@@ -1,0 +1,40 @@
+.stepsHeader,
+.openStepButton,
+.closedStepButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.stepsHeader {
+  .closedStepButton {
+    border-radius: 3rem;
+    border: 1px solid var(--secondaryColor);
+    width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    &:hover {
+      scale: 1.1;
+    }
+  }
+  .closedStepButton::after,
+  .closedStepButton::before {
+    content: "";
+    border: 2px solid var(--secondaryColor);
+    background-color: var(--smoothGoldColor);
+    position: absolute;
+    inset: 0.15rem;
+    border-radius: 5rem;
+  }
+}
+
+/* ----------------------media queries for tablet and desktop-------------------------------------------- */
+
+@media screen and (min-width: 768px) {
+  .stepsHeader {
+    gap: 4rem;
+  }
+}
