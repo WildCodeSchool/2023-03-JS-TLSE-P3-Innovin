@@ -45,6 +45,8 @@ const TasteManager = require("./TasteManager");
 const TastingAromasManager = require("./TastingAromasManager");
 const TastingNoteManager = require("./TastingNoteManager");
 const TastingNoteHasExistingWineManager = require("./TastingNoteHasExistingWineManager");
+const OlfactiveAromasHasTastingNoteManager = require("./OlfactiveAromasHasTastingNoteManager");
+const TastingNoteHasTasteFlavorManager = require("./TastingNoteHasTasteFlavorManager");
 const SelectedWineManager = require("./SelectedWineManager");
 
 models.item = new ItemManager();
@@ -94,6 +96,13 @@ models.tastingNote.setDatabase(pool);
 
 models.tastingNoteHasExistingWine = new TastingNoteHasExistingWineManager();
 models.tastingNoteHasExistingWine.setDatabase(pool);
+
+models.olfactiveAromasHasTastingNote =
+  new OlfactiveAromasHasTastingNoteManager();
+models.olfactiveAromasHasTastingNote.setDatabase(pool);
+
+models.tastingNoteHasTasteFlavor = new TastingNoteHasTasteFlavorManager();
+models.tastingNoteHasTasteFlavor.setDatabase(pool);
 
 models.selectedWine = new SelectedWineManager();
 models.selectedWine.setDatabase(pool);

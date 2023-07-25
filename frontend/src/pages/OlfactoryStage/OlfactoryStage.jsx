@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import "./OlfactoryStage.css";
@@ -13,16 +13,18 @@ import TastingNoteContext from "../../contexts/TastingNoteContext";
 
 export default function OlfactoryStage() {
   const { olfactiveData, visualDataKeys } = useContext(TastingContext);
-  const { setTastingNote } = useContext(TastingNoteContext);
+  const {
+    setTastingNote,
+    olfactorySelectedAromas,
+    setOlfactorySelectedAromas,
+  } = useContext(TastingNoteContext);
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/mouth/stage1");
   };
 
-  const [selectedAromas, setSelectedAromas] = useState([]);
-
   const handleAromaClick = (idAromas) => {
-    setSelectedAromas((prevSelectedAromas) => {
+    setOlfactorySelectedAromas((prevSelectedAromas) => {
       if (prevSelectedAromas.includes(idAromas)) {
         return prevSelectedAromas.filter((id) => id !== idAromas);
       }
@@ -36,13 +38,13 @@ export default function OlfactoryStage() {
     const formData = new FormData(form);
 
     const formJson = Object.fromEntries(formData.entries());
-    formJson.aromas = selectedAromas;
+    formJson.aromas = olfactorySelectedAromas;
     console.info(formJson);
 
     // Mettre à jour le contexte TastingNote
     setTastingNote((prevTastingNote) => ({
       ...prevTastingNote,
-      idOlfactiveAromas: selectedAromas,
+      idOlfactiveAromas: olfactorySelectedAromas,
     }));
   };
 

@@ -12,11 +12,10 @@ function WinesTasted() {
   // const for context
   const CreationWorkshopValue = useContext(CreationWorkshopContext);
   const { userToken, user } = useContext(AuthContext);
-  const { tastingNote } = useContext(TastingNoteContext);
+  const { tastingNote, setSelectedWinesIds } = useContext(TastingNoteContext);
   const {
     wineSelectedCounter,
     setWineSelectedCounter,
-    setSelectedWinesIds,
     nextWorkshops,
     setMaxSelected,
     maxSelected,

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { rating, wineQuality } from "../../Utils";
@@ -13,13 +13,18 @@ import ButtonPrimary from "../../components/ButtonPrimary";
 import TastingContext from "../../contexts/TastingContext";
 
 function TasteAdvice() {
-  const { setTastingNote, tastingNote } = useContext(TastingNoteContext);
+  const {
+    setTastingNote,
+    tastingNote,
+    olfactorySelectedAromas,
+    flavorSelectedAromas,
+  } = useContext(TastingNoteContext);
   const {
     ExistingWinesIds,
     workshopHasExistingWine,
     wineNumber,
     setWineNumber,
-    setTastingNotesIds,
+    setTastingNotesId,
   } = useContext(TastingContext);
   const { userToken } = useContext(AuthContext);
   const indexOfWine = wineNumber - 1;
@@ -40,39 +45,71 @@ function TasteAdvice() {
     navigate(path);
   };
 
-  // submit the tastingNote object in db
-  const handleSubmit = () => {
-    axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/tastingnote`, tastingNote, {
-        headers: {
-          Authorization: `Bearer ${userToken}`,
+  // Submit the tastingNote object and post the ids of the tastingnotehasexistingwine table in db
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/tastingnote`,
+        tastingNote,
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        }
+      );
+
+      const tastingNoteId = response.data.insertId;
+      setTastingNotesId(tastingNoteId);
+
+      await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/tastingnotehasexistingwine`,
+        {
+          id_tasting_note: tastingNoteId,
+          id_existing_wine: ExistingWinesIds[indexOfWine],
         },
-      })
-      .then((res) => {
-        setTastingNotesIds(res.data.insertId); // Get the tastingNote Id posted
-        axios
-          .post(
-            `${import.meta.env.VITE_BACKEND_URL}/tastingnotehasexistingwine`,
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        }
+      );
+
+      // Handle olfactive and flavor data
+      await Promise.all([
+        ...olfactorySelectedAromas.map((olfactiveAromaId) => {
+          return axios.post(
+            `${import.meta.env.VITE_BACKEND_URL}/olfactivearomashastastingnote`,
             {
-              id_tasting_note: res.data.insertId,
-              id_existing_wine: ExistingWinesIds[indexOfWine],
+              id_tasting_note: tastingNoteId,
+              id_olfactive: olfactiveAromaId,
             },
             {
               headers: {
                 Authorization: `Bearer ${userToken}`,
               },
             }
-          )
-          .then((response) => {
-            console.info(response);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+          );
+        }),
+        ...flavorSelectedAromas.map((tasteFlavorId) => {
+          return axios.post(
+            `${import.meta.env.VITE_BACKEND_URL}/tastingnotehastasteflavor`,
+            {
+              id_tasting_note: tastingNoteId,
+              id_taste_flavor: tasteFlavorId,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${userToken}`,
+              },
+            }
+          );
+        }),
+      ]);
+
+      console.info("Tasting data submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting tasting data:", error);
+    }
   };
 
   // -------------------------------------------------Render------------------------------------------------------------

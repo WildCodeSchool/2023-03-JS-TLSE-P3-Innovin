@@ -17,6 +17,8 @@ const CompetitionSelectionControllers = require("./controllers/CompetitionSelect
 const WorkshopHasExistingWineControllers = require("./controllers/WorkshopHasExistingWineControllers");
 const TastingNoteControllers = require("./controllers/TastingNoteControllers");
 const TastingNoteHasExistingWineControllers = require("./controllers/TastingNoteHasExistingWineControllers");
+const OlfactiveAromasHasTastingNoteControllers = require("./controllers/OlfactiveAromasHasTastingNoteControllers");
+const TastingNoteHasTasteFlavorControllers = require("./controllers/TastingNoteHasTasteFlavorControllers");
 const SelectedWineControllers = require("./controllers/SelectedWineControllers");
 
 const { verifyAdminCredentials } = UserControllers;
@@ -65,6 +67,14 @@ router.post(
   "/tastingnotehasexistingwine",
   TastingNoteHasExistingWineControllers.add
 );
+router.post(
+  "/olfactivearomashastastingnote",
+  OlfactiveAromasHasTastingNoteControllers.add
+);
+router.post(
+  "/tastingnotehastasteflavor",
+  TastingNoteHasTasteFlavorControllers.add
+);
 router.get(
   "/workshophasexistingwine",
   WorkshopHasExistingWineControllers.browse
@@ -79,6 +89,7 @@ router.delete(
   WorkshopHasExistingWineControllers.destroy
 );
 router.get("/nextworkshops", WorkshopControllers.getNextWorkshops);
+
 // ---------------------------------------- Private Routes ----------------------------------------------
 
 router.use(verifyToken);

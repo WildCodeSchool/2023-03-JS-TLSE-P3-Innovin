@@ -11,6 +11,8 @@ export function TastingNoteProvider({ children }) {
   const [idAcidityValue, setIdAcidityValue] = useState(0);
   const [idTasteAlcoholValue, setIdTasteAlcoholValue] = useState(0);
   const [idTasteTanninValue, setIdTasteTanninValue] = useState(0);
+  const [olfactorySelectedAromas, setOlfactorySelectedAromas] = useState([]);
+  const [flavorSelectedAromas, setFlavorSelectedAromas] = useState([]);
 
   const [tastingNote, setTastingNote] = useState({
     wineQuality: "",
@@ -30,8 +32,7 @@ export function TastingNoteProvider({ children }) {
     idTasteSweetness: null,
     idTasteTannin: null,
     idVisualIntensity: null,
-    idOlfactiveAromas: null,
-    idFlavorAromas: null,
+    selectedWinesIds: [],
   });
 
   const handleFillVisualColorId = (e, value) => {
@@ -71,8 +72,18 @@ export function TastingNoteProvider({ children }) {
       setTastingNote,
       handleFillVisualColorId,
       handleFillmouthId,
+      olfactorySelectedAromas,
+      setOlfactorySelectedAromas,
+      flavorSelectedAromas,
+      setFlavorSelectedAromas,
+      setSelectedWinesIds: (selectedWinesIds) => {
+        setTastingNote((prevTastingNote) => ({
+          ...prevTastingNote,
+          selectedWinesIds,
+        }));
+      },
     };
-  }, [tastingNote]);
+  }, [tastingNote, olfactorySelectedAromas, flavorSelectedAromas]);
 
   return (
     <TastingNoteContext.Provider value={tastingNoteValue}>

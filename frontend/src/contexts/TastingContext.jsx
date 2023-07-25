@@ -9,15 +9,12 @@ export function TastingProvider({ children }) {
   const [olfactiveData, setOlfactiveData] = useState(null);
   const [workshopHasExistingWine, setWorkshopHasExistingWine] = useState([]);
   const [wineNumber, setWineNumber] = useState(1);
-  const [tastingNotesIds, setTastingNotesIds] = useState();
+  const [tastingNotesId, setTastingNotesId] = useState();
 
   // Get the workshop ExistingWine Ids for insert in 'tastingNote_has_existingWine'
   const ExistingWinesIds = workshopHasExistingWine.map(
     (ids) => ids.id_existing_wine
   );
-
-  const TastingNotesIds = [];
-  TastingNotesIds.push(tastingNotesIds);
 
   // Data recovery from 'TasteStage1' component
   const [dataSweetness, setDataSweetness] = useState([]);
@@ -60,8 +57,8 @@ export function TastingProvider({ children }) {
       wineNumber,
       setWineNumber,
       visualDataKeys,
-      tastingNotesIds,
-      setTastingNotesIds,
+      tastingNotesId,
+      setTastingNotesId,
       ExistingWinesIds,
     };
   }, [
@@ -74,7 +71,7 @@ export function TastingProvider({ children }) {
     mouthData,
     workshopHasExistingWine,
     wineNumber,
-    tastingNotesIds,
+    tastingNotesId,
     ExistingWinesIds,
   ]);
 
