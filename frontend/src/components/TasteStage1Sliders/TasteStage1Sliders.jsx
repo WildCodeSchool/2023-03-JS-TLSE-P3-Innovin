@@ -7,7 +7,6 @@ import "./TasteStage1Sliders.scss";
 import Sugar_Icon from "../../assets/Icons/Sliders_Icons/Sugar_Icon.svg";
 import Acidity_Icon from "../../assets/Icons/Sliders_Icons/Acidity_Icon.svg";
 import WineBarrel_Icon from "../../assets/Icons/Sliders_Icons/WineBarrel_Icon.svg";
-import WineGlass_Icon from "../../assets/Icons/Sliders_Icons/WineGlass_Icon.svg";
 
 function SlidersTasteStage1({
   dataTasteTannin,
@@ -66,8 +65,9 @@ function SlidersTasteStage1({
           <h2>Sucrosité</h2>
         </div>
         <CircularSlider
-          labelFontSize="2.5rem"
-          valueFontSize="2rem"
+          width={200}
+          labelFontSize="1.4rem"
+          valueFontSize="1.2rem"
           label={
             sweetnessValue ||
             tasteSweetnessItems[sliderDataSweetness.indexOf("12 g/L")] // Displays the value of 'sweetnessValue' if true or the element corresponding to "12g/L"
@@ -76,9 +76,9 @@ function SlidersTasteStage1({
           knobColor="#892221"
           progressColorFrom="#E82321"
           progressColorTo="#E82321"
-          progressSize={28}
+          progressSize={16}
           trackColor="#eeeeee"
-          trackSize={23}
+          trackSize={14}
           data={sliderDataSweetness}
           dataIndex={2.5}
           verticalOffset="-0.1rem"
@@ -87,12 +87,13 @@ function SlidersTasteStage1({
       </div>
       <div className="Sliderbox">
         <div className="TitleSliders">
-          <img src={WineGlass_Icon} alt="WineGlass_Icon" />
+          <i className="fi fi-rr-glass-champagne" />
           <h2>Alcool</h2>
         </div>
         <CircularSlider
-          labelFontSize="2.5rem"
-          valueFontSize="2rem"
+          width={200}
+          labelFontSize="1.4rem"
+          valueFontSize="1.2rem"
           label={
             alcoholValue || alcoholItems[sliderDataAlcohol.indexOf("10 %")] // Displays the value of 'alcoholValue' if true or the element corresponding to "10%"
           }
@@ -100,9 +101,9 @@ function SlidersTasteStage1({
           knobColor="#A72438"
           progressColorFrom="#9A1F48"
           progressColorTo="#9A1F48"
-          progressSize={28}
+          progressSize={16}
           trackColor="#eeeeee"
-          trackSize={23}
+          trackSize={14}
           data={sliderDataAlcohol}
           dataIndex={2.5}
           verticalOffset="-0.1rem"
@@ -116,8 +117,9 @@ function SlidersTasteStage1({
           <h2>Acidité</h2>
         </div>
         <CircularSlider
-          labelFontSize="2.5rem"
-          valueFontSize="2rem"
+          width={200}
+          labelFontSize="1.4rem"
+          valueFontSize="1.2rem"
           label={
             acidityValue || acidityItems[sliderDataAcidity.indexOf("5 g/L")] // Displays the value of 'acidityValue' if true or the element corresponding to "5 g/L"
           }
@@ -125,9 +127,9 @@ function SlidersTasteStage1({
           knobColor="#730907"
           progressColorFrom="#B91C19"
           progressColorTo="#B91C19"
-          progressSize={28}
+          progressSize={16}
           trackColor="#eeeeee"
-          trackSize={23}
+          trackSize={14}
           data={sliderDataAcidity}
           dataIndex={2.5}
           verticalOffset="-0.1rem"
@@ -140,8 +142,9 @@ function SlidersTasteStage1({
           <h2>Tanin</h2>
         </div>
         <CircularSlider
-          labelFontSize="2rem"
-          valueFontSize="0rem"
+          width={200}
+          labelFontSize="1.4rem"
+          valueFontSize="1.2rem"
           label={
             tasteTanninValue ||
             tasteTanninItems[sliderDataTasteTannin.indexOf(3)]
@@ -150,9 +153,9 @@ function SlidersTasteStage1({
           knobColor="#892221"
           progressColorFrom="#E94E65"
           progressColorTo="#E94E65"
-          progressSize={28}
+          progressSize={16}
           trackColor="#eeeeee"
-          trackSize={23}
+          trackSize={14}
           data={sliderDataTasteTannin}
           dataIndex={2.5}
           verticalOffset="-2rem"

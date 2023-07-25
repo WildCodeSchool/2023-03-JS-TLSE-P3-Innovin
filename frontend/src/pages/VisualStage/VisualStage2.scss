@@ -31,11 +31,12 @@
         font-family: var(--fontFamilyTitle);
         font-size: 2rem;
         color: var(--primaryColor);
+        line-height: 2.8rem;
       }
       .introText {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.2rem;
         .tip {
           font-weight: 200;
           font-style: italic;

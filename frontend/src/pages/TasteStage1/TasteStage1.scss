@@ -11,89 +11,99 @@
 }
 
 .TasteStage1 {
-  height: 100%;
-  background: no-repeat bottom 9em left 40em
-      url("../../assets/Gold_Blotches/Watercolor_Blotch_2 1.png"),
+  background: no-repeat
+      url("../../assets/Gold_Blotches/Watercolor_Blotch_1.png"),
     no-repeat top 45em right 2em
       url("../../assets/Gold_Blotches/Watercolor_Splatters 1.png"),
     var(--blackBgGradient);
   color: var(--whiteGoldColor);
   font-family: var(--fontFamilyText);
   font-size: var(--fontSizeText);
-}
 
-.SlidersBoxTasteStage1 {
-  width: 100%;
-  background: var(--blackBgGradientSmooth);
-  box-shadow: var(--shadow);
-  backdrop-filter: var(--bgBlur);
-  padding: 2rem 0 2rem 0;
-  border-radius: 5px;
-}
+  .contentTasteStage1 {
+    gap: 3.2rem;
+    padding: 2rem 1rem;
+    /* style for the header */
+    .header {
+      gap: 2rem;
+    }
 
-.contentTasteStage1 {
-  gap: 4rem;
-  margin: 2rem min(2rem, var(--marginPageContent));
-  margin-bottom: 5rem;
-}
+    /* style for the text intro */
+    .intro {
+      align-items: center;
+      text-align: center;
+      gap: 2.5rem;
 
-/* style for the header */
-.header {
-  gap: 2rem;
-}
+      .subtitle {
+        font-family: var(--fontFamilyTitle);
+        font-size: 2rem;
+        color: var(--primaryColor);
+        line-height: 2.8rem;
+      }
 
-/* style for the text intro */
-.intro {
-  align-items: center;
-  text-align: center;
-  padding: 0.5rem;
-  gap: 2.5rem;
-}
+      .taste1Text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+        line-height: 1.8rem;
+      }
+    }
 
-.intro .subtitle {
-  font-family: var(--fontFamilyTitle);
-  font-size: 2rem;
-  color: var(--primaryColor);
+    .SlidersBoxTasteStage1 {
+      width: auto;
+      background: var(--blackBgGradientSmooth);
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--bgBlur);
+      border-radius: 5px;
+    }
+  }
 }
 
 /* -------------------------------- Tablet media queries--------------------------------- */
 
-@media screen and (min-width: 768px) and (orientation: portrait) {
-  .intro {
-    align-items: center;
-    text-align: center;
-    padding-inline: var(--paddingTablet);
-  }
-
+@media screen and (min-width: 768px) {
   .TasteStage1 {
-    background: no-repeat bottom 9em left 7em
-        url("../../assets/Gold_Blotches/Watercolor_Blotch_2 1.png"),
+    background: no-repeat bottom 9em left 4rem
+        url("../../assets/Gold_Blotches/Watercolor_Blotch_1.png"),
       no-repeat top 30em right 5em
         url("../../assets/Gold_Blotches/Watercolor_Splatters 1.png"),
       var(--blackBgGradient);
-  }
 
-  .SlidersBoxTasteStage1 {
-    width: 95%;
-    background: var(--blackBgGradientSmooth);
-    box-shadow: var(--shadow);
-    backdrop-filter: var(--bgBlur);
-    border-radius: 5px;
+    .contentTasteStage1 {
+      gap: 4rem;
+      padding: 2rem;
+
+      /* style for the text intro */
+      .intro {
+        gap: 3.2rem;
+
+        .taste1Text {
+          gap: 1.6rem;
+          line-height: 2.4rem;
+        }
+      }
+
+      .SlidersBoxTasteStage1 {
+        max-width: 768px;
+      }
+    }
   }
 }
 
 /* -------------------------------- Desktop media queries--------------------------------- */
 
 @media screen and (min-width: 1024px) {
-  .contentTasteStage1 {
-    gap: 5rem;
-  }
-  .intro {
-    align-items: center;
-    text-align: center;
-    padding-inline: var(--marginPageContent);
-  }
-  .SlidersBoxTasteStage1 {
-    width: 70%;
+  .TasteStage1 {
+    background: no-repeat bottom 9em left 23rem
+        url("../../assets/Gold_Blotches/Watercolor_Blotch_1.png"),
+      no-repeat top 30em right 5em
+        url("../../assets/Gold_Blotches/Watercolor_Splatters 1.png"),
+      var(--blackBgGradient);
+
+    .contentTasteStage1 {
+      gap: 4rem;
+      padding: 2rem;
+    }
   }
 }
