@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./card.css";
+import "./card.scss";
 import eye from "../../assets/Icons/Eye_Icon.svg";
 import nose from "../../assets/Icons/Nose_Icon.svg";
 import mouth from "../../assets/Icons/Mouth_Icon.svg";
 import star from "../../assets/Icons/Star_Default_Icon.svg";
-import starhover from "../../assets/Icons/Star_Hover_Icon.svg";
+import starHover from "../../assets/Icons/Star_Hover_Icon.svg";
 import note from "../../assets/Icons/Tasting_Note_Icon.svg";
 
 function Card({ wine, number, isSelected, onSelect }) {
@@ -14,41 +14,41 @@ function Card({ wine, number, isSelected, onSelect }) {
   };
 
   return (
-    <div className="card_content">
+    <div className="cardContent">
       <div className={`card ${isSelected ? "selected" : ""}`}>
-        <div className="title-card">
-          <h2 className="h2-card">Vin numéro {number}</h2>
+        <div className="titleCard">
+          <h2 className="h2Card">Vin numéro {number}</h2>
           <button
-            className="star-button"
+            className="starButton"
             aria-label="Toggle Star"
             type="button"
             onClick={handleStarButtonClick}
           >
             <img
-              className="img-card"
-              src={isSelected ? starhover : star}
+              className="imgCardSelection"
+              src={isSelected ? starHover : star}
               alt={isSelected ? "filled star" : "unfilled star"}
             />
           </button>
         </div>
-        <div className="card-content">
-          <div className="eye-card">
-            <img className="img-card" src={eye} alt="eye" />
-            <p className="p-card">
+        <div className="cardContent">
+          <div className="eyeCard">
+            <img className="imgCardSelection" src={eye} alt="eye" />
+            <p className="pCard">
               {wine.color} • {wine.limpidity} • {wine.brightness} •{" "}
               {wine.visual_intensity} • {wine.tears}
             </p>
           </div>
-          <div className="nose-card">
-            <img className="img-card" src={nose} alt="nose" />
-            <p className="p-card">
+          <div className="noseCard">
+            <img className="imgCardSelection" src={nose} alt="nose" />
+            <p className="pCard">
               {wine.intensity_aromas} • {wine.complexity} •{" "}
               {wine.aromas.join(" , ")}
             </p>
           </div>
-          <div className="mouth-card">
-            <img className="img-card" src={mouth} alt="mouth" />
-            <p className="p-card">
+          <div className="mouthCard">
+            <img className="imgCardSelection" src={mouth} alt="mouth" />
+            <p className="pCard">
               {wine.sweetness} • {wine.alcohol} • {wine.acidity} •{" "}
               {wine.taste_tannin} • {wine.taste_intensity} • {wine.mouth_feel} •{" "}
               {wine.flavor.join(" , ")}
@@ -56,16 +56,16 @@ function Card({ wine, number, isSelected, onSelect }) {
             <br />
           </div>
           <div className="comment">
-            <img className="img-card note" src={note} alt="comment" />
-            <p className="commentary">" {wine.tasting_commentary} "</p>
+            <img className="imgCardSelection note" src={note} alt="comment" />
+            <p className="cardCommentary">" {wine.tasting_commentary} "</p>
             <br />
           </div>
           <div className="rating">
             {Array.from(Array(10), (e, i) => (
               <img
                 key={i}
-                className="rating-star"
-                src={i < wine.rating ? starhover : star}
+                className="ratingStar"
+                src={i < wine.rating ? starHover : star}
                 alt={i < wine.rating ? "filled star" : "unfilled star"}
               />
             ))}
@@ -87,7 +87,7 @@ Card.propTypes = {
     tears: PropTypes.string.isRequired,
     complexity: PropTypes.string.isRequired,
     intensity_aromas: PropTypes.string.isRequired,
-    aromas: PropTypes.arrayOf(PropTypes.string).isRequired, // Use array instead of string for aromas and flavor
+    aromas: PropTypes.arrayOf(PropTypes.string).isRequired,
     flavor: PropTypes.arrayOf(PropTypes.string).isRequired,
     sweetness: PropTypes.string.isRequired,
     alcohol: PropTypes.string.isRequired,

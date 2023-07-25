@@ -1,0 +1,215 @@
+.pageContainerNose {
+  align-items: center;
+  background: no-repeat left url("../../assets/Red_Wine_Colors/Framboise.png"),
+    var(--blackBgGradient);
+  border: 1px none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100vw;
+
+  .titleContainer {
+    margin: 2rem min(2rem, var(--marginPageContent));
+    margin-bottom: 5rem;
+  }
+
+  .checkboxes {
+    color: white;
+    font-family: var(--fontFamilyText);
+    margin-top: 2rem;
+  }
+  p {
+    color: white;
+    font-family: var(--fontFamilyText);
+    font-size: 1.2rem;
+  }
+
+  .nose1,
+  .nose2 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-inline: 6rem;
+    color: var(--primaryColor);
+
+    &,
+    .h2Nose {
+      display: flex;
+      justify-content: center;
+      font-family: var(--fontFamilyTitle);
+      color: var(--primaryColor);
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    color: white;
+    font-weight: 400;
+    line-height: 31.5px;
+    text-align: center;
+    font-family: var(--fontFamilyText);
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+
+  .aromas {
+    backdrop-filter: blur(10px);
+    background: var(--blackBgGradientSmooth);
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    backdrop-filter: var(--bgBlur);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    animation: none;
+
+    h3 {
+      color: white;
+      font-style: italic;
+      font-weight: 400;
+      margin: 1rem;
+      font-family: var(--fontFamilyTe);
+      text-align: center;
+    }
+
+    img {
+      height: 104px;
+      width: 104px;
+      border-radius: 60px;
+      margin: 20px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      object-fit: cover;
+      margin: 1rem;
+
+      &.selected {
+        border: 1px solid var(--primaryColor);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      }
+
+      .img-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 1rem;
+
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      &:hover,
+      &.selected {
+        .img-overlay {
+          opacity: 1;
+        }
+      }
+    }
+
+    .img-overlay {
+      pointer-events: none;
+    }
+
+    .aromasSelection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .round {
+        position: relative;
+
+        &.selected {
+          &:before {
+            content: "";
+            position: absolute;
+            top: -4px;
+            left: 12px;
+            width: 112px;
+            height: 112px;
+            outline: 1px solid var(--primaryColor);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px var(--primaryColor);
+          }
+
+          &:after {
+            content: attr(data-name);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+
+            color: rgb(228, 39, 39);
+          }
+
+          .img-overlay {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .aromaName {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--fontFamilyTitle);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3px;
+    background: var(--blackBgGradientSmooth);
+    width: 76.7%;
+    border-radius: 3px;
+  }
+
+  .colonne1 {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 32px;
+    width: fit-content;
+  }
+
+  .buttonContainer {
+    margin: 2rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .pageContainer {
+    display: flex;
+    justify-content: center;
+    background: url("../../assets/Red_Wine_Colors/Pourpre.png"),
+      no-repeat bottom 9em left 26em
+        url("../../assets/Gold_Blotches/Watercolor_Blotch_4.png"),
+      var(--blackBgGradient);
+  }
+
+  .aromes {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nose1,
+  .nose2 {
+    width: 100%;
+    padding: 6rem;
+  }
+}
