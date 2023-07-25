@@ -58,6 +58,3 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: var(--whiteGoldColor);
 }
 
-html {
-  scroll-behavior: smooth;
-}
