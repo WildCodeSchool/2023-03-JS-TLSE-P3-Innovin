@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import Navbar from "../../components/Navbar/Navbar";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import "./HomeTasting.scss";
@@ -12,6 +13,8 @@ import hero2 from "../../assets/Wine_Img/unsplash_3uJt73tr4hI.jpg";
 import fullCreation from "../../assets/Illustration_Creation.svg";
 
 export default function Welcome() {
+  const navigate = useNavigate();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -77,7 +80,13 @@ export default function Welcome() {
           </div>
           <hr className="line2" />
         </div>
-        <ButtonPrimary className="register">Inscription</ButtonPrimary>
+        <ButtonPrimary
+          className="register"
+          type="button"
+          onClick={() => navigate("/login")}
+        >
+          Connexion
+        </ButtonPrimary>
         <div className="degust-desktop">
           <div className="degustation" id="degustation">
             <div className="hero1">

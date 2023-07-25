@@ -1,0 +1,26 @@
+.titleContainer {
+  gap: 1rem;
+  padding: 1rem max(3rem, 2rem);
+  border: 2px solid var(--smoothGoldColor);
+  border-radius: 5px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+
+  .wineNumTitle {
+    font-family: var(--fontFamilyTitle);
+    font-size: var(--fontSizeH2);
+    color: var(--whiteGoldColor);
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+  }
+
+  .headerDate {
+    font-family: var(--fontFamilyText);
+    font-size: clamp(24px, 3vw + 1rem, 2.5rem);
+    font-weight: 200;
+    font-style: italic;
+    color: var(--secondaryColor);
+  }
+}

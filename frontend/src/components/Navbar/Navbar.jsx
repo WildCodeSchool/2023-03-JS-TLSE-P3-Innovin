@@ -35,6 +35,9 @@ export default function Navbar() {
           <li className="navbar-link">
             <Link to="/registration">Inscription</Link>
           </li>
+          <li className="navbar-link">
+            <Link to="/login">Connexion</Link>
+          </li>
         </div>
       </ul>
 

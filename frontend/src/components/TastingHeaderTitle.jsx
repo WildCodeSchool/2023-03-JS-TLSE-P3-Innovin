@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import TastingContext from "../contexts/TastingContext";
-import "./TastingHeaderTitle.css";
+import "./TastingHeaderTitle.scss";
 
 function TastingHeaderTitle() {
   const { wineNumber } = useContext(TastingContext);

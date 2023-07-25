@@ -9,11 +9,6 @@
   width: 100vw;
 }
 
-.titleContainer {
-  margin: 2rem min(2rem, var(--marginPageContent));
-  margin-bottom: 5rem;
-}
-
 .checkboxes {
   color: white;
   font-family: var(--fontFamilyText);
