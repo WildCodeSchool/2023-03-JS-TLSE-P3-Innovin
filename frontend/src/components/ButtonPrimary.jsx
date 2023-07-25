@@ -12,6 +12,7 @@ const ButtonPrimary = styled.button`
   background-color: rgba(195, 180, 138, 0.1);
   color: var(--secondaryColor);
   font-size: var(--fontSizeText);
+  cursor: pointer;
   &:hover {
     background-color: var(--secondaryColor);
     color: var(--darkGoldColor);

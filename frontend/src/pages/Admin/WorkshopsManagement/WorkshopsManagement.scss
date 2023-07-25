@@ -28,16 +28,18 @@
     margin-top: 4em;
     h1 {
       font-size: var(--fontSizeH2);
+      color: var(--primaryColor);
     }
-    .searchOrAdd {
+    .searchOrAddHeader {
       width: 100%;
       display: flex;
       justify-content: space-between;
       gap: 1.6em;
 
       .addButton {
-        padding: 0 0.8em;
+        padding: 0 0.4em;
         margin-right: 0.5rem;
+        aspect-ratio: 1;
       }
       .searchBar {
         width: 50%;
@@ -263,13 +265,21 @@
           gap: 1.5em;
 
           div > p:first-of-type {
-            font-weight: 600;
+            font-weight: 500;
             color: var(--secondaryColor);
             margin-bottom: 0.5em;
           }
           p {
             font-family: var(--fontFamilyText);
-            line-height: 1.2em;
+            line-height: 1.4em;
+            font-weight: 200;
+            font-size: 1rem;
+
+            span {
+              font-style: italic;
+              color: rgba(195, 180, 138, 0.5);
+              margin-left: 0.6em;
+            }
           }
           .infoType {
             display: flex;

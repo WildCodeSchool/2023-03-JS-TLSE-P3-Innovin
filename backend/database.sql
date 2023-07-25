@@ -404,6 +404,7 @@ CREATE TABLE
         `id_wine_region` INT NOT NULL,
         `id_grape_variety` INT NOT NULL,
         `id_winery` INT NOT NULL,
+        `is_archived` BOOLEAN NOT NULL DEFAULT 0,
         PRIMARY KEY (`id`),
         CONSTRAINT `fk_existing_wine_wine_region1` FOREIGN KEY (`id_wine_region`) REFERENCES `inovin`.`wine_region` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_existing_wine_grape_variety1` FOREIGN KEY (`id_grape_variety`) REFERENCES `inovin`.`grape_variety` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -421,7 +422,8 @@ INSERT INTO
         `name`,
         `id_wine_region`,
         `id_grape_variety`,
-        `id_winery`
+        `id_winery`,
+        `is_archived`
     )
 VALUES (
         '2021',
@@ -433,7 +435,8 @@ VALUES (
         '',
         14,
         40,
-        1
+        1,
+        0
     ), (
         '2019',
         '',
@@ -444,7 +447,8 @@ VALUES (
         '',
         3,
         16,
-        2
+        2,
+        0
     ), (
         '2015',
         '',
@@ -455,7 +459,8 @@ VALUES (
         '',
         5,
         70,
-        3
+        3,
+        0
     ), (
         '1998',
         '',
@@ -466,7 +471,8 @@ VALUES (
         '',
         3,
         44,
-        5
+        5,
+        0
     ), (
         '2020',
         '',
@@ -477,7 +483,8 @@ VALUES (
         '',
         6,
         63,
-        6
+        6,
+        0
     ), (
         '2017',
         '',
@@ -488,7 +495,8 @@ VALUES (
         '',
         15,
         68,
-        7
+        7,
+        0
     ), (
         '2021',
         '',
@@ -499,7 +507,8 @@ VALUES (
         '',
         1,
         34,
-        8
+        8,
+        0
     ), (
         '2022',
         '',
@@ -510,7 +519,8 @@ VALUES (
         '',
         6,
         23,
-        6
+        6,
+        0
     ), (
         '1989',
         '',
@@ -521,7 +531,8 @@ VALUES (
         '',
         1,
         61,
-        8
+        8,
+        0
     ), (
         '2016',
         '',
@@ -532,7 +543,8 @@ VALUES (
         '',
         15,
         15,
-        9
+        9,
+        0
     );
 
 -- -----------------------------------------------------
@@ -825,13 +837,11 @@ VALUES (
         "Mende",
         "Troisième atelier",
         "Rouge"
-        
     ), (
         "2023/07/18 16:00:00",
         "Gaillac",
         "Quatrième atelier",
         "Rouge"
-        
     );
 
 -- -----------------------------------------------------
@@ -1441,7 +1451,7 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`existing_wine_has_appellation` (
         `id_existing_wine` INT NOT NULL,
         `id_appellation` INT NOT NULL,
-        CONSTRAINT `fk_existing_wine_has_appellation_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_existing_wine_has_appellation_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
         CONSTRAINT `fk_existing_wine_has_appellation_appellation1` FOREIGN KEY (`id_appellation`) REFERENCES `inovin`.`appellation` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
