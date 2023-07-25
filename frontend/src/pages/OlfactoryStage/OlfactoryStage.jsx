@@ -47,7 +47,7 @@ export default function OlfactoryStage() {
   };
 
   return (
-    <div className="pageContainer">
+    <div className="pageContainerNose">
       <TastingHeaderTitle />
       <StepsHeader />
       <div className="nose1">
@@ -89,6 +89,7 @@ export default function OlfactoryStage() {
         </p>
       </div>
       <Aromas
+        className="aromes"
         name="Sélectionner un ou plusieurs arômes"
         tabIndex={0}
         iconUrl="/path/to/icon.png"

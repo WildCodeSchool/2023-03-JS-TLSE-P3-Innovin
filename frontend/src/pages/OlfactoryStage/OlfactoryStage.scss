@@ -1,4 +1,4 @@
-.pageContainer {
+.pageContainerNose {
   align-items: center;
   background: no-repeat left url("../../assets/Red_Wine_Colors/Framboise.png"),
     var(--blackBgGradient);
@@ -21,7 +21,7 @@
   p {
     color: white;
     font-family: var(--fontFamilyText);
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .nose1,
@@ -35,10 +35,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    font-family: var(--fontFamilyTitle);
+    padding-inline: 6rem;
     color: var(--primaryColor);
-    font-size: 1.3rem;
-    font-weight: bold;
 
     &,
     .h2Nose {
@@ -57,8 +55,6 @@
     font-family: var(--fontFamilyText);
     font-size: 1rem;
     margin-top: 2rem;
-    background: var(--blackBgGradientSmooth);
-    padding: 15px;
   }
 
   .aromas {
@@ -102,7 +98,7 @@
         transform: translate(-50%, -50%);
         color: white;
         font-size: 1rem;
-        font-weight: bold;
+
         text-align: center;
         opacity: 0;
         transition: opacity 0.3s;
@@ -122,7 +118,7 @@
 
     .aromasSelection {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
 
@@ -151,7 +147,7 @@
             padding: 4px 8px;
             border-radius: 4px;
             font-size: 12px;
-            font-weight: bold;
+
             color: rgb(228, 39, 39);
           }
 
@@ -191,30 +187,29 @@
   .buttonContainer {
     margin: 2rem;
   }
+}
 
-  @media screen and (min-width: 768px) {
-    .pageContainer {
-      display: flex;
-      justify-content: center;
-    }
+@media screen and (min-width: 768px) {
+  .pageContainer {
+    display: flex;
+    justify-content: center;
+    background: url("../../assets/Red_Wine_Colors/Pourpre.png"),
+      no-repeat bottom 9em left 26em
+        url("../../assets/Gold_Blotches/Watercolor_Blotch_4.png"),
+      var(--blackBgGradient);
+  }
 
-    .colonne1,
-    .colonne2 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 32px;
-    }
+  .aromes {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .aromasSelection {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .nose1,
-    .nose2 {
-      width: 70%;
-    }
+  .nose1,
+  .nose2 {
+    width: 100%;
+    padding: 6rem;
   }
 }

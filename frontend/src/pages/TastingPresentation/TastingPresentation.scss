@@ -1,14 +1,15 @@
 .startDegust {
   align-items: center;
-  background-image: url(../../assets/Wine_Img/unsplash_VuZ9U7cWqc8.jpg);
-  object-fit: cover;
-  background-position: 50% 50%;
-  background-size: cover;
+  background: no-repeat 900px 80%
+      url("../../assets/Red_Wine_Colors/Framboise.png"),
+    var(--blackBgGradient);
   border: 1px none;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 100%;
   height: 100vh;
+  padding: 2.4rem;
 
   .pageContentDegust {
     background: var(--blackBgGradientSmooth);
@@ -18,20 +19,20 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-top: 5rem;
+    max-width: 950px;
     padding: 17px 24px;
+    backdrop-filter: var(--bgBlur);
   }
 
   .textDegust {
-    text-align: center;
+    text-align: left;
     color: #ffff;
     font-weight: 400;
     line-height: 25px;
     font-family: var(--fontFamilyText);
     margin-top: 2rem;
     margin-bottom: 2rem;
-    font-size: 20px;
-    position: relative;
+    font-size: 16px;
     width: 100%;
   }
 
@@ -52,7 +53,6 @@
     flex-direction: column;
     align-items: center;
     gap: 32px;
-    backdrop-filter: var(--bgBlur);
   }
 
   .buttonContainer {
@@ -63,36 +63,33 @@
     margin-bottom: 2rem;
     height: auto;
   }
+}
+@media screen and (min-width: 768px) {
+  .startDegust {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    object-fit: center;
 
-  @media (min-width: 768px) {
-    .startDegust {
+    .pageContent {
       display: flex;
+      width: 70vw;
       align-items: center;
-      height: 100vh;
-      object-fit: center;
+      flex-direction: column;
+      align-items: center;
+    }
 
-      .pageContent {
-        display: flex;
-        width: 70vw;
-        align-items: center;
-        flex-direction: column;
-        align-items: center;
-      }
+    .textDegust {
+      text-align: center;
+      font-size: 24px;
+      line-height: 2rem;
+    }
 
-      .textDegust {
-        color: #ffff;
-        font-weight: 400;
-        position: relative;
-        font-size: 24px;
-        text-align: center;
-      }
-
-      .box {
-        flex-direction: column;
-        align-items: center;
-        margin-left: 1px;
-        width: auto;
-      }
+    .box {
+      flex-direction: column;
+      align-items: center;
+      margin-left: 1px;
+      width: auto;
     }
   }
 }

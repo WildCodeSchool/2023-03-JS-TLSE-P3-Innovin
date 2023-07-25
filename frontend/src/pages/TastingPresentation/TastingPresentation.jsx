@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import TastingContext from "../../contexts/TastingContext";
 import "./TastingPresentation.scss";
-import Navbar from "../../components/Navbar/Navbar";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import AuthContext from "../../contexts/AuthContext";
 
@@ -50,8 +49,6 @@ export default function TastingPresentation() {
   return (
     userToken && (
       <div className="startDegust">
-        <Navbar />
-
         <div className="pageContentDegust">
           <div className="box">
             <h1 className="titleDegust">Dégustation</h1>

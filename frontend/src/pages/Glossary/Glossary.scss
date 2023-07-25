@@ -52,6 +52,7 @@
     background: var(--blackBgGradientSmooth);
     height: 40px;
     margin-top: 2rem;
+    border-radius: 5px;
   }
 
   .selected {
@@ -64,7 +65,7 @@
     flex-wrap: wrap;
     margin-bottom: 2rem;
     border-radius: 20px;
-    width: 100%;
+    width: 110%;
 
     button {
       margin: 0.5rem;
@@ -93,14 +94,6 @@
     border-radius: 50%;
     cursor: pointer;
     outline: none;
-
-    @media (max-width: 768px) {
-      height: 40px;
-      width: 40px;
-      font-size: 14px;
-      bottom: 10px;
-      right: 10px;
-    }
   }
 
   .imgLogo {
@@ -120,7 +113,12 @@
       border-radius: 15px;
       height: 40px;
       padding: 3px;
-      width: 50%;
+      width: 90%;
+      background: none;
+      border: 2px solid var(--smoothGoldColor);
+      color: white;
+      padding-inline: 1rem;
+      background: var(--blackBgGradient);
     }
   }
 
@@ -135,13 +133,15 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    border: solid 3px var(--primaryColor);
+
     background: var(--blackBgGradientSmooth);
     color: var(--primaryColor);
     font-family: var(--fontFamilyText);
   }
+}
 
-  @media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+  .glossaryContent {
     .scrollButton {
       height: 40px;
       width: 40px;

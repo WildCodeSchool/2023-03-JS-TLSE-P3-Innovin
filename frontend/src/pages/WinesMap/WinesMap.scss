@@ -6,6 +6,11 @@
   width: auto;
   margin: 0;
   height: 100%;
+  background: no-repeat top 18em right 28em
+      url("../../assets/Red_Wine_Colors/Pourpre.png"),
+    no-repeat bottom 9em left 26em
+      url("../../assets/Gold_Blotches/Watercolor_Blotch_4.png"),
+    var(--blackBgGradient);
   border-radius: 0;
   padding-top: 0;
 
@@ -34,12 +39,13 @@
   }
 
   .map {
-    height: 95vh;
+    height: 90vh;
     width: 90vw;
     border: solid 5px var(--primaryColor);
     border-radius: 5px;
     overflow: hidden;
     z-index: 0;
+    margin-bottom: 3rem;
   }
 
   .leaflet-popup-content-wrapper {
