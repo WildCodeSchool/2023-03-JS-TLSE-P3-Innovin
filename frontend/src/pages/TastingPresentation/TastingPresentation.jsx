@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import TastingContext from "../../contexts/TastingContext";
 import CreationWorkshopContext from "../../contexts/CreationWorkshopContext";
-import "./TastingPresentation.css";
 import Navbar from "../../components/Navbar/Navbar";
 import "./TastingPresentation.scss";
 import ButtonPrimary from "../../components/ButtonPrimary";
