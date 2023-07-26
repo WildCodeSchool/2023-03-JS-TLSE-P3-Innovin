@@ -5,7 +5,7 @@ import ButtonPrimary from "../../components/ButtonPrimary";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
 import Checkboxes from "../../components/Checkboxes/Checkboxes";
-import "./VisualStage2.css";
+import "./VisualStage2.scss";
 import intensity from "../../assets/Icons/Intensity_Icon.svg";
 import shiny from "../../assets/Icons/Shiny_Icon_2.svg";
 import transparency from "../../assets/Icons/Transparency_Icon.svg";
@@ -34,17 +34,19 @@ function VisualStage2() {
         </div>
         <div className="intro">
           <h3 className="subtitle">J'observe son aspect</h3>
-          <p>
-            Comtemplez ses reflets, son dépôt, son voile, la matière en
-            suspension et les coulures de ses larmes. Selon vous, quelles
-            caractéristiques visuelles s’appliquent à ce vin ?{" "}
-          </p>
-          <p className="tip">
-            Astuce : la clarté du vin donne des indications sur sa qualité et
-            son âge. Ensuite, portez une attention particulière aux reflets et à
-            la viscosité pour percevoir des indications sur sa concentration et
-            sa texture.
-          </p>
+          <div className="introText">
+            <p>
+              Comtemplez ses reflets, son dépôt, son voile, la matière en
+              suspension et les coulures de ses larmes. Selon vous, quelles
+              caractéristiques visuelles s’appliquent à ce vin ?{" "}
+            </p>
+            <p className="tip">
+              Astuce : la clarté du vin donne des indications sur sa qualité et
+              son âge. Ensuite, portez une attention particulière aux reflets et
+              à la viscosité pour percevoir des indications sur sa concentration
+              et sa texture.
+            </p>
+          </div>
         </div>
         <div className="checkboxes">
           <Checkboxes
@@ -79,7 +81,6 @@ function VisualStage2() {
         <ButtonPrimary type="submit" onClick={handleNavigate}>
           Etape suivante
         </ButtonPrimary>
-        {/* </form> */}
       </div>
     </div>
   );

@@ -10,8 +10,8 @@
     background: transparent;
     border: none;
     border-bottom: 1px solid var(--smoothWhiteColor);
-    font-size: var(--fontSizeText);
-    padding-block: 0.6em;
+    font-size: 1rem;
+    padding: 0.6em;
     cursor: pointer;
     &.grey {
       color: var(--smoothWhiteColor);
@@ -41,6 +41,7 @@
     position: absolute;
     background: var(--blackBgGradient);
     width: 100%;
+    z-index: 10;
 
     .dropdownInputs {
       display: flex;
@@ -50,7 +51,7 @@
       border: none;
       background: transparent;
       border-bottom: 1px solid var(--smoothWhiteColor);
-      font-size: var(--fontSizeText);
+      font-size: 1.2rem;
       color: var(--whiteGoldColor);
 
       &:last-of-type {

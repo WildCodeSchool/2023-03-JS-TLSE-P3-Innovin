@@ -48,6 +48,7 @@ const TastingNoteHasExistingWineManager = require("./TastingNoteHasExistingWineM
 const OlfactiveAromasHasTastingNoteManager = require("./OlfactiveAromasHasTastingNoteManager");
 const TastingNoteHasTasteFlavorManager = require("./TastingNoteHasTasteFlavorManager");
 const SelectedWineManager = require("./SelectedWineManager");
+const WineryManager = require("./WineryManager");
 
 models.item = new ItemManager();
 models.item.setDatabase(pool);
@@ -106,6 +107,9 @@ models.tastingNoteHasTasteFlavor.setDatabase(pool);
 
 models.selectedWine = new SelectedWineManager();
 models.selectedWine.setDatabase(pool);
+
+models.winery = new WineryManager();
+models.winery.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model

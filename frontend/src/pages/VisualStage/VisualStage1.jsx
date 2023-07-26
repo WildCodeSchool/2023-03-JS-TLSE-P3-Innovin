@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { redWineColors } from "../../Utils";
 import TastingNoteContext from "../../contexts/TastingNoteContext";
-import "./VisualStage1.css";
+import "./VisualStage1.scss";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
@@ -57,7 +57,6 @@ function VisualStage1() {
               className="blotch"
               value={el.colorName}
             >
-              {" "}
               <img src={el.blotch} alt="wine color" />
               <p className={selectedButton === index ? "colorName" : ""}>
                 {el.colorName}

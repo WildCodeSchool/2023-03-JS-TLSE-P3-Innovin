@@ -5,7 +5,7 @@ import TastingNoteContext from "../../contexts/TastingNoteContext";
 import CreationWorkshopContext from "../../contexts/CreationWorkshopContext";
 import AuthContext from "../../contexts/AuthContext";
 import Card from "./Card";
-import "./winesTasted.css";
+import "./WinesTasted.scss";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
 function WinesTasted() {

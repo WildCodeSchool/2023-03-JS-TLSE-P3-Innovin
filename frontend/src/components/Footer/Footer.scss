@@ -1,0 +1,17 @@
+.footer {
+  color: white;
+  background: var(--blackBgGradient);
+  height: 3rem;
+  font-family: var(--fontFamilyText);
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  width: 100%;
+  gap: 0.6rem;
+
+  .copyright {
+    color: var(--primaryColor);
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,94 @@
+.aromas {
+  background: var(--blackBgGradientSmooth);
+  box-shadow: var(--shadow);
+  width: 100%;
+  border-radius: 5px;
+  backdrop-filter: var(--bgBlur);
+  display: grid;
+  place-content: center;
+  padding: 1.6rem 1rem;
+  gap: 0.6rem;
+
+  h3 {
+    color: var(--whiteGoldColor);
+    font-style: italic;
+    font-family: var(--fontFamilyTitle);
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .aromasSelection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    .round {
+      border-radius: 500px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background: none;
+      position: relative;
+      aspect-ratio: 1/1;
+      max-width: 11rem;
+
+      .imgContainer {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        img {
+          width: 100%;
+          aspect-ratio: 1/1;
+          border-radius: 500px;
+        }
+        .aroma-name {
+          color: var(--whiteGoldColor);
+          font-family: var(--fontFamilyText);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          background: var(--blackBgGradientSmooth);
+          width: 100%;
+          padding: 0.5rem;
+        }
+      }
+
+      &.selected::before {
+        content: "";
+        inset: -0.2rem;
+        position: absolute;
+        border: 3px solid var(--primaryColor);
+        border-radius: 500px;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .aromas {
+    width: auto;
+    padding: 1.6rem 2.2rem;
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    .aromasSelection {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+
+      .round {
+        .imgContainer {
+          .aroma-name {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
