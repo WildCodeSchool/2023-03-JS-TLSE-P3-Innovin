@@ -21,7 +21,7 @@
 h2.title-revelation {
   color: var(--primaryColor);
   font-family: var(--fontFamilyText);
-  font-size: 1rem;
+  font-size: 1.3rem;
   text-align: center;
   width: 100%;
 }
@@ -37,6 +37,7 @@ h2.title-revelation {
 
 .img-card {
   width: 100%;
+  padding: 20px;
 }
 
 .img .wine-img {
@@ -58,10 +59,18 @@ h2.title-revelation {
     padding-top: 0;
   }
 
+  .h2.title-revelation {
+    font-size: 1.5rem;
+    line-height: 20px;
+    line-height: 15px;
+    font-weight: bold;
+  }
+
   .revelation-card p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     text-align: center;
     line-height: 15px;
+    font-weight: 300;
   }
 
   .card-disposition {

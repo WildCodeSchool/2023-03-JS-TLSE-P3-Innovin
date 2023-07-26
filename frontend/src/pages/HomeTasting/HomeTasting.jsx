@@ -6,6 +6,7 @@ import line from "../../assets/line-11.svg";
 import glass from "../../assets/Icons/glass-wine-icon3.svg";
 import star from "../../assets/Icons/star-1.svg";
 import mix from "../../assets/Icons/mix-icon.svg";
+import Footer from "../../components/Footer/Footer";
 
 export default function Welcome() {
   const scrollToTop = () => {
@@ -131,6 +132,7 @@ export default function Welcome() {
           {" "}
         </button>
       </div>
+      <Footer />
     </div>
   );
 }

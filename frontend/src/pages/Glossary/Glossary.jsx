@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import lexique from "./lexique-vin";
 import "./Glossary.scss";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import logo from "../../assets/Logo_W_Circles.svg";
 
 export default function LexiqueVin() {
@@ -177,6 +178,7 @@ export default function LexiqueVin() {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
-
+import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import "leaflet/dist/leaflet.css";
 import wineMap from "../../assets/wine.geojson";
@@ -61,6 +61,7 @@ export default function WinesMap() {
           <GeoJSON data={wineMap} onEachFeature={onEachRegion} />
         </MapContainer>
       </div>
+      <Footer />
     </div>
   );
 }
