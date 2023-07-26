@@ -27,12 +27,6 @@ export default function Navbar() {
             <Link to="/glossaire">Glossaire</Link>
           </li>
           <li className="navbar-link">
-            <Link to="/a-propos">A Propos</Link>
-          </li>
-          <li className="navbar-link">
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li className="navbar-link">
             <Link to="/registration">Inscription</Link>
           </li>
           <li className="navbar-link">

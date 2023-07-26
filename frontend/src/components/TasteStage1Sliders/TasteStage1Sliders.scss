@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  // gap: 2.8rem;
+  gap: 2.8rem;
   padding: 1rem;
 
   .Sliderbox {
@@ -32,14 +32,13 @@
   }
 }
 
-/* Sliders container elements */
-
 /* -------------------------------- Tablet media queries--------------------------------- */
 
 @media screen and (min-width: 768px) {
   .SlidersContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 0;
     .Sliderbox {
       padding: 3.6rem;
 

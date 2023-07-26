@@ -215,6 +215,7 @@
       .scroll-to-top {
         padding: 0.6rem;
         border: 0.4px solid var(--secondaryColor);
+        background: var(--blackBgGradientSmooth);
         border-radius: 50px;
         display: grid;
         place-items: center;
@@ -262,7 +263,10 @@
 
 @media screen and (min-width: 768px) {
   .home-container {
-    background: url("../../assets/Gold_Blotches/Watercolor_Blotch_1.png"),
+    background: no-repeat top 9em left 42rem
+        url("../../assets/Red_Wine_Colors/Rouge_Noir.png"),
+      no-repeat top 96em right 36em
+        url("../../assets/Gold_Blotches/Watercolor_Blotch_1.png"),
       var(--blackBgGradient);
     .page-content-home {
       gap: 5.4rem;
