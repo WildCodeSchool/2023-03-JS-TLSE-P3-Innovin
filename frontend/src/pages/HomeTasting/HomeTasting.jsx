@@ -11,6 +11,7 @@ import upArrow from "../../assets/Icons/Up_Arrow_Icon.svg";
 import hero1 from "../../assets/Wine_Img/unsplash_PQQPlv6oHAA.jpg";
 import hero2 from "../../assets/Wine_Img/unsplash_3uJt73tr4hI.jpg";
 import fullCreation from "../../assets/Illustration_Creation.svg";
+import Footer from "../../components/Footer/Footer";
 
 export default function Welcome() {
   const navigate = useNavigate();
@@ -142,6 +143,7 @@ export default function Welcome() {
           </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,7 +1,10 @@
 .home-container {
   background: var(--blackBgGradient);
   width: 100%;
-  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
 
   .page-content-home {
     padding-top: 70px;
