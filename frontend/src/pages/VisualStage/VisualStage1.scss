@@ -1,0 +1,120 @@
+/* global style of the page visualStage1 */
+
+.visualStage1 {
+  background: var(--blackBgGradient);
+  color: var(--whiteGoldColor);
+  font-family: var(--fontFamilyText);
+  font-size: var(--fontSizeText);
+  padding: 2rem 1rem;
+
+  .contentStage1 {
+    gap: 3rem;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* style for the header */
+    .header {
+      gap: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    /* style for the text intro */
+    .intro {
+      align-items: start;
+      gap: 2.5rem;
+      text-align: left;
+
+      .subtitle {
+        font-family: var(--fontFamilyTitle);
+        font-size: 2rem;
+        color: var(--primaryColor);
+      }
+      .tip {
+        font-weight: 200;
+        font-style: italic;
+      }
+    }
+    /* style for the colors section */
+    .colors {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+
+      .blotch {
+        width: clamp(130px, 8vw + 8rem, 23rem);
+        background-color: transparent;
+        border: none;
+        position: relative;
+
+        p {
+          font-family: var(--fontFamilyText);
+          font-size: var(--fontSizeText);
+          font-weight: 200;
+          font-style: italic;
+          color: var(--whiteGoldColor);
+          position: absolute;
+          padding: 0.5rem 1rem;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          &:hover {
+            rotate: 10deg;
+            transition: 300ms ease-in-out;
+          }
+        }
+        .colorName {
+          font-style: normal;
+          font-weight: 600;
+          rotate: 10deg;
+          scale: 1.2;
+          translate: 10% 10%;
+          transition: 300ms ease-in-out;
+        }
+      }
+    }
+  }
+}
+
+/* -------------------------------- Tablet media queries--------------------------------- */
+
+@media screen and (min-width: 768px) {
+  .visualStage1 {
+    .contentStage1 {
+      .intro {
+        align-items: center;
+        text-align: center;
+        padding-inline: var(--paddingTablet);
+      }
+      .colors {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+      }
+    }
+  }
+}
+
+/* -------------------------------- Desktop media queries--------------------------------- */
+
+@media screen and (min-width: 1024px) {
+  .visualStage1 {
+    .contentStage1 {
+      gap: 5rem;
+
+      .intro {
+        align-items: center;
+        text-align: center;
+        padding-inline: var(--marginPageContent);
+      }
+      .colors {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+      }
+    }
+  }
+}

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { rating, wineQuality } from "../../Utils";
 import Dropdown from "../../components/Dropdown/Dropdown";
-import Navbar from "../../components/Navbar/Navbar";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
 import "./TasteAdvice.scss";
@@ -115,17 +114,14 @@ function TasteAdvice() {
   // -------------------------------------------------Render------------------------------------------------------------
   return (
     <div className="tasteAdvice">
-      <Navbar />{" "}
       <div className="tasteAdviceContainer">
         <div className="header">
-          {" "}
           <TastingHeaderTitle />
           <StepsHeader />
         </div>
         <div className="intro">
           <h3 className="subtitle">Votre avis sur cette dégustation</h3>
           <div className="adviceText">
-            {" "}
             <p>Félicitations! Vous avez terminé cette dégustation.</p>
             <p>
               Comment qualifieriez-vous ce vin? <br /> Quelle est votre
@@ -142,10 +138,10 @@ function TasteAdvice() {
             setObject={setTastingNote}
           />
           <div className="commentArea">
-            <label htmlFor="commentary">Commentaire</label>
+            <label htmlFor="adviceCommentary">Commentaire</label>
             <textarea
-              name="commentary"
-              id="commentary"
+              name="adviceCommentary"
+              id="adviceCommentary"
               onChange={(e) => handleChange(e)}
             />
           </div>

@@ -10,6 +10,7 @@ const StepButtonOpen = styled.button`
   width: 4.5rem;
   height: 4.5rem;
   position: relative;
+  cursor: pointer;
   &::after,
   ::before {
     content: "";
