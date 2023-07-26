@@ -21,6 +21,7 @@ export function CreationWorkshopProvider({ children }) {
   const [nextWorkshops, setNextWorkshops] = useState([]);
   const [newWineId, setNewWineId] = useState([{ id: null }]);
   const [blendedWine, setBlendedWine] = useState(null);
+  const [newWineCommentary, setnewWineCommentary] = useState(null);
   const [existingWineByTastingNote, setExistingWineByTastingNote] = useState(
     []
   );
@@ -29,9 +30,12 @@ export function CreationWorkshopProvider({ children }) {
   const [maxSelected, setMaxSelected] = useState(false);
   const [wineSelectedCounter, setWineSelectedCounter] = useState(0);
   const { selectedWinesIds } = tastingNote;
-  const [wineSelectedDosages, setWineSelectedDosages] = useState(
-    Array(selectedWinesIds.length).fill(0)
-  );
+  const initTab = Array(selectedWinesIds.length).fill(0);
+  const [wineSelectedDosages, setWineSelectedDosages] = useState(initTab);
+
+  useEffect(() => {
+    setWineSelectedDosages(initTab);
+  }, [selectedWinesIds]);
 
   // Fonction qui créé un objet de type SelectedWine en fonction du compteur 'wineSelectedCounter' (nombre de vins sélectionnés).
   const handleFillSelectedWines = () => {
@@ -40,9 +44,7 @@ export function CreationWorkshopProvider({ children }) {
       wineSelectedDosages &&
       selectedWinesIds &&
       wineSelectedDosages.length === wineSelectedCounter &&
-      selectedWinesIds.length === wineSelectedCounter &&
-      newWineId[0] &&
-      newWineId[0].id !== null
+      selectedWinesIds.length === wineSelectedCounter
     ) {
       for (let i = 0; i < wineSelectedCounter; i += 1) {
         const dosage = wineSelectedDosages[i];
@@ -52,7 +54,6 @@ export function CreationWorkshopProvider({ children }) {
         selectedWinesArray.push(newObj);
       }
       setSelectedWines(selectedWinesArray);
-      setWorkshopSelectedWines(selectedWinesArray);
       return selectedWinesArray;
     }
     console.info("Données incomplètes");
@@ -60,8 +61,9 @@ export function CreationWorkshopProvider({ children }) {
   };
 
   useEffect(() => {
-    handleFillSelectedWines();
-  }, [selectedWinesIds, newWineId]);
+    const selectedWinesResult = handleFillSelectedWines();
+    setWorkshopSelectedWines(selectedWinesResult); // Met à jour la variable d'état
+  }, [wineSelectedDosages, newWineId]);
 
   const CreationWorkshopValue = useMemo(() => {
     return {
@@ -73,6 +75,8 @@ export function CreationWorkshopProvider({ children }) {
       setNewWineId,
       blendedWine,
       setBlendedWine,
+      newWineCommentary,
+      setnewWineCommentary,
       existingWineByTastingNote,
       setExistingWineByTastingNote,
       workshopSelectedWines,
@@ -85,6 +89,7 @@ export function CreationWorkshopProvider({ children }) {
       setWineSelectedCounter,
     };
   }, [
+    newWineCommentary,
     selectedWines,
     nextWorkshops,
     newWineId,

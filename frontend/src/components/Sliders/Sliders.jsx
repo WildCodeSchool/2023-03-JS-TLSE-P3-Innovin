@@ -1,16 +1,18 @@
 /* eslint-disable camelcase */
-import { useEffect } from "react";
-import PropTypes from "prop-types";
+import { useContext, useEffect } from "react";
 import InputSlider from "react-input-slider";
+import CreationWorkshopContext from "../../contexts/CreationWorkshopContext";
 import Grapes_Icon from "../../assets/Icons/Grapes_Icon.svg";
 import "./Sliders.scss";
 
-function Sliders({
-  workshopSelectedWines,
-  existingWineByTastingNote,
-  wineSelectedDosages,
-  setWineSelectedDosages,
-}) {
+function Sliders() {
+  const CreationWorkshopValue = useContext(CreationWorkshopContext);
+  const {
+    existingWineByTastingNote,
+    workshopSelectedWines,
+    wineSelectedDosages,
+    setWineSelectedDosages,
+  } = CreationWorkshopValue;
   const totalMilliliters = 250;
 
   // Mettre à jour les dosages locaux lors de la modification des dosages des sliders
@@ -63,7 +65,7 @@ function Sliders({
       {workshopSelectedWines.map(({ dosage }, index) => (
         <div key={dosage.id} className="slider-container">
           <img src={Grapes_Icon} alt="Sugar_Icon" />
-          <h2>{existingWineByTastingNote[index].id}</h2>
+          <h2>{existingWineByTastingNote[index].grape_variety}</h2>
           <span className="slider-value">
             {wineSelectedDosages[index] || 0} ml
           </span>
@@ -91,24 +93,5 @@ function Sliders({
     </div>
   );
 }
-
-Sliders.propTypes = {
-  workshopSelectedWines: PropTypes.arrayOf(
-    PropTypes.objectOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
-    )
-  ).isRequired,
-  existingWineByTastingNote: PropTypes.arrayOf(
-    PropTypes.objectOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
-    )
-  ).isRequired,
-  wineSelectedDosages: PropTypes.arrayOf(
-    PropTypes.objectOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
-    )
-  ).isRequired,
-  setWineSelectedDosages: PropTypes.func.isRequired,
-};
 
 export default Sliders;

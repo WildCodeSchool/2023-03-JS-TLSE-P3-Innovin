@@ -135,7 +135,7 @@ const add = (req, res) => {
   models.tastingNote
     .insert(tastingNote)
     .then(([result]) => {
-      res.location(`/items/${result.insertId}`).sendStatus(201);
+      res.location(`/items/${result.insertId}`).status(201).send(result);
     })
     .catch((err) => {
       console.error(err);
