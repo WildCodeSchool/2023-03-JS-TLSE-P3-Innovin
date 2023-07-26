@@ -12,8 +12,8 @@ function CreationWorkshop() {
   const CreationWorkshopValue = useContext(CreationWorkshopContext);
   const userToken = useContext(AuthContext);
   const {
-    selectedWinesIds,
-    setNewWineId,
+    selectedTastedWinesIds,
+    newWineId,
     setExistingWineByTastingNote,
     workshopSelectedWines,
   } = CreationWorkshopValue;
@@ -28,30 +28,10 @@ function CreationWorkshop() {
     setForm({ ...form, commentary: e.target.value });
   };
 
-  // ------------------------------Fetch to get the new wine Id-------------------------------------------------------------------
-  const getIdNewWine = () => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/newwinecreated`, {
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      })
-      .then((res) => {
-        setNewWineId(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
-  useEffect(() => {
-    getIdNewWine();
-  }, []);
-
   // ------------------------------Fetch to get the existing wines used before to make dosage-------------------------------------------------------------------
   const getExistingWineByTastingNoteId = () => {
     Promise.all(
-      selectedWinesIds.map((tastingNoteId) =>
+      selectedTastedWinesIds.map((tastingNoteId) =>
         axios.get(
           `${
             import.meta.env.VITE_BACKEND_URL
@@ -100,15 +80,19 @@ function CreationWorkshop() {
       return null; // Ajoute un retour de valeur pour chaque élément du tableau
     });
   };
-  // ------------------------------Function that sends the comment on the new wine and navigate to Ending page----------------------------------------------------
+  // ------------------------------Fetch that sends the comment on the new wine and navigate to Ending page----------------------------------------------------
 
   const handleNavigateAndCommentaryNewWine = () => {
     axios
-      .put(`${import.meta.env.VITE_BACKEND_URL}/newwinecommentary/2`, form, {
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      })
+      .put(
+        `${import.meta.env.VITE_BACKEND_URL}/newwinecommentary/${newWineId}`,
+        form,
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        }
+      )
       .then((res) => {
         console.info(res);
         navigate("/blendedwine");
@@ -141,9 +125,9 @@ function CreationWorkshop() {
               </span>
               <InputTextarea
                 name="commentary"
-                placeholder="Write a review about your workshop"
+                placeholder="Ecrivez ici un commentaire sur votre propre vin"
                 autoResize
-                value={form.Commentary}
+                value={form.commentary}
                 id="commentaryWine"
                 onChange={handleCommentaryChange}
                 rows={5}
@@ -152,9 +136,10 @@ function CreationWorkshop() {
             </div>
           </div>
           <ButtonPrimary
-            onClick={
-              (handlePostSelectedWines, handleNavigateAndCommentaryNewWine)
-            }
+            onClick={() => {
+              handlePostSelectedWines();
+              handleNavigateAndCommentaryNewWine();
+            }}
           >
             Etape suivante
           </ButtonPrimary>

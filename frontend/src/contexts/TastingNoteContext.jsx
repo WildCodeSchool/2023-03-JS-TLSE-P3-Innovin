@@ -33,6 +33,7 @@ export function TastingNoteProvider({ children }) {
     idTasteTannin: null,
     idVisualIntensity: null,
     selectedWinesIds: [],
+    selectedTastedWinesIds: [],
   });
 
   const handleFillVisualColorId = (e, value) => {
@@ -76,6 +77,12 @@ export function TastingNoteProvider({ children }) {
       setOlfactorySelectedAromas,
       flavorSelectedAromas,
       setFlavorSelectedAromas,
+      setSelectedTastedWinesIds: (selectedTastedWinesIds) => {
+        setTastingNote((prevTastingNote) => ({
+          ...prevTastingNote,
+          selectedTastedWinesIds,
+        }));
+      },
       setSelectedWinesIds: (selectedWinesIds) => {
         setTastingNote((prevTastingNote) => ({
           ...prevTastingNote,

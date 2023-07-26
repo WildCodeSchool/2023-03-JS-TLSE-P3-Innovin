@@ -11,13 +11,13 @@ import "./BlendedWine.scss";
 function BlendedWine() {
   const CreationWorkshopValue = useContext(CreationWorkshopContext);
   const { userToken } = useContext(AuthContext);
-  const { blendedWine, setBlendedWine } = CreationWorkshopValue;
+  const { blendedWine, setBlendedWine, newWineId } = CreationWorkshopValue;
   const navigate = useNavigate();
   const [isLoaded, setIsloaded] = useState(false);
 
   const getBlendedWine = () => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/newwinebyuser/2?idworkshop=1`, {
+      .get(`${import.meta.env.VITE_BACKEND_URL}/newwine/${newWineId}`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -33,7 +33,7 @@ function BlendedWine() {
 
   useEffect(() => {
     getBlendedWine();
-  }, []);
+  }, [userToken]);
 
   // -----------------------------------------To format date--------------------------------------------------
 
@@ -102,7 +102,7 @@ function BlendedWine() {
               <p>
                 <span className="TextWine">Votre appréciation :</span>
                 <br />
-                {blendedWine[0].commentaryTasting}
+                {blendedWine[0].commentaryWine}
               </p>
             </div>
           </div>

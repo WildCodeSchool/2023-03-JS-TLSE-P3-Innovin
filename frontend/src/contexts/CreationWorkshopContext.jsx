@@ -29,27 +29,27 @@ export function CreationWorkshopProvider({ children }) {
   const [workshopSelectedWines, setWorkshopSelectedWines] = useState([]);
   const [maxSelected, setMaxSelected] = useState(false);
   const [wineSelectedCounter, setWineSelectedCounter] = useState(0);
-  const { selectedWinesIds } = tastingNote;
-  const initTab = Array(selectedWinesIds.length).fill(0);
+  const { selectedTastedWinesIds } = tastingNote;
+  const initTab = Array(selectedTastedWinesIds.length).fill(0);
   const [wineSelectedDosages, setWineSelectedDosages] = useState(initTab);
 
   useEffect(() => {
     setWineSelectedDosages(initTab);
-  }, [selectedWinesIds]);
+  }, [selectedTastedWinesIds]);
 
   // Fonction qui créé un objet de type SelectedWine en fonction du compteur 'wineSelectedCounter' (nombre de vins sélectionnés).
   const handleFillSelectedWines = () => {
     const selectedWinesArray = [];
     if (
       wineSelectedDosages &&
-      selectedWinesIds &&
+      selectedTastedWinesIds &&
       wineSelectedDosages.length === wineSelectedCounter &&
-      selectedWinesIds.length === wineSelectedCounter
+      selectedTastedWinesIds.length === wineSelectedCounter
     ) {
       for (let i = 0; i < wineSelectedCounter; i += 1) {
         const dosage = wineSelectedDosages[i];
-        const id_new_wine = newWineId[0].id + 1;
-        const id_tasting_note = selectedWinesIds[i];
+        const id_new_wine = newWineId;
+        const id_tasting_note = selectedTastedWinesIds[i];
         const newObj = new SelectedWine(dosage, id_new_wine, id_tasting_note);
         selectedWinesArray.push(newObj);
       }
@@ -82,7 +82,7 @@ export function CreationWorkshopProvider({ children }) {
       workshopSelectedWines,
       setWineSelectedDosages,
       wineSelectedDosages,
-      selectedWinesIds,
+      selectedTastedWinesIds,
       setMaxSelected,
       maxSelected,
       wineSelectedCounter,
@@ -96,7 +96,7 @@ export function CreationWorkshopProvider({ children }) {
     blendedWine,
     workshopSelectedWines,
     existingWineByTastingNote,
-    selectedWinesIds,
+    selectedTastedWinesIds,
     wineSelectedDosages,
     wineSelectedCounter,
     maxSelected,
