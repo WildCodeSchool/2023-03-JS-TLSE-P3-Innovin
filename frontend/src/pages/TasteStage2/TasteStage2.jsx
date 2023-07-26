@@ -1,8 +1,9 @@
 /* eslint-disable camelcase */
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import TastingContext from "../../contexts/TastingContext";
+import TastingNoteContext from "../../contexts/TastingNoteContext";
 import AuthContext from "../../contexts/AuthContext";
 import Aromas from "../../components/Aromas/Aromas";
 import Checkboxes from "../../components/Checkboxes/Checkboxes";
@@ -16,9 +17,10 @@ import "./TasteStage2.scss";
 function TasteStage2() {
   const tastingValue = useContext(TastingContext);
   const { visualDataKeys, mouthData, setMouthData } = tastingValue;
+  const { flavorSelectedAromas, setFlavorSelectedAromas } =
+    useContext(TastingNoteContext);
   const userToken = useContext(AuthContext);
   const navigate = useNavigate();
-  const [selectedAromas, setSelectedAromas] = useState([]);
 
   // ----------------------------------------- Data recovery from backend server -----------------------------------------//
 
@@ -40,7 +42,7 @@ function TasteStage2() {
   // ----------------------------------------- Flavor data management (aromas) -----------------------------------------//
 
   const handleAromaClick = (idFlavorAromas) => {
-    setSelectedAromas((prevSelectedAromas) => {
+    setFlavorSelectedAromas((prevSelectedAromas) => {
       if (prevSelectedAromas.includes(idFlavorAromas)) {
         return prevSelectedAromas.filter((id) => id !== idFlavorAromas);
       }
@@ -54,7 +56,7 @@ function TasteStage2() {
     const formData = new FormData(form);
 
     const formJson = Object.fromEntries(formData.entries());
-    formJson.aromas = selectedAromas;
+    formJson.aromas = flavorSelectedAromas;
     console.info(formJson);
   };
 

@@ -16,6 +16,9 @@ const NewWineControllers = require("./controllers/NewWineControllers");
 const CompetitionSelectionControllers = require("./controllers/CompetitionSelectionControllers");
 const WorkshopHasExistingWineControllers = require("./controllers/WorkshopHasExistingWineControllers");
 const TastingNoteControllers = require("./controllers/TastingNoteControllers");
+const TastingNoteHasExistingWineControllers = require("./controllers/TastingNoteHasExistingWineControllers");
+const OlfactiveAromasHasTastingNoteControllers = require("./controllers/OlfactiveAromasHasTastingNoteControllers");
+const TastingNoteHasTasteFlavorControllers = require("./controllers/TastingNoteHasTasteFlavorControllers");
 const SelectedWineControllers = require("./controllers/SelectedWineControllers");
 const WineryControllers = require("./controllers/WineryControllers");
 
@@ -50,6 +53,7 @@ router.get(
   "/existingwinebytastingnote/:id",
   ExistingWineControllers.getOneExistingWineByTastingNoteId
 );
+
 router.post(
   "/existingwinehasappellation",
   ExistingWineControllers.addEwHasAppellation
@@ -64,13 +68,24 @@ router.get("/newwinebyuser/:id", NewWineControllers.getNewWineByUserId);
 router.get("/newwinebyworkshop/:id", NewWineControllers.getNewWineByWorkshopId);
 router.get("/newwinecreated", NewWineControllers.getNewWineCreated);
 router.post("/newwine", NewWineControllers.addNewWine);
+router.put("/newwinecommentary/:id", NewWineControllers.putCommentary);
 router.get("/selectedwine/:id", SelectedWineControllers.read);
 router.post("/selectedwine", SelectedWineControllers.add);
 router.post("/tastingnote", TastingNoteControllers.add);
 router.get("/tastingnote", TastingNoteControllers.browse);
 router.get("/tastingnote/:id", TastingNoteControllers.getTastingNoteByUserId);
-
-router.get("/tastingnote/:id", TastingNoteControllers.browse);
+router.post(
+  "/tastingnotehasexistingwine",
+  TastingNoteHasExistingWineControllers.add
+);
+router.post(
+  "/olfactivearomashastastingnote",
+  OlfactiveAromasHasTastingNoteControllers.add
+);
+router.post(
+  "/tastingnotehastasteflavor",
+  TastingNoteHasTasteFlavorControllers.add
+);
 router.get(
   "/workshophasexistingwine",
   WorkshopHasExistingWineControllers.browse
@@ -85,6 +100,7 @@ router.delete(
   WorkshopHasExistingWineControllers.destroy
 );
 router.get("/nextworkshops", WorkshopControllers.getNextWorkshops);
+
 // ---------------------------------------- Private Routes ----------------------------------------------
 
 router.use(verifyToken);

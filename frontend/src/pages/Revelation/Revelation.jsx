@@ -30,7 +30,7 @@ export default function Revelation() {
       });
   }, [userToken]);
 
-  // Create new wine
+  // Create a new wine
   const postNewWine = () => {
     const newWine = { newWine: { color: `${nextWorkshops[0].wine_type}` } };
     axios
@@ -49,7 +49,7 @@ export default function Revelation() {
 
   // show only the wines that match with the tasting note
   const selectedWinesSet = new Set();
-  const selectedWines = data.filter((wine) => {
+  const selectedWinesData = data.filter((wine) => {
     if (
       tastingNote.selectedWinesIds.includes(wine.id) &&
       !selectedWinesSet.has(wine.id)
@@ -65,9 +65,9 @@ export default function Revelation() {
       <h1 className="h1-revelation">REVELATION</h1>
       <p>Voici les vins correspondants à votre séléction</p>
       <div className="card-disposition">
-        {selectedWines &&
-          selectedWines.map((wine, index) => (
-            <CardRevelation key={wine.id} wine={wine} cardNumber={index + 1} />
+        {selectedWinesData &&
+          selectedWinesData.map((wine) => (
+            <CardRevelation key={wine.id} wine={wine} cardNumber={wine.id} />
           ))}
       </div>
       <Link to="/creationworkshop">
