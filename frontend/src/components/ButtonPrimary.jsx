@@ -11,7 +11,7 @@ const ButtonPrimary = styled.button`
   gap: 1.5rem;
   background-color: rgba(195, 180, 138, 0.1);
   color: var(--secondaryColor);
-  font-size: var(--fontSizeText);
+  font-size: 1.2rem;
   cursor: pointer;
   &:hover {
     background-color: var(--secondaryColor);

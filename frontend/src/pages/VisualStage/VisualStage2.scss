@@ -1,0 +1,83 @@
+.visualStage2,
+.contentStage2,
+.formStage2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.visualStage2 {
+  height: 100%;
+  background: no-repeat left url("../../assets/Red_Wine_Colors/Pourpre.png"),
+    var(--blackBgGradient);
+  color: var(--whiteGoldColor);
+  font-family: var(--fontFamilyText);
+  font-size: var(--fontSizeText);
+
+  .contentStage2 {
+    margin: 2rem min(2rem, var(--marginPageContent));
+    margin-bottom: 5rem;
+    gap: 4rem;
+
+    /* style for the text intro */
+    .intro {
+      align-items: start;
+      gap: 2rem;
+      text-align: left;
+      line-height: 1.8rem;
+
+      .subtitle {
+        font-family: var(--fontFamilyTitle);
+        font-size: 2rem;
+        color: var(--primaryColor);
+        line-height: 2.8rem;
+      }
+      .introText {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        .tip {
+          font-weight: 200;
+          font-style: italic;
+        }
+      }
+    }
+    .checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: baseline;
+      justify-content: center;
+    }
+  }
+}
+
+// -------------------------------Tablet media queries--------------------------------
+@media screen and (min-width: 768px) {
+  .visualStage2 {
+    background: no-repeat top 18em right 20em
+        url("../../assets/Red_Wine_Colors/Pourpre.png"),
+      no-repeat bottom 9em left 20em
+        url("../../assets/Gold_Blotches/Watercolor_Blotch_4.png"),
+      var(--blackBgGradient);
+  }
+  .contentStage2 {
+    gap: 5rem;
+
+    .intro {
+      line-height: 2.2rem;
+
+      .subtitle {
+        width: 100%;
+        color: var(--primaryColor);
+        text-align: center;
+      }
+      .introText {
+        text-align: center;
+      }
+    }
+  }
+}
+
+/* -------------------------------- Desktop media queries--------------------------------- */
