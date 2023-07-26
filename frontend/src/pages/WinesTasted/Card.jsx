@@ -10,11 +10,11 @@ import note from "../../assets/Icons/Tasting_Note_Icon.svg";
 
 function Card({ wine, number, isSelected, onSelect }) {
   const handleStarButtonClick = () => {
-    onSelect(number, wine.id);
+    onSelect(wine.id);
   };
 
   return (
-    <div className="cardContent">
+    <div className="cardContainer">
       <div className={`card ${isSelected ? "selected" : ""}`}>
         <div className="titleCard">
           <h2 className="h2Card">Vin numéro {number}</h2>
@@ -24,11 +24,11 @@ function Card({ wine, number, isSelected, onSelect }) {
             type="button"
             onClick={handleStarButtonClick}
           >
-            <img
-              className="imgCardSelection"
-              src={isSelected ? starHover : star}
-              alt={isSelected ? "filled star" : "unfilled star"}
-            />
+            {isSelected ? (
+              <i className="fi fi-ss-heart"></i>
+            ) : (
+              <i className="fi fi-rs-heart"></i>
+            )}
           </button>
         </div>
         <div className="cardContent">
@@ -56,8 +56,8 @@ function Card({ wine, number, isSelected, onSelect }) {
             <br />
           </div>
           <div className="comment">
-            <img className="imgCardSelection note" src={note} alt="comment" />
-            <p className="cardCommentary">" {wine.tasting_commentary} "</p>
+            <img className="imgCardSelection" src={note} alt="comment" />
+            <p className="cardCommentary"> "{wine.tasting_commentary}" </p>
             <br />
           </div>
           <div className="rating">

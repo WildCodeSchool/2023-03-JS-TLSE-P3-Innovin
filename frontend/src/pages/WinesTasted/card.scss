@@ -4,130 +4,94 @@
 .comment {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 1rem;
+  width: 100%;
 }
 
-.card {
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 2rem 2rem 2rem;
-  width: clamp(240px, 4vw + 8rem, 20rem);
-  background: var(--blackBgGradientSmooth);
-  box-shadow: var(--shadow);
-  backdrop-filter: var(--bgBlur);
-  border-radius: 10px;
-
-  .titleCard {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background: var(--blackBgGradient);
-    border-bottom: 1px var(--primaryColor) solid;
-    padding: 0 1rem 0 1rem;
-
-    .h2Card {
-      color: var(--primaryColor);
-      font-size: 1.2rem;
-      font-weight: bold;
-      font-family: var(--fontFamilyText);
-    }
-  }
-
-  .pCard,
-  .cardCommentary {
-    color: var(--whiteGoldColor);
-    font-size: 0.7rem;
-    font-family: var(--fontFamilyText);
-    font-weight: 300;
-    line-height: 16px;
-    padding-right: 10px;
-  }
-
-  .imgCardSelection {
-    padding: 10px 0 10px 0;
-    margin-left: 0.5rem;
-
-    &.note {
-      height: 70px;
-    }
-  }
-
-  .cardCommentary {
-    font-size: 0.9rem;
-    padding: 10px;
-  }
-
-  .rating {
-    display: flex;
-    gap: 3px;
-    justify-content: center;
-    padding: 15px;
-
-    img {
-      height: 17px;
-    }
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .cardContent {
-    height: auto;
-  }
-
+.cardContainer {
   .card {
-    width: 300px;
+    width: 100%;
+    max-width: 19rem;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    margin: 2rem 2rem 2rem 2rem;
-    width: clamp(240px, 4vw + 8rem, 20rem);
+    align-items: center;
     background: var(--blackBgGradientSmooth);
     box-shadow: var(--shadow);
     backdrop-filter: var(--bgBlur);
-    border-radius: 10px;
-
-    .cardDisposition {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    border-radius: 5px;
 
     .titleCard {
-      height: 50px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      background: var(--blackBgGradient);
       border-bottom: 1px var(--primaryColor) solid;
-      padding: 0 1rem 0 1rem;
+      padding: 1rem;
 
       .h2Card {
-        color: var(--primaryColor);
-        font-size: 1.2rem;
-        font-weight: bold;
-        font-family: var(--fontFamilyText);
+        color: var(--secondaryColor);
+        font-size: 1.4rem;
+        font-family: var(--fontFamilyTitle);
+      }
+
+      .starButton {
+        background: none;
+        border: none;
+        width: 2rem;
+        cursor: pointer;
+        i {
+          font-size: 1.4rem;
+          color: var(--redWineColor);
+        }
       }
     }
 
-    .pCard,
-    .cardCommentary {
-      color: var(--whiteGoldColor);
-      font-size: 0.8rem;
-      font-family: var(--fontFamilyText);
-      font-weight: 300;
-      padding-right: 10px;
-    }
+    .cardContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 1.6rem;
+      padding: 1rem;
 
-    .imgCardSelection {
-      padding: 10px 0 10px 0;
+      .eyeCard,
+      .noseCard,
+      .mouthCard {
+        .imgCardSelection {
+          width: 1.8rem;
+        }
+        .pCard {
+          font-size: 0.8rem;
+          line-height: 1.1rem;
+          font-weight: 300;
+        }
+      }
+
+      .comment {
+        .imgCardSelection {
+          width: 1.8rem;
+        }
+        .cardCommentary {
+          font-size: 0.8rem;
+          line-height: 1.1rem;
+          font-weight: 300;
+          font-style: italic;
+          line-break: anywhere;
+        }
+      }
+
+      .rating {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        padding: 2rem 1rem 1rem 1rem;
+
+        img {
+          height: 17px;
+        }
+      }
     }
   }
 }
