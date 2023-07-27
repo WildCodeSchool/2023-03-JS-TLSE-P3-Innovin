@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./card.scss";
 import eye from "../../assets/Icons/Eye_Icon.svg";
@@ -9,22 +9,25 @@ import starHover from "../../assets/Icons/Star_Hover_Icon.svg";
 import note from "../../assets/Icons/Tasting_Note_Icon.svg";
 
 function Card({ wine, number, isSelected, onSelect }) {
+  const [localSelected, setLocalSelected] = useState(isSelected);
+
   const handleStarButtonClick = () => {
+    setLocalSelected(!localSelected);
     onSelect(number, wine.id);
   };
 
   return (
     <div className="cardContainer">
-      <div className={`card ${isSelected ? "selected" : ""}`}>
+      <div className={`card ${localSelected ? "selected" : ""}`}>
         <div className="titleCard">
           <h2 className="h2Card">Vin numéro {number}</h2>
           <button
-            className="star-button"
+            className="starButton"
             aria-label="Toggle Star"
             type="button"
             onClick={handleStarButtonClick}
           >
-            {isSelected ? (
+            {localSelected ? (
               <i className="fi fi-ss-heart" />
             ) : (
               <i className="fi fi-rs-heart" />
