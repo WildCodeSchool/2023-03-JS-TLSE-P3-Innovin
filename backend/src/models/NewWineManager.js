@@ -13,12 +13,6 @@ class NewWineManager extends AbstractManager {
     ]);
   }
 
-  findNewWineCreated(idNewWine) {
-    return this.database.query(`SELECT id FROM ${this.table} WHERE id = ?`, [
-      idNewWine,
-    ]);
-  }
-
   findNewWineIdByWorskhop(idWorkshop) {
     return this.database.query(
       `SELECT nw.id FROM new_wine nw 
@@ -59,7 +53,7 @@ JOIN grape_variety gv ON ew.id_grape_variety = gv.id`
     );
   }
 
-  findNewWineByUserId(idUser, idWorkshop) {
+  find(id) {
     return this.database.query(
       `SELECT
       nw.id,
@@ -71,8 +65,6 @@ JOIN grape_variety gv ON ew.id_grape_variety = gv.id`
       nw.selected_for_competition,
       nw.commentary AS commentaryWine,
       tn.tasting_commentary AS commentaryTasting,
-      cs.competition_name,
-      cs.commentary AS commentary_competition,
       w.place,
       w.datetime,
       tn.id_user,
@@ -80,7 +72,6 @@ JOIN grape_variety gv ON ew.id_grape_variety = gv.id`
       u.lastname
     FROM
     ${this.table} nw
-      JOIN competition_selection cs ON cs.id = nw.id_competition_selection
       JOIN selected_wine sw ON nw.id = sw.id_new_wine
       JOIN tasting_note tn ON tn.id = sw.id_tasting_note
       JOIN user u ON tn.id_user = u.id
@@ -90,8 +81,8 @@ JOIN grape_variety gv ON ew.id_grape_variety = gv.id`
       JOIN existing_wine ew ON ew.id = tnhe.id_existing_wine
       JOIN grape_variety gv ON ew.id_grape_variety = gv.id 
     WHERE
-      tn.id_user = ? AND w.id = ?`,
-      [idUser, idWorkshop]
+    nw.id = ?`,
+      [id]
     );
   }
 

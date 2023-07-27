@@ -12,7 +12,8 @@ function WinesTasted() {
   // const for context
   const CreationWorkshopValue = useContext(CreationWorkshopContext);
   const { userToken, user } = useContext(AuthContext);
-  const { tastingNote, setSelectedWinesIds } = useContext(TastingNoteContext);
+  const { tastingNote, setSelectedWinesIds, setSelectedTastedWinesIds } =
+    useContext(TastingNoteContext);
   const {
     wineSelectedCounter,
     setWineSelectedCounter,
@@ -43,17 +44,27 @@ function WinesTasted() {
   }, [userToken]);
 
   // Selection wine for TastingNote max 3
-  const handleWineSelection = (wineId) => {
-    const currentSelectedWinesIds = tastingNote.selectedWinesIds;
-    const isWineSelected = currentSelectedWinesIds.includes(wineId);
 
+  const handleWineSelection = (wineNumber, tastedWineId) => {
+    // Récupérer les tableaux actuels des vins sélectionnés et dégustés
+    const currentTastedWinesIds = tastingNote.selectedTastedWinesIds;
+    const currentSelectedWinesIds = tastingNote.selectedWinesIds;
+
+    // Vérifier si le vin est déjà sélectionné et dégusté
+    const isWineSelected = currentSelectedWinesIds.includes(wineNumber);
+
+    // Gérer la sélection et la dégustation en fonction de l'état actuel
     if (isWineSelected) {
+      setSelectedTastedWinesIds(
+        currentTastedWinesIds.filter((id) => id !== tastedWineId)
+      );
       setSelectedWinesIds(
-        currentSelectedWinesIds.filter((id) => id !== wineId)
+        currentSelectedWinesIds.filter((id) => id !== wineNumber)
       );
       setWineSelectedCounter(wineSelectedCounter - 1); // Décrémenter le compteur lors de la déselection
     } else if (currentSelectedWinesIds.length < 3) {
-      setSelectedWinesIds([...currentSelectedWinesIds, wineId]);
+      setSelectedTastedWinesIds([...currentTastedWinesIds, tastedWineId]);
+      setSelectedWinesIds([...currentSelectedWinesIds, wineNumber]);
       setWineSelectedCounter(wineSelectedCounter + 1); // Incrémenter le compteur lors de la sélection
     } else {
       setMaxSelected(!maxSelected);
