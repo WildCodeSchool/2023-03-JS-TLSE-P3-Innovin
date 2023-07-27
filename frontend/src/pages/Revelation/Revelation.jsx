@@ -17,7 +17,7 @@ export default function Revelation() {
   useEffect(() => {
     // fetching all wines with caracteristics
     axios
-      .get("http://localhost:5000/existingwine", {
+      .get(`${import.meta.env.VITE_BACKEND_URL}/existingwine`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
