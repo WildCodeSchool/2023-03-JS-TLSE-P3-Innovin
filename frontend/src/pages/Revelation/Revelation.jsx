@@ -10,7 +10,7 @@ import ButtonPrimary from "../../components/ButtonPrimary";
 export default function Revelation() {
   // const for context
   const CreationWorkshopValue = useContext(CreationWorkshopContext);
-  const { nextWorkshops } = CreationWorkshopValue;
+  const { nextWorkshops, setNewWineId } = CreationWorkshopValue;
   const { userToken, tastingNote } = useContext(TastingNoteContext);
   const [data, setData] = useState([]);
 
@@ -32,7 +32,9 @@ export default function Revelation() {
 
   // Create a new wine
   const postNewWine = () => {
-    const newWine = { newWine: { color: `${nextWorkshops[0].wine_type}` } };
+    const newWine = {
+      newWine: { color: `${nextWorkshops[0].wine_type}` },
+    };
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/newwine`, newWine, {
         headers: {
@@ -40,7 +42,7 @@ export default function Revelation() {
         },
       })
       .then((res) => {
-        console.info(res);
+        setNewWineId(res.data.insertId);
       })
       .catch((err) => {
         console.error(err);

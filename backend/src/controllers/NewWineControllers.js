@@ -74,10 +74,9 @@ const getNewWineByWorkshopId = (req, res) => {
     });
 };
 
-const getNewWineByUserId = (req, res) => {
-  const { idworkshop } = req.query;
+const read = (req, res) => {
   models.newWine
-    .findNewWineByUserId(req.params.id, idworkshop)
+    .find(req.params.id)
     .then(([rows]) => {
       if (rows.length) {
         const result = rows.reduce((acc, obj) => {
@@ -134,7 +133,6 @@ const getNewWineByUserId = (req, res) => {
     });
 };
 
-let idNewWine;
 const addNewWine = (req, res) => {
   const { newWine } = req.body;
   // TODO validations (length, format...)
@@ -142,28 +140,11 @@ const addNewWine = (req, res) => {
   models.newWine
     .insertNewWine(newWine)
     .then(([result]) => {
-      idNewWine = result.insertId; // Récupération de l'Id de la table New_wine
-      res.location(`/newwine/${result.insertId}`).status(201).send("Created");
+      res.location(`/newwine/${result.insertId}`).status(201).send(result);
     })
     .catch((err) => {
       console.error(err);
       res.sendStatus(500);
-    });
-};
-
-const getNewWineCreated = (req, res) => {
-  models.newWine
-    .findNewWineCreated(idNewWine)
-    .then(([rows]) => {
-      if (rows.length) {
-        res.status(200).send(rows);
-      } else {
-        res.status(400).send("Bad Request");
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -230,9 +211,8 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   getNewWineByWorkshopId,
-  getNewWineByUserId,
+  read,
   addNewWine,
-  getNewWineCreated,
   edit,
   putCommentary,
   destroy,

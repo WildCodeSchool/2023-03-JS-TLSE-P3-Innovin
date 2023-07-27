@@ -748,17 +748,17 @@ VALUES (
         "Ne manquez pas cet atelier d'inauguration du premier atelier de notre programme! Plongez dans l'univers envoûtant des vins rouges et laissez-vous séduire par une sélection exquise de cépages prestigieux. Nos sommeliers passionnés vous guideront à travers un voyage sensoriel, révélant les secrets de chaque vin. Préparez-vous à vivre une expérience inoubliable, où convivialité et découverte se mêlent harmonieusement.",
         "Rouge"
     ), (
-        "2023/07/22 16:00:00",
+        "2023/07/27 16:00:00",
         "Toulouse",
         "Nous vous invitons chaleureusement à l'inauguration du deuxième atelier de notre programme. Cette fois-ci, nous mettons à l'honneur les vins blancs, symboles de fraîcheur et d'élégance. Laissez-vous surprendre par notre sélection soigneusement choisie, mettant en lumière des appellations renommées et des cépages emblématiques. Nos experts vous dévoileront les secrets de ces nectars délicats, vous offrant ainsi une expérience gustative unique et enrichissante.",
         "Blanc"
     ), (
-        "2023/07/22 19:00:00",
+        "2023/07/27 15:00:00",
         "Toulouse",
         "Accordez vos sens lors de cet atelier exceptionnel dédié aux accords mets et vins. Plongez dans l'art subtil de marier harmonieusement les saveurs pour créer des expériences culinaires inoubliables. Nos chefs talentueux vous présenteront une sélection de mets savoureux, soigneusement associés à des vins d'exception. Vous découvrirez les subtilités des accords et apprendrez les principes fondamentaux pour créer vos propres harmonies gustatives. Préparez-vous à vivre une expérience gastronomique hors du commun, où l'équilibre des saveurs sera à l'honneur.",
         "Rouge"
     ), (
-        "2023/07/24 14:00:00",
+        "2023/07/27 14:30:00",
         "Bordeaux",
         "Plongez dans l'univers passionnant des vins rouges bio lors de cet atelier de dégustation unique. Explorez une sélection exclusive de crus biologiques, issus de terroirs d'exception. Vous découvrirez comment ces vins préservent l'expression authentique du fruit tout en respectant l'environnement.",
         "Rouge"
