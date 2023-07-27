@@ -10,7 +10,7 @@ import note from "../../assets/Icons/Tasting_Note_Icon.svg";
 
 function Card({ wine, number, isSelected, onSelect }) {
   const handleStarButtonClick = () => {
-    onSelect(wine.id);
+    onSelect(number, wine.id);
   };
 
   return (
@@ -25,9 +25,9 @@ function Card({ wine, number, isSelected, onSelect }) {
             onClick={handleStarButtonClick}
           >
             {isSelected ? (
-              <i className="fi fi-ss-heart"></i>
+              <i className="fi fi-ss-heart" />
             ) : (
-              <i className="fi fi-rs-heart"></i>
+              <i className="fi fi-rs-heart" />
             )}
           </button>
         </div>

@@ -129,21 +129,23 @@ function CreationWorkshop() {
             <p>
               Assemblez votre vin à l'aide de vos cépages préférés. Utilisez les
               sliders ci-dessous pour inscrire vos dosages.
-              <br />{" "}
             </p>
           </div>
           <div className="workshop_Sliderbox">
-            <p>Quelles quantités avez-vous utilisé ?</p>
-            <Sliders />
+            <div className="sliders">
+              <p>Quelles quantités avez-vous utilisé ?</p>
+              <Sliders />
+            </div>
+
             <div className="commentary_container">
               <span className="TextWine">
                 Donnez votre avis sur votre vin :
               </span>
               <InputTextarea
                 name="commentary"
-                placeholder="Write a review about your workshop"
+                placeholder="Ecrivez un commentaire ici"
                 autoResize
-                value={form.Commentary}
+                value={form.commentary}
                 id="commentaryWine"
                 onChange={handleCommentaryChange}
                 rows={5}
