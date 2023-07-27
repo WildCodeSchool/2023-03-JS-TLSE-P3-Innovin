@@ -29,6 +29,12 @@
       flex-direction: column;
       align-items: center;
       gap: 2rem;
+
+      .subtitle {
+        font-family: var(--fontFamilyTitle);
+        font-size: 2rem;
+        color: var(--primaryColor);
+      }
       .introText {
         display: flex;
         flex-direction: column;
@@ -36,6 +42,7 @@
         gap: 1.4rem;
         line-height: 1.8rem;
         max-width: 64rem;
+        text-align: center;
       }
     }
 
