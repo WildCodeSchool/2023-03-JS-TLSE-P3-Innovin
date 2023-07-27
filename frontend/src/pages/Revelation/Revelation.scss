@@ -1,0 +1,64 @@
+.page-revel {
+  background: left url("../../assets/Red_Wine_Colors/Framboise.png"),
+    var(--blackBgGradient);
+  width: 100%;
+  color: var(--whiteGoldColor);
+  font-family: var(--fontFamilyText);
+  font-size: var(--fontSizeText);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 2.4rem;
+    .h1-revelation {
+      text-align: center;
+      color: var(--primaryColor);
+      font-family: var(--fontFamilyTitle);
+      font-size: 1.8rem;
+    }
+
+    p {
+      line-height: 1.8rem;
+      text-align: center;
+    }
+  }
+
+  .card-disposition {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .page-revel {
+    background: url("../../assets/Red_Wine_Colors/Pourpre.png"),
+      no-repeat bottom 9em left 26em
+        url("../../assets/Gold_Blotches/Watercolor_Blotch_4.png"),
+      var(--blackBgGradient);
+
+    .card-disposition {
+      width: 100%;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+  }
+}

@@ -394,7 +394,7 @@ VALUES (
 CREATE TABLE
     IF NOT EXISTS `inovin`.`existing_wine` (
         `id` INT NOT NULL AUTO_INCREMENT,
-        `vintage` VARCHAR(45) NOT NULL,
+        `vintage` INT NOT NULL,
         `blend` VARCHAR(45) NULL,
         `color` VARCHAR(45) NOT NULL,
         `alcohol_percentage` INT NOT NULL,
@@ -404,6 +404,7 @@ CREATE TABLE
         `id_wine_region` INT NOT NULL,
         `id_grape_variety` INT NOT NULL,
         `id_winery` INT NOT NULL,
+        `is_archived` BOOLEAN NOT NULL DEFAULT 0,
         PRIMARY KEY (`id`),
         CONSTRAINT `fk_existing_wine_wine_region1` FOREIGN KEY (`id_wine_region`) REFERENCES `inovin`.`wine_region` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_existing_wine_grape_variety1` FOREIGN KEY (`id_grape_variety`) REFERENCES `inovin`.`grape_variety` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -421,118 +422,129 @@ INSERT INTO
         `name`,
         `id_wine_region`,
         `id_grape_variety`,
-        `id_winery`
+        `id_winery`,
+        `is_archived`
     )
 VALUES (
-        'Malbec',
+        '2021',
         '',
         'Rouge',
         13,
-        '',
+        'https://www.vinatis.com/73176-detail_default/prestige-2020-chateau-de-hauterive.png',
         '',
         '',
         14,
         40,
-        1
+        1,
+        0
     ), (
-        'Cabernet Sauvignon',
+        '2019',
         '',
         'Rouge',
         13,
-        '',
+        'https://www.vinatis.com/69777-detail_default/cabernet-sauvignon-2021-villa-des-anges-jeff-carrel.png',
         '',
         '',
         3,
         16,
-        2
+        2,
+        0
     ), (
-        'Syrah',
+        '2015',
         '',
         'Rouge',
         13,
-        '',
+        'https://www.vinatis.com/77056-detail_default/syrah-2021-les-jamelles.png',
         '',
         '',
         5,
         70,
-        3
+        3,
+        0
     ), (
-        'Merlot',
+        '1998',
         '',
         'Rouge',
-        0,
-        '',
+        14,
+        'https://www.vinatis.com/64358-detail_default/petrus-2001.png',
         '',
         '',
         3,
         44,
-        5
+        5,
+        0
     ), (
-        'Pinot Noir',
+        '2020',
         '',
         'Rouge',
         12,
-        '',
+        'https://www.vinatis.com/73907-detail_default/bourgogne-pinot-noir-sieur-aubry-2021-domaine-du-mont-verrier.png',
         '',
         '',
         6,
         63,
-        6
+        6,
+        0
     ), (
-        'Sauvignon Blanc',
+        '2017',
         '',
         'Blanc',
         13,
-        '',
+        'https://www.vinatis.com/76173-detail_default/saint-bris-2021-maison-simonnet-febvre.png',
         '',
         '',
         15,
         68,
-        7
+        7,
+        0
     ), (
-        'Gewurztraminer',
+        '2021',
         '',
         'Blanc',
         12,
-        '',
+        'https://www.vinatis.com/73942-detail_default/gewurztraminer-grand-cru-hatschbourg-2021-joseph-cattin.png',
         '',
         '',
         1,
         34,
-        8
+        8,
+        0
     ), (
-        'Chardonnay',
+        '2022',
         '',
         'Blanc',
         12,
-        '',
+        'https://www.vinatis.com/65892-detail_default/chardonnay-2021-chateau-auzias.png',
         '',
         '',
         6,
         23,
-        6
+        6,
+        0
     ), (
-        'Pinot Gris',
+        '1989',
         '',
         'Blanc',
         12,
-        '',
+        'https://www.vinatis.com/68525-detail_default/pinot-gris-2018-les-princes-abbes-domaine-schlumberger.png',
         '',
         '',
         1,
         61,
-        8
+        8,
+        0
     ), (
-        'Cabernet Franc',
+        '2016',
         '',
-        'Blanc',
+        'Rouge',
         12,
-        '',
+        'https://www.vinatis.com/78832-detail_default/clin-doeil-rouge-2021-alliance-loire.png',
         '',
         '',
         15,
         15,
-        9
+        9,
+        0
     );
 
 -- -----------------------------------------------------
@@ -672,9 +684,9 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`new_wine` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `color` VARCHAR(45) NOT NULL,
-        `selected_for_competition` TINYINT(1) NOT NULL,
+        `selected_for_competition` TINYINT(0) DEFAULT 0 NULL,
         `commentary` LONGTEXT NULL,
-        `id_competition_selection` INT NOT NULL,
+        `id_competition_selection` INT NULL,
         PRIMARY KEY (`id`),
         CONSTRAINT `fk_new_wine_competition_selection1` FOREIGN KEY (`id_competition_selection`) REFERENCES `inovin`.`competition_selection` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
@@ -716,14 +728,11 @@ VALUES (
 
 CREATE TABLE
     IF NOT EXISTS `inovin`.`workshop` (
-        `id` INT NOT NULL AUTO_INCREMENT,
+        `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         `datetime` DATETIME NOT NULL,
         `place` VARCHAR(55) NOT NULL,
         `commentary` LONGTEXT NULL,
-        `wine_type` VARCHAR(45) NULL,
-        `id_new_wine` INT NOT NULL,
-        PRIMARY KEY (`id`),
-        CONSTRAINT `fk_workshop_new_wine1` FOREIGN KEY (`id_new_wine`) REFERENCES `inovin`.`new_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        `wine_type` VARCHAR(45) NULL
     ) ENGINE = InnoDB;
 
 INSERT INTO
@@ -731,127 +740,108 @@ INSERT INTO
         datetime,
         place,
         commentary,
-        wine_type,
-        id_new_wine
+        wine_type
     )
 VALUES (
-        "2023/07/20 16:00:00",
+        "2023/07/27 18:00:00",
         "Toulouse",
         "Ne manquez pas cet atelier d'inauguration du premier atelier de notre programme! Plongez dans l'univers envoûtant des vins rouges et laissez-vous séduire par une sélection exquise de cépages prestigieux. Nos sommeliers passionnés vous guideront à travers un voyage sensoriel, révélant les secrets de chaque vin. Préparez-vous à vivre une expérience inoubliable, où convivialité et découverte se mêlent harmonieusement.",
-        "Rouge",
-        1
+        "Rouge"
     ), (
-        "2023/07/22 16:00:00",
+        "2023/07/27 16:00:00",
         "Toulouse",
         "Nous vous invitons chaleureusement à l'inauguration du deuxième atelier de notre programme. Cette fois-ci, nous mettons à l'honneur les vins blancs, symboles de fraîcheur et d'élégance. Laissez-vous surprendre par notre sélection soigneusement choisie, mettant en lumière des appellations renommées et des cépages emblématiques. Nos experts vous dévoileront les secrets de ces nectars délicats, vous offrant ainsi une expérience gustative unique et enrichissante.",
-        "Blanc",
-        2
+        "Blanc"
     ), (
-        "2023/07/22 19:00:00",
+        "2023/07/27 15:00:00",
         "Toulouse",
         "Accordez vos sens lors de cet atelier exceptionnel dédié aux accords mets et vins. Plongez dans l'art subtil de marier harmonieusement les saveurs pour créer des expériences culinaires inoubliables. Nos chefs talentueux vous présenteront une sélection de mets savoureux, soigneusement associés à des vins d'exception. Vous découvrirez les subtilités des accords et apprendrez les principes fondamentaux pour créer vos propres harmonies gustatives. Préparez-vous à vivre une expérience gastronomique hors du commun, où l'équilibre des saveurs sera à l'honneur.",
-        "Rouge",
-        1
+        "Rouge"
     ), (
-        "2023/07/24 14:00:00",
+        "2023/07/27 14:30:00",
         "Bordeaux",
         "Plongez dans l'univers passionnant des vins rouges bio lors de cet atelier de dégustation unique. Explorez une sélection exclusive de crus biologiques, issus de terroirs d'exception. Vous découvrirez comment ces vins préservent l'expression authentique du fruit tout en respectant l'environnement.",
-        "Rouge",
-        1
+        "Rouge"
     ), (
-        "2023/07/31 15:30:00",
+        "2023/07/23 15:30:00",
         "Lyon",
         "Rejoignez-nous pour une expérience effervescente lors de cet atelier dédié aux vins pétillants du monde entier. Des champagnes aux proseccos en passant par les crémants, vous découvrirez la diversité des vins effervescents et leurs caractéristiques uniques. ",
-        "Blanc",
-        1
+        "Blanc"
     ), (
-        "2023/07/31 18:00:00",
+        "2023/07/23 18:00:00",
         "Lyon",
         "Laissez-vous charmer par la palette de couleurs et d'arômes des vins rosés lors de cet atelier exclusif. Découvrez une sélection variée de rosés provenant de différentes régions viticoles, chacun offrant sa propre expression de fraîcheur et de légèreté. Nos sommeliers vous guideront dans cette dégustation en mettant en lumière les nuances subtiles et les accords parfaits pour accompagner ces vins délicats. Préparez-vous à être émerveillé par la finesse et l'élégance de ces vins rosés qui séduisent les palais les plus exigeants.",
-        "Rouge",
-        1
+        "Rouge"
     ), (
-        "2023/08/03 19:00:00",
+        "2023/07/03 19:00:00",
         "Nice",
         "Explorez un univers gourmand lors de cet atelier dédié aux vins de dessert. Découvrez des vins liquoreux, moelleux et autres nectars sucrés, accompagnés de délices sucrés et de créations pâtissières exquises. Nos sommeliers vous guideront dans cette dégustation sensorielle, vous révélant les accords parfaits entre les vins et les desserts. Laissez-vous séduire par la magie des saveurs sucrées et plongez dans un univers où chaque gorgée vous transportera vers le plaisir gustatif ultime.",
-        "Blanc",
-        1
+        "Blanc"
     ), (
-        "2023/08/06 12:00:00",
+        "2023/07/06 12:00:00",
         "Strasbourg",
         "Plongez dans l'univers des vins blancs secs lors de cet atelier captivant. Découvrez la diversité des cépages blancs secs provenant de différentes régions viticoles, offrant des profils aromatiques uniques et des caractéristiques variées. Nos sommeliers passionnés partageront avec vous leur expertise et vous guideront à travers cette dégustation immersive, révélant les secrets de chaque vin. Préparez-vous à explorer un monde de fraîcheur et de finesse, où les vins blancs secs éveilleront vos sens et vous feront voyager au cœur des vignobles.",
-        "Blanc",
-        1
+        "Blanc"
     ), (
-        "2023/08/12 13:00:00",
+        "2023/07/12 13:00:00",
         "Toulouse",
         "Plongez dans l'univers des vins rouges. Une dégustation passionnante vous attend, avec des cépages sélectionnés avec soin pour vous offrir une expérience inoubliable. Rejoignez-nous pour explorer les arômes complexes et les saveurs intenses des vins rouges les plus prestigieux.",
-        "Rouge",
-        1
+        "Rouge"
     ), (
-        "2023/08/12 16:00:00",
+        "2023/07/12 16:00:00",
         "Toulouse",
         "Atelier dédié aux vins blancs. Laissez-vous séduire par la fraîcheur et l'élégance de ces vins, provenant de différentes régions viticoles. Découvrez les arômes délicats et les nuances subtiles qui font la renommée des vins blancs sélectionnés pour cet atelier.",
-        "Blanc",
-        2
+        "Blanc"
     ), (
-        "2023/08/15 18:30:00",
+        "2023/07/15 18:30:00",
         "Paris",
         "Explorez les accords mets et vins lors de cet atelier spécial. Plongez dans un voyage gustatif où chaque bouchée est harmonieusement accompagnée d'un vin soigneusement choisi. Nos experts vous guideront dans l'art de marier les saveurs, vous offrant ainsi une expérience culinaire exceptionnelle et mémorable.",
-        "Rouge",
-        2
+        "Rouge"
     ), (
-        "2023/08/16 14:00:00",
+        "2023/07/16 14:00:00",
         "Bordeaux",
         "Découvrez les vins rouges bio lors de cet atelier de dégustation. Appréciez la qualité et l'authenticité de ces vins issus de pratiques respectueuses de l'environnement. Laissez-vous séduire par leur caractère unique et leur expression du terroir, révélant des saveurs riches et équilibrées.",
-        "Rouge",
-        2
+        "Rouge"
     ), (
-        "2023/08/17 17:00:00",
+        "2023/07/17 17:00:00",
         "Marseille",
         "Plongez dans le monde des vins effervescents lors de cet atelier festif. Découvrez la magie des bulles et laissez-vous surprendre par la diversité des vins effervescents, des champagnes aux proseccos en passant par les crémants. Éveillez vos papilles avec ces vins pétillants, symboles de célébration et de joie.",
-        "Blanc",
-        2
+        "Blanc"
     ), (
-        "2023/08/18 15:30:00",
+        "2023/06/18 15:30:00",
         "Lyon",
         "Appréciez la subtilité des vins rosés lors de cet atelier exclusif. Découvrez une sélection variée de rosés aux couleurs délicates et aux arômes frais. Laissez-vous séduire par leur fraîcheur et leur légèreté, et découvrez les accords parfaits pour sublimer ces vins rosés lors d'une dégustation raffinée.",
-        "Rouge",
-        2
+        "Rouge"
     ), (
-        "2023/08/18 19:00:00",
+        "2023/06/18 19:00:00",
         "Nice",
         "Succombez aux plaisirs des vins de dessert lors de cet atelier gourmand. Découvrez une palette de saveurs sucrées et explorez l'art de l'association entre les vins liquoreux et les délices sucrés. Laissez-vous envoûter par ces accords divins qui éveilleront tous vos sens.",
-        "Blanc",
-        2
+        "Blanc"
     ), (
-        "2023/08/19 12:00:00",
+        "2023/07/19 12:00:00",
         "Nice",
         "Découvrez la fraîcheur des vins blancs secs lors de cet atelier captivant. Explorez une sélection variée de cépages blancs secs, reflétant la richesse et la diversité des régions viticoles. Laissez-vous emporter par les arômes délicats et les notes fruitées de ces vins qui sauront égayer vos papilles.",
-        "Blanc",
-        2
+        "Blanc"
     ), (
-        "2023/08/23 13:00:00",
+        "2023/07/22 13:00:00",
         "Lille",
         "Célébrez la Saint-Valentin avec notre atelier spécial vins et chocolats. Plongez dans une expérience sensorielle irrésistible en découvrant l'art de l'association entre les vins et les chocolats fins. Laissez-vous guider par notre sommelier pour créer des accords parfaits entre ces délices sucrés et les vins qui les mettront en valeur.",
-        "Divers",
-        2
+        "Divers"
     ), (
-        "2023/08/23 17:30:00",
+        "2023/07/22 17:30:00",
         "Lille",
         "Initiez-vous aux vins naturels lors de cet atelier authentique. Découvrez des vins produits selon des méthodes artisanales, où l'accent est mis sur la simplicité et le respect du terroir. Plongez dans l'univers des vins naturels et laissez-vous séduire par leur expression pure et leur caractère unique.",
-        "Naturel",
-        2
+        "Naturel"
     ), (
-        "2023/07/23 16:00:00",
+        "2023/07/14 16:00:00",
         "Mende",
         "Troisième atelier",
-        3
+        "Rouge"
     ), (
-        "2023/07/23 16:00:00",
+        "2023/07/18 16:00:00",
         "Gaillac",
         "Quatrième atelier",
-        4
+        "Rouge"
     );
 
 -- -----------------------------------------------------
@@ -869,7 +859,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`olfactive_intensityAromas` (`intensity_aromas`)
-VALUES ('Discret'), ('Ouvert'), ('Aromatique'), ('Intense'), ('France');
+VALUES ('Discret'), ('Ouvert'), ('Aromatique'), ('Intense'), ('Franc');
 
 -- -----------------------------------------------------
 
@@ -1087,7 +1077,6 @@ CREATE TABLE
         `wine_quality` VARCHAR(45) NOT NULL,
         `id_olfactive_intensity` INT NOT NULL,
         `id_user` INT NOT NULL,
-        `selected_wine` TINYINT(1) NOT NULL,
         `rating` DECIMAL(10) NOT NULL,
         `tasting_commentary` LONGTEXT NULL,
         `olfactive_complexity_id` INT NOT NULL,
@@ -1104,7 +1093,7 @@ CREATE TABLE
         `taste_tannin_id` INT NOT NULL,
         PRIMARY KEY (`id`),
         CONSTRAINT `fk_tasting_note_olfactif_intensityAromas1` FOREIGN KEY (`id_olfactive_intensity`) REFERENCES `inovin`.`olfactive_intensityAromas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_tasting_note_user1` FOREIGN KEY (`id_user`) REFERENCES `inovin`.`user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_tasting_note_user1` FOREIGN KEY (`id_user`) REFERENCES `inovin`.`user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_olfactive_complexity1` FOREIGN KEY (`olfactive_complexity_id`) REFERENCES `inovin`.`olfactive_complexity` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_visual_color1` FOREIGN KEY (`visual_color_id`) REFERENCES `inovin`.`visual_color` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_visual_intensity` FOREIGN KEY (`visual_intensity_id`) REFERENCES `inovin`.`visual_intensity` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -1124,7 +1113,6 @@ INSERT INTO
         wine_quality,
         id_olfactive_intensity,
         id_user,
-        selected_wine,
         rating,
         tasting_commentary,
         olfactive_complexity_id,
@@ -1144,7 +1132,6 @@ VALUES (
         'Bon',
         1,
         2,
-        1,
         6,
         'Vin très tannique et étonnant',
         1,
@@ -1163,7 +1150,6 @@ VALUES (
         'Très bon',
         1,
         2,
-        1,
         8,
         'Ce vin rouge est très équilibré.',
         1,
@@ -1182,7 +1168,6 @@ VALUES (
         'Pas terrible',
         1,
         2,
-        0,
         4,
         'Vin fade',
         1,
@@ -1201,7 +1186,6 @@ VALUES (
         'Mauvais',
         1,
         2,
-        0,
         3,
         'Ce vin rouge a une mauvaise odeur.',
         1,
@@ -1220,7 +1204,6 @@ VALUES (
         'Parfait',
         1,
         2,
-        1,
         10,
         'Le meilleur vin de la dégustation.',
         1,
@@ -1237,7 +1220,6 @@ VALUES (
         1
     ), (
         'Excellent',
-        1,
         1,
         1,
         8,
@@ -1258,7 +1240,6 @@ VALUES (
         'Très bon',
         1,
         1,
-        0,
         7,
         'Ce vin blanc est très équilibré.',
         1,
@@ -1277,7 +1258,6 @@ VALUES (
         'Passable',
         1,
         1,
-        0,
         3,
         'Vin fade',
         1,
@@ -1296,7 +1276,6 @@ VALUES (
         'Mauvais',
         1,
         1,
-        0,
         3,
         'Je n aime pas les parfums dégagés par ce vin blanc',
         1,
@@ -1313,7 +1292,6 @@ VALUES (
         1
     ), (
         'Parfait',
-        1,
         1,
         1,
         9,
@@ -1378,7 +1356,7 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`tastingnote_has_existingwine` (
         `id_tasting_note` INT NOT NULL,
         `id_existing_wine` INT NOT NULL,
-        CONSTRAINT `fk_tasting_note_has_existing_wine_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_tasting_note_has_existing_wine_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_has_existing_wine_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
@@ -1405,7 +1383,7 @@ CREATE TABLE
 
 INSERT INTO
     `inovin`.`user_has_workshop`(id_user, id_workshop)
-VALUES (1, 2), (2, 1);
+VALUES (1, 1), (1, 2), (2, 1), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (1, 9), (1, 10), (2, 2), (2, 14), (3, 1);
 
 -- -----------------------------------------------------
 
@@ -1418,7 +1396,7 @@ CREATE TABLE
         `id_olfactive` INT NOT NULL,
         `id_tasting_note` INT NOT NULL,
         CONSTRAINT `fk_Olfactif_aromas_has_tasting_note_Olfactif_aromas1` FOREIGN KEY (`id_olfactive`) REFERENCES `inovin`.`olfactive_aromas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_Olfactif_aromas_has_tasting_note_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_Olfactif_aromas_has_tasting_note_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 INSERT INTO
@@ -1452,7 +1430,7 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`tasting_note_has_taste_flavor` (
         `id_tasting_note` INT NOT NULL,
         `id_taste_flavor` INT NOT NULL,
-        CONSTRAINT `fk_tasting_note_has_taste_flavor_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_tasting_note_has_taste_flavor_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
         CONSTRAINT `fk_tasting_note_has_taste_flavor_taste_flavor1` FOREIGN KEY (`id_taste_flavor`) REFERENCES `inovin`.`taste_flavor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
@@ -1473,7 +1451,7 @@ CREATE TABLE
     IF NOT EXISTS `inovin`.`existing_wine_has_appellation` (
         `id_existing_wine` INT NOT NULL,
         `id_appellation` INT NOT NULL,
-        CONSTRAINT `fk_existing_wine_has_appellation_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_existing_wine_has_appellation_existing_wine1` FOREIGN KEY (`id_existing_wine`) REFERENCES `inovin`.`existing_wine` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
         CONSTRAINT `fk_existing_wine_has_appellation_appellation1` FOREIGN KEY (`id_appellation`) REFERENCES `inovin`.`appellation` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
@@ -1498,7 +1476,7 @@ CREATE TABLE
         `id_tasting_note` INT NOT NULL,
         PRIMARY KEY (`id`),
         CONSTRAINT `fk_selected_wine_new_wine1` FOREIGN KEY (`id_new_wine`) REFERENCES `inovin`.`new_wine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_selected_wine_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_selected_wine_tasting_note1` FOREIGN KEY (`id_tasting_note`) REFERENCES `inovin`.`tasting_note` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 INSERT INTO

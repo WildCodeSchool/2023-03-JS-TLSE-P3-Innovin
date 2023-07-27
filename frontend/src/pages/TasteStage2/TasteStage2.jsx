@@ -1,8 +1,9 @@
 /* eslint-disable camelcase */
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import TastingContext from "../../contexts/TastingContext";
+import TastingNoteContext from "../../contexts/TastingNoteContext";
 import AuthContext from "../../contexts/AuthContext";
 import Aromas from "../../components/Aromas/Aromas";
 import Checkboxes from "../../components/Checkboxes/Checkboxes";
@@ -16,9 +17,10 @@ import "./TasteStage2.scss";
 function TasteStage2() {
   const tastingValue = useContext(TastingContext);
   const { visualDataKeys, mouthData, setMouthData } = tastingValue;
+  const { flavorSelectedAromas, setFlavorSelectedAromas } =
+    useContext(TastingNoteContext);
   const userToken = useContext(AuthContext);
   const navigate = useNavigate();
-  const [selectedAromas, setSelectedAromas] = useState([]);
 
   // ----------------------------------------- Data recovery from backend server -----------------------------------------//
 
@@ -40,7 +42,7 @@ function TasteStage2() {
   // ----------------------------------------- Flavor data management (aromas) -----------------------------------------//
 
   const handleAromaClick = (idFlavorAromas) => {
-    setSelectedAromas((prevSelectedAromas) => {
+    setFlavorSelectedAromas((prevSelectedAromas) => {
       if (prevSelectedAromas.includes(idFlavorAromas)) {
         return prevSelectedAromas.filter((id) => id !== idFlavorAromas);
       }
@@ -54,7 +56,7 @@ function TasteStage2() {
     const formData = new FormData(form);
 
     const formJson = Object.fromEntries(formData.entries());
-    formJson.aromas = selectedAromas;
+    formJson.aromas = flavorSelectedAromas;
     console.info(formJson);
   };
 
@@ -76,15 +78,16 @@ function TasteStage2() {
           </div>
           <div className="intro">
             <h3 className="subtitle">Je savoure ses arômes</h3>
-            <p>
-              Continuez de “grumer” votre vin en le mâchant délicatement,
-              essayez de retrouver les arômes que vous avez humé dans l’étape
-              précédente ou d’en découvrir de nouveaux.
-              <br />
-            </p>
-            <p>Quels arômes distinguez vous ?</p>
+            <div className="introText">
+              <p>
+                Continuez de “grumer” votre vin en le mâchant délicatement,
+                essayez de retrouver les arômes que vous avez humé dans l’étape
+                précédente ou d’en découvrir de nouveaux.
+              </p>
+              <p>Quels arômes distinguez vous ?</p>
+            </div>
           </div>
-          <section className="section_aromes">
+          <section className="section_aromas">
             <Aromas
               name="Sélectionner un ou plusieurs arômes"
               tabIndex={0}
@@ -96,10 +99,13 @@ function TasteStage2() {
           </section>
           <div className="intro">
             <h3 className="subtitle">Je décris sa persistance aromatique</h3>
-            <p>
-              Déterminez son intensité et son impression en bouche en “mâchant”
-              votre vin. Comment les définiriez vous ?
-            </p>
+            <div className="introText">
+              {" "}
+              <p>
+                Déterminez son intensité et son impression en bouche en
+                “mâchant” votre vin. Comment les définiriez vous ?
+              </p>
+            </div>
           </div>
           <form action="" className="formTasteStage2" onSubmit={handleSubmit}>
             <Checkboxes

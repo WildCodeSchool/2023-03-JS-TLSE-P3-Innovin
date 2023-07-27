@@ -1,0 +1,287 @@
+.winesCreation {
+  background: url("../../../assets/Red_Wine_Colors/Grenat.png") no-repeat left
+      150px top 150px,
+    var(--blackBgGradient);
+  color: var(--whiteGoldColor);
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-size: 1.2rem;
+
+  .backButton {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.3em;
+    background: none;
+    border: none;
+    color: rgba(255, 251, 239, 0.3);
+    &:hover {
+      color: var(--secondaryColor);
+      cursor: pointer;
+    }
+  }
+
+  .addWineContainer {
+    width: 100%;
+    display: grid;
+    place-items: center;
+
+    .addContent {
+      width: 100%;
+      max-width: 34rem;
+      padding: 3em 2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3em;
+      h1 {
+        width: 100%;
+        font-size: var(--fontSizeH2);
+        line-height: 1.3em;
+        color: var(--primaryColor);
+      }
+
+      .createWineForm {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+
+        .section {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          justify-content: space-between;
+          gap: 3rem;
+          .wineName,
+          .wineType,
+          .grapeVariety,
+          .vintage {
+            width: 100%;
+          }
+
+          .wineName {
+            label,
+            input {
+              width: 100%;
+            }
+
+            input {
+              padding: 0.6em;
+              font-size: 1rem;
+            }
+          }
+          .vintage {
+            label,
+            input {
+              width: 100%;
+            }
+            input {
+              padding: 0.6em;
+              font-size: 1rem;
+            }
+          }
+
+          &.description {
+            gap: 0.8rem;
+
+            textarea {
+              width: 100%;
+              padding: 0.6em;
+              resize: none;
+              height: 10rem;
+              border: 2px solid rgba(209, 181, 103, 0.3);
+              background: var(--blackBgGradient);
+              border-radius: 5px;
+              outline: none;
+              color: var(--whiteGoldColor);
+
+              &:focus-within {
+                box-shadow: var(--shadow);
+              }
+            }
+          }
+
+          &.alcohol {
+            gap: 1rem;
+            .alcoholHeader {
+              display: flex;
+              gap: 1rem;
+              align-items: center;
+
+              .degBtn {
+                display: flex;
+                align-items: flex-end;
+                border: none;
+                background: none;
+                font-size: 1.2rem;
+                font-weight: 600;
+                padding: 0;
+                color: var(--secondaryColor);
+                cursor: pointer;
+              }
+            }
+
+            .alcoholValues {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: flex-start;
+              gap: 0.8rem;
+              .degValue {
+                width: 2.2em;
+                padding: 0.3em;
+                border-radius: 50px;
+                aspect-ratio: 1;
+                opacity: 0;
+                transition: opacity 0.2s;
+                font-size: 1.2rem;
+                cursor: pointer;
+
+                &.selected {
+                  background-color: rgba(154, 31, 73, 0.4);
+                  border-color: rgba(154, 31, 73, 1);
+                }
+
+                &.visible {
+                  opacity: 1;
+                  &:nth-child(2) {
+                    transition-delay: 0.05s;
+                  }
+                  &:nth-child(3) {
+                    transition-delay: 0.1s;
+                  }
+                  &:nth-child(4) {
+                    transition-delay: 0.15s;
+                  }
+                  &:nth-child(5) {
+                    transition-delay: 0.2s;
+                  }
+                  &:nth-child(6) {
+                    transition-delay: 0.25s;
+                  }
+                  &:nth-child(7) {
+                    transition-delay: 0.3s;
+                  }
+                  &:nth-child(8) {
+                    transition-delay: 0.35s;
+                  }
+                  &:nth-child(9) {
+                    transition-delay: 0.4s;
+                  }
+                  &:nth-child(10) {
+                    transition-delay: 0.45s;
+                  }
+                  &:nth-child(11) {
+                    transition-delay: 0.5s;
+                  }
+                  &:nth-child(12) {
+                    transition-delay: 0.55s;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .wineSubmitBtn {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .winesCreation {
+    .backButton {
+      font-size: 1.6em;
+    }
+    .addWineContainer {
+      padding-left: calc(370px + 2em);
+
+      .addContent {
+        max-width: 80%;
+        h1 {
+          text-align: center;
+        }
+        .createWineForm {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4rem;
+
+          .section {
+            flex-direction: row;
+            gap: 4.8rem;
+            label {
+              font-size: 1.4rem;
+            }
+
+            .wineName {
+              input {
+                font-size: 1.2rem;
+              }
+            }
+            .vintage {
+              input {
+                font-size: 1.2rem;
+              }
+            }
+
+            &.description {
+              flex-direction: column;
+              textarea {
+                width: 100%;
+                padding: 0.6em;
+                resize: none;
+                height: 10rem;
+                border: 2px solid rgba(209, 181, 103, 0.3);
+                background: var(--blackBgGradientSmooth);
+                border-radius: 5px;
+                outline: none;
+                color: var(--whiteGoldColor);
+
+                &:focus-within {
+                  box-shadow: var(--shadow);
+                }
+              }
+            }
+
+            &.alcohol {
+              gap: 1.6rem;
+              flex-direction: column;
+              .alcoholHeader {
+                .degBtn {
+                  display: flex;
+                  align-items: flex-end;
+                  border: none;
+                  background: none;
+                  font-size: 1.2rem;
+                  font-weight: 600;
+                  padding: 0;
+                  color: var(--secondaryColor);
+                  cursor: pointer;
+                }
+              }
+
+              .alcoholValues {
+                .degValue {
+                  font-size: 1.2rem;
+                }
+              }
+            }
+
+            &.appellation {
+              max-width: calc(50% - 2.4rem);
+              align-self: flex-start;
+            }
+          }
+        }
+      }
+    }
+  }
+}

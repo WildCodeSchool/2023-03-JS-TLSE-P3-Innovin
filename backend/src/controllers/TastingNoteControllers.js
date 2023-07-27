@@ -64,10 +64,10 @@ const browse = (req, res) => {
     });
 };
 
-const getTastingNoteById = (req, res) => {
+const getTastingNoteByUserId = (req, res) => {
   const { idworkshop } = req.query;
   models.tastingNote
-    .findTastingNoteById(req.params.id, idworkshop)
+    .findTastingNoteByUserId(req.params.id, idworkshop)
     .then(([rows]) => {
       if (rows.length) {
         const result = rows.reduce((acc, obj) => {
@@ -135,7 +135,7 @@ const add = (req, res) => {
   models.tastingNote
     .insert(tastingNote)
     .then(([result]) => {
-      res.location(`/items/${result.insertId}`).sendStatus(201);
+      res.location(`/items/${result.insertId}`).status(201).send(result);
     })
     .catch((err) => {
       console.error(err);
@@ -146,5 +146,5 @@ const add = (req, res) => {
 module.exports = {
   add,
   browse,
-  getTastingNoteById,
+  getTastingNoteByUserId,
 };

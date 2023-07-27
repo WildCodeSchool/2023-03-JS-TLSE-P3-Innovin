@@ -1,32 +1,13 @@
 /* global style of the page TasteStage2 */
 .TasteStage2,
-.contentTasteStage2,
-.intro,
-.header {
+.contentTasteStage2 {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.section_aromes {
-  display: flex;
-  width: 100%;
-  max-width: 900px;
-  justify-content: center;
-  align-items: center;
-}
-.formTasteStage2 {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5em;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
 }
 
 .TasteStage2 {
-  height: 100%;
   background: no-repeat bottom 9em left 40em
       url("../../assets/Gold_Blotches/Watercolor_Blotch_4.png"),
     no-repeat top 30em right 40em url("../../assets/Red_Wine_Colors/Cerise.png"),
@@ -34,71 +15,78 @@
   color: var(--whiteGoldColor);
   font-family: var(--fontFamilyText);
   font-size: var(--fontSizeText);
-}
 
-.contentTasteStage2 {
-  gap: 4rem;
-  margin: 2rem min(2rem, var(--marginPageContent));
-  margin-bottom: 5rem;
-}
+  .contentTasteStage2 {
+    gap: 3.2rem;
+    padding: 2rem 1rem;
 
-/* style for the header */
-.header {
-  gap: 2rem;
-}
+    .header {
+      gap: 2rem;
+    }
 
-/* style for the text intro */
-.intro {
-  align-items: center;
-  text-align: center;
-  padding: 0.5rem;
-  gap: 2.5rem;
-}
+    .intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      .introText {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.4rem;
+        line-height: 1.8rem;
+        max-width: 64rem;
+      }
+    }
 
-.intro .subtitle {
-  font-family: var(--fontFamilyTitle);
-  font-size: 2rem;
-  color: var(--primaryColor);
+    .formTasteStage2 {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5em;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+  }
 }
 
 /* -------------------------------- Tablet media queries--------------------------------- */
 
-@media screen and (min-width: 768px) and (orientation: portrait) {
-  .intro {
-    align-items: center;
-    text-align: center;
-    padding-inline: var(--paddingTablet);
-  }
-  .formTasteStage2 {
-    flex-direction: row;
-    align-items: start;
-  }
+@media screen and (min-width: 768px) {
   .TasteStage2 {
-    background: no-repeat bottom 9em left 7em
-        url("../../assets/Gold_Blotches/Watercolor_Blotch_2 1.png"),
-      no-repeat top 30em right 5em
+    background: no-repeat bottom 9em left 4rem
+        url("../../assets/Gold_Blotches/Watercolor_Blotch_1.png"),
+      no-repeat top 42em right 5em
         url("../../assets/Gold_Blotches/Watercolor_Splatters 1.png"),
       var(--blackBgGradient);
+
+    .contentTasteStage2 {
+      gap: 4rem;
+      padding: 2rem;
+
+      .intro {
+        .introText {
+          gap: 1.6rem;
+          line-height: 2.4rem;
+        }
+      }
+
+      .formTasteStage2 {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+    }
   }
 }
 
 /* -------------------------------- Desktop media queries--------------------------------- */
 
 @media screen and (min-width: 1024px) {
-  .contentTasteStage2 {
-    gap: 5rem;
-  }
-  .section_aromes {
-    width: 90%;
-  }
-
-  .formTasteStage2 {
-    flex-direction: row;
-    align-items: start;
-  }
-  .intro {
-    align-items: center;
-    text-align: center;
-    padding-inline: var(--marginPageContent);
+  .TasteStage2 {
+    background: no-repeat bottom 9em left 42rem
+        url("../../assets/Red_Wine_Colors/Rouge_Noir.png"),
+      no-repeat top 42em right 12em
+        url("../../assets/Gold_Blotches/Watercolor_Splatters 1.png"),
+      var(--blackBgGradient);
   }
 }

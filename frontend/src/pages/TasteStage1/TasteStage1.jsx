@@ -61,12 +61,13 @@ function TasteStage1() {
         </div>
         <div className="intro">
           <h3 className="subtitle">J'apprécie son onctuosité</h3>
-          <p>
-            Mettez votre vin en bouche et “grumez-le” délicatement en aspirant
-            un peu d’air entre vos lèvres.
-            <br />{" "}
-          </p>
-          <p>Comment est-il structuré ? </p>
+          <div className="taste1Text">
+            <p>
+              Mettez votre vin en bouche et “grumez-le” délicatement en aspirant
+              un peu d’air entre vos lèvres.
+            </p>
+            <p>Comment est-il structuré ? </p>
+          </div>
         </div>
         <div className="SlidersBoxTasteStage1">
           <SlidersTasteStage1

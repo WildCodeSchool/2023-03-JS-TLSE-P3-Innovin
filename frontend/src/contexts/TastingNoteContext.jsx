@@ -1,4 +1,3 @@
-/* eslint-disable radix */
 import { createContext, useMemo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
@@ -12,12 +11,13 @@ export function TastingNoteProvider({ children }) {
   const [idAcidityValue, setIdAcidityValue] = useState(0);
   const [idTasteAlcoholValue, setIdTasteAlcoholValue] = useState(0);
   const [idTasteTanninValue, setIdTasteTanninValue] = useState(0);
+  const [olfactorySelectedAromas, setOlfactorySelectedAromas] = useState([]);
+  const [flavorSelectedAromas, setFlavorSelectedAromas] = useState([]);
 
   const [tastingNote, setTastingNote] = useState({
     wineQuality: "",
     idOlfactiveIntensity: null,
     idUser: null,
-    selectedWine: 0,
     rating: 0,
     tastingCommentary: "",
     idOlfactiveComplexity: null,
@@ -32,8 +32,8 @@ export function TastingNoteProvider({ children }) {
     idTasteSweetness: null,
     idTasteTannin: null,
     idVisualIntensity: null,
-    idOlfactiveAromas: null,
-    idFlavorAromas: null,
+    selectedWinesIds: [],
+    selectedTastedWinesIds: [],
   });
 
   const handleFillVisualColorId = (e, value) => {
@@ -44,18 +44,15 @@ export function TastingNoteProvider({ children }) {
     });
   };
 
-  // -------------------- Function retrieving the sliders ids from the tasting "mouth" section --------------------//
   const handleFillmouthId = () => {
     setTastingNote({
       ...tastingNote,
-      idTasteSweetness: parseInt(`${idTasteSweetnessValue}`),
-      idTasteAlcohol: parseInt(`${idTasteAlcoholValue}`),
-      idAcidity: parseInt(`${idAcidityValue}`),
-      idTasteTannin: parseInt(`${idTasteTanninValue}`),
+      idTasteSweetness: parseInt(`${idTasteSweetnessValue}`, 10),
+      idTasteAlcohol: parseInt(`${idTasteAlcoholValue}`, 10),
+      idAcidity: parseInt(`${idAcidityValue}`, 10),
+      idTasteTannin: parseInt(`${idTasteTanninValue}`, 10),
     });
   };
-
-  // useEffect who Update ids
 
   useEffect(() => {
     handleFillmouthId();
@@ -76,8 +73,24 @@ export function TastingNoteProvider({ children }) {
       setTastingNote,
       handleFillVisualColorId,
       handleFillmouthId,
+      olfactorySelectedAromas,
+      setOlfactorySelectedAromas,
+      flavorSelectedAromas,
+      setFlavorSelectedAromas,
+      setSelectedTastedWinesIds: (selectedTastedWinesIds) => {
+        setTastingNote((prevTastingNote) => ({
+          ...prevTastingNote,
+          selectedTastedWinesIds,
+        }));
+      },
+      setSelectedWinesIds: (selectedWinesIds) => {
+        setTastingNote((prevTastingNote) => ({
+          ...prevTastingNote,
+          selectedWinesIds,
+        }));
+      },
     };
-  }, [tastingNote]);
+  }, [tastingNote, olfactorySelectedAromas, flavorSelectedAromas]);
 
   return (
     <TastingNoteContext.Provider value={tastingNoteValue}>

@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { Dropdown } from "primereact/dropdown";
 import { InputTextarea } from "primereact/inputtextarea";
-import "./Registration.css";
+import "./Registration.scss";
 import eye from "../../assets/Icons/Eye_Icon.svg";
 import logo from "../../assets/Logo_W_Circles.svg";
 import Linetxtregistration from "../../assets/Linetxtregistration.svg";
@@ -103,7 +103,6 @@ function Registration() {
     <div className="registration">
       <section className="registrationContentDiv">
         <div className="logoDiv">
-          {" "}
           <img src={logo} alt="Inovin logo" className="logo" />
           <p className="logoText">Inovin</p>
         </div>

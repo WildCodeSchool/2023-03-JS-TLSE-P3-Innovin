@@ -6,84 +6,96 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--grayBgColor);
 }
 
 .workshop_container {
-  height: 100%;
+  width: 100%;
   color: var(--whiteGoldColor);
   font-family: var(--fontFamilyText);
   font-size: var(--fontSizeText);
+  background: left url("../../assets/Red_Wine_Colors/Rouge_Noir.png"),
+    var(--blackBgGradient);
+  padding: 2rem 1rem;
 
-}
+  .workshop_Content {
+    width: 100%;
+    gap: 2rem;
 
-.workshop_Sliderbox {
-  width: 100%;
-  background: var(--blackBgGradientSmooth);
-  box-shadow: var(--shadow);
-  backdrop-filter: var(--bgBlur);
-  padding: 2rem 0 2rem 0;
-  border-radius: 5px;
-}
+    .intro {
+      align-items: center;
+      text-align: center;
+      gap: 2.5rem;
+      max-width: 900px;
 
-.workshop_Content {
-  gap: 4rem;
-  margin: 2rem min(2rem, var(--marginPageContent));
-  margin-bottom: 5rem;
-}
+      .subtitle {
+        font-family: var(--fontFamilyTitle);
+        font-size: 2rem;
+        color: var(--primaryColor);
+        line-height: 2.4rem;
+      }
+      p {
+        line-height: 1.8rem;
+      }
+    }
 
-/* style for the text intro */
-.intro {
-  align-items: center;
-  text-align: center;
-  padding: 0.5rem;
-  gap: 2.5rem;
-}
+    .workshop_Sliderbox {
+      max-width: 45rem;
+      width: 100%;
+      background: var(--blackBgGradientSmooth);
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--bgBlur);
+      padding: 2rem 1rem;
+      border-radius: 5px;
+      gap: 4rem;
 
-.intro .subtitle {
-  font-family: var(--fontFamilyTitle);
-  font-size: 2rem;
-  color: var(--primaryColor);
+      .sliders {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6rem;
+      }
+
+      .commentary_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6rem;
+        width: 100%;
+
+        .TextWine {
+          color: var(--secondaryColor);
+        }
+        #commentaryWine {
+          background: var(--blackBgGradientSmooth);
+          padding: 0.5rem;
+          border-radius: 5px;
+          border: 2px solid var(--smoothGoldColor);
+          font-size: 1rem;
+          width: 100%;
+          max-width: 400px;
+          color: var(--whiteGoldColor);
+        }
+      }
+    }
+  }
 }
 
 /* -------------------------------- Tablet media queries--------------------------------- */
 
-@media screen and (min-width: 768px) and (orientation: portrait) {
-  .intro {
-    align-items: center;
-    text-align: center;
-    padding-inline: var(--paddingTablet);
-  }
-
+@media screen and (min-width: 768px) {
   .workshop_container {
-    background: no-repeat bottom 9em left 7em
-        url("../../assets/Gold_Blotches/Watercolor_Blotch_2 1.png"),
+    background: no-repeat bottom 2em left 36rem
+        url("../../assets/Red_Wine_Colors/Grenat.png"),
       no-repeat top 30em right 5em
         url("../../assets/Gold_Blotches/Watercolor_Splatters 1.png"),
       var(--blackBgGradient);
-  }
 
-  .workshop_Sliderbox {
-    width: 95%;
-    background: var(--blackBgGradientSmooth);
-    box-shadow: var(--shadow);
-    backdrop-filter: var(--bgBlur);
-    border-radius: 5px;
-  }
-}
-
-/* -------------------------------- Desktop media queries--------------------------------- */
-
-@media screen and (min-width: 1024px) {
-  .workshop_Content {
-    gap: 5rem;
-  }
-  .intro {
-    align-items: center;
-    text-align: center;
-    padding-inline: var(--marginPageContent);
-  }
-  .workshop_Sliderbox {
-    width: 70%;
+    .workshop_Content {
+      .intro {
+        p {
+          line-height: 2.4rem;
+        }
+      }
+    }
   }
 }

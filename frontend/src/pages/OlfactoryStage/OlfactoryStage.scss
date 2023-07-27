@@ -1,0 +1,103 @@
+.pageContainerNose {
+  background: no-repeat bottom 30px left 10em
+      url("../../assets/Red_Wine_Colors/Framboise.png"),
+    var(--blackBgGradient);
+  border: 1px none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.2rem;
+  width: 100%;
+  padding: 2rem 1rem;
+  color: var(--whiteGoldColor);
+  font-family: var(--fontFamilyText);
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+  }
+
+  .nose1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 88rem;
+    gap: 2rem;
+    text-align: center;
+
+    .h2Nose {
+      font-family: var(--fontFamilyTitle);
+      color: var(--primaryColor);
+      font-size: 2rem;
+      line-height: 2.4rem;
+    }
+    p {
+      font-size: var(--fontSizeText);
+      line-height: 2rem;
+    }
+  }
+
+  .checkbox {
+    .formStage2 {
+      .checkboxes {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+    }
+  }
+
+  .nose2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 88rem;
+    gap: 2rem;
+    text-align: center;
+
+    .h2Nose {
+      font-family: var(--fontFamilyTitle);
+      color: var(--primaryColor);
+      font-size: 2rem;
+      line-height: 2.4rem;
+    }
+    p {
+      font-size: var(--fontSizeText);
+      line-height: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .pageContainerNose {
+    background: no-repeat bottom 9em left 32rem
+        url("../../assets/Red_Wine_Colors/Pourpre.png"),
+      var(--blackBgGradient);
+
+    .nose1,
+    .nose2 {
+      max-width: 70%;
+
+      p {
+        font-size: 1.4rem;
+        line-height: 2.6rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .pageContainerNose {
+    background: no-repeat bottom 9em left 46rem
+        url("../../assets/Red_Wine_Colors/Pourpre.png"),
+      var(--blackBgGradient);
+  }
+}

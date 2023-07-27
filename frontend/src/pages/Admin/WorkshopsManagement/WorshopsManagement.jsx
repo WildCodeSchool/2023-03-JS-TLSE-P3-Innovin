@@ -7,6 +7,7 @@ import "./WorkshopsManagement.scss";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import AuthContext from "../../../contexts/AuthContext";
 import ButtonPrimary from "../../../components/ButtonPrimary";
+import ModalValidation from "../../../components/ModalValidation/ModalValidation";
 
 function WorkshopsManagement() {
   const {
@@ -28,7 +29,8 @@ function WorkshopsManagement() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isRowClicked, setIsRowClicked] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [order, setOrder] = useState("asc");
+  const [sortOrder, setSortOrder] = useState("");
+  const [sortColumn, setSortColumn] = useState("");
   const navigate = useNavigate();
 
   //   ----------------------------------------functions-------------------------------------------------------
@@ -36,7 +38,7 @@ function WorkshopsManagement() {
   // function to get the workshops data
   useEffect(() => {
     axios
-      .get("http://localhost:5000/workshop", {
+      .get(`${import.meta.env.VITE_BACKEND_URL}/workshop`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -67,25 +69,27 @@ function WorkshopsManagement() {
   };
 
   // function to sort workshops by order asc or desc
+
   const sortWorkshops = (col) => {
-    if (order === "asc") {
-      const sortedWorkshops = workshops.sort((a, b) => {
-        return a[col].toString().toLowerCase() > b[col].toString().toLowerCase()
-          ? 1
-          : -1;
-      });
-      setWorkshops(sortedWorkshops);
-      setOrder("desc");
+    let newSortOrder = "asc";
+
+    if (sortColumn === col && sortOrder === "asc") {
+      newSortOrder = "desc";
     }
-    if (order === "desc") {
-      const sortedWorkshops = workshops.sort((a, b) => {
-        return a[col].toString().toLowerCase() < b[col].toString().toLowerCase()
-          ? 1
-          : -1;
-      });
-      setWorkshops(sortedWorkshops);
-      setOrder("asc");
-    }
+
+    const sortedWorkshops = workshops.sort((a, b) => {
+      const aValue = a[col].toString().toLowerCase();
+      const bValue = b[col].toString().toLowerCase();
+
+      if (newSortOrder === "asc") {
+        return aValue > bValue ? 1 : -1;
+      }
+      return aValue < bValue ? 1 : -1;
+    });
+
+    setWorkshops(sortedWorkshops);
+    setSortColumn(col);
+    setSortOrder(newSortOrder);
   };
 
   //   function to get all the data of a workshop
@@ -124,22 +128,76 @@ function WorkshopsManagement() {
       <div className="workshopsContent">
         <div className="tableHeader">
           <h1>Ateliers</h1>
-          <SearchBar
-            setValue={setSearchValue}
-            icon="search"
-            placeholder="Rechercher"
-            value={searchValue}
-          />
+          <div className="searchOrAddHeader">
+            <SearchBar
+              className="searchBar"
+              setValue={setSearchValue}
+              icon="search"
+              placeholder="Rechercher"
+              value={searchValue}
+            />
+            <ButtonPrimary
+              className="addButton"
+              onClick={() => navigate("/admin/workshops/add")}
+            >
+              +
+            </ButtonPrimary>
+          </div>
         </div>
         <div className="tableSection">
           <table className="workshopsTable">
             <thead>
               <tr>
-                <th onClick={() => sortWorkshops("datetime")}>Date</th>
-                <th onClick={() => sortWorkshops("wine_type")}>Type</th>
-                <th onClick={() => sortWorkshops("place")}>Lieu</th>
-                <th>Commentaire</th>
-                <th onClick={() => sortWorkshops("attendees")}>Participants</th>
+                <th onClick={() => sortWorkshops("datetime")}>
+                  <div>
+                    <p> Date</p>
+                    {sortOrder === "asc" && sortColumn === "datetime" ? (
+                      <i className="fi fi-rr-angle-small-up" />
+                    ) : (
+                      <i className="fi fi-rr-angle-small-down" />
+                    )}
+                  </div>
+                </th>
+                <th onClick={() => sortWorkshops("wine_type")}>
+                  <div>
+                    <p>Type</p>
+                    {sortOrder === "asc" && sortColumn === "wine_type" ? (
+                      <i className="fi fi-rr-angle-small-up" />
+                    ) : (
+                      <i className="fi fi-rr-angle-small-down" />
+                    )}
+                  </div>
+                </th>
+                <th onClick={() => sortWorkshops("place")}>
+                  <div>
+                    <p>Lieu</p>
+                    {sortOrder === "asc" && sortColumn === "place" ? (
+                      <i className="fi fi-rr-angle-small-up" />
+                    ) : (
+                      <i className="fi fi-rr-angle-small-down" />
+                    )}
+                  </div>
+                </th>
+                <th onClick={() => sortWorkshops("commentary")}>
+                  <div>
+                    <p> Commentaire</p>
+                    {sortOrder === "asc" && sortColumn === "commentary" ? (
+                      <i className="fi fi-rr-angle-small-up" />
+                    ) : (
+                      <i className="fi fi-rr-angle-small-down" />
+                    )}
+                  </div>
+                </th>
+                <th onClick={() => sortWorkshops("attendees")}>
+                  <div>
+                    <p>Participants</p>
+                    {sortOrder === "asc" && sortColumn === "attendees" ? (
+                      <i className="fi fi-rr-angle-small-up" />
+                    ) : (
+                      <i className="fi fi-rr-angle-small-down" />
+                    )}
+                  </div>
+                </th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -208,30 +266,16 @@ function WorkshopsManagement() {
           </table>
 
           {/* modal to control the delete */}
-          <div className={`deleteModal ${isModalOpen && "show"}`}>
-            <p>Êtes-vous sûr de vouloir supprimer l'atelier ?</p>
-            <div className="buttons">
-              <ButtonPrimary
-                type="button"
-                className="yesBtn"
-                onClick={() => {
-                  onDelete(idToDelete);
-                  setIsModalOpen(false);
-                }}
-              >
-                Supprimer
-              </ButtonPrimary>
-              <ButtonPrimary
-                type="button"
-                className="noBtn"
-                onClick={() => {
-                  setIsModalOpen(false);
-                }}
-              >
-                Annuler
-              </ButtonPrimary>
-            </div>
-          </div>
+          <ModalValidation
+            isOpen={isModalOpen}
+            setIsOpen={setIsModalOpen}
+            question="Êtes-vous sûr de vouloir supprimer l'atelier ?"
+            firstButton="Supprimer"
+            actionFunction={onDelete}
+            functionParam={idToDelete}
+            secondButton="Annuler"
+            toastValidMsg={`Atelier ${idToDelete} supprimé !`}
+          />
 
           {/* Modal wich contains workshop information when click on the row */}
 
@@ -273,14 +317,16 @@ function WorkshopsManagement() {
                   <div>
                     <p>Vins dégustés :</p>
                     {winesOnWorkshop.map((wine) => (
-                      <p>{wine.vintage}</p>
+                      <p key={wine.id_existing_wine}>
+                        {wine.grape_variety} <span>{wine.vintage}</span>
+                      </p>
                     ))}
                   </div>
                   <div className="attendees">
                     <p>Participants :</p>
                     {usersInWorkshop.map((user) => {
                       return (
-                        <div className="userCard">
+                        <div className="userCard" key={user.id}>
                           <div
                             className={`banner ${
                               user.wine_color.toLowerCase() === "rouge"
@@ -306,7 +352,15 @@ function WorkshopsManagement() {
                     })}
                   </div>
                 </div>
-                <ButtonPrimary>modifier</ButtonPrimary>
+                <ButtonPrimary
+                  type="button"
+                  onClick={() => {
+                    setIdToUpdate(workshopById.id);
+                    navigate("/admin/workshops/edit");
+                  }}
+                >
+                  modifier
+                </ButtonPrimary>
               </div>
             </div>
           )}

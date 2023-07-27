@@ -13,8 +13,8 @@ const browse = (req, res) => {
             if (!existingObj.dosage.includes(obj.dosage)) {
               existingObj.dosage.push(obj.dosage);
             }
-            if (!existingObj.vintage.includes(obj.vintage)) {
-              existingObj.vintage.push(obj.vintage);
+            if (!existingObj.grapeVariety.includes(obj.grapeVariety)) {
+              existingObj.grapeVariety.push(obj.grapeVariety);
             }
           } else {
             // Method that creates a new object with an array containing its values
@@ -22,9 +22,9 @@ const browse = (req, res) => {
               id: obj.id,
               color: obj.color,
               dosage: [obj.dosage],
-              vintage: [obj.vintage],
+              grapeVariety: [obj.grapeVariety],
               selected_for_competition: obj.selected_for_competition,
-              commentary_wine: obj.commentary_wine,
+              commentaryWine: obj.commentaryWine,
               competition_name: obj.competition_name,
               commentary_competition: obj.commentary_competition,
               place: obj.place,
@@ -43,7 +43,7 @@ const browse = (req, res) => {
           item.dosage = obj.dosage.filter(
             (value, index, self) => self.indexOf(value) === index
           );
-          item.vintage = obj.vintage.filter(
+          item.grapeVariety = obj.grapeVariety.filter(
             (value, index, self) => self.indexOf(value) === index
           );
         });
@@ -58,11 +58,25 @@ const browse = (req, res) => {
     });
 };
 
-const getNewWineById = (req, res) => {
-  const { idworkshop } = req.query;
-  console.info(req.params.id, idworkshop);
+const getNewWineByWorkshopId = (req, res) => {
   models.newWine
-    .findNewWineById(req.params.id, idworkshop)
+    .findNewWineIdByWorskhop(req.params.id)
+    .then(([rows]) => {
+      if (rows == null) {
+        res.status(404).send("Not found");
+      } else {
+        res.status(200).send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
+const read = (req, res) => {
+  models.newWine
+    .find(req.params.id)
     .then(([rows]) => {
       if (rows.length) {
         const result = rows.reduce((acc, obj) => {
@@ -73,8 +87,8 @@ const getNewWineById = (req, res) => {
             if (!existingObj.dosage.includes(obj.dosage)) {
               existingObj.dosage.push(obj.dosage);
             }
-            if (!existingObj.vintage.includes(obj.vintage)) {
-              existingObj.vintage.push(obj.vintage);
+            if (!existingObj.grapeVariety.includes(obj.grapeVariety)) {
+              existingObj.grapeVariety.push(obj.grapeVariety);
             }
           } else {
             // Method that creates a new object with an array containing its values
@@ -82,9 +96,10 @@ const getNewWineById = (req, res) => {
               id: obj.id,
               color: obj.color,
               dosage: [obj.dosage],
-              vintage: [obj.vintage],
+              grapeVariety: [obj.grapeVariety],
               selected_for_competition: obj.selected_for_competition,
-              commentary_wine: obj.commentary_wine,
+              commentaryTasting: obj.commentaryTasting,
+              commentaryWine: obj.commentaryWine,
               competition_name: obj.competition_name,
               commentary_competition: obj.commentary_competition,
               place: obj.place,
@@ -103,7 +118,7 @@ const getNewWineById = (req, res) => {
           item.dosage = obj.dosage.filter(
             (value, index, self) => self.indexOf(value) === index
           );
-          item.vintage = obj.vintage.filter(
+          item.grapeVariety = obj.grapeVariety.filter(
             (value, index, self) => self.indexOf(value) === index
           );
         });
@@ -111,6 +126,21 @@ const getNewWineById = (req, res) => {
       } else {
         res.status(400).send("Bad Request");
       }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const addNewWine = (req, res) => {
+  const { newWine } = req.body;
+  // TODO validations (length, format...)
+
+  models.newWine
+    .insertNewWine(newWine)
+    .then(([result]) => {
+      res.location(`/newwine/${result.insertId}`).status(201).send(result);
     })
     .catch((err) => {
       console.error(err);
@@ -140,15 +170,21 @@ const edit = (req, res) => {
     });
 };
 
-const add = (req, res) => {
+const putCommentary = (req, res) => {
   const newWine = req.body;
 
   // TODO validations (length, format...)
 
+  const id = parseInt(req.params.id, 10);
+
   models.newWine
-    .insert(newWine)
+    .updateCommentary(newWine, id)
     .then(([result]) => {
-      res.location(`/newwine/${result.insertId}`).status(201).send("Created");
+      if (result.affectedRows === 0) {
+        res.status(400).send("Bad request");
+      } else {
+        res.status(204).send("Updated");
+      }
     })
     .catch((err) => {
       console.error(err);
@@ -174,8 +210,10 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
-  getNewWineById,
+  getNewWineByWorkshopId,
+  read,
+  addNewWine,
   edit,
-  add,
+  putCommentary,
   destroy,
 };

@@ -1,9 +1,9 @@
 .workshopsContent {
   width: 100%;
   background: var(--blackBgGradient);
-  background-color: aliceblue;
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   color: var(--whiteGoldColor);
   display: flex;
   flex-direction: column;
@@ -21,12 +21,34 @@
 
   .tableHeader {
     display: flex;
-    justify-content: space-between;
-    align-items: end;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
     width: 90vw;
     margin-top: 4em;
     h1 {
       font-size: var(--fontSizeH2);
+      color: var(--primaryColor);
+    }
+    .searchOrAddHeader {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 1.6em;
+
+      .addButton {
+        padding: 0 0.4em;
+        margin-right: 0.5rem;
+        aspect-ratio: 1;
+      }
+      .searchBar {
+        width: 50%;
+        &:hover,
+        &:focus-within {
+          width: 100%;
+          box-shadow: var(--shadow);
+        }
+      }
     }
   }
 
@@ -67,11 +89,23 @@
           th {
             cursor: pointer;
             position: sticky;
+            color: var(--secondaryColor);
             top: 0;
             left: 0;
             background-color: var(--darkGoldColor);
             &:hover {
               background-color: var(--redWineColor);
+            }
+
+            div {
+              display: flex;
+              align-items: flex-end;
+              gap: 1em;
+            }
+            i {
+              display: grid;
+              place-items: center;
+              color: var(--whiteGoldColor);
             }
           }
         }
@@ -144,43 +178,7 @@
         }
       }
     }
-    .deleteModal {
-      position: absolute;
-      width: 70%;
-      right: 50%;
-      top: 50%;
-      transform: translate(50%, -50%);
-      background: var(--blackBgGradient);
-      box-shadow: var(--shadow);
-      padding: 2em 1em;
-      border-radius: 5px;
-      scale: 0;
-      transition: scale 0.2s ease-in-out;
-      z-index: 5;
-      p {
-        font-size: var(--fontSizeText);
-        text-align: center;
-        line-height: 1.5em;
-      }
-      .buttons {
-        display: flex;
-        justify-content: space-around;
-        width: 100%;
-        gap: 1em;
-        button {
-          font-size: 0.8rem;
-          width: calc(50% - 1em);
-        }
-      }
-      &.show {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        scale: 1;
-        gap: 1.5em;
-        border: 2px solid rgba(209, 181, 103, 0.3);
-      }
-    }
+
     .workshopInfoModal {
       position: fixed;
       width: 100%;
@@ -267,13 +265,21 @@
           gap: 1.5em;
 
           div > p:first-of-type {
-            font-weight: 600;
+            font-weight: 500;
             color: var(--secondaryColor);
             margin-bottom: 0.5em;
           }
           p {
             font-family: var(--fontFamilyText);
-            line-height: 1.2em;
+            line-height: 1.4em;
+            font-weight: 200;
+            font-size: 1rem;
+
+            span {
+              font-style: italic;
+              color: rgba(195, 180, 138, 0.5);
+              margin-left: 0.6em;
+            }
           }
           .infoType {
             display: flex;
@@ -362,14 +368,45 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .workshopsContent {
+    .tableHeader {
+      .searchOrAdd {
+        .searchBar {
+          width: 25%;
+          &:hover,
+          &:focus-within {
+            width: 40%;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .workshopsContent {
     padding-left: 370px;
 
     .tableHeader {
       width: calc(90vw - 370px);
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: end;
+      margin-top: 4em;
       h1 {
         font-size: var(--fontSizeH2);
+      }
+      .searchOrAdd {
+        justify-content: flex-end;
+        .searchBar {
+          width: 25%;
+          &:hover,
+          &:focus-within {
+            width: 50%;
+            box-shadow: var(--shadow);
+          }
+        }
       }
     }
 
@@ -377,13 +414,6 @@
       width: calc(90vw - 370px);
       height: auto;
 
-      .deleteModal {
-        position: fixed;
-        width: 30%;
-        right: calc(50% - 370px / 2);
-        top: 50%;
-        transform: translate(50%, -50%);
-      }
       .workshopInfoModal {
         position: fixed;
         width: 50%;

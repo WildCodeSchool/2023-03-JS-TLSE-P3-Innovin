@@ -1,0 +1,170 @@
+.card-revelation {
+  width: 100%;
+  max-width: 448px;
+  padding: 2rem 1rem;
+  background: var(--blackBgGradientSmooth);
+  box-shadow: var(--shadow);
+  backdrop-filter: var(--bgBlur);
+  border-radius: 5px;
+  position: relative;
+  .revelation-card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+
+    .h3-wine {
+      width: 100%;
+      text-align: center;
+      color: var(--primaryColor);
+      font-family: var(--fontFamilyTitle);
+      font-size: 2.2rem;
+    }
+    .img-card {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 1.6rem;
+      background: var(--blackBgGradientSmooth);
+      border-radius: 5px;
+      border: 2px solid rgba(172, 146, 77, 0.1);
+      .wine-img {
+        width: 90%;
+      }
+    }
+    .card-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+
+      .header-revel-card {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.8rem;
+        .card-title {
+          display: flex;
+          align-items: flex-end;
+          gap: 1.6rem;
+          justify-content: space-between;
+          width: 100%;
+          .variety {
+            p {
+              color: var(--primaryColor);
+              font-family: var(--fontFamilyTitle);
+              font-size: 2rem;
+            }
+          }
+          .vintage {
+            p {
+              font-style: italic;
+              font-size: 1.4rem;
+            }
+          }
+        }
+
+        .winery {
+          width: 100%;
+          p {
+            font-size: 1.4rem;
+            text-align: left;
+          }
+        }
+        .appellation {
+          display: grid;
+          place-content: center;
+          background-color: rgba(154, 31, 73, 0.2);
+          border: 1px solid rgba(154, 31, 73, 1);
+          border-radius: 50px;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+          padding: 0.6rem 1rem;
+          p {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .region {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+        .title-revelation {
+          font-size: 1.4rem;
+          color: var(--secondaryColor);
+        }
+      }
+
+      .alcool {
+        position: absolute;
+        top: 1.9rem;
+        right: 0rem;
+        padding: 0.8rem;
+        padding-right: 1.4rem;
+        border-radius: 5px 0 0 5px;
+        background-color: #743651;
+
+        p {
+          color: rgba(255, 251, 239, 0.6);
+        }
+      }
+
+      .wine-info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+
+        .title-revelation {
+          font-size: 1.4rem;
+          color: var(--secondaryColor);
+        }
+
+        p {
+          line-height: 1.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .card-revelation {
+    padding: 2rem;
+    .revelation-card {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.4rem;
+
+      .card-text {
+        .header-revel-card {
+          gap: 1.2rem;
+        }
+
+        .region {
+          p {
+            font-size: 1.3rem;
+          }
+        }
+
+        .wine-info {
+          p {
+            font-size: 1.3rem;
+            line-height: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+}

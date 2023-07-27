@@ -8,16 +8,18 @@ import line from "../../assets/Line.svg";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Input from "../../components/Input";
 import AuthContext from "../../contexts/AuthContext";
+import TastingNoteContext from "../../contexts/TastingNoteContext";
 
 function Login() {
   const { setToken, setUser } = useContext(AuthContext);
+  const { tastingNote, setTastingNote } = useContext(TastingNoteContext);
   const [errorMsg, setErrorMsg] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
 
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
-  const [isHidden, setIsHidden] = useState(true);
 
   const navigate = useNavigate();
 
@@ -63,6 +65,8 @@ function Login() {
             navigate("/tasting");
           }
           setUser(loggedInUser);
+          console.info(loggedInUser);
+          setTastingNote({ ...tastingNote, idUser: loggedInUser.id });
         }
       })
       .catch((err) => {

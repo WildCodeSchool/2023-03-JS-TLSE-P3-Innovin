@@ -26,73 +26,95 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   background: var(--blackBgGradient);
   min-height: 100vh;
 
-  .modifContent {
-    width: 100%;
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3em;
-    h1 {
-      font-size: var(--fontSizeH2);
-      line-height: 1.3em;
+  .backButton {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.3em;
+    color: rgba(255, 251, 239, 0.3);
+    &:hover {
+      color: var(--secondaryColor);
+      cursor: pointer;
     }
-    form {
+  }
+
+  .globalModifContainer {
+    display: grid;
+    place-items: center;
+
+    .modifContent {
+      width: 100%;
+      max-width: 39rem;
+      padding: 2em;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2.4em;
-      width: 100%;
-      .dateTime {
+      gap: 3em;
+      h1 {
+        font-size: var(--fontSizeH2);
+        line-height: 1.3em;
+        color: var(--primaryColor);
+      }
+      form {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.4em;
         width: 100%;
-        justify-content: space-between;
-        gap: 2em;
-        input {
+        .dateTime {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          gap: 2em;
+          input {
+            width: 100%;
+          }
+        }
+
+        #place {
           width: 100%;
         }
-      }
 
-      #place {
-        width: 100%;
-      }
-
-      .wineType {
-        width: 100%;
-      }
-      .commentArea {
-        width: 100%;
-        label {
+        .wineType {
           width: 100%;
-          #commentary {
+        }
+        .commentArea {
+          width: 100%;
+          label {
             width: 100%;
-            height: 22vh;
-            font-family: var(--fontFamilyText);
-            font-size: var(--fontSizeText);
-            font-weight: 300;
-            color: var(--whiteGoldColor);
-            background: none;
-            padding: 0.5em;
-            border: 1px solid rgba(209, 181, 103, 0.2);
-            border-radius: 5px;
-            resize: none;
-            ::-webkit-resizer {
-              visibility: hidden;
-            }
-            &::-webkit-scrollbar {
-              width: 0.5rem;
-              height: 0.5rem;
-            }
-            &::-webkit-scrollbar-thumb {
-              background-color: var(--smoothGoldColor);
+            #commentary {
+              width: 100%;
+              height: 22vh;
+              font-family: var(--fontFamilyText);
+              font-size: 1rem;
+              font-weight: 300;
+              color: var(--whiteGoldColor);
+              background: none;
+              padding: 0.5em;
+              border: 1px solid rgba(255, 251, 239, 0.3);
+              background: var(--blackBgGradient);
               border-radius: 5px;
-              visibility: hidden;
-            }
-            &::-webkit-scrollbar-corner {
-              visibility: hidden;
-            }
-            &:hover::-webkit-scrollbar-thumb {
-              visibility: visible;
+              resize: none;
+              ::-webkit-resizer {
+                visibility: hidden;
+              }
+              &::-webkit-scrollbar {
+                width: 0.5rem;
+                height: 0.5rem;
+              }
+              &::-webkit-scrollbar-thumb {
+                background-color: var(--smoothGoldColor);
+                border-radius: 5px;
+                visibility: hidden;
+              }
+              &::-webkit-scrollbar-corner {
+                visibility: hidden;
+              }
+              &:hover::-webkit-scrollbar-thumb {
+                visibility: visible;
+              }
             }
           }
         }
@@ -103,10 +125,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 @media screen and (min-width: 1024px) {
   .wsModification {
+    .backButton {
+      font-size: 2em;
+    }
     .globalModifContainer {
       padding-left: calc(370px);
-      display: flex;
-      justify-content: center;
+
       .modifContent {
         width: 60%;
         h1 {

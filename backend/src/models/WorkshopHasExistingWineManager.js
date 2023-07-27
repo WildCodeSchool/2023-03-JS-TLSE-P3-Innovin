@@ -13,11 +13,15 @@ SELECT
     w.place,
     w.datetime,
     whe.id_existing_wine,
-    ex.vintage
+    ew.color,
+    ew.vintage,
+    ew.name AS wine_name,
+    gv.name AS grape_variety 
 FROM
 ${this.table} whe
     JOIN workshop w ON w.id = whe.id_workshop
-    JOIN existing_wine ex ON ex.id = whe.id_existing_wine;`);
+    JOIN existing_wine ew ON ew.id = whe.id_existing_wine
+    JOIN grape_variety gv ON ew.id_grape_variety = gv.id`);
   }
 
   findOneWorkshopHasExistingWine(id_workshop) {
@@ -27,13 +31,16 @@ ${this.table} whe
       w.place,
       w.datetime,
       whe.id_existing_wine,
-      ex.vintage
-  FROM
-  ${this.table} whe
+      ew.vintage,
+      ew.name AS wine_name,
+     gv.name AS grape_variety  
+   FROM
+    ${this.table} whe
       JOIN workshop w ON w.id = whe.id_workshop
-      JOIN existing_wine ex ON ex.id = whe.id_existing_wine
-WHERE
-id_workshop = ?`,
+      JOIN existing_wine ew ON ew.id = whe.id_existing_wine
+      JOIN grape_variety gv ON ew.id_grape_variety = gv.id
+    WHERE
+    id_workshop = ?`,
       [id_workshop]
     );
   }

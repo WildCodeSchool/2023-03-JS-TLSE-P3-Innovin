@@ -12,66 +12,57 @@
 }
 
 .tasteAdvice {
-  background: var(--blackBgGradient);
+  background: no-repeat left url("../../assets/Red_Wine_Colors/Pourpre.png"),
+    var(--blackBgGradient);
 
   .tasteAdviceContainer {
-    width: min(80%, 800px);
-    gap: 2rem;
+    width: 100%;
+    padding: 2rem 1rem;
+    gap: 3.2rem;
     font-family: var(--fontFamilyText);
     font-size: var(--fontSizeText);
     color: var(--whiteGoldColor);
-    margin: 1.5rem min(2rem, var(--marginPageContent));
-    @media screen and (min-width: 768px) {
-      gap: 3rem;
-      margin-bottom: 3rem;
+
+    .header {
+      gap: 2rem;
     }
 
     .intro {
-      padding: 0;
-    }
-
-    .intro .adviceText {
-      gap: 1rem;
-      align-items: baseline;
-      line-height: 1.2;
-      p {
+      gap: 2rem;
+      .subtitle {
+        font-family: var(--fontFamilyTitle);
+        font-size: 2rem;
+        color: var(--primaryColor);
+        line-height: 2.8rem;
       }
-      @media screen and (min-width: 768px) {
+      .adviceText {
+        gap: 1.2rem;
         align-items: center;
+        line-height: 1.8rem;
       }
     }
 
-    .subtitle {
-      font-family: var(--fontFamilyTitle);
-      font-size: 2rem;
-      color: var(--primaryColor);
-    }
     .adviceInputs {
-      width: min(100%, 800px);
+      width: 100%;
+      max-width: 512px;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-      @media screen and (min-width: 768px) {
-        width: max(80%, 20em);
-        gap: 3rem;
-      }
+      gap: 2.4rem;
+
       .commentArea {
-        align-items: baseline;
-        gap: 0.5rem;
-        @media screen and (min-width: 1024px) {
-          gap: 1rem;
-        }
-        #commentary {
+        align-items: flex-start;
+        gap: 0.8rem;
+        width: 100%;
+
+        #adviceCommentary {
           width: 100%;
-          background: transparent;
           border: 2px solid var(--smoothWhiteColor);
+          background: var(--blackBgGradientSmooth);
           border-radius: 5px;
-          height: 7em;
+          height: 8em;
           color: var(--whiteGoldColor);
           font-size: 1rem;
-          @media screen and (min-width: 1024px) {
-            height: 9em;
-          }
+          resize: none;
         }
       }
     }
@@ -83,9 +74,12 @@
         background: none;
         border: none;
         color: rgba(172, 146, 77, 0.1);
-        @media screen and (min-width: 768px) {
-          font-size: 1.5rem;
+        cursor: pointer;
+
+        i {
+          font-size: 1.2rem;
         }
+
         &:hover {
           color: rgba(172, 146, 77, 0.3);
         }
@@ -97,5 +91,48 @@
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tasteAdvice {
+    background: no-repeat bottom 9em left 24rem
+        url("../../assets/Red_Wine_Colors/Rouge_Noir.png"),
+      var(--blackBgGradient);
+
+    .tasteAdviceContainer {
+      padding: 2rem;
+      gap: 4rem;
+
+      .intro {
+        .adviceText {
+          gap: 1.6rem;
+          line-height: 2.4rem;
+        }
+      }
+
+      .adviceInputs {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 3.5rem;
+      }
+      .ratingContent {
+        gap: 1.4rem;
+        button {
+          i {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .tasteAdvice {
+    background: no-repeat bottom 9em left 46rem
+        url("../../assets/Red_Wine_Colors/Tuilé.png"),
+      var(--blackBgGradient);
   }
 }

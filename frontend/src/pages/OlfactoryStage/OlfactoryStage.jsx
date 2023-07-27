@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary";
-import "./OlfactoryStage.css";
+import "./OlfactoryStage.scss";
 import StepsHeader from "../../components/StepsHeader/StepsHeader";
 import Checkboxes from "../../components/Checkboxes/Checkboxes";
 import TastingHeaderTitle from "../../components/TastingHeaderTitle";
@@ -13,16 +13,18 @@ import TastingNoteContext from "../../contexts/TastingNoteContext";
 
 export default function OlfactoryStage() {
   const { olfactiveData, visualDataKeys } = useContext(TastingContext);
-  const { TastingNote } = useContext(TastingNoteContext);
+  const {
+    setTastingNote,
+    olfactorySelectedAromas,
+    setOlfactorySelectedAromas,
+  } = useContext(TastingNoteContext);
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/mouth/stage1");
   };
 
-  const [selectedAromas, setSelectedAromas] = useState([]);
-
   const handleAromaClick = (idAromas) => {
-    setSelectedAromas((prevSelectedAromas) => {
+    setOlfactorySelectedAromas((prevSelectedAromas) => {
       if (prevSelectedAromas.includes(idAromas)) {
         return prevSelectedAromas.filter((id) => id !== idAromas);
       }
@@ -36,18 +38,25 @@ export default function OlfactoryStage() {
     const formData = new FormData(form);
 
     const formJson = Object.fromEntries(formData.entries());
-    formJson.aromas = selectedAromas;
+    formJson.aromas = olfactorySelectedAromas;
     console.info(formJson);
+
+    // Mettre à jour le contexte TastingNote
+    setTastingNote((prevTastingNote) => ({
+      ...prevTastingNote,
+      idOlfactiveAromas: olfactorySelectedAromas,
+    }));
   };
 
-  console.info(TastingNote);
-
   return (
-    <div className="page-container">
-      <TastingHeaderTitle />
-      <StepsHeader />
+    <div className="pageContainerNose">
+      <div className="header">
+        <TastingHeaderTitle />
+        <StepsHeader />
+      </div>
+
       <div className="nose1">
-        <h2 className="h2-nose">
+        <h2 className="h2Nose">
           Je devine l’intensité et la complexité de ses arômes
         </h2>
         <p>
@@ -77,23 +86,24 @@ export default function OlfactoryStage() {
         </form>
       </div>
       <div className="nose2">
-        <h2 className="h2-nose">Je libère ses arômes</h2>
-        <p>
+        <h2 className="h2Nose">Je libère ses arômes</h2>
+        <p className="pNose">
           Remuez votre verre en formant un petit cercle avec son pied sur une
           table ou en l’air, et humez son parfum. A quelle famille d’arôme
           appartient votre vin ?
         </p>
       </div>
       <Aromas
+        className="aromas"
         name="Sélectionner un ou plusieurs arômes"
         tabIndex={0}
         iconUrl="/path/to/icon.png"
         ids={[1, 2, 3, 4, 5, 6, 7, 8]}
-        id="idAromas"
+        id="idOlfactiveAromas"
         onAromaClick={handleAromaClick}
       />
 
-      <div className="button-container">
+      <div className="buttonContainer">
         <ButtonPrimary type="submit" onClick={handleNavigate}>
           Etape suivante
         </ButtonPrimary>

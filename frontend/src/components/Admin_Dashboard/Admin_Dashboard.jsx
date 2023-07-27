@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import "./Admin_Dashboard.scss";
@@ -12,6 +12,7 @@ function AdminDashboard() {
   const { userToken } = useContext(AuthContext);
   const [value, onChange] = useState(new Date());
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [events, setEvents] = useState([]);
 
   const navigate = useNavigate();
 
@@ -30,18 +31,21 @@ function AdminDashboard() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // onClick function to fetch and navigate to specific workshop when a day is clicked
+  // onClick function to fetch and navigate to specific workshops when a day is clicked
   const handleClickDay = (date) => {
     onChange(date);
 
     const formattedDate = date.toLocaleDateString("fr-FR").split("/").join("");
 
     axios
-      .get(`http://localhost:5000/workshop/date/${formattedDate}`, {
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      })
+      .get(
+        `${import.meta.env.VITE_BACKEND_URL}/workshop/date/${formattedDate}`,
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        }
+      )
       .then((response) => {
         console.info(response.data);
         setWorkshops(response.data);
@@ -55,6 +59,48 @@ function AdminDashboard() {
     }
   };
 
+  // fetch all workshops by clicking on the link
+  const handleClick = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/workshop`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((response) => {
+        setWorkshops(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  // function to get the workshops data and compare with calendar date
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/workshop`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((response) => {
+        setEvents(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  function isSameDay(date1, date2) {
+    return (
+      date1.getDate() === date2.getDate() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getFullYear() === date2.getFullYear()
+    );
+  }
+
+  const formattedEvents = events.map((event) => new Date(event.datetime));
+
   // ---------------------------------------------------return-------------------------------------------------------
   return (
     <div className={`dashboard ${isMenuOpen ? "open" : ""}`}>
@@ -63,29 +109,28 @@ function AdminDashboard() {
           <img src={logo} alt="logo" />
         </div>
         <div className="sideBarLinks">
-          <button type="button">
+          <button type="button" onClick={() => navigate("/admin/dashboard")}>
             <i className="fi fi-rr-house-chimney" />
             Accueil
           </button>
-          <button type="button">
+          <button type="button" onClick={() => navigate("/admin/users")}>
             <i className="fi fi-rr-users-alt" />
             Gestion des utilisateurs
           </button>
-          <button type="button" onClick={() => navigate("/admin/workshops")}>
+          <button
+            type="button"
+            onClick={() => {
+              navigate("/admin/workshops");
+              handleClick();
+            }}
+          >
             <i className="fi fi-rr-notebook" />
             Ateliers
           </button>
-          <button type="button">
-            <i className="fi fi-rr-glass-champagne" />
-            Fiches de dégustation
-          </button>
-          <button type="button">
+
+          <button type="button" onClick={() => navigate("/admin/wines")}>
             <i className="fi fi-rr-grape" />
             Vins
-          </button>
-          <button type="button">
-            <i className="fi fi-rr-trophy-star" />
-            Sélection concours
           </button>
         </div>
         <div className="calendarContent">
@@ -96,13 +141,16 @@ function AdminDashboard() {
             defaultView="month"
             minDetail="year"
             className="calendar"
-            tileClassName={({ date }) =>
-              `itemCalendar ${
+            tileClassName={({ date }) => {
+              const isEvent = formattedEvents.find((event) =>
+                isSameDay(event, date)
+              );
+              return `itemCalendar ${isEvent ? "event-day" : ""} ${
                 value && value.toDateString() === date.toDateString()
                   ? "clicked"
                   : ""
-              }`
-            }
+              }`;
+            }}
             prevAriaLabel="Previous"
             prev2AriaLabel="Jump backwards"
             nextAriaLabel="Next"

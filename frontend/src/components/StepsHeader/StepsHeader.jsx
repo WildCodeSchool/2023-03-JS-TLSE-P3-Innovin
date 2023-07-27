@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./StepsHeader.css";
+import "./StepsHeader.scss";
 import StepButtonOpen from "./StepButton";
 import { steps } from "../../Utils";
 

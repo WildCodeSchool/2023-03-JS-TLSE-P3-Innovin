@@ -1,0 +1,59 @@
+.WorkshopEndingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("../../assets/Wine_Img/unsplash_wU2PEf1UVvM.jpg") no-repeat;
+  background-position: center;
+  height: calc(100vh - (3rem));
+
+  .WorkshopEndingContent {
+    display: flex;
+    justify-content: center;
+
+    .textEnding {
+      border: 2px solid rgba(172, 146, 77, 0.3);
+      border-radius: 8px;
+      background: var(--blackBgGradientSmooth);
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--bgBlur);
+      padding: 2rem;
+      max-width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+      .h3Ending {
+        font-family: var(--fontFamilyText);
+        color: var(--primaryColor);
+        font-size: 2.6rem;
+        font-family: var(--fontFamilyTitle);
+        text-align: center;
+      }
+      .subtitleEnding {
+        font-family: var(--fontFamilyText);
+        color: white;
+        font-size: 1.5rem;
+        text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .WorkshopEndingContainer {
+    .WorkshopEndingContent {
+      .textEnding {
+        padding: 3rem;
+        .h3Ending {
+          font-size: 5rem;
+        }
+        .subtitleEnding {
+          font-size: 2.2rem;
+          line-height: 3rem;
+        }
+      }
+    }
+  }
+}

@@ -50,6 +50,22 @@ const getWorkshopByDate = (req, res) => {
     });
 };
 
+const getNextWorkshops = (req, res) => {
+  models.workshop
+    .findNextWorkshops()
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.status(404).send("Not found");
+      } else {
+        res.status(200).send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const edit = (req, res) => {
   const workshop = req.body;
 
@@ -76,11 +92,11 @@ const add = (req, res) => {
   models.workshop
     .insert(workshop)
     .then(([result]) => {
-      res.location(`/workshop/${result.insertId}`).sendStatus(201);
+      res.location(`/workshop/${result.insertId}`).status(201).send("Created");
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -103,6 +119,7 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   getWorkshopByDate,
+  getNextWorkshops,
   read,
   edit,
   add,

@@ -3,7 +3,8 @@ import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import Navbar from "../../components/Navbar/Navbar";
 import "leaflet/dist/leaflet.css";
 import wineMap from "../../assets/wine.geojson";
-import "./WinesMap.css";
+import "./WinesMap.scss";
+import logo from "../../assets/Logo_W_Circles.svg";
 
 export default function WinesMap() {
   // popup properties
@@ -41,10 +42,11 @@ export default function WinesMap() {
     layer.bindPopup(popupContent);
   };
   return (
-    <div className="page-content">
+    <div className="pageContentMap">
       <Navbar />
       <header>
-        <h1 className="title-map">
+        <img className="img-logo" src={logo} alt="" />
+        <h1 className="titleMap">
           Les principales régions viticoles françaises
         </h1>
       </header>
