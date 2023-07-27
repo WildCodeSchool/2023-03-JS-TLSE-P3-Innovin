@@ -19,13 +19,13 @@ function Card({ wine, number, isSelected, onSelect }) {
         <div className="titleCard">
           <h2 className="h2Card">Vin numéro {number}</h2>
           <button
-            className="starButton"
+            className="star-button"
             aria-label="Toggle Star"
             type="button"
             onClick={handleStarButtonClick}
           >
             <img
-              className="imgCardSelection"
+              className={`img-card ${isSelected ? "selected" : ""}`}
               src={isSelected ? starHover : star}
               alt={isSelected ? "filled star" : "unfilled star"}
             />
