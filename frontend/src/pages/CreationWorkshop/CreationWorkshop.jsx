@@ -122,9 +122,7 @@ function CreationWorkshop() {
             </div>
 
             <div className="commentary_container">
-              <span className="TextWine">
-                Donnez votre avis sur votre vin :
-              </span>
+              <span className="TextWine">Donnez un avis sur votre vin :</span>
               <InputTextarea
                 name="commentary"
                 placeholder="Ecrivez ici un commentaire sur votre propre vin"

@@ -19,11 +19,18 @@
     margin: 2rem min(2rem, var(--marginPageContent));
     margin-bottom: 5rem;
     gap: 4rem;
-
+    .header {
+      gap: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
     /* style for the text intro */
     .intro {
       align-items: start;
       gap: 2rem;
+      max-width: 85%;
       text-align: left;
       line-height: 1.8rem;
 
@@ -32,6 +39,8 @@
         font-size: 2rem;
         color: var(--primaryColor);
         line-height: 2.8rem;
+        width: 100%;
+        text-align: center;
       }
       .introText {
         display: flex;
@@ -81,3 +90,14 @@
 }
 
 /* -------------------------------- Desktop media queries--------------------------------- */
+
+@media screen and (min-width: 1024px) {
+  .visualStage2 {
+    .contentStage2 {
+      .intro {
+        line-height: 2.2rem;
+        max-width: 80rem;
+      }
+    }
+  }
+}

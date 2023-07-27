@@ -1,23 +1,24 @@
 import "./WorkshopEnding.scss";
+import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 function WorkshopEnding() {
   // -------------------------------------------return the component----------------------------------------------------
 
   return (
-    <div className="WorkshopEnding_container">
-      <div className="WorkshopEnding_Content">
-        <div className="intro">
-          <h3 className="subtitle">Merci pour votre participation !</h3>
-          <p>
-            Merci d'avoir participé à cet atelier. Nous espérons vous revoir
-            très prochainement.
-            <br />
-          </p>
-        </div>
-        <div className="WorkshopEnding_winecontent">
-          <div className="WorkshopEnding_textWineContainer" />
+    <div>
+      <Navbar />
+      <div className="WorkshopEndingContainer">
+        <div className="WorkshopEndingContent">
+          <div className="textEnding">
+            <h3 className="h3Ending">INOVIN</h3>
+            <p className="subtitleEnding">
+              vous remercie d'avoir participé à cet atelier !
+            </p>
+          </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

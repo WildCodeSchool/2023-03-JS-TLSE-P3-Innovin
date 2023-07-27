@@ -84,22 +84,24 @@ function BlendedWine() {
                 {blendedWine[0].color}
                 <br />
               </p>
-              <ul>
-                <span className="TextWine">Dosages :</span> <br /> <br />
-                <li>
-                  {blendedWine[0].grapeVariety[0]} : {blendedWine[0].dosage[0]}{" "}
-                  ml
-                </li>
-                <li>
-                  {blendedWine[0].grapeVariety[1]} : {blendedWine[0].dosage[1]}{" "}
-                  ml
-                </li>
-                <li>
-                  {blendedWine[0].grapeVariety[2]} : {blendedWine[0].dosage[2]}{" "}
-                  ml
-                </li>
-              </ul>
-              <p>
+              <div className="dosages">
+                <span className="TextWine">Dosages :</span>
+                <ul>
+                  <li>
+                    {blendedWine[0].grapeVariety[0]} :{" "}
+                    {blendedWine[0].dosage[0]} ml
+                  </li>
+                  <li>
+                    {blendedWine[0].grapeVariety[1]} :{" "}
+                    {blendedWine[0].dosage[1]} ml
+                  </li>
+                  <li>
+                    {blendedWine[0].grapeVariety[2]} :{" "}
+                    {blendedWine[0].dosage[2]} ml
+                  </li>
+                </ul>
+              </div>
+              <p className="appreciation">
                 <span className="TextWine">Votre appréciation :</span>
                 <br />
                 {blendedWine[0].commentaryWine}

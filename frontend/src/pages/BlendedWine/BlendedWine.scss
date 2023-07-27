@@ -9,20 +9,20 @@
 }
 
 .BlendedWine_container {
-  height: 100%;
   color: var(--whiteGoldColor);
   font-family: var(--fontFamilyText);
   font-size: var(--fontSizeText);
-  min-height: 100vh;
   background: left url("../../assets/Red_Wine_Colors/Grenat.png"),
     var(--blackBgGradient);
   padding: 2rem 1rem;
+  min-height: 100vh;
+  min-height: 100dvh;
 
   .BlendedWine_Content {
-    margin: 0 5rem 0 5rem;
-
+    gap: 2.4rem;
     .intro {
       gap: 2.4rem;
+      max-width: 640px;
       .subtitle {
         font-family: var(--fontFamilyTitle);
         font-size: 2rem;
@@ -35,29 +35,34 @@
 
     .BlendedWine_winecontent {
       display: flex;
-      margin: 2rem 0 5rem 0;
       flex-direction: column;
       justify-content: space-between;
-      width: 80%;
+      width: 100%;
       background: var(--blackBgGradientSmooth);
       box-shadow: var(--shadow);
       backdrop-filter: var(--bgBlur);
-      padding: 2rem;
+      padding: 2rem 1rem;
       border-radius: 5px;
+      gap: 1.5rem;
+      font-size: 1rem;
+      max-width: 450px;
 
       .BlendedWine_imgWineContainer {
         display: flex;
         flex-direction: column;
         width: 100%;
         align-items: center;
-        gap: 1em;
+        gap: 1.2rem;
         h2 {
-          font-size: clamp(0.5rem, 4vw + 1rem, 1.2rem);
+          font-size: 1.4rem;
           text-align: center;
           color: var(--secondaryColor);
+          font-family: var(--fontFamilyTitle);
+          line-height: 2rem;
         }
         img {
           width: 100%;
+          border-radius: 5px;
         }
       }
 
@@ -65,16 +70,24 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        border-style: dotted;
-        border-width: 0;
-        border-top-width: 1px;
-        border-color: white;
-        margin-top: 1em;
-        padding-top: 1em;
         width: 100%;
+        gap: 1rem;
 
         .TextWine {
           color: var(--secondaryColor);
+        }
+
+        .dosages {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          ul li {
+            line-height: 1.4rem;
+          }
+        }
+        .appreciation {
+          line-height: 1.6rem;
         }
       }
     }
@@ -92,8 +105,6 @@
       var(--blackBgGradient);
 
     .BlendedWine_Content {
-      margin: 0 5rem 0 5rem;
-
       .intro {
         align-items: center;
         text-align: center;
@@ -127,10 +138,7 @@
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          border-style: dotted;
-          border-width: 0;
-          border-top-width: 1px;
-          border-color: white;
+
           margin-top: 1em;
           padding-top: 1em;
           width: 100%;
@@ -141,14 +149,6 @@
         }
       }
     }
-  }
-
-  .BlendedWine_winecontent {
-    width: 95%;
-    background: var(--blackBgGradientSmooth);
-    box-shadow: var(--shadow);
-    backdrop-filter: var(--bgBlur);
-    border-radius: 5px;
   }
 }
 
@@ -164,44 +164,6 @@
       .intro {
         align-items: center;
         text-align: center;
-        padding-inline: var(--marginPageContent);
-      }
-
-      .BlendedWine_winecontent {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        background: var(--blackBgGradientSmooth);
-        box-shadow: var(--shadow);
-        backdrop-filter: var(--bgBlur);
-        padding: 2rem;
-        border-radius: 5px;
-        margin-bottom: 5%;
-
-        .BlendedWine_imgWineContainer {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          align-items: center;
-          gap: 1em;
-
-          img {
-            width: 100%;
-          }
-        }
-
-        .BlendedWine_textWineContainer {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          border-style: dotted;
-          border-width: 0;
-          border-left-width: 1px;
-          border-color: white;
-          margin-left: 1em;
-          padding: 1em;
-          width: 100%;
-        }
       }
     }
   }
