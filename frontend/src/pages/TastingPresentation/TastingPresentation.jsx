@@ -18,7 +18,9 @@ export default function TastingPresentation() {
   // --------------------------------------------------Fetch to get the next workshop-----------------------------------------------------------
 
   useEffect(() => {
-    const nextWorkshopsApiUrl = "http://localhost:5000/nextworkshops";
+    const nextWorkshopsApiUrl = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/nextworkshops`;
     axios
       .get(nextWorkshopsApiUrl, {
         headers: {
@@ -39,9 +41,11 @@ export default function TastingPresentation() {
   const getData = () => {
     if (nextWorkshops.length > 0) {
       const endpoints = [
-        "http://localhost:5000/visualdatas",
-        "http://localhost:5000/olfactivedatas",
-        `http://localhost:5000/workshophasexistingwine/${nextWorkshops[0].id}`,
+        `${import.meta.env.VITE_BACKEND_URL}/visualdatas`,
+        `${import.meta.env.VITE_BACKEND_URL}/olfactivedatas`,
+        `${import.meta.env.VITE_BACKEND_URL}/workshophasexistingwine/${
+          nextWorkshops[0].id
+        }`,
       ];
 
       Promise.all(

@@ -28,7 +28,9 @@ function WinesTasted() {
   // fetch to get tasting note of dynamic user and workshop
 
   useEffect(() => {
-    const apiUrl = `http://localhost:5000/tastingnote/${user.id}?idworkshop=${nextWorkshops[0].id}`;
+    const apiUrl = `${import.meta.env.VITE_BACKEND_URL}/tastingnote/${
+      user.id
+    }?idworkshop=${nextWorkshops[0].id}`;
     axios
       .get(apiUrl, {
         headers: {
