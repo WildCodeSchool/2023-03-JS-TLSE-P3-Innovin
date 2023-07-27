@@ -64,8 +64,10 @@ function Sliders() {
     <div className="sliders_container">
       {workshopSelectedWines.map(({ dosage }, index) => (
         <div key={dosage.id} className="slider-container">
-          <img src={Grapes_Icon} alt="Sugar_Icon" />
-          <h2>{existingWineByTastingNote[index].grape_variety}</h2>
+          <div className="sliderHeader">
+            <img src={Grapes_Icon} alt="Sugar_Icon" />
+            <h2>{existingWineByTastingNote[index].grape_variety}</h2>
+          </div>
           <span className="slider-value">
             {wineSelectedDosages[index] || 0} ml
           </span>
@@ -73,11 +75,11 @@ function Sliders() {
             styles={{
               active: { backgroundColor: "var( --redWineColor)" },
               thumb: {
-                width: 20,
-                height: 20,
+                width: 16,
+                height: 16,
               },
               track: {
-                width: 300,
+                width: 260,
               },
             }}
             axis="x"
