@@ -171,7 +171,7 @@ function Registration() {
               </div>
             </label>
           </div>
-          <div>
+          <div className="tasteDropdown">
             <p>Goûts *</p>
             <Dropdown
               value={taste}
