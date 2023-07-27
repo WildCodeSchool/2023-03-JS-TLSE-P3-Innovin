@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./cardrevelation.css";
+import "./cardrevelation.scss";
 
 export default function CardRevelation({ wine, cardNumber }) {
   return (

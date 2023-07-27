@@ -72,15 +72,15 @@ function WinesTasted() {
   };
 
   return (
-    <div className="wine-content">
-      <div className="head-tested">
-        <h2 className="title-tasted">Sélection</h2>
-        <p className="p-tested">
+    <div className="wineContent">
+      <div className="headTasted">
+        <h2 className="titleTasted">Sélection</h2>
+        <p className="pTested">
           Sélectionnez au maximum 3 vins favoris parmi ceux dégustés
         </p>
       </div>
       {wines.length > 0 && (
-        <div className="card-disposition">
+        <div className="cardDisposition">
           {wines.map((wine, index) => (
             <Card
               key={wine.id}
