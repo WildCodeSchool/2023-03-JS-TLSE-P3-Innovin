@@ -1,58 +1,72 @@
 .wineContent {
-  align-items: center;
   background: no-repeat left url("../../assets/Red_Wine_Colors/Pourpre.png"),
     var(--blackBgGradient);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  width: 100vw;
+  align-items: center;
+  width: 100%;
   color: var(--whiteGoldColor);
   font-family: var(--fontFamilyText);
   font-size: var(--fontSizeText);
-  padding-bottom: 3rem;
+  padding: 2rem;
+  gap: 2.8rem;
 
-  .titleTasted {
+  .headTasted {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    font-family: var(--fontFamilyTitle);
-    color: var(--primaryColor);
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin: 3rem 0 2rem 0;
+    width: 100%;
+    gap: 1.4rem;
+
+    .titleTasted {
+      font-family: var(--fontFamilyTitle);
+      color: var(--primaryColor);
+      font-size: 1.8rem;
+    }
+    .pTested {
+      line-height: 1.8rem;
+      text-align: center;
+    }
   }
 
-  .pTested {
-    color: white;
-    font-weight: 400;
-    line-height: 31.5px;
-    text-align: center;
-    font-family: var(--fontFamilyText);
-    font-size: 1rem;
-    padding: 0 2rem 0 2rem;
+  .cardDisposition {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
   }
 
-  @media screen and (min-width: 768px) {
+  a {
+    text-decoration: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .wineContent {
     background: no-repeat top 18em right 28em
         url("../../assets/Red_Wine_Colors/Pourpre.png"),
       no-repeat bottom 9em left 26em
         url("../../assets/Gold_Blotches/Watercolor_Blotch_4.png"),
       var(--blackBgGradient);
-    padding: 0 2rem 3rem 2rem;
+    padding: 2rem;
 
-    .titleTasted {
-      font-size: 2.5rem;
-    }
+    .headTasted {
+      gap: 2.4rem;
 
-    .pTested {
-      font-size: 1.2rem;
+      .titleTasted {
+        font-size: 2.5rem;
+      }
+      .pTested {
+        text-align: center;
+      }
     }
 
     .cardDisposition {
-      display: flex;
       flex-direction: row;
-      align-items: center;
-      width: 100%;
       flex-wrap: wrap;
+      justify-content: center;
     }
   }
 }

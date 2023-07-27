@@ -73,7 +73,7 @@ function WinesTasted() {
 
   return (
     <div className="wineContent">
-      <div className="headTested">
+      <div className="headTasted">
         <h2 className="titleTasted">Sélection</h2>
         <p className="pTested">
           Sélectionnez au maximum 3 vins favoris parmi ceux dégustés

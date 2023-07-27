@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import CardRevelation from "./CardRevelation";
-import "./Revelation.css";
+import "./Revelation.scss";
 import TastingNoteContext from "../../contexts/TastingNoteContext";
 import CreationWorkshopContext from "../../contexts/CreationWorkshopContext";
 import ButtonPrimary from "../../components/ButtonPrimary";
@@ -64,8 +64,11 @@ export default function Revelation() {
 
   return (
     <div className="page-revel">
-      <h1 className="h1-revelation">REVELATION</h1>
-      <p>Voici les vins correspondants à votre séléction</p>
+      <div className="header">
+        <h1 className="h1-revelation">REVELATION</h1>
+        <p>Voici les vins correspondants à votre séléction</p>
+      </div>
+
       <div className="card-disposition">
         {selectedWinesData &&
           selectedWinesData.map((wine) => (

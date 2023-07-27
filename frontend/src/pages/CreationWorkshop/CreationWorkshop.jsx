@@ -113,12 +113,14 @@ function CreationWorkshop() {
             <p>
               Assemblez votre vin à l'aide de vos cépages préférés. Utilisez les
               sliders ci-dessous pour inscrire vos dosages.
-              <br />{" "}
             </p>
           </div>
           <div className="workshop_Sliderbox">
-            <p>Quelles quantités avez-vous utilisé ?</p>
-            <Sliders />
+            <div className="sliders">
+              <p>Quelles quantités avez-vous utilisé ?</p>
+              <Sliders />
+            </div>
+
             <div className="commentary_container">
               <span className="TextWine">
                 Donnez votre avis sur votre vin :
