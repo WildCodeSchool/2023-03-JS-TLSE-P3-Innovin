@@ -66,7 +66,7 @@ export default function Revelation() {
     <div className="page-revel">
       <div className="header">
         <h1 className="h1-revelation">REVELATION</h1>
-        <p>Voici les vins correspondants à votre séléction</p>
+        <p>Voici les vins correspondants à votre sélection</p>
       </div>
 
       <div className="card-disposition">

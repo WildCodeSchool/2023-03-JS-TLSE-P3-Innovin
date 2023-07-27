@@ -144,7 +144,7 @@ function SlidersTasteStage1({
         <CircularSlider
           width={200}
           labelFontSize="1.4rem"
-          valueFontSize="1.2rem"
+          valueFontSize="0rem"
           label={
             tasteTanninValue ||
             tasteTanninItems[sliderDataTasteTannin.indexOf(3)]

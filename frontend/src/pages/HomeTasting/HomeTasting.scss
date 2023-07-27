@@ -140,6 +140,7 @@
             width: 100%;
             height: 290px;
             object-fit: cover;
+            border-radius: 8px;
           }
         }
       }
@@ -160,6 +161,7 @@
             width: 100%;
             height: 290px;
             object-fit: cover;
+            border-radius: 8px;
           }
         }
       }
@@ -443,5 +445,11 @@
         line-height: 2.6rem;
       }
     }
+  }
+}
+
+@media screen and (min-width: 1324px) {
+  .home-container .page-content-home {
+    padding-inline: 8rem;
   }
 }

@@ -27,15 +27,26 @@
       align-items: start;
       gap: 2.5rem;
       text-align: left;
+      padding-inline: 1.4rem;
 
       .subtitle {
         font-family: var(--fontFamilyTitle);
         font-size: 2rem;
         color: var(--primaryColor);
+        text-align: center;
+        width: 100%;
       }
-      .tip {
-        font-weight: 200;
-        font-style: italic;
+      .introText {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        p {
+          line-height: 1.8rem;
+        }
+        .tip {
+          font-weight: 200;
+          font-style: italic;
+        }
       }
     }
     /* style for the colors section */
@@ -80,6 +91,17 @@
   }
 }
 
+@media screen and (min-width: 512px) {
+  .visualStage1 {
+    .contentStage1 {
+      /* style for the text intro */
+      .intro {
+        padding-inline: 4rem;
+      }
+    }
+  }
+}
+
 /* -------------------------------- Tablet media queries--------------------------------- */
 
 @media screen and (min-width: 768px) {
@@ -109,7 +131,7 @@
       .intro {
         align-items: center;
         text-align: center;
-        padding-inline: var(--marginPageContent);
+        padding-inline: 17%;
       }
       .colors {
         display: grid;

@@ -25,12 +25,17 @@
     }
 
     .intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
       .introText {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 1.4rem;
         line-height: 1.8rem;
+        max-width: 64rem;
       }
     }
 

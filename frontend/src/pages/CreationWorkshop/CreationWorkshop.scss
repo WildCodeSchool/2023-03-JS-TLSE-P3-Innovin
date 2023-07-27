@@ -13,7 +13,7 @@
   color: var(--whiteGoldColor);
   font-family: var(--fontFamilyText);
   font-size: var(--fontSizeText);
-  background: left url("../../assets/Red_Wine_Colors/Framboise.png"),
+  background: left url("../../assets/Red_Wine_Colors/Rouge_Noir.png"),
     var(--blackBgGradient);
   padding: 2rem 1rem;
 
@@ -25,6 +25,7 @@
       align-items: center;
       text-align: center;
       gap: 2.5rem;
+      max-width: 900px;
 
       .subtitle {
         font-family: var(--fontFamilyTitle);
@@ -38,8 +39,8 @@
     }
 
     .workshop_Sliderbox {
-      width: 100%;
       max-width: 45rem;
+      width: 100%;
       background: var(--blackBgGradientSmooth);
       box-shadow: var(--shadow);
       backdrop-filter: var(--bgBlur);
@@ -70,7 +71,9 @@
           border-radius: 5px;
           border: 2px solid var(--smoothGoldColor);
           font-size: 1rem;
-          max-width: 28rem;
+          width: 100%;
+          max-width: 400px;
+          color: var(--whiteGoldColor);
         }
       }
     }
@@ -82,7 +85,7 @@
 @media screen and (min-width: 768px) {
   .workshop_container {
     background: no-repeat bottom 2em left 36rem
-        url("../../assets/Red_Wine_Colors/Framboise.png"),
+        url("../../assets/Red_Wine_Colors/Grenat.png"),
       no-repeat top 30em right 5em
         url("../../assets/Gold_Blotches/Watercolor_Splatters 1.png"),
       var(--blackBgGradient);
